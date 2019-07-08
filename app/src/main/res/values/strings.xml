@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">DGFAB</string>
+
+    <string name="login_welcome">Welcome to</string>
+    <string name="login_app_details">India\'s first Business Networking Platform</string>
+    <string name="login_agree">Agree &amp; Continue</string>
+    <string name="login_allow">Allow/Deny</string>
+    <string name="title_dialog">DGFAB</string>
+    <string name="msg_dialog">Are you sure want to close Matrimony?</string>
+    <string name="yes_dialog">Yes!</string>
+    <string name="no_dialog">No</string>
+    <!--text app intro screen -->
+    <string name="first_intro">DGFAB with Business</string>
+    <string name="second_intro">Manage &amp; promote your product catalogue</string>
+    <string name="third_intro">Get your free business website</string>
+
+    <string name="first_intro_msg">Retailers, Traders, Wholesalers, Distributors and Manufacturers</string>
+    <string name="second_intro_msg">aa</string>
+    <string name="third_intro_msg">aa</string>
+
+    <string name="term_cond">Tap "Agree &amp; Continue" to accept the</string>
+    <string name="terms_conditions">Terms of Service &amp; Privacy policy</string>
+    <string name="permission_text">For the best DGFAB experience, we require a few permissions</string>
+    <string name="permission_contact">We need your contact to elp build your business network on DGFAB</string>
+    <string name="permission_location">We use your location to explore business and groups near you more effectively</string>
+    <string name="permission_storage">We will use this to store your product images and other photos</string>
+    <string name="login_send">Send verification code</string>
+    <string name="login_mobile_text">Enter your mobile no</string>
+
+
+    <!--text app intro screen -->
+
+
+</resources>
