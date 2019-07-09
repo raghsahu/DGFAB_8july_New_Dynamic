@@ -8,11 +8,6 @@
     tools:context=".LoginandReg.Main_Registration_1"
     android:orientation="vertical">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/card_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="2dp">
 
         <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -41,7 +36,7 @@
                 android:typeface="serif" />
 
         </android.support.v7.widget.Toolbar>
-    </android.support.v7.widget.CardView>
+
 
     <LinearLayout
         android:padding="10dp"
@@ -49,9 +44,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
             <LinearLayout
                 android:weightSum="2"
                 android:padding="10dp"
@@ -59,7 +51,7 @@
                 android:layout_height="wrap_content">
                 <ImageView
                     android:layout_weight="0"
-                    android:src="@drawable/planetearth"
+                    android:src="@drawable/earthglobe"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                     <android.support.design.widget.TextInputLayout
@@ -79,11 +71,6 @@
 
 
 
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
             <LinearLayout
                 android:weightSum="2"
                 android:padding="10dp"
@@ -91,7 +78,7 @@
                 android:layout_height="wrap_content">
                 <ImageView
                     android:layout_weight="0"
-                    android:src="@drawable/planetearth"
+                    android:src="@drawable/emailenvelope"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <android.support.design.widget.TextInputLayout
@@ -109,12 +96,59 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:weightSum="2"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
 
+                    android:layout_weight="0"
+                    android:src="@drawable/password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <android.support.design.widget.TextInputLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <EditText
 
-        </android.support.v7.widget.CardView>
-        <android.support.v7.widget.CardView
+                        android:background="@null"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+        <LinearLayout
+            android:weightSum="2"
+            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <ImageView
+                android:layout_weight="0"
+                android:src="@drawable/manuser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <EditText
+
+                    android:background="@null"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+        </LinearLayout>
+
             <LinearLayout
                 android:weightSum="2"
                 android:padding="10dp"
@@ -122,7 +156,7 @@
                 android:layout_height="wrap_content">
                 <ImageView
                     android:layout_weight="0"
-                    android:src="@drawable/planetearth"
+                    android:src="@drawable/company"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <android.support.design.widget.TextInputLayout
@@ -140,39 +174,5 @@
 
             </LinearLayout>
 
-
-
-        </android.support.v7.widget.CardView>
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:weightSum="2"
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_weight="0"
-                    android:src="@drawable/planetearth"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <android.support.design.widget.TextInputLayout
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <EditText
-
-                        android:background="@null"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-                </android.support.design.widget.TextInputLayout>
-
-            </LinearLayout>
-
-
-
-        </android.support.v7.widget.CardView>
     </LinearLayout>
 </LinearLayout>
