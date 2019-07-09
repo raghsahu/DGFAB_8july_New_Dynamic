@@ -35,12 +35,14 @@ public class Use_reason_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(bsrad.isChecked()) {
+                    perrad.setChecked(false);
                     Intent in = new Intent(Use_reason_Activity.this, Registration_pro_1.class);
                     startActivity(in);
                     finish();
                     overridePendingTransition(R.anim.anim_slide_in_left,
                             R.anim.anim_slide_out_left);
                 }else if(perrad.isChecked()){
+                    bsrad.setChecked(false);
                     Intent in = new Intent(Use_reason_Activity.this, LoginActivity.class);
                     startActivity(in);
                     finish();

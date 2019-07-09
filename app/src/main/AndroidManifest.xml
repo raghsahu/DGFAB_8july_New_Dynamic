@@ -17,6 +17,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Activity.PermissionActivity"
             android:theme="@style/AppTheme.Splash"></activity>
+
+        <activity android:name=".Activity.Registration_Step_1"></activity>
         <activity android:name=".Activity.LoginActivity"
             android:theme="@style/AppTheme.Splash"/>
         <activity
