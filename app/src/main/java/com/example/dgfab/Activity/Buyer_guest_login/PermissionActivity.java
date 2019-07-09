@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.dgfab.Activity.Use_reason_Activity;
 import com.example.dgfab.R;
 
 import java.util.ArrayList;
