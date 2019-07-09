@@ -13,12 +13,12 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.myhexaville.login.R;
+import com.example.dgfab.AllParsings.GET_Services_Data;
+import com.example.dgfab.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ics.dynamic.dgfab.AllParsings.GET_Services_Data;
 
 public class Service_Adapter  extends RecyclerView.Adapter<Service_Adapter.MyViewHolder> {
     private Context mContext;

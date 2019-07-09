@@ -1,5 +1,7 @@
 package com.example.dgfab.APIanURLs;
 
+import com.example.dgfab.AllParsings.GET_Services;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -13,11 +15,11 @@ public interface Api {
 //            @Field("type_id") String type_of_user
 //    );
 //
-//    @FormUrlEncoded
-//    @POST(REtroURls.Get_Services)
-//    Call<GET_Services> Get_ServicesUsersCall(
-//            @Field("type_id") String type_of_user
-//    );
+    @FormUrlEncoded
+    @POST(REtroURls.Get_Services)
+    Call<GET_Services> Get_ServicesUsersCall(
+            @Field("type_id") String type_of_user
+    );
 //
 //    @FormUrlEncoded
 //    @POST(REtroURls.Registration)
