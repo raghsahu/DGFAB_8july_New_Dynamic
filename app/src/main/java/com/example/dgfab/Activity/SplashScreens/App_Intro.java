@@ -1,4 +1,4 @@
-package com.example.dgfab.SplashScreens;
+package com.example.dgfab.Activity.SplashScreens;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -17,8 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ToxicBakery.viewpager.transforms.ZoomOutSlideTransformer;
-import com.example.dgfab.Activity.LoginActivity;
-import com.example.dgfab.Activity.PermissionActivity;
+import com.example.dgfab.Activity.Buyer_guest_login.PermissionActivity;
 import com.example.dgfab.Adapter.AppIntroPagerAdapter;
 import com.example.dgfab.R;
 

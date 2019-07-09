@@ -1,4 +1,4 @@
-package com.example.dgfab.Activity;
+package com.example.dgfab.Activity.Buyer_guest_login;
 
 import android.Manifest;
 import android.content.Intent;
@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.dgfab.Activity.Use_reason_Activity;
 import com.example.dgfab.R;
 
 import java.util.ArrayList;

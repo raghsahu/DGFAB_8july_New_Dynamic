@@ -10,10 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.dgfab.Activity.LoginActivity;
-import com.example.dgfab.Activity.PermissionActivity;
+import com.example.dgfab.Activity.Buyer_guest_login.PermissionActivity;
 import com.example.dgfab.R;
-import com.example.dgfab.SplashScreens.App_Intro;
+import com.example.dgfab.Activity.SplashScreens.App_Intro;
 
 public class AppIntroPagerAdapter extends PagerAdapter {
     private Context mContext;
