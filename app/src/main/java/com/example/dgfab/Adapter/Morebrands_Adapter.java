@@ -12,14 +12,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.myhexaville.login.R;
+import com.example.dgfab.AllParsings.AddMoreBrands;
+import com.example.dgfab.R;
+
 
 import java.net.URL;
 import java.util.List;
 
-import ics.dynamic.dgfab.AllParsings.AddMoreBrands;
-
-import static ics.dynamic.dgfab.LogandReg.Registration_Step_3.Models;
 
 public class Morebrands_Adapter extends RecyclerView.Adapter<Morebrands_Adapter.MyViewHolder> {
     private Context mContext;
@@ -108,7 +107,7 @@ public class Morebrands_Adapter extends RecyclerView.Adapter<Morebrands_Adapter.
 //               addMoreBrands.setRemoveless(new ImageView(v.getContext()));
                    addMoreBrandsList.remove(position);
                    if (holder.brandname.getText().length() > 0){
-                       Models.add(holder.brandname.getText().toString());
+                 //      Models.add(holder.brandname.getText().toString());
                    }else{
                        Toast.makeText(mContext, "Caution! BrandName is empty", Toast.LENGTH_SHORT).show();
                    }
