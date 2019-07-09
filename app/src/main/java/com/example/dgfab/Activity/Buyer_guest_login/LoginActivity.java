@@ -1,5 +1,6 @@
-package com.example.dgfab.Activity;
+package com.example.dgfab.Activity.Buyer_guest_login;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +24,10 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
+                Intent in = new Intent(LoginActivity.this, OtpActivity.class);
+                startActivity(in);
+                overridePendingTransition(R.anim.anim_slide_in_left,
+                        R.anim.anim_slide_out_left);
 
 
             }

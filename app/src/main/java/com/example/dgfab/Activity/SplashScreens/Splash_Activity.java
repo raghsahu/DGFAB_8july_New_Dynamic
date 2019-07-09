@@ -1,11 +1,10 @@
-package com.example.dgfab.SplashScreens;
+package com.example.dgfab.Activity.SplashScreens;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.dgfab.MainActivity;
 import com.example.dgfab.R;
 
 public class Splash_Activity extends AppCompatActivity {
