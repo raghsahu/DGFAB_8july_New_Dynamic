@@ -23,6 +23,13 @@
             android:name=".SplashScreens.App_Intro"
             android:theme="@style/AppTheme.Splash" />
         <activity
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:name=".LoginandReg.Registration_pro_1">
+
+
+        </activity>
+        <activity android:name=".Activity.Use_reason_Activity"></activity>
+        <activity
             android:name=".SplashScreens.Splash_Activity"
             android:theme="@style/AppTheme.Splash">
             <intent-filter>
