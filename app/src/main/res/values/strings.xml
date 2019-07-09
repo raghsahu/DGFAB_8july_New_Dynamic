@@ -9,6 +9,8 @@
     <string name="msg_dialog">Are you sure want to close Matrimony?</string>
     <string name="yes_dialog">Yes!</string>
     <string name="no_dialog">No</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
     <!--text app intro screen -->
     <string name="first_intro">DGFAB with Business</string>
     <string name="second_intro">Manage &amp; promote your product catalogue</string>
@@ -26,6 +28,11 @@
     <string name="permission_storage">We will use this to store your product images and other photos</string>
     <string name="login_send">Send verification code</string>
     <string name="login_mobile_text">Enter your mobile no</string>
+    <string name="login_mobile_number">We will send a 6 digit verification \n code to this mobile number</string>
+    <string name="primary_reason">What is your primary reason for sourcing?</string>
+    <string name="primary_reason_details">This will help us match you with suppliers that are a good fit.</string>
+    <string name="business_need">I am  Buying products for my company or to sell.</string>
+    <string name="personal_use">I am the end consumer of the products I source.</string>
 
 
     <!--text app intro screen -->
