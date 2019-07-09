@@ -1,4 +1,26 @@
 <resources>
+
+    <string-array name="main_cat">
+        <item><font fgcolor='#FF8E8E93'>Select Business Type</font></item>
+        <item><font fgcolor='#FF8E8E93'>Buyer</font></item>
+        <item><font fgcolor='#FF8E8E93'>Dealer</font></item>
+        <item><font fgcolor='#FF8E8E93'>Manufacturer</font></item>
+        <item><font fgcolor='#FF8E8E93'>Affiliate Marketer</font></item>
+    </string-array>
+
+
+    <string-array name="sub_main_cat">
+        <item><font fgcolor='#FF8E8E93'>Admin/Owner</font></item>
+        <item><font fgcolor='#FF8E8E93'>Sales</font></item>
+        <item><font fgcolor='#FF8E8E93'>Dispatch</font></item>
+        <item><font fgcolor='#FF8E8E93'>Accountant</font></item>
+        <item><font fgcolor='#FF8E8E93'>Buyer</font></item>
+        <item><font fgcolor='#FF8E8E93'>Dealer</font></item>
+        <item><font fgcolor='#FF8E8E93'>Purchase</font></item>
+        <item><font fgcolor='#FF8E8E93'>IT</font></item>
+        <item><font fgcolor='#FF8E8E93'>Tally/Recheck</font></item>
+        <item><font fgcolor='#FF8E8E93'>Service/Production</font></item>
+    </string-array>
     <string name="app_name">DGFAB</string>
 
     <string name="login_welcome">Welcome to</string>
