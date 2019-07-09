@@ -36,7 +36,7 @@ public class PermissionActivity extends AppCompatActivity {
                 }
 
 
-                Intent in = new Intent(PermissionActivity.this, LoginActivity.class);
+                Intent in = new Intent(PermissionActivity.this, Use_reason_Activity.class);
                 startActivity(in);
                 finish();
                 overridePendingTransition(R.anim.anim_slide_in_left,
