@@ -15,11 +15,12 @@ public class Buyer_Main_Navigation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buyer__main__navigation);
+
         logorreg =findViewById(R.id.logorreg);
         logorreg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Buyer_Main_Navigation.this , ManuLoginActivity.class);
+                Intent intent = new Intent(Buyer_Main_Navigation.this , Use_reason_Activity.class);
                 startActivity(intent);
             }
         });

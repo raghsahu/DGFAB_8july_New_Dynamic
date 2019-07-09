@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.dgfab.Activity.Buyer_Dashboard.Buyer_Dashboard_Activity;
 import com.example.dgfab.Buyers.Buyer_Main_Navigation;
 import com.example.dgfab.R;
 

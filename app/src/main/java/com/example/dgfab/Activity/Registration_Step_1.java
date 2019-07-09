@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dgfab.APIanURLs.Api;
@@ -21,6 +22,8 @@ import com.example.dgfab.AllParsings.GET_Services;
 import com.example.dgfab.AllParsings.GET_Services_Data;
 import com.example.dgfab.R;
 
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -37,7 +40,7 @@ import static com.example.dgfab.Adapter.Service_Adapter.Servicenames;
 public class Registration_Step_1 extends AppCompatActivity {
     RecyclerView serv_id;
     Service_Adapter service_adapter;
-    Button next;
+    TextView next;
     private ProgressDialog progressDialog;
     String ConcatService;
     String name, email, com_name, password, address, mobile;

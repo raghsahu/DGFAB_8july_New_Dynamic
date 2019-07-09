@@ -47,11 +47,14 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
     <LinearLayout
+        android:layout_margin="10dp"
         android:background="#fff"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -69,93 +72,137 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-        <android.support.v7.widget.CardView
-            android:background="#fff"
-            android:layout_margin="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <android.support.design.widget.TextInputLayout
 
+
+        <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="2dp"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:weightSum="1"
+                android:gravity="center"
+                android:background="@drawable/et_bg"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/person"
+                    />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="start|center"
+                    android:hint="Full Name"
+                    android:inputType="text"
+                    android:textColor="#000"
+                    android:textColorHint="#000"
+                    android:textSize="15dp"
+                    android:background="@null"
+                    />
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:weightSum="1"
+            android:gravity="center"
+            android:background="@drawable/et_bg"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
             android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/person"
+                />
+
             <EditText
-
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:gravity="start|center"
+                android:hint="Last Name"
+                android:inputType="text"
+                android:textColor="#000"
+                android:textColorHint="#000"
+                android:textSize="15dp"
                 android:background="@null"
-                android:hint="First Name*"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                />
 
+        </LinearLayout>
 
-
-            </EditText>
-
-
-
-        </android.support.design.widget.TextInputLayout>
-        </android.support.v7.widget.CardView>
-        <android.support.v7.widget.CardView
-            android:background="#fff"
-            android:layout_margin="5dp"
+        <LinearLayout
+            android:weightSum="1"
+            android:gravity="center"
+            android:background="@drawable/et_bg"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
             android:layout_height="wrap_content">
-            <android.support.design.widget.TextInputLayout
 
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/business"
+                />
+
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:background="@null"
-                    android:hint="Last Name*"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
-                </EditText>
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:gravity="start|center"
+                android:hint="Business name/Shop name"
+                android:inputType="text"
+                android:textColor="#000"
+                android:textColorHint="#000"
+                android:textSize="15dp"
+                android:background="@null"
+                />
+
+        </LinearLayout>
 
 
-
-            </android.support.design.widget.TextInputLayout>
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:background="#fff"
-            android:layout_margin="5dp"
+        <LinearLayout
+            android:weightSum="1"
+            android:gravity="center"
+            android:background="@drawable/et_bg"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
             android:layout_height="wrap_content">
-            <android.support.design.widget.TextInputLayout
 
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/city"
+                />
+
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:background="@null"
-                    android:hint="Business/Shop Name*"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
-                </EditText>
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:gravity="start|center"
+                android:hint="City"
+                android:inputType="text"
+                android:textColor="#000"
+                android:textColorHint="#000"
+                android:textSize="15dp"
+                android:background="@null"
+                />
 
-
-
-            </android.support.design.widget.TextInputLayout>
-        </android.support.v7.widget.CardView>
-
-
-        <android.support.v7.widget.CardView
-            android:background="#fff"
-            android:layout_margin="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <android.support.design.widget.TextInputLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:background="@null"
-                    android:hint="City*"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
-                </EditText>
-
-
-
-            </android.support.design.widget.TextInputLayout>
-        </android.support.v7.widget.CardView>
+        </LinearLayout>
 
 
         <android.support.v7.widget.CardView
@@ -213,6 +260,8 @@
             </Spinner>
 
         </android.support.v7.widget.CardView>
+
+        </LinearLayout>
 
 
         <android.support.v7.widget.CardView
