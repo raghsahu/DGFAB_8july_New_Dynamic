@@ -1,5 +1,6 @@
 package com.example.dgfab.APIanURLs;
 
+import com.example.dgfab.AllParsings.Add_Services;
 import com.example.dgfab.AllParsings.GET_Services;
 import com.example.dgfab.AllParsings.Registration_only;
 
@@ -21,6 +22,15 @@ public interface Api {
     Call<GET_Services> Get_ServicesUsersCall(
             @Field("type_id") String type_of_user
     );
+
+    @FormUrlEncoded
+    @POST(REtroURls.Add_Services)
+    Call<Add_Services> Add_Services_Call(
+            @Field("type_id") String type_of_user,
+            @Field("service") String service,
+            @Field("image") String image
+    );
+
 //
     @FormUrlEncoded
     @POST(REtroURls.Registration)

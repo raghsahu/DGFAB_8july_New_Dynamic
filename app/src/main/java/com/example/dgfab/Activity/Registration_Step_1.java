@@ -1,6 +1,7 @@
 package com.example.dgfab.Activity;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,13 +12,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dgfab.APIanURLs.Api;
 import com.example.dgfab.APIanURLs.REtroURls;
 import com.example.dgfab.Adapter.Service_Adapter;
+import com.example.dgfab.AllParsings.Add_Services;
 import com.example.dgfab.AllParsings.GET_Services;
 import com.example.dgfab.AllParsings.GET_Services_Data;
 import com.example.dgfab.R;
@@ -40,7 +44,7 @@ import static com.example.dgfab.Adapter.Service_Adapter.Servicenames;
 public class Registration_Step_1 extends AppCompatActivity {
     RecyclerView serv_id;
     Service_Adapter service_adapter;
-    TextView next;
+    TextView next, addmore_service;
     private ProgressDialog progressDialog;
     String ConcatService;
    public String fulname, email, com_name, password, address, mobile;
@@ -51,8 +55,10 @@ public class Registration_Step_1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_);
+
         serv_id = findViewById(R.id.serv_id);
         serv_id = findViewById(R.id.serv_id);
+        addmore_service = findViewById(R.id.addmore_service);
 //        fulname = ((Activity) this).getIntent().getStringExtra("fulname");
 //        email = ((Activity) this).getIntent().getStringExtra("email");
 //        com_name = ((Activity) this).getIntent().getStringExtra("com_name");
@@ -66,6 +72,33 @@ public class Registration_Step_1 extends AppCompatActivity {
 //        Log.e("address", "" + address);
 //        Log.e("mobile", "" + mobile);
         next = findViewById(R.id.next);
+        addmore_service.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog = new Dialog(Registration_Step_1.this);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setCancelable(true);
+                dialog.setContentView(R.layout.add_service_layout);
+
+                EditText et_add_service = (EditText) dialog.findViewById(R.id.text_dialog);
+
+                Button dialogButton = (Button) dialog.findViewById(R.id.btn_dialog);
+                dialogButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+
+                        Add_New_Service();
+
+                    }
+                });
+
+                dialog.show();
+            }
+        });
+
+
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,6 +128,43 @@ public class Registration_Step_1 extends AppCompatActivity {
 
     }
 
+    private void Add_New_Service() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMax(1000);
+        progressDialog.setTitle("Getting Your Data");
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.show();
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(100, TimeUnit.SECONDS)
+                .readTimeout(100,TimeUnit.SECONDS).build();
+        Retrofit RetroLogin = new Retrofit.Builder()
+                .baseUrl(REtroURls.The_Base).client(client).addConverterFactory(GsonConverterFactory.create())
+                .build();
+        Api AbloutApi = RetroLogin.create(Api.class);
+
+        Call<Add_Services> get_aboutCall = AbloutApi.Add_Services_Call("3","aa","pp");
+        get_aboutCall.enqueue(new Callback<Add_Services>() {
+            @Override
+            public void onResponse(Call<Add_Services> call, Response<Add_Services> response) {
+              //  Log.e("getact" , ""+response.body().getData().size());
+               if (response!=null){
+                   GETAllServiceS();
+               }
+
+                progressDialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(Call<Add_Services> call, Throwable t) {
+                Toast.makeText(Registration_Step_1.this, ""+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Registration_Step_1.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
+//***************************************************************************************************************
     private void GETAllServiceS() {
                 progressDialog = new ProgressDialog(this);
         progressDialog.setMax(1000);
