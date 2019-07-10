@@ -3,6 +3,7 @@ package com.example.dgfab.Adapter;
 import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,10 +13,12 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dgfab.AllParsings.GET_Services_Data;
 import com.example.dgfab.Java_Adapter_Files.Country_files;
 import com.example.dgfab.R;
+import com.example.dgfab.RegistrationActivityTwo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,7 +72,7 @@ public class Country_Adapter extends RecyclerView.Adapter<Country_Adapter.MyView
     @Override
     public Country_Adapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rowlayout, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.contry_list, parent, false);
         return new Country_Adapter.MyViewHolder(view);
     }
 
@@ -95,7 +98,25 @@ public class Country_Adapter extends RecyclerView.Adapter<Country_Adapter.MyView
         Log.e("Position","is "+pos_try);
         document = get_services_data.getNumber();
         StrictMode.setVmPolicy(builder.build());
-
+        holder.name_of_doc.setText(get_services_data.getNumber().toString());
+        holder.name_of_doc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, ""+Doc.get(position).getNumber(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext , RegistrationActivityTwo.class);
+                intent.putExtra("mycont" , Doc.get(position).getNumber());
+                v.getContext().startActivity(intent);
+            }
+        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, ""+Doc.get(position).getNumber(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext , RegistrationActivityTwo.class);
+                intent.putExtra("mycont" , Doc.get(position).getNumber());
+                v.getContext().startActivity(intent);
+            }
+        });
 //        holder.name_of_doc.setText(get_services_data.getService());
 //        Glide.with(mContext)
 //                .load("https://sdltechserv.in/dgfeb/uploads/"+get_services_data.getImage())

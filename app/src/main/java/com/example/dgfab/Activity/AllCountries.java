@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class AllCountries extends AppCompatActivity {
     RecyclerView contrec;
     ArrayAdapter<Country_files> country_filesArrayAdapter ;
-    ArrayList<Country_files> country_files;
+    ArrayList<Country_files> country_files = new ArrayList<>();
 
     public static String[] country = new String[]{"Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla",
 

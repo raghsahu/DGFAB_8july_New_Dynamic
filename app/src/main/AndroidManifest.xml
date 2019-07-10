@@ -19,9 +19,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginandReg.Main_Registration_1"></activity>
+        <activity android:name=".Activity.AllCountries"></activity>
         <activity android:name=".LoginandReg.ManuLoginActivity" />
-        <activity android:name=".Activity.Buyer_Dashboard.Buyer_Dashboard_Activity" />
+        <activity android:name=".BusinessDashboard.Business_Drawer" />
+
+        <activity android:name=".RegistrationActivityTwo"></activity>
         <activity
             android:name=".Activity.Buyer_guest_login.OtpActivity"
             android:theme="@style/AppTheme.Splash" />

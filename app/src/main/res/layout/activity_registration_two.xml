@@ -71,6 +71,7 @@
                         android:src="@drawable/earth" />
 
                     <EditText
+                        android:id="@+id/contedt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.15"
@@ -213,6 +214,7 @@
                         android:src="@drawable/typ" />
 
                     <Spinner
+                        android:entries="@array/main_cat"
                         android:id="@+id/busCate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -238,12 +240,12 @@
                         android:layout_weight="0.85"
                         android:src="@drawable/typ" />
 
-                    <Spinner
+                    <EditText
                         android:id="@+id/busSubCat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.15"
-                        android:hint="Company Name"
+                        android:hint=" "
                         android:textColor="#000"
                         android:textSize="15dp" />
 
@@ -274,6 +276,7 @@
                     android:orientation="vertical">
 
                     <Button
+                        android:id="@+id/submmbtn"
                         android:text="Submit"
                         android:textColor="#fff"
                         android:background="@drawable/bt_background"

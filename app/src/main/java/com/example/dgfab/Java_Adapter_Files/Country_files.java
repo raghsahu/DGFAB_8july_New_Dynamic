@@ -10,9 +10,9 @@ public class Country_files  {
 
 
     public Country_files(RadioButton select, String number, TextView cont_Name) {
-        Select = select;
-        Number = number;
-        Cont_Name = cont_Name;
+        this.Select = select;
+        this.Number = number;
+        this.Cont_Name = cont_Name;
     }
 
     public RadioButton getSelect() {
