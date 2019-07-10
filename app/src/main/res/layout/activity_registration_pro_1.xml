@@ -81,7 +81,7 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginRight="20dp"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:padding="10dp">
 
 
                 <LinearLayout
@@ -331,9 +331,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:textColor="#fff"
                     android:background="@drawable/bt_background"
-                    android:text="Next"
-                    android:textColor="#fff" />
+                    android:text="Next" />
 
             </android.support.v7.widget.CardView>
 
