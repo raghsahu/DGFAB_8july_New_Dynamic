@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.dgfab.Buyers.Buyer_Main_Navigation;
 import com.example.dgfab.LoginandReg.Registration_pro_1;
 import com.example.dgfab.R;
+import com.example.dgfab.RegistrationActivityTwo;
 
 public class Use_reason_Activity extends AppCompatActivity {
     TextView allow_reason, tv_skip;
@@ -70,7 +71,7 @@ public class Use_reason_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 if(bsrad.isChecked()) {
                  //   perrad.setChecked(false);
-                    Intent in = new Intent(Use_reason_Activity.this, Registration_pro_1.class);
+                    Intent in = new Intent(Use_reason_Activity.this, RegistrationActivityTwo.class);
                     startActivity(in);
                //     finish();
                     overridePendingTransition(R.anim.anim_slide_in_left,
