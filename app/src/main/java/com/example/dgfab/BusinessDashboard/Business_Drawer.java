@@ -1,5 +1,6 @@
 package com.example.dgfab.BusinessDashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,11 +14,16 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.TextView;
 
 import com.example.dgfab.R;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class Business_Drawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    CircleImageView nav_imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +41,27 @@ public class Business_Drawer extends AppCompatActivity
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view_business);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+        View hView =  navigationView.getHeaderView(0);
+        TextView nav_user = (TextView)hView.findViewById(R.id.name);
+       CircleImageView nav_imageView=(CircleImageView)hView.findViewById(R.id.nav_imageView);
+
         navigationView.setNavigationItemSelectedListener(this);
+
+        nav_imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Business_Drawer.this, Business_ProfileActivty.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     @Override
