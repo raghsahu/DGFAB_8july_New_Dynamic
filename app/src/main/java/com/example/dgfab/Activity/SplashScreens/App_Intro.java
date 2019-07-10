@@ -28,7 +28,7 @@ public class App_Intro extends AppCompatActivity implements ViewPager.OnPageChan
     private int dotsCount;
     private ImageView[] dots;
     LinearLayout llSkip;
-   TextView tvSkip;
+    TextView tvSkip;
     private Context mContext;
     int[] mResources = {R.drawable.white_ract_bg, R.drawable.white_ract_bg, R.drawable.white_ract_bg};
 
@@ -67,7 +67,7 @@ public class App_Intro extends AppCompatActivity implements ViewPager.OnPageChan
             }
         });
 
-//***********************************************************************
+     //***********************************************************************
     }
 
     private void setPageViewIndicator() {

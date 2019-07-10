@@ -4,10 +4,9 @@
     android:id="@+id/activity_foster"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorWhite"
     android:fitsSystemWindows="true"
-    >
+    android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_toolbar"
@@ -24,18 +23,18 @@
             android:fitsSystemWindows="true">
 
             <!--<ImageView-->
-                <!--android:id="@+id/imageView"-->
-                <!--android:layout_width="24dp"-->
-                <!--android:layout_height="24dp"-->
-                <!--android:scaleType="fitXY"-->
-                <!--android:src="@drawable/logo"-->
-                <!--/>-->
+            <!--android:id="@+id/imageView"-->
+            <!--android:layout_width="24dp"-->
+            <!--android:layout_height="24dp"-->
+            <!--android:scaleType="fitXY"-->
+            <!--android:src="@drawable/logo"-->
+            <!--/>-->
 
             <TextView
                 android:id="@+id/tv_skip"
-                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="10dp"
                 android:text="Skip"
                 android:textAlignment="textEnd"
                 android:textColor="@color/colorTextBlack"
@@ -49,15 +48,15 @@
 
     <LinearLayout
         android:id="@+id/llInfo"
-        android:weightSum="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <LinearLayout
-            android:layout_weight="0.1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="0.1"
             android:orientation="vertical">
 
             <LinearLayout
@@ -71,122 +70,125 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/primary_reason"
-                    android:textStyle="normal"
                     android:textColor="@color/colorTextBlack"
-                    android:textSize="20dp" />
+                    android:textSize="20dp"
+                    android:textStyle="normal" />
 
                 <TextView
-                    android:text="@string/primary_reason_details"
-                    android:gravity="left"
-                    android:textSize="13dp"
-                    android:textColor="@color/gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:gravity="left"
+                    android:text="@string/primary_reason_details"
+                    android:textColor="@color/gray"
+                    android:textSize="13dp" />
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/bsneed"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/circlewa"
+                    android:padding="5dp">
 
-
-            <android.support.v7.widget.CardView
-                android:background="@drawable/circlewa"
-                android:id="@+id/bsneed"
-                android:layout_marginTop="5dp"
-                android:padding="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <RadioButton
-                    android:id="@+id/bsrad"
-                    android:layout_marginTop="20dp"
-                    android:layout_gravity="end"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <LinearLayout
-
-                    android:layout_margin="10dp"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    <RadioButton
+                        android:id="@+id/bsrad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="20dp" />
 
                     <LinearLayout
-                        android:weightSum="1"
-                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_weight="0.5"
-                            android:text="Business need"
-                            android:drawablePadding="5dp"
-                            android:gravity="left|center"
-                            android:textSize="15dp"
-                            android:textColor="#000"
-                            android:textStyle="bold"
-                            android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="0.5"
+                                android:drawablePadding="5dp"
+                                android:gravity="left|center"
+                                android:text="Business need"
+                                android:textColor="#000"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
 
 
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="left"
+                            android:text="@string/business_need"
+                            android:textColor="#000"
+                            android:textSize="13dp" />
                     </LinearLayout>
 
-                    <TextView
-                        android:text="@string/business_need"
-                        android:gravity="left"
-                        android:textSize="13dp"
-                        android:textColor="#000"
-                        android:layout_marginTop="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
+                </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
                     android:id="@+id/persona"
-                    android:layout_marginTop="5dp"
-                    android:padding="5dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:padding="5dp">
 
                     <RadioButton
                         android:id="@+id/persord"
-                        android:layout_marginTop="20dp"
-                        android:layout_gravity="end"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                <LinearLayout
-
-                    android:layout_margin="10dp"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="20dp" />
 
                     <LinearLayout
-                        android:weightSum="1"
-                        android:orientation="horizontal"
+
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_weight="0.5"
-                            android:text="Personal Use"
-                            android:drawablePadding="5dp"
-                            android:gravity="left|center"
-                            android:textSize="15dp"
-                            android:textColor="#000"
-                            android:textStyle="bold"
-                            android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="0.5"
+                                android:drawablePadding="5dp"
+                                android:gravity="left|center"
+                                android:text="Personal Use"
+                                android:textColor="#000"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
 
 
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="left"
+                            android:text="@string/personal_use"
+                            android:textColor="#000"
+                            android:textSize="13dp" />
                     </LinearLayout>
-
-                    <TextView
-                        android:text="@string/personal_use"
-                        android:gravity="left"
-                        android:textSize="13dp"
-                        android:textColor="#000"
-                        android:layout_marginTop="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
 
                 </android.support.v7.widget.CardView>
 
@@ -194,11 +196,11 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_weight="0.9"
             android:id="@+id/llSkip"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
+            android:layout_weight="0.9"
             android:background="@color/colorPrimary"
             android:clickable="false"
             android:visibility="visible">
@@ -218,7 +220,6 @@
         </LinearLayout>
 
     </LinearLayout>
-
 
 
 </LinearLayout>
