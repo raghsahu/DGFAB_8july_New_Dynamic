@@ -43,7 +43,7 @@ public class Registration_Step_1 extends AppCompatActivity {
     TextView next;
     private ProgressDialog progressDialog;
     String ConcatService;
-    String name, email, com_name, password, address, mobile;
+   public String fulname, email, com_name, password, address, mobile;
     ArrayList<GET_Services_Data> get_services_data = new ArrayList<>();
     GridLayoutManager gridLayoutManager;
 
@@ -53,18 +53,18 @@ public class Registration_Step_1 extends AppCompatActivity {
         setContentView(R.layout.activity_registration_);
         serv_id = findViewById(R.id.serv_id);
         serv_id = findViewById(R.id.serv_id);
-        name = ((Activity) this).getIntent().getStringExtra("name");
-        email = ((Activity) this).getIntent().getStringExtra("email");
-        com_name = ((Activity) this).getIntent().getStringExtra("com_name");
-        password = ((Activity) this).getIntent().getStringExtra("password");
-        address = ((Activity) this).getIntent().getStringExtra("address");
-        mobile = ((Activity) this).getIntent().getStringExtra("mobile");
-        Log.e("name", "" + name);
-        Log.e("email", "" + email);
-        Log.e("com_name", "" + com_name);
-        Log.e("password", "" + password);
-        Log.e("address", "" + address);
-        Log.e("mobile", "" + mobile);
+//        fulname = ((Activity) this).getIntent().getStringExtra("fulname");
+//        email = ((Activity) this).getIntent().getStringExtra("email");
+//        com_name = ((Activity) this).getIntent().getStringExtra("com_name");
+//        password = ((Activity) this).getIntent().getStringExtra("password");
+//        address = ((Activity) this).getIntent().getStringExtra("address");
+//        mobile = ((Activity) this).getIntent().getStringExtra("mobile");
+//        Log.e("name", "" + fulname);
+//        Log.e("email", "" + email);
+//        Log.e("com_name", "" + com_name);
+//        Log.e("password", "" + password);
+//        Log.e("address", "" + address);
+//        Log.e("mobile", "" + mobile);
         next = findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
