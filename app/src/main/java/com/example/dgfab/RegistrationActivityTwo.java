@@ -58,19 +58,19 @@ public class RegistrationActivityTwo extends AppCompatActivity {
     }
 
     private void RegisteronlyStaff() {
-//        progressDialog = new ProgressDialog(RegistrationActivityTwo.this);
-//        progressDialog.setMax(1000);
-//        progressDialog.setTitle("Registering Please Wait");
-//        progressDialog.setCancelable(false);
-//        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-//        progressDialog.show();
-//        OkHttpClient client = new OkHttpClient.Builder()
-//                .connectTimeout(100, TimeUnit.SECONDS)
-//                .readTimeout(100, TimeUnit.SECONDS).build();
-//        Retrofit RetroLogin = new Retrofit.Builder()
-//                .baseUrl(REtroURls.The_Base).client(client).addConverterFactory(GsonConverterFactory.create())
-//                .build();
-//        Api AbloutApi = RetroLogin.create(Api.class);
+        progressDialog = new ProgressDialog(RegistrationActivityTwo.this);
+        progressDialog.setMax(1000);
+        progressDialog.setTitle("Registering Please Wait");
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.show();
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(100, TimeUnit.SECONDS)
+                .readTimeout(100, TimeUnit.SECONDS).build();
+        Retrofit RetroLogin = new Retrofit.Builder()
+                .baseUrl(REtroURls.The_Base).client(client).addConverterFactory(GsonConverterFactory.create())
+                .build();
+        Api AbloutApi = RetroLogin.create(Api.class);
 //        Call<Registration_only> get_aboutCall = AbloutApi.REGISTRATION_ONLY_CALL(main_type.toString(), name, email, mobilkr, address, companyname, password, mainselect);
 //        get_aboutCall.enqueue(new Callback<Registration_only>() {
 //            @Override
@@ -95,7 +95,7 @@ public class RegistrationActivityTwo extends AppCompatActivity {
 //                Toast.makeText(getActivity(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
 //            }
 //        });
-//
+
 
 
 
