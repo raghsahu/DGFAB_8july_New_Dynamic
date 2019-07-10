@@ -20,7 +20,7 @@
         android:layout_height="90dp"
         android:background="@drawable/circlewa"
         android:layout_margin="5dp"
-        card_view:cardCornerRadius="5dp"
+        card_view:cardCornerRadius="10dp"
         card_view:cardElevation="3dp">
 
         <TextView

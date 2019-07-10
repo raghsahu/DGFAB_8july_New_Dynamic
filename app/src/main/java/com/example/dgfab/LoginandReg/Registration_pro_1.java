@@ -42,14 +42,14 @@ public class Registration_pro_1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Registration_pro_1.this , Registration_Step_1.class);
-                if(fulname.getText().toString().length() !=0 && lasname.getText().toString().length() !=0 &&
+              /*  if(fulname.getText().toString().length() !=0 && lasname.getText().toString().length() !=0 &&
                 comp_name.getText().toString().length() !=0 && citynae.getText().toString().length() !=0 && pincode.getText().toString().length() !=0 &&
                         type_spin.getSelectedItem().equals("Select Business Type"))
                 {
-                    intent.putExtra("fulname" , fulname.getText().toString());
+                    intent.putExtra("fulname" , fulname.getText().toString());*/
                     startActivity(intent);
 
-                }
+
 
             }
         });
