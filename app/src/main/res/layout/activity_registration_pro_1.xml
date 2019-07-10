@@ -269,16 +269,15 @@
                 android:layout_gravity="bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <Button
 
                 android:id="@+id/btnnext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:background="@color/colorPrimary"
+                android:textColor="#fff"
                 android:text="Next"
-                android:textColor="#fff" />
+                android:background="@color/colorPrimary"
+                android:layout_margin="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </android.support.v7.widget.CardView>
 

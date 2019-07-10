@@ -127,7 +127,7 @@ public class Registration_Step_1 extends AppCompatActivity {
              //   sub_main_type.setVisibility(View.VISIBLE);
                 service_adapter = new Service_Adapter(Registration_Step_1.this , get_services_data);
              //   gridLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL); // set Horizontal Orientation
-                serv_id.addItemDecoration(new DividerItemDecoration(Registration_Step_1.this, LinearLayoutManager.VERTICAL));
+              //  serv_id.addItemDecoration(new DividerItemDecoration(Registration_Step_1.this, LinearLayoutManager.VERTICAL));
                 serv_id.setLayoutManager(gridLayoutManager);
                 serv_id.setAdapter(service_adapter);
                 progressDialog.dismiss();
