@@ -15,7 +15,7 @@ import com.example.dgfab.R;
 public class Registration_pro_1 extends AppCompatActivity {
     Button btnnext,btnlog;
     EditText fulname , lasname,comp_name,citynae,pincode;
-    Spinner type_spin;
+    Spinner type_spin,type_country;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +24,7 @@ public class Registration_pro_1 extends AppCompatActivity {
         btnnext = findViewById(R.id.btnnext);
         btnlog = findViewById(R.id.btnlog);
         type_spin = findViewById(R.id.type_spin);
+        type_country = findViewById(R.id.type_country);
         fulname = findViewById(R.id.fulname);
         lasname = findViewById(R.id.lasname);
         comp_name = findViewById(R.id.comp_name);
