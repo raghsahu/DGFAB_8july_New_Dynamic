@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".LoginandReg.Registration_pro_1">
+    tools:context=".LoginandReg.Registration_pro_1"
+    android:orientation="vertical">
+
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_toolbar"
@@ -13,8 +15,7 @@
         android:layout_height="wrap_content"
         android:elevation="2dp">
 
-        <android.support.v7.widget.Toolbar
-            xmlns:android="http://schemas.android.com/apk/res/android"
+        <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/toolbar_post"
             android:layout_width="match_parent"
@@ -27,12 +28,13 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/logo" />
+                android:src="@drawable/logo"
+                />
 
             <TextView
+                android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
                 android:text="Create a Bussiness Profile"
                 android:textColor="@color/colorTextBlack"
                 android:textSize="15dp"
@@ -46,324 +48,264 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:background="#fff"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
+        <ImageView
+            android:src="@drawable/ic_local_see_black_24dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+
+            <TextView
+                android:padding="10dp"
+                android:textAlignment="center"
+                android:text="Upload a cover photo"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="2dp"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:weightSum="1"
+                android:gravity="center"
+                android:background="@drawable/et_bg"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:src="@drawable/ic_local_see_black_24dp" />
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/person"
+                    />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="Upload a cover photo"
-                    android:textAlignment="center" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginRight="20dp"
-                android:orientation="vertical"
-                android:padding="20dp">
-
-
-                <LinearLayout
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/person" />
-
-                    <EditText
-                        android:id="@+id/fulname"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:background="@null"
-                        android:gravity="start|center"
-                        android:hint="Full Name"
-                        android:inputType="text"
-                        android:textColor="#000"
-                        android:textColorHint="#000"
-                        android:textSize="15dp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/person" />
-
-                    <EditText
-                        android:id="@+id/lasname"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:background="@null"
-                        android:gravity="start|center"
-                        android:hint="Last Name"
-                        android:inputType="text"
-                        android:textColor="#000"
-                        android:textColorHint="#000"
-                        android:textSize="15dp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/business" />
-
-                    <EditText
-                        android:id="@+id/comp_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:background="@null"
-                        android:gravity="start|center"
-                        android:hint="Business name/Shop name"
-                        android:inputType="text"
-                        android:textColor="#000"
-                        android:textColorHint="#000"
-                        android:textSize="15dp" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_place_black_24dp" />
-
-                    <EditText
-                        android:id="@+id/citynae"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:background="@null"
-                        android:gravity="start|center"
-                        android:hint="City"
-                        android:inputType="text"
-                        android:textColor="#000"
-                        android:textColorHint="#000"
-                        android:textSize="15dp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_picodes" />
-
-                    <EditText
-                        android:id="@+id/pincode"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:background="@null"
-                        android:gravity="start|center"
-                        android:hint="Pin Code"
-                        android:inputType="text"
-                        android:textColor="#000"
-                        android:textColorHint="#000"
-                        android:textSize="15dp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_type" />
-
-                    <Spinner
-                        android:id="@+id/type_spin"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:entries="@array/main_cat" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_type" />
-
-                    <Spinner
-                        android:id="@+id/type_country"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:entries="@array/mcons" />
-
-                </LinearLayout>
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:background="#fff"
-                    android:padding="10dp"
-                    android:visibility="gone">
-
-                    <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:entries="@array/main_cat"
-                        android:hint="Business/Shop Name*"
-                        android:padding="10dp"></Spinner>
-
-                </android.support.v7.widget.CardView>
-
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:background="#fff"
-                    android:visibility="gone">
-
-                    <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:entries="@array/sub_main_cat"
-                        android:hint="Business/Shop Name*"
-                        android:padding="10dp"></Spinner>
-
-                </android.support.v7.widget.CardView>
-
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:visibility="gone">
-
-                    <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:hint="Business/Shop Name*"
-                        android:padding="10dp"></Spinner>
-
-                </android.support.v7.widget.CardView>
-
-            </LinearLayout>
-
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:foregroundGravity="bottom">
-
-                <Button
-                    android:id="@+id/btnnext"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="30dp"
-                    android:background="@color/colorPrimary"
-                    android:text="Next"
-                    android:textColor="#fff" />
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:foregroundGravity="bottom">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="OR Already Registered"
-                    android:textAlignment="center"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="start|center"
+                    android:hint="Full Name"
+                    android:inputType="text"
                     android:textColor="#000"
-                    android:textStyle="bold" />
+                    android:textColorHint="#000"
+                    android:textSize="15dp"
+                    android:background="@null"
+                    />
 
-                <Button
+            </LinearLayout>
 
-                    android:id="@+id/btnlog"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="30dp"
-                    android:background="#FF9800"
-                    android:text="LogIn"
-                    android:textColor="#fff" />
+        <LinearLayout
+            android:weightSum="1"
+            android:gravity="center"
+            android:background="@drawable/et_bg"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content">
 
-            </android.support.v7.widget.CardView>
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/person"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:gravity="start|center"
+                android:hint="Last Name"
+                android:inputType="text"
+                android:textColor="#000"
+                android:textColorHint="#000"
+                android:textSize="15dp"
+                android:background="@null"
+                />
+
         </LinearLayout>
+
+        <LinearLayout
+            android:weightSum="1"
+            android:gravity="center"
+            android:background="@drawable/et_bg"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/business"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:gravity="start|center"
+                android:hint="Business name/Shop name"
+                android:inputType="text"
+                android:textColor="#000"
+                android:textColorHint="#000"
+                android:textSize="15dp"
+                android:background="@null"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:weightSum="1"
+            android:gravity="center"
+            android:background="@drawable/et_bg"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/city"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:gravity="start|center"
+                android:hint="City"
+                android:inputType="text"
+                android:textColor="#000"
+                android:textColorHint="#000"
+                android:textSize="15dp"
+                android:background="@null"
+                />
+
+        </LinearLayout>
+
+
+        <android.support.v7.widget.CardView
+            android:background="#fff"
+            android:visibility="gone"
+            android:padding="10dp"
+            android:layout_margin="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+                <Spinner
+                    android:entries="@array/main_cat"
+                    android:padding="10dp"
+                    android:background="@null"
+                    android:hint="Business/Shop Name*"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+                </Spinner>
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:background="#fff"
+            android:visibility="gone"
+            android:layout_margin="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Spinner
+                android:entries="@array/sub_main_cat"
+                android:padding="10dp"
+                android:background="@null"
+                android:hint="Business/Shop Name*"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+            </Spinner>
+
+        </android.support.v7.widget.CardView>
+
+
+
+        <android.support.v7.widget.CardView
+            android:visibility="gone"
+            android:layout_margin="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Spinner
+                android:padding="10dp"
+                android:background="@null"
+                android:hint="Business/Shop Name*"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+            </Spinner>
+
+        </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+
+        <android.support.v7.widget.CardView
+            android:foregroundGravity="bottom"
+                android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+
+                android:id="@+id/btnnext"
+                android:textColor="#fff"
+                android:text="Next"
+                android:background="@color/colorPrimary"
+                android:layout_margin="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:foregroundGravity="bottom"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textColor="#000"
+                android:textStyle="bold"
+               android:textAlignment="center"
+                android:text="OR Already Registered"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+
+                android:id="@+id/btnlog"
+                android:textColor="#fff"
+                android:text="LogIn"
+                android:background="#FF9800"
+                android:layout_margin="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
     </ScrollView>
 
 

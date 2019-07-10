@@ -67,6 +67,20 @@
     <string name="primary_reason_details">This will help us match you with suppliers that are a good fit.</string>
     <string name="business_need">I am  Buying products for my company or to sell.</string>
     <string name="personal_use">I am the end consumer of the products I source.</string>
+    <string name="title_activity_business__drawer">Business_Drawer</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
 
 
     <!--text app intro screen -->
