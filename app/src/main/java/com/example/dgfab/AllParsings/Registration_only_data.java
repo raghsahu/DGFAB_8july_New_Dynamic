@@ -34,7 +34,7 @@ public class Registration_only_data {
     @SerializedName("state")
     @Expose
     private String state;
-    @SerializedName("city")
+    @SerializedName("cityxyz")
     @Expose
     private String city;
     @SerializedName("pin")

@@ -75,6 +75,7 @@
 
 
         <LinearLayout
+            android:padding="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -84,9 +85,10 @@
 
 
             <LinearLayout
+
                 android:weightSum="1"
                 android:gravity="center"
-                android:background="@drawable/et_bg"
+
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_marginBottom="10dp"
@@ -99,6 +101,7 @@
                     />
 
                 <EditText
+                    android:id="@+id/fulname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -116,7 +119,7 @@
         <LinearLayout
             android:weightSum="1"
             android:gravity="center"
-            android:background="@drawable/et_bg"
+
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_marginBottom="10dp"
@@ -129,6 +132,7 @@
                 />
 
             <EditText
+                android:id="@+id/lasname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -146,7 +150,6 @@
         <LinearLayout
             android:weightSum="1"
             android:gravity="center"
-            android:background="@drawable/et_bg"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_marginBottom="10dp"
@@ -159,6 +162,7 @@
                 />
 
             <EditText
+                android:id="@+id/comp_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -177,7 +181,6 @@
         <LinearLayout
             android:weightSum="1"
             android:gravity="center"
-            android:background="@drawable/et_bg"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_marginBottom="10dp"
@@ -186,10 +189,11 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/city"
+                android:src="@drawable/ic_place_black_24dp"
                 />
 
             <EditText
+                android:id="@+id/citynae"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -203,8 +207,57 @@
                 />
 
         </LinearLayout>
+            <LinearLayout
+                android:weightSum="1"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content">
 
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_picodes"
+                    />
 
+                <EditText
+                    android:id="@+id/pincode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="start|center"
+                    android:hint="Pin Code"
+                    android:inputType="text"
+                    android:textColor="#000"
+                    android:textColorHint="#000"
+                    android:textSize="15dp"
+                    android:background="@null"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:weightSum="1"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_type"
+                    />
+
+                <Spinner
+                    android:id="@+id/type_spin"
+                    android:entries="@array/main_cat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </LinearLayout>
         <android.support.v7.widget.CardView
             android:background="#fff"
             android:visibility="gone"
