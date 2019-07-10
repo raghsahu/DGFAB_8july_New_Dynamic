@@ -32,7 +32,6 @@ public class Registration_pro_1 extends AppCompatActivity {
         citynae = findViewById(R.id.citynae);
         pincode = findViewById(R.id.pincode);
 
-
         btnlog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
