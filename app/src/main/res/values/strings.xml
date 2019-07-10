@@ -7,7 +7,7 @@
         <item><font fgcolor='#FF8E8E93'>Manufacturer</font></item>
         <item><font fgcolor='#FF8E8E93'>Affiliate Marketer</font></item>
     </string-array>
- <string-array name="mcons">
+    <string-array name="mcons">
         <item><font fgcolor='#FF8E8E93'>Select Your Country</font></item>
         <item><font fgcolor='#FF8E8E93'>USA</font></item>
         <item><font fgcolor='#FF8E8E93'>UK</font></item>

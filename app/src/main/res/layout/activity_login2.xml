@@ -57,6 +57,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/email"
                     android:hint="Email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -77,6 +78,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/password"
                     android:hint="Password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -89,6 +91,7 @@
         </android.support.v7.widget.CardView>
     </LinearLayout>
         <Button
+
             android:text="LogIn"
             android:textColor="#fff"
             android:background="#FFC107"
@@ -98,7 +101,8 @@
             android:layout_height="wrap_content" >
 
 
-        </Button>
+        </Button
+            >
 
     <TextView
         android:textColor="#F44336"
