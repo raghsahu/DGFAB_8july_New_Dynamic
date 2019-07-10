@@ -17,6 +17,7 @@ public class Registration_pro_1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_pro_1);
+
         btnnext = findViewById(R.id.btnnext);
         btnlog = findViewById(R.id.btnlog);
         btnlog.setOnClickListener(new View.OnClickListener() {
