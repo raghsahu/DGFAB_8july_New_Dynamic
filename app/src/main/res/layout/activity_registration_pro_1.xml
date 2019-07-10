@@ -104,7 +104,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:gravity="start|center"
-                        android:hint="Full Name"
+                        android:hint="Full"
                         android:inputType="text"
                         android:textColor="#000"
                         android:textColorHint="#000"
