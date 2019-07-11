@@ -1,23 +1,64 @@
 package com.example.dgfab.Activity;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
+import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.dgfab.APIanURLs.Api;
+import com.example.dgfab.APIanURLs.REtroURls;
 import com.example.dgfab.Adapter.Country_Adapter;
+import com.example.dgfab.AllParsings.Add_Services;
+import com.example.dgfab.AllParsings.Example;
+import com.example.dgfab.AllParsings.Get_Country;
+import com.example.dgfab.Connectivity.HttpHandler;
 import com.example.dgfab.Java_Adapter_Files.Country_files;
 import com.example.dgfab.R;
+import com.google.gson.JsonArray;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.TimeUnit;
+
+import javax.net.ssl.HttpsURLConnection;
+
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AllCountries extends AppCompatActivity {
     RecyclerView contrec;
     ArrayAdapter<Country_files> country_filesArrayAdapter ;
     ArrayList<Country_files> country_files = new ArrayList<>();
+    private ProgressDialog progressDialog;
 
     public static String[] country = new String[]{"Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla",
 
@@ -88,8 +129,9 @@ public class AllCountries extends AppCompatActivity {
             "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "US Virgin Islands", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam",
 
             "Wallis and Futuna", "West Bank", "Yemen", "Zambia", "Zimbabwe"};
+    private String server_url;
 
-//    public static String[]  code = new String[]{"+93", "+355", "+213", "+1 684", "+376", "+244", "+1 264", "+672", "+1 268", "+54", "+374",
+    //    public static String[]  code = new String[]{"+93", "+355", "+213", "+1 684", "+376", "+244", "+1 264", "+672", "+1 268", "+54", "+374",
 //
 //            "+297", "+61", "+43", "+994", "+1 242", "+973", "+880", "+1 246", "+375", "+32", "+501",
 //
@@ -134,14 +176,134 @@ public class AllCountries extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_countries);
+
         contrec = findViewById(R.id.contrec);
-        for(int i=0;i<country.length;i++)
-        {
-            country_files.add(new Country_files(new RadioButton(AllCountries.this) ,country[i] ,new TextView(AllCountries.this)));
-        }
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        contrec.setLayoutManager(llm);
-        contrec.setAdapter( new Country_Adapter(AllCountries.this , country_files));
+
+//        for(int i=0;i<country.length;i++)
+//        {
+//            country_files.add(new Country_files(new RadioButton(AllCountries.this) ,country[i] ,new TextView(AllCountries.this)));
+//        }
+//        LinearLayoutManager llm = new LinearLayoutManager(this);
+//        llm.setOrientation(LinearLayoutManager.VERTICAL);
+//        contrec.setLayoutManager(llm);
+//        contrec.setAdapter( new Country_Adapter(AllCountries.this , country_files));
+
+      new GetAllCountries().execute();
+
     }
+
+    private class GetAllCountries extends AsyncTask<String, Void, String> {
+        String output = "";
+        ProgressDialog dialog;
+
+        @Override
+        protected void onPreExecute() {
+            dialog = new ProgressDialog(AllCountries.this);
+            dialog.setMessage("Processing");
+            dialog.show();
+            super.onPreExecute();
+
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            try {
+                server_url = "https://restcountries.eu/rest/v2";
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            Log.e("sever_url>>>>>>>>>", server_url);
+            output = HttpHandler.makeServiceCall(server_url);
+            //   Log.e("getcomment_url", output);
+            System.out.println("getcomment_url" + output);
+            return output;
+        }
+
+
+        @Override
+        protected void onPostExecute(String output) {
+            if (output == null) {
+                dialog.dismiss();
+            } else {
+                try {
+                    dialog.dismiss();
+                    Log.e("GetCountry",output.toString());
+
+                         JSONArray jsonarray=new JSONArray(output);
+                        for (int i = 0; i < jsonarray.length(); i++) {
+
+                            JSONObject jsonobject = jsonarray.getJSONObject(i);
+                            String name = jsonobject.getString("name");
+                            String flag = jsonobject.getString("flag");
+
+
+                            Log.e("GetCountry_list",name);
+                            Log.e("GetCountry_flag",flag);
+
+
+                    country_files.add(new Country_files(name,flag));
+                        }
+
+                      LinearLayoutManager llm = new LinearLayoutManager(AllCountries.this);
+                       llm.setOrientation(LinearLayoutManager.VERTICAL);
+                      contrec.setLayoutManager(llm);
+                      contrec.setAdapter( new Country_Adapter(AllCountries.this , country_files));
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                super.onPostExecute(output);
+            }
+
+        }
+
+    }
+
+//    private void GetAllCountries() {
+//
+//
+//        progressDialog = new ProgressDialog(this);
+//        progressDialog.setMax(1000);
+//        progressDialog.setTitle("Getting Country");
+//        progressDialog.setCancelable(false);
+//        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//        progressDialog.show();
+//        OkHttpClient client = new OkHttpClient.Builder()
+//                .connectTimeout(100, TimeUnit.SECONDS)
+//                .readTimeout(100,TimeUnit.SECONDS).build();
+//        Retrofit RetroLogin = new Retrofit.Builder()
+//                .baseUrl(REtroURls.GetCountry).client(client).addConverterFactory(GsonConverterFactory.create())
+//                .build();
+//        Api AbloutApi = RetroLogin.create(Api.class);
+//
+//        Call<Example> Get_all_country = AbloutApi.Get_Country_Call();
+//        Get_all_country.enqueue(new Callback<Example>() {
+//            @Override
+//            public void onResponse(Call<Example> call, Response<Example> response) {
+//                 Log.e("getcountry" , ""+response.toString());
+//                if (response!=null){
+//                    Log.e("Get_country",""+response.body().getName());
+//
+//                    Toast.makeText(AllCountries.this, "true", Toast.LENGTH_SHORT).show();
+//
+//                }
+//
+//                progressDialog.dismiss();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Example> call, Throwable t) {
+//                progressDialog.dismiss();
+//                Log.e("error_country",t.getMessage());
+//                //Toast.makeText(AllCountries.this, ""+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+//               // Toast.makeText(AllCountries.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
+    
+    
+    
 }

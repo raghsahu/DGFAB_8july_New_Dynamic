@@ -1,30 +1,35 @@
 <?xml version = "1.0" encoding = "utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:card_view="http://schemas.android.com/tools"
-    android:orientation="horizontal"
+    android:orientation="vertical"
+    android:id="@+id/ll_country"
     android:weightSum=" 1">
 
-    <ImageView
-        android:id="@+id/ser_image"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:src="@mipmap/ic_launcher"
-        android:visibility="gone" />
-
     <android.support.v7.widget.CardView
-        android:id="@+id/xyzcardv"
+        android:id="@+id/country_get"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/circlewa"
         android:layout_margin="5dp"
         card_view:cardCornerRadius="10dp"
-        card_view:cardElevation="3dp">
+       >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ser_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/ic_launcher"
+            />
 
         <TextView
-            android:padding="10dp"
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,21 +39,14 @@
             android:gravity="center"
             android:textSize="14dp" />
 
-        <TextView
-            android:id="@+id/age"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:gravity="center"
-            android:textSize="13sp"
-            android:visibility="gone" />
 
-        <CheckBox
-            android:visibility="gone"
+        <RadioButton
             android:id="@+id/namechk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end" />
+            android:gravity="center"
+            android:layout_gravity="center" />
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 
-</RelativeLayout>
+</LinearLayout>

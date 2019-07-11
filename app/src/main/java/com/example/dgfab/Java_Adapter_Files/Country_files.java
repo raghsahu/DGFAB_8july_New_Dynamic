@@ -15,6 +15,22 @@ public class Country_files  {
         this.Cont_Name = cont_Name;
     }
 
+    String name;
+    String flag;
+    public Country_files(String name, String flag) {
+        this.name=name;
+        this.flag=flag;
+
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
     public RadioButton getSelect() {
         return Select;
     }

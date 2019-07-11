@@ -33,10 +33,11 @@ public class RegistrationActivityTwo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_two);
+
         contedt = findViewById(R.id.contedt);
         submmbtn = findViewById(R.id.submmbtn);
         try {
-            contedt.setText(getIntent().getStringExtra("mycont"));
+            contedt.setText(getIntent().getStringExtra("mycountry"));
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -4,7 +4,10 @@ import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.StrictMode;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,9 +15,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.example.dgfab.AllParsings.GET_Services_Data;
 import com.example.dgfab.Java_Adapter_Files.Country_files;
 import com.example.dgfab.R;
@@ -36,12 +48,6 @@ public class Country_Adapter extends RecyclerView.Adapter<Country_Adapter.MyView
     private ProgressDialog progressBar;
 
 
-//    public Rec_Reports_adapter(Context gallery_act, List<Reports> Doc) {
-//        mContext = gallery_act;
-//      this.Doc = Doc;
-//    }
-
-
     public Country_Adapter(Context context, List<Country_files> doc) {
         mContext=context;
         this.Doc = doc;
@@ -52,13 +58,16 @@ public class Country_Adapter extends RecyclerView.Adapter<Country_Adapter.MyView
         public TextView name_of_doc ;
         ImageView ser_image;
         public TextView  down_btn, email_to;
-        CheckBox namechk;
+        RadioButton namechk;
+        CardView country_card;
+        LinearLayout ll_country;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             name_of_doc = (TextView) itemView.findViewById(R.id.name);
             ser_image =  itemView.findViewById(R.id.ser_image);
             namechk =  itemView.findViewById(R.id.namechk);
+            ll_country =  itemView.findViewById(R.id.ll_country);
 
         }
     }
@@ -82,80 +91,58 @@ public class Country_Adapter extends RecyclerView.Adapter<Country_Adapter.MyView
     public void onBindViewHolder(final Country_Adapter.MyViewHolder holder, final   int position) {
         final Country_files get_services_data ;
         this.pos_try = position;
-//        name = ((Activity) mContext).getIntent().getStringExtra("name");
-//        email = ((Activity) mContext).getIntent().getStringExtra("email");
-//        com_name = ((Activity) mContext).getIntent().getStringExtra("com_name");
-//        password = ((Activity) mContext).getIntent().getStringExtra("password");
-//        address = ((Activity) mContext).getIntent().getStringExtra("address");
-//        mobile = ((Activity) mContext).getIntent().getStringExtra("mobile");
-//        Log.e("name", "" + name);
-//        Log.e("email", "" + email);
-//        Log.e("com_name", "" + com_name);
-//        Log.e("password", "" + password);
-//        Log.e("address", "" + address);
-//        Log.e("mobile", "" + mobile);
+
         get_services_data = Doc.get(pos_try);
         Log.e("Position","is "+pos_try);
         document = get_services_data.getNumber();
         StrictMode.setVmPolicy(builder.build());
-        holder.name_of_doc.setText(get_services_data.getNumber().toString());
-        holder.name_of_doc.setOnClickListener(new View.OnClickListener() {
+        holder.name_of_doc.setText(get_services_data.getName().toString());
+
+
+        holder.ll_country.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, ""+Doc.get(position).getNumber(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(mContext , RegistrationActivityTwo.class);
-                intent.putExtra("mycont" , Doc.get(position).getNumber());
-                v.getContext().startActivity(intent);
-            }
-        });
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(mContext, ""+Doc.get(position).getNumber(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(mContext , RegistrationActivityTwo.class);
-                intent.putExtra("mycont" , Doc.get(position).getNumber());
-                v.getContext().startActivity(intent);
-            }
-        });
-//        holder.name_of_doc.setText(get_services_data.getService());
-//        Glide.with(mContext)
-//                .load("https://sdltechserv.in/dgfeb/uploads/"+get_services_data.getImage())
-//                .listener(new RequestListener<Drawable>() {
-//                    @Override
-//                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-//                        // log exception
-//                        Log.e("TAG", "Error loading image", e);
-//                        return false; // important to return false so the error placeholder can be placed
-//                    }
-//
-//                    @Override
-//                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-//                        return false;
-//                    }
-//                })
-//                .into(holder.ser_image);
-        holder.name_of_doc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(holder.namechk.isChecked() == false) {
-//                    Servicenames.add(get_services_data.getId());
-                    holder.namechk.setChecked(true);
-                }else {
-//                    Servicenames.remove(get_services_data.getId());
-                    holder.namechk.setChecked(false);
-                }
-//                Intent intent = new Intent(v.getContext() , Registration_Step_3.class);
-//                intent.putExtra("name" , name);
-//                intent.putExtra("com_name" , com_name);
-//                intent.putExtra("email" , email);
-//                intent.putExtra("password" , password);
-//                intent.putExtra("address" , address);
-//                intent.putExtra("mobile" , mobile);
-//                v.getContext().startActivity(intent);
+
             }
         });
 
-        // notifyDataSetChanged();
+        holder.name_of_doc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, ""+Doc.get(position).getName(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext , RegistrationActivityTwo.class);
+                intent.putExtra("mycountry" , get_services_data.getName());
+                v.getContext().startActivity(intent);
+            }
+        });
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(mContext, ""+Doc.get(position).getNumber(), Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(mContext , RegistrationActivityTwo.class);
+//                intent.putExtra("mycont" , Doc.get(position).getNumber());
+//                v.getContext().startActivity(intent);
+//            }
+//        });
+
+        Glide.with(mContext)
+                .load(get_services_data.getFlag())
+                .listener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                        // log exception
+                        Log.e("TAG", "Error loading image", e);
+                        return false; // important to return false so the error placeholder can be placed
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        return false;
+                    }
+                })
+                .into(holder.ser_image);
+
+
     }
 
 

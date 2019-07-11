@@ -1,12 +1,14 @@
 package com.example.dgfab.APIanURLs;
 
 import com.example.dgfab.AllParsings.Add_Services;
+import com.example.dgfab.AllParsings.Example;
 import com.example.dgfab.AllParsings.GET_Services;
 import com.example.dgfab.AllParsings.Registration_only;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface Api {
@@ -44,6 +46,13 @@ public interface Api {
             @Field("password") String password,
             @Field("sub_type") String sub_type
     );
+
+
+    @GET(REtroURls.GetCountry_url)
+    Call<Example> Get_Country_Call();
+
+
+
 // @FormUrlEncoded
 //    @POST(REtroURls.Registration)
 //    Call<GET_Services> Ragistration(
