@@ -42,8 +42,9 @@ public interface Api {
             @Field("address") String address,
             @Field("company_name") String company_name,
             @Field("password") String password,
-            @Field("sub_type") String sub_type
-    );
+            @Field("sub_type") String sub_type,
+            @Field("sub_type") String buss_type,
+            @Field("sub_type") String sele_subser);
 // @FormUrlEncoded
 //    @POST(REtroURls.Registration)
 //    Call<GET_Services> Ragistration(

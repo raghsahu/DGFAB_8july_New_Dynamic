@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,12 +53,14 @@ public class Country_Adapter extends RecyclerView.Adapter<Country_Adapter.MyView
         public TextView name_of_doc ;
         ImageView ser_image;
         public TextView  down_btn, email_to;
+        RelativeLayout relap;
         CheckBox namechk;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             name_of_doc = (TextView) itemView.findViewById(R.id.name);
             ser_image =  itemView.findViewById(R.id.ser_image);
+            relap =  itemView.findViewById(R.id.relap);
             namechk =  itemView.findViewById(R.id.namechk);
 
         }
@@ -99,15 +102,24 @@ public class Country_Adapter extends RecyclerView.Adapter<Country_Adapter.MyView
         document = get_services_data.getNumber();
         StrictMode.setVmPolicy(builder.build());
         holder.name_of_doc.setText(get_services_data.getNumber().toString());
-        holder.name_of_doc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(mContext, ""+Doc.get(position).getNumber(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(mContext , RegistrationActivityTwo.class);
-                intent.putExtra("mycont" , Doc.get(position).getNumber());
-                v.getContext().startActivity(intent);
-            }
-        });
+//        holder.relap.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(mContext, ""+Doc.get(position).getNumber(), Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(mContext , RegistrationActivityTwo.class);
+//                intent.putExtra("mycont" , Doc.get(position).getNumber());
+//                v.getContext().startActivity(intent);
+//            }
+//        });
+//        holder.name_of_doc.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(mContext, ""+Doc.get(position).getNumber(), Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(mContext , RegistrationActivityTwo.class);
+//                intent.putExtra("mycont" , Doc.get(position).getNumber());
+//                v.getContext().startActivity(intent);
+//            }
+//        });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,6 +127,7 @@ public class Country_Adapter extends RecyclerView.Adapter<Country_Adapter.MyView
                 Intent intent = new Intent(mContext , RegistrationActivityTwo.class);
                 intent.putExtra("mycont" , Doc.get(position).getNumber());
                 v.getContext().startActivity(intent);
+
             }
         });
 //        holder.name_of_doc.setText(get_services_data.getService());
