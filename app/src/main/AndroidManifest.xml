@@ -14,16 +14,17 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.AllCountries"></activity>
+        <activity android:name=".Activity.Buyer_guest_login.EmailOtpActivity"></activity>
+        <activity android:name=".Activity.Buyer_guest_login.Forget_Mobile" />
+        <activity android:name=".Activity.AllCountries" />
         <activity android:name=".LoginandReg.ManuLoginActivity" />
         <activity android:name=".BusinessDashboard.Business_Drawer" />
-
-        <activity android:name=".RegistrationActivityTwo"></activity>
+        <activity android:name=".RegistrationActivityTwo" />
         <activity
             android:name=".Activity.Buyer_guest_login.OtpActivity"
             android:theme="@style/AppTheme.Splash" />

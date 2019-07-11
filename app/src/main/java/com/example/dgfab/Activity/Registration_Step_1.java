@@ -59,18 +59,7 @@ public class Registration_Step_1 extends AppCompatActivity {
         serv_id = findViewById(R.id.serv_id);
         serv_id = findViewById(R.id.serv_id);
         addmore_service = findViewById(R.id.addmore_service);
-//        fulname = ((Activity) this).getIntent().getStringExtra("fulname");
-//        email = ((Activity) this).getIntent().getStringExtra("email");
-//        com_name = ((Activity) this).getIntent().getStringExtra("com_name");
-//        password = ((Activity) this).getIntent().getStringExtra("password");
-//        address = ((Activity) this).getIntent().getStringExtra("address");
-//        mobile = ((Activity) this).getIntent().getStringExtra("mobile");
-//        Log.e("name", "" + fulname);
-//        Log.e("email", "" + email);
-//        Log.e("com_name", "" + com_name);
-//        Log.e("password", "" + password);
-//        Log.e("address", "" + address);
-//        Log.e("mobile", "" + mobile);
+
         next = findViewById(R.id.next);
         addmore_service.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +70,7 @@ public class Registration_Step_1 extends AppCompatActivity {
                 dialog.setContentView(R.layout.add_service_layout);
 
                 EditText et_add_service = (EditText) dialog.findViewById(R.id.text_dialog);
+                String add_new_service=et_add_service.getText().toString();
 
                 Button dialogButton = (Button) dialog.findViewById(R.id.btn_dialog);
                 dialogButton.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +78,7 @@ public class Registration_Step_1 extends AppCompatActivity {
                     public void onClick(View v) {
                         dialog.dismiss();
 
-                        Add_New_Service();
+                        Add_New_Service(add_new_service);
 
                     }
                 });
@@ -128,7 +118,7 @@ public class Registration_Step_1 extends AppCompatActivity {
 
     }
 
-    private void Add_New_Service() {
+    private void Add_New_Service(String add_new_service) {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMax(1000);
         progressDialog.setTitle("Getting Your Data");
@@ -143,13 +133,19 @@ public class Registration_Step_1 extends AppCompatActivity {
                 .build();
         Api AbloutApi = RetroLogin.create(Api.class);
 
-        Call<Add_Services> get_aboutCall = AbloutApi.Add_Services_Call("3","aa","pp");
+        Call<Add_Services> get_aboutCall = AbloutApi.Add_Services_Call("3",add_new_service,"pp");
         get_aboutCall.enqueue(new Callback<Add_Services>() {
             @Override
             public void onResponse(Call<Add_Services> call, Response<Add_Services> response) {
               //  Log.e("getact" , ""+response.body().getData().size());
                if (response!=null){
+          Log.e("Add_new_service" , ""+response.toString());
+                   get_services_data.clear();
+                   service_adapter.notifyDataSetChanged();
+
+                   progressDialog.dismiss();
                    GETAllServiceS();
+
                }
 
                 progressDialog.dismiss();
@@ -169,7 +165,7 @@ public class Registration_Step_1 extends AppCompatActivity {
                 progressDialog = new ProgressDialog(this);
         progressDialog.setMax(1000);
         progressDialog.setTitle("Getting Your Data");
-        progressDialog.setCancelable(false);
+        progressDialog.setCancelable(true);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.show();
         OkHttpClient client = new OkHttpClient.Builder()
@@ -183,6 +179,7 @@ public class Registration_Step_1 extends AppCompatActivity {
         get_aboutCall.enqueue(new Callback<GET_Services>() {
             @Override
             public void onResponse(Call<GET_Services> call, Response<GET_Services> response) {
+                progressDialog.dismiss();
                // Toast.makeText(getActivity(), ""+response, Toast.LENGTH_SHORT).show();
              //   SubTypestrings = new String[response.body().getData().size()];
                 Log.e("getact" , ""+response.body().getData().size());

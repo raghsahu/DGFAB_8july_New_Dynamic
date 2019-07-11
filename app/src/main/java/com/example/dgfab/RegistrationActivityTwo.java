@@ -14,7 +14,9 @@ import android.widget.Toast;
 import com.example.dgfab.APIanURLs.Api;
 import com.example.dgfab.APIanURLs.REtroURls;
 import com.example.dgfab.Activity.AllCountries;
+import com.example.dgfab.Activity.Registration_Step_1;
 import com.example.dgfab.AllParsings.Registration_only;
+import com.example.dgfab.BusinessDashboard.Business_Drawer;
 
 import java.util.concurrent.TimeUnit;
 
@@ -37,6 +39,7 @@ public class RegistrationActivityTwo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_two);
+
         countyed = findViewById(R.id.contedt);
         stateed = findViewById(R.id.contedt);
         pincodeed = findViewById(R.id.pincode);
@@ -49,9 +52,12 @@ public class RegistrationActivityTwo extends AppCompatActivity {
         buss_typeed = findViewById(R.id.busCate);
         buss_typeed = findViewById(R.id.busCate);
         sele_subusered = findViewById(R.id.busSubCat);
+        submmbtn = findViewById(R.id.submmbtn);
+
+
         try {
-            countyed.setText(getIntent().getStringExtra("mycont"));
-            country = getIntent().getStringExtra("mycont");
+            countyed.setText(getIntent().getStringExtra("mycountry"));
+            country = getIntent().getStringExtra("mycountry");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -77,13 +83,23 @@ public class RegistrationActivityTwo extends AppCompatActivity {
                 }
             }
         });
-        contedt.setOnClickListener(new View.OnClickListener() {
+        countyed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RegistrationActivityTwo.this, AllCountries.class);
                 startActivity(intent);
             }
         });
+
+        sele_subusered.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegistrationActivityTwo.this, Registration_Step_1.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     private void RegisteronlyStaff(String country, String email, String password, String first_name, String firstName, String last_name, String comp_name, String buss_type, String sele_subser) {
@@ -112,8 +128,8 @@ public class RegistrationActivityTwo extends AppCompatActivity {
                 progressDialog.dismiss();
 //                if (response.body().getResponce().booleanValue() == true) {
 //                    sessionManager.serverEmailLogin(Integer.valueOf(response.body().getMassage().getId()));
-//                    Intent intent = new Intent(getActivity(), DashBoard.class);
-//                    startActivity(intent);
+                    Intent intent = new Intent(RegistrationActivityTwo.this, Business_Drawer.class);
+                    startActivity(intent);
 //                }
 
             }
