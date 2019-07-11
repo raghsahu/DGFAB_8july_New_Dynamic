@@ -29,6 +29,11 @@ public class GET_Services_Data {
         this.status = status;
     }
 
+    public GET_Services_Data(String id, String service) {
+        this.id=id;
+        this.service=service;
+    }
+
     public String getId() {
         return id;
     }

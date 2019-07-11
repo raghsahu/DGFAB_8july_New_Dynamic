@@ -113,6 +113,8 @@ public class Country_Adapter extends RecyclerView.Adapter<Country_Adapter.MyView
                 Intent intent = new Intent(mContext , RegistrationActivityTwo.class);
                 intent.putExtra("mycountry" , get_services_data.getName());
                 v.getContext().startActivity(intent);
+
+
             }
         });
 //        holder.itemView.setOnClickListener(new View.OnClickListener() {

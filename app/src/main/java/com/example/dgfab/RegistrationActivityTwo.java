@@ -61,9 +61,21 @@ public class RegistrationActivityTwo extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        try {
+            sele_subusered.setText(getIntent().getStringExtra("com_name"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
         submmbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent intent = new Intent(RegistrationActivityTwo.this, Business_Drawer.class);
+                startActivity(intent);
+
+
                 try {
                     country =countyed.getText().toString();
                     state =  stateed.getText().toString();
@@ -75,8 +87,12 @@ public class RegistrationActivityTwo extends AppCompatActivity {
                     email =  emailed.getText().toString();
                     email =  emailed.getText().toString();
 
-                    if (country.length() != 0 && email.length() != 0 && password.length() != 0 && first_name.length() != 0 && last_name.length() != 0 && comp_name.length() != 0 && buss_type.length() != 0 && sele_subser.length() != 0)
-                        RegisteronlyStaff(country, email, password, first_name, first_name, last_name, comp_name, buss_type, sele_subser);
+                    if (country.length() != 0 && email.length() != 0 && password.length() != 0 && first_name.length()
+                            != 0 && last_name.length() != 0 && comp_name.length() != 0 && buss_type.length() != 0 &&
+                            sele_subser.length() != 0){
+
+                    // RegisteronlyStaff(country, email, password, first_name, first_name, last_name, comp_name, buss_type, sele_subser);
+                    }
                 }catch (Exception e)
                 {
                     e.printStackTrace();

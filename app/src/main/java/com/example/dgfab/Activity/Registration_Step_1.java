@@ -25,6 +25,7 @@ import com.example.dgfab.AllParsings.Add_Services;
 import com.example.dgfab.AllParsings.GET_Services;
 import com.example.dgfab.AllParsings.GET_Services_Data;
 import com.example.dgfab.R;
+import com.example.dgfab.RegistrationActivityTwo;
 
 
 import org.w3c.dom.Text;
@@ -40,6 +41,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.example.dgfab.Adapter.Service_Adapter.Servicenames;
+import static com.example.dgfab.Adapter.Service_Adapter.Service_names;
 
 public class Registration_Step_1 extends AppCompatActivity {
     RecyclerView serv_id;
@@ -47,6 +49,7 @@ public class Registration_Step_1 extends AppCompatActivity {
     TextView next, addmore_service;
     private ProgressDialog progressDialog;
     String ConcatService;
+    String ConcatService_name;
    public String fulname, email, com_name, password, address, mobile;
     ArrayList<GET_Services_Data> get_services_data = new ArrayList<>();
     GridLayoutManager gridLayoutManager;
@@ -60,7 +63,7 @@ public class Registration_Step_1 extends AppCompatActivity {
         serv_id = findViewById(R.id.serv_id);
         addmore_service = findViewById(R.id.addmore_service);
 
-        next = findViewById(R.id.next);
+        next = findViewById(R.id.next_back_reg);
         addmore_service.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,20 +97,28 @@ public class Registration_Step_1 extends AppCompatActivity {
             public void onClick(View v) {
                 for(int k=0 ; k<Servicenames.size();k++) {
                     if(k==0) {
-                       ConcatService= ConcatService.concat(Servicenames.get(k));
+                      // ConcatService= ConcatService.concat(Servicenames.get(k));
+                       ConcatService= Servicenames.get(k);
                     }else {
                        ConcatService = ConcatService.concat(","+Servicenames.get(k));
                     }
                     }
-//                    Intent intent = new Intent(v.getContext(), Registration_Step_3.class);
-//                    intent.putExtra("name", name);
-//                    intent.putExtra("com_name", com_name);
-//                    intent.putExtra("ConcatService", ConcatService);
-//                    intent.putExtra("email", email);
-//                    intent.putExtra("password", password);
-//                    intent.putExtra("address", address);
-//                    intent.putExtra("mobile", mobile);
-//                    v.getContext().startActivity(intent);
+                //******************************************************************
+                for(int k=0 ; k<Service_names.size();k++) {
+                    if(k==0) {
+                        ConcatService_name= Service_names.get(k);
+                    }else {
+                        ConcatService_name = ConcatService_name.concat(","+Service_names.get(k));
+                    }
+                }
+
+
+                Log.e("concate_service",""+ConcatService);
+                Log.e("concate_service_name",""+ConcatService);
+                    Intent intent = new Intent(Registration_Step_1.this, RegistrationActivityTwo.class);
+                    intent.putExtra("com_name", ConcatService_name);
+                    intent.putExtra("ConcatService", ConcatService);
+                    startActivity(intent);
 
             }
         });
