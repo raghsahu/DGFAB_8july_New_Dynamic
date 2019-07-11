@@ -287,12 +287,12 @@
                         android:layout_weight="0.85"
                         android:src="@drawable/typ" />
 
-                    <Spinner
+                    <EditText
                         android:id="@+id/busSubCat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.15"
-                        android:hint="Select Sub Service"
+                        android:hint="Select Sub Bussiness Type"
                         android:textColor="#000"
                         android:textSize="15dp" />
 
