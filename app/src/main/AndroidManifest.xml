@@ -24,7 +24,7 @@
         <activity android:name=".Activity.AllCountries" />
         <activity android:name=".LoginandReg.ManuLoginActivity" />
         <activity android:name=".BusinessDashboard.Business_Drawer" />
-        <activity android:name=".RegistrationActivityTwo" />
+        <activity android:name=".LoginandReg.RegistrationActivityTwo" />
         <activity android:name=".BusinessDashboard.Business_ProfileActivty" />
         <activity
             android:name=".Activity.Buyer_guest_login.OtpActivity"

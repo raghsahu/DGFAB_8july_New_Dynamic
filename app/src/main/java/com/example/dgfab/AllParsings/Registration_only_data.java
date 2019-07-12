@@ -13,6 +13,9 @@ public class Registration_only_data {
     @SerializedName("name")
     @Expose
     private String name;
+    @SerializedName("lastname")
+    @Expose
+    private String lastname;
     @SerializedName("email")
     @Expose
     private String email;
@@ -31,10 +34,13 @@ public class Registration_only_data {
     @SerializedName("address")
     @Expose
     private String address;
+    @SerializedName("country")
+    @Expose
+    private String country;
     @SerializedName("state")
     @Expose
     private String state;
-    @SerializedName("cityxyz")
+    @SerializedName("city")
     @Expose
     private String city;
     @SerializedName("pin")
@@ -92,6 +98,14 @@ public class Registration_only_data {
         this.name = name;
     }
 
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -138,6 +152,14 @@ public class Registration_only_data {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getState() {
@@ -235,8 +257,4 @@ public class Registration_only_data {
     public void setStatus(String status) {
         this.status = status;
     }
-
-
-
-
 }

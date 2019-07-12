@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.example.dgfab.BusinessDashboard.Business_Drawer;
 import com.example.dgfab.R;
-import com.example.dgfab.RegistrationActivityTwo;
 
 import org.json.JSONObject;
 

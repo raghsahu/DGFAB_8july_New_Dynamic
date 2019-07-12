@@ -4,16 +4,13 @@ import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.StrictMode;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -23,12 +20,13 @@ import android.widget.Toast;
 
 import com.example.dgfab.Java_Adapter_Files.Country_files;
 import com.example.dgfab.R;
-import com.example.dgfab.RegistrationActivityTwo;
+import com.example.dgfab.LoginandReg.RegistrationActivityTwo;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.dgfab.RegistrationActivityTwo.Mycountry;
+import static com.example.dgfab.LoginandReg.RegistrationActivityTwo.Mycountry;
+import static com.example.dgfab.LoginandReg.RegistrationActivityTwo.dataregistration;
 
 public class Country_Adapter extends RecyclerView.Adapter<Country_Adapter.MyViewHolder> {
     private Context mContext;
@@ -109,7 +107,7 @@ public class Country_Adapter extends RecyclerView.Adapter<Country_Adapter.MyView
                 Intent intent = new Intent(mContext , RegistrationActivityTwo.class);
                 intent.putExtra("mycountry" , get_services_data.getName());
                 v.getContext().startActivity(intent);
-
+                dataregistration.setCountry(Mycountry);
 
             }
         });
