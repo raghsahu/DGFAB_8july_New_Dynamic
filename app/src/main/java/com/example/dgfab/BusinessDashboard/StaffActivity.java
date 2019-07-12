@@ -270,7 +270,7 @@ public class StaffActivity extends AppCompatActivity {
                 entity.addPart("image", new FileBody(Staffprofile));
 //                    result = Utilities.postEntityAndFindJson("https://www.spellclasses.co.in/DM/Api/taxreturn", entity);
 //                 //   result = Utilities.postEntityAndFindJson("https://www.spellclasses.co.in/DM/Api/taxreturn", entity);
-                result = Utilities.postEntityAndFindJson("https://sdltechserv.in/dgfeb/api/api/Ragistration", entity);
+                result = Utilities.postEntityAndFindJson("https://sdltechserv.in/dgfeb/api/api/addstaff", entity);
             } catch (Exception e) {
                 e.printStackTrace();
             }
