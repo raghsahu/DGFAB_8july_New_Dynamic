@@ -19,13 +19,13 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BusinessDashboard.StaffActivity"></activity>
+        <activity android:name=".BusinessDashboard.AddProduct_Activity"></activity>
+        <activity android:name=".BusinessDashboard.StaffActivity" />
         <activity android:name=".Activity.Buyer_guest_login.EmailOtpActivity" />
         <activity android:name=".Activity.Buyer_guest_login.Forget_Mobile" />
         <activity android:name=".Activity.AllCountries" />
         <activity android:name=".LoginandReg.ManuLoginActivity" />
-        <activity android:name=".BusinessDashboard.Business_Dashboard_Main"
-            />
+        <activity android:name=".BusinessDashboard.Business_Dashboard_Main" />
         <activity android:name=".BusinessDashboard.Business_ProfileActivty" />
         <activity android:name=".LoginandReg.RegistrationActivityTwo" />
         <activity
