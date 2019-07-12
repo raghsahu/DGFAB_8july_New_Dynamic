@@ -16,7 +16,8 @@ import com.example.dgfab.APIanURLs.REtroURls;
 import com.example.dgfab.Activity.AllCountries;
 import com.example.dgfab.Activity.Registration_Step_1;
 import com.example.dgfab.AllParsings.Registration_only;
-import com.example.dgfab.BusinessDashboard.Business_Drawer;
+
+import com.example.dgfab.BusinessDashboard.Business_Dashboard_Main;
 import com.example.dgfab.Dataregistration;
 import com.example.dgfab.R;
 
@@ -127,7 +128,7 @@ public class RegistrationActivityTwo extends AppCompatActivity {
                     if (country.length() != 0 && email.length() != 0 && password.length() != 0 && first_name.length()
                             != 0 && last_name.length() != 0 && comp_name.length() != 0 && buss_type.length() != 0 &&
                             sele_subser.length() != 0){
-                    if(buss_typeed.getSelectedItem().equals("Manufacturer")) {
+                    if(buss_type.equals("Manufacturer")) {
                         RegisteronlyStaff(country, state, email, password, first_name, last_name, comp_name, pincode, "3", sele_subser);
                     }else {
                         Toast.makeText(RegistrationActivityTwo.this, "Working on other please register as manufacturer", Toast.LENGTH_SHORT).show();
@@ -251,7 +252,7 @@ public class RegistrationActivityTwo extends AppCompatActivity {
                 progressDialog.dismiss();
 //                if (response.body().getResponce().booleanValue() == true) {
 //                    sessionManager.serverEmailLogin(Integer.valueOf(response.body().getMassage().getId()));
-                    Intent intent = new Intent(RegistrationActivityTwo.this, Business_Drawer.class);
+                    Intent intent = new Intent(RegistrationActivityTwo.this, Business_Dashboard_Main.class);
                     startActivity(intent);
                     finish();
 //                }

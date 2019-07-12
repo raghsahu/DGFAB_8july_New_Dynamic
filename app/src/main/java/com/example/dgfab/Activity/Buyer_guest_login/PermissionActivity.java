@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dgfab.R;
 
@@ -32,17 +33,16 @@ public class PermissionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(checkAndRequestPermissions()) {
+                    Intent in = new Intent(PermissionActivity.this, Use_reason_Activity.class);
+                    startActivity(in);
+                    finish();
+                    overridePendingTransition(R.anim.anim_slide_in_left,
+                            R.anim.anim_slide_out_left);
                     // carry on the normal flow, as the case of  permissions  granted.
                 }
-
-
-                Intent in = new Intent(PermissionActivity.this, Use_reason_Activity.class);
-                startActivity(in);
-                finish();
-                overridePendingTransition(R.anim.anim_slide_in_left,
-                        R.anim.anim_slide_out_left);
-
-
+                else {
+                    Toast.makeText(PermissionActivity.this, "Please provide permissions", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

@@ -303,7 +303,4 @@ public class AllCountries extends AppCompatActivity {
 //            }
 //        });
 //    }
-    
-    
-    
 }

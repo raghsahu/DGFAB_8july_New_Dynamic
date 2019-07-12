@@ -83,8 +83,6 @@ public class Business_Dashboard_Main extends AppCompatActivity
                 startActivity(intent);
             }
         });
-
-
     }
 
     @Override
@@ -169,7 +167,9 @@ public class Business_Dashboard_Main extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_galleic_cre_staff) {
+            Intent intent = new Intent(Business_Dashboard_Main.this , StaffActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_slideshow) {
 

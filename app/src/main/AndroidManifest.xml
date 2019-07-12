@@ -19,7 +19,8 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.Buyer_guest_login.EmailOtpActivity"></activity>
+        <activity android:name=".BusinessDashboard.StaffActivity"></activity>
+        <activity android:name=".Activity.Buyer_guest_login.EmailOtpActivity" />
         <activity android:name=".Activity.Buyer_guest_login.Forget_Mobile" />
         <activity android:name=".Activity.AllCountries" />
         <activity android:name=".LoginandReg.ManuLoginActivity" />
