@@ -9,10 +9,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dgfab.BusinessDashboard.Business_Drawer;
 import com.example.dgfab.R;
+import com.example.dgfab.RegistrationActivityTwo;
 
 import org.json.JSONObject;
 
@@ -30,7 +32,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class ManuLoginActivity extends AppCompatActivity {
     EditText email ,password;
-
+    TextView regagain;
     Button LogIn;
 
 
@@ -40,8 +42,15 @@ public class ManuLoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login2);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
+        regagain = findViewById(R.id.regagain);
         LogIn=findViewById(R.id.logmid);
-
+        regagain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ManuLoginActivity.this , RegistrationActivityTwo.class);
+                startActivity(intent);
+            }
+        });
         LogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,7 +150,7 @@ public class ManuLoginActivity extends AppCompatActivity {
                     Boolean response = jsonObject.getBoolean("responce");
                     if(response.booleanValue() ==false)
                     {
-                        Toast.makeText(ManuLoginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ManuLoginActivity.this, "Login failed,Contact to admin", Toast.LENGTH_SHORT).show();
                     }else {
 //                        sessionManager.serverEmailLogin(jsonObject.getJSONObject("data").getInt("id"));
 //                        User_ID = jsonObject.getJSONObject("data").getInt("id");

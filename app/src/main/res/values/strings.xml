@@ -2,7 +2,6 @@
 
     <string-array name="main_cat">
         <item><font fgcolor='#FF8E8E93'>Select Business Type</font></item>
-        <item><font fgcolor='#FF8E8E93'>Buyer</font></item>
         <item><font fgcolor='#FF8E8E93'>Dealer</font></item>
         <item><font fgcolor='#FF8E8E93'>Manufacturer</font></item>
         <item><font fgcolor='#FF8E8E93'>Affiliate Marketer</font></item>

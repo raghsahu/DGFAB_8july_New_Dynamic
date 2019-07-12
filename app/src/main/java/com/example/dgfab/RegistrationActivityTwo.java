@@ -31,6 +31,7 @@ public class RegistrationActivityTwo extends AppCompatActivity {
     EditText contedt;
     Button submmbtn;
     Spinner buss_typeed;
+    public static String Mycountry;
     EditText countyed ,stateed ,pincodeed,emailed,passworded,firstnameed,lastnameed,companyed,sele_subusered;
     String country,email,password,first_name,last_name,comp_name,buss_type,sele_subser,state;
     private ProgressDialog progressDialog;
@@ -40,20 +41,27 @@ public class RegistrationActivityTwo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_two);
 
-        countyed = findViewById(R.id.contedt);
-        stateed = findViewById(R.id.contedt);
-        pincodeed = findViewById(R.id.pincode);
-        emailed = findViewById(R.id.email);
-        passworded = findViewById(R.id.password);
-        firstnameed = findViewById(R.id.fulname);
-        lastnameed = findViewById(R.id.lasname);
-        companyed = findViewById(R.id.comp_name);
-        lastnameed = findViewById(R.id.contedt);
-        buss_typeed = findViewById(R.id.busCate);
+        countyed = findViewById(R.id.countryedt);
+        stateed = findViewById(R.id.stateedt);
+        pincodeed = findViewById(R.id.pinedt);
+        emailed = findViewById(R.id.emailedt);
+        passworded = findViewById(R.id.passwordedt);
+        firstnameed = findViewById(R.id.firstnameedt);
+        lastnameed = findViewById(R.id.lastnameedt);
+        companyed = findViewById(R.id.companyedt);
         buss_typeed = findViewById(R.id.busCate);
         sele_subusered = findViewById(R.id.busSubCat);
         submmbtn = findViewById(R.id.submmbtn);
+        try{
+            if(!Mycountry.isEmpty())
+            {
+                countyed.setText(Mycountry);
+            }
 
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
 
         try {
             countyed.setText(getIntent().getStringExtra("mycountry"));
@@ -72,8 +80,8 @@ public class RegistrationActivityTwo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(RegistrationActivityTwo.this, Business_Drawer.class);
-                startActivity(intent);
+//                Intent intent = new Intent(RegistrationActivityTwo.this, Business_Drawer.class);
+//                startActivity(intent);
 
 
                 try {
@@ -82,19 +90,20 @@ public class RegistrationActivityTwo extends AppCompatActivity {
                     email =  emailed.getText().toString();
                     password =  passworded.getText().toString();
                     first_name =  firstnameed.getText().toString();
-                    email =  emailed.getText().toString();
-                    email =  emailed.getText().toString();
-                    email =  emailed.getText().toString();
-                    email =  emailed.getText().toString();
+                    last_name =  lastnameed.getText().toString();
+                    comp_name =  companyed.getText().toString();
+                    state =  stateed.getText().toString();
+                //    email =  emailed.getText().toString();
 
                     if (country.length() != 0 && email.length() != 0 && password.length() != 0 && first_name.length()
                             != 0 && last_name.length() != 0 && comp_name.length() != 0 && buss_type.length() != 0 &&
                             sele_subser.length() != 0){
 
-                    // RegisteronlyStaff(country, email, password, first_name, first_name, last_name, comp_name, buss_type, sele_subser);
+                     RegisteronlyStaff(country, email, password, first_name, first_name, last_name, comp_name, buss_type, sele_subser);
                     }
                 }catch (Exception e)
                 {
+                    Toast.makeText(RegistrationActivityTwo.this, "Please fill everything", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
@@ -104,6 +113,7 @@ public class RegistrationActivityTwo extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(RegistrationActivityTwo.this, AllCountries.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -116,6 +126,58 @@ public class RegistrationActivityTwo extends AppCompatActivity {
         });
 
 
+    }
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        // Save UI state changes to the savedInstanceState.
+        // This bundle will be passed to onCreate if the process is
+        // killed and restarted.
+        savedInstanceState.putString("countyed", countyed.getText().toString());
+        savedInstanceState.putString("stateed", stateed.getText().toString());
+        savedInstanceState.putString("emailed", emailed.getText().toString());
+        savedInstanceState.putString("passworded", passworded.getText().toString());
+        savedInstanceState.putString("firstnameed", firstnameed.getText().toString());
+        savedInstanceState.putString("lastnameed", lastnameed.getText().toString());
+        savedInstanceState.putString("companyed", companyed.getText().toString());
+        savedInstanceState.putString("pincodeed", pincodeed.getText().toString());
+        savedInstanceState.putString("sele_subusered",sele_subusered.getText().toString());
+        savedInstanceState.putInt("buss_typeed",buss_typeed.getSelectedItemPosition());
+      //  savedInstanceState.putString("MyString", "Welcome back to Android");
+        // etc.
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        // Restore UI state from the savedInstanceState.
+        // This bundle has also been passed to onCreate.
+        Toast.makeText(RegistrationActivityTwo.this, "Restoring", Toast.LENGTH_SHORT).show();
+      countyed.setText(savedInstanceState.getString("countyed"));
+     stateed.setText( savedInstanceState.getString("stateed"));
+      emailed.setText(savedInstanceState.getString("emailed"));
+       passworded.setText(savedInstanceState.getString("passworded"));
+      firstnameed.setText(savedInstanceState.getString("firstnameed"));
+      lastnameed.setText(savedInstanceState.getString("lastnameed"));
+      companyed.setText( savedInstanceState.getString("companyed"));
+      pincodeed.setText(savedInstanceState.getString("pincodeed"));
+        sele_subusered.setText(savedInstanceState.getString("sele_subusered"));
+        buss_typeed.setSelection(savedInstanceState.getInt("buss_typeed"));
+//        double myDouble = savedInstanceState.getDouble("myDouble");
+//        int myInt = savedInstanceState.getInt("MyInt");
+//        String myString = savedInstanceState.getString("MyString");
+    }
+
+    @Override
+    protected void onRestart() {
+        Toast.makeText(this, "restartesd", Toast.LENGTH_SHORT).show();
+        super.onRestart();
+    }
+
+    @Override
+    protected void onStart() {
+        Toast.makeText(this, "restarted", Toast.LENGTH_SHORT).show();
+        super.onStart();
     }
 
     private void RegisteronlyStaff(String country, String email, String password, String first_name, String firstName, String last_name, String comp_name, String buss_type, String sele_subser) {
@@ -146,6 +208,7 @@ public class RegistrationActivityTwo extends AppCompatActivity {
 //                    sessionManager.serverEmailLogin(Integer.valueOf(response.body().getMassage().getId()));
                     Intent intent = new Intent(RegistrationActivityTwo.this, Business_Drawer.class);
                     startActivity(intent);
+                    finish();
 //                }
 
             }

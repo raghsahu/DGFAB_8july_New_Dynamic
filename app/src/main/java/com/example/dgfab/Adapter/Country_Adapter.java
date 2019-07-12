@@ -20,20 +20,15 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.Target;
-import com.example.dgfab.AllParsings.GET_Services_Data;
+
 import com.example.dgfab.Java_Adapter_Files.Country_files;
 import com.example.dgfab.R;
 import com.example.dgfab.RegistrationActivityTwo;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.dgfab.RegistrationActivityTwo.Mycountry;
 
 public class Country_Adapter extends RecyclerView.Adapter<Country_Adapter.MyViewHolder> {
     private Context mContext;
@@ -109,6 +104,7 @@ public class Country_Adapter extends RecyclerView.Adapter<Country_Adapter.MyView
         holder.name_of_doc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Mycountry = get_services_data.getName();
                 Toast.makeText(mContext, ""+Doc.get(position).getName(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(mContext , RegistrationActivityTwo.class);
                 intent.putExtra("mycountry" , get_services_data.getName());
@@ -127,22 +123,22 @@ public class Country_Adapter extends RecyclerView.Adapter<Country_Adapter.MyView
 //            }
 //        });
 
-        Glide.with(mContext)
-                .load(get_services_data.getFlag())
-                .listener(new RequestListener<Drawable>() {
-                    @Override
-                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                        // log exception
-                        Log.e("TAG", "Error loading image", e);
-                        return false; // important to return false so the error placeholder can be placed
-                    }
-
-                    @Override
-                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                        return false;
-                    }
-                })
-                .into(holder.ser_image);
+//        Glide.with(mContext)
+//                .load(get_services_data.getFlag())
+//                .listener(new RequestListener<Drawable>() {
+//                    @Override
+//                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+//                        // log exception
+//                        Log.e("TAG", "Error loading image", e);
+//                        return false; // important to return false so the error placeholder can be placed
+//                    }
+//
+//                    @Override
+//                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+//                        return false;
+//                    }
+//                })
+//                .into(holder.ser_image);
 
 
     }
