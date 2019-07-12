@@ -107,6 +107,9 @@ public class Business_Dashboard_Main extends AppCompatActivity
                     toolbar1.setTitle("DGFAB");
                     fragment = new Home_fragment();
                     loadFragment(fragment);
+                    overridePendingTransition(R.anim.anim_slide_in_left,
+                            R.anim.anim_slide_out_left);
+
                     return true;
                 case R.id.navigation_feeds:
                     //toolbar1.setTitle("My Gifts");
@@ -118,7 +121,8 @@ public class Business_Dashboard_Main extends AppCompatActivity
                         toolbar1.setTitle("My CRM");
                         fragment = new CRM_Fragment();
                         loadFragment(fragment);
-                   
+                        overridePendingTransition(R.anim.anim_slide_in_left,
+                                R.anim.anim_slide_out_left);
                     return true;
                 case R.id.navigation_profile:
                     //toolbar1.setTitle("Profile");

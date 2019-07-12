@@ -16,7 +16,6 @@ import com.example.dgfab.APIanURLs.REtroURls;
 import com.example.dgfab.Activity.AllCountries;
 import com.example.dgfab.Activity.Registration_Step_1;
 import com.example.dgfab.AllParsings.Registration_only;
-
 import com.example.dgfab.BusinessDashboard.Business_Dashboard_Main;
 import com.example.dgfab.Dataregistration;
 import com.example.dgfab.R;
@@ -53,7 +52,7 @@ public class RegistrationActivityTwo extends AppCompatActivity {
             pincodeed.setText(dataregistration.getPincode());
             buss_typeed.setSelection(Integer.valueOf(String.valueOf(dataregistration.getBuss_type())));
             sele_subusered.setText(dataregistration.getSub_bus_type());
-            Toast.makeText(this, "resumed", Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(this, "resumed", Toast.LENGTH_SHORT).show();
         }catch (Exception e)
         {
             e.printStackTrace();
@@ -63,7 +62,7 @@ public class RegistrationActivityTwo extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        Toast.makeText(this, "resumedddd", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "resumedddd", Toast.LENGTH_SHORT).show();
         super.onResume();
     }
 
@@ -123,7 +122,8 @@ public class RegistrationActivityTwo extends AppCompatActivity {
                     state =  stateed.getText().toString();
                     sele_subser =  sele_subusered.getText().toString();
                     pincode =  pincodeed.getText().toString();
-                //    email =  emailed.getText().toString();
+
+                    Toast.makeText(RegistrationActivityTwo.this, "type"+buss_type, Toast.LENGTH_SHORT).show();
 
                     if (country.length() != 0 && email.length() != 0 && password.length() != 0 && first_name.length()
                             != 0 && last_name.length() != 0 && comp_name.length() != 0 && buss_type.length() != 0 &&
@@ -147,6 +147,8 @@ public class RegistrationActivityTwo extends AppCompatActivity {
                 Intent intent = new Intent(RegistrationActivityTwo.this, AllCountries.class);
                 dataregistration = new Dataregistration(countyed.getText().toString() ,stateed.getText().toString() , emailed.getText().toString() ,firstnameed.getText().toString() ,lastnameed.getText().toString() ,passworded.getText().toString(),pincodeed.getText().toString() ,companyed.getText().toString() , buss_typeed.getSelectedItemId() , sele_subusered.getText().toString());
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_slide_in_left,
+                        R.anim.anim_slide_out_left);
              //   onDestroy();
                finish();
             }
@@ -160,6 +162,8 @@ public class RegistrationActivityTwo extends AppCompatActivity {
                 Intent intent = new Intent(RegistrationActivityTwo.this, Registration_Step_1.class);
                 dataregistration = new Dataregistration(countyed.getText().toString() ,stateed.getText().toString() , emailed.getText().toString() ,firstnameed.getText().toString() ,lastnameed.getText().toString() ,passworded.getText().toString(),pincodeed.getText().toString() ,companyed.getText().toString() , buss_typeed.getSelectedItemId() , sele_subusered.getText().toString());
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_slide_in_left,
+                        R.anim.anim_slide_out_left);
                 finish();
             }
         });
@@ -189,7 +193,7 @@ public class RegistrationActivityTwo extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        Toast.makeText(this, "destroyed", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, "destroyed", Toast.LENGTH_SHORT).show();
         super.onDestroy();
     }
 
@@ -216,13 +220,13 @@ public class RegistrationActivityTwo extends AppCompatActivity {
 
     @Override
     protected void onRestart() {
-        Toast.makeText(this, "restartesd", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, "restartesd", Toast.LENGTH_SHORT).show();
         super.onRestart();
     }
 
     @Override
     protected void onStart() {
-        Toast.makeText(this, "restarted", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, "restarted", Toast.LENGTH_SHORT).show();
         super.onStart();
     }
 
@@ -244,16 +248,16 @@ public class RegistrationActivityTwo extends AppCompatActivity {
         get_aboutCall.enqueue(new Callback<Registration_only>() {
             @Override
             public void onResponse(Call<Registration_only> call, Response<Registration_only> response) {
-//                Toast.makeText(getActivity(), ""+response.body().getMassage().getId(), Toast.LENGTH_SHORT).show();
-                //   SubTypestrings = new String[response.body().getData().size()];
                 Log.e("responce is ", "" + response.body().getResponce());
                 Log.e("responce message is ", "" + response.body().getMassage());
-        //       Toast.makeText(getActivity(), "responce is " + response, Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
+                       Toast.makeText(RegistrationActivityTwo.this, "Successful", Toast.LENGTH_SHORT).show();
 //                if (response.body().getResponce().booleanValue() == true) {
 //                    sessionManager.serverEmailLogin(Integer.valueOf(response.body().getMassage().getId()));
                     Intent intent = new Intent(RegistrationActivityTwo.this, Business_Dashboard_Main.class);
                     startActivity(intent);
+                     overridePendingTransition(R.anim.anim_slide_in_left,
+                        R.anim.anim_slide_out_left);
                     finish();
 //                }
 
@@ -261,6 +265,7 @@ public class RegistrationActivityTwo extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Registration_only> call, Throwable t) {
+                Log.e("Failer",""+t.getMessage());
 //                Toast.makeText(getActivity(), "" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
 //                Toast.makeText(getActivity(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
