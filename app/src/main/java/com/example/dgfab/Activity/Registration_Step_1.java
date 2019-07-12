@@ -1,14 +1,11 @@
 package com.example.dgfab.Activity;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -25,10 +22,8 @@ import com.example.dgfab.AllParsings.Add_Services;
 import com.example.dgfab.AllParsings.GET_Services;
 import com.example.dgfab.AllParsings.GET_Services_Data;
 import com.example.dgfab.R;
-import com.example.dgfab.RegistrationActivityTwo;
+import com.example.dgfab.LoginandReg.RegistrationActivityTwo;
 
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -42,6 +37,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.example.dgfab.Adapter.Service_Adapter.Servicenames;
 import static com.example.dgfab.Adapter.Service_Adapter.Service_names;
+import static com.example.dgfab.LoginandReg.RegistrationActivityTwo.dataregistration;
 
 public class Registration_Step_1 extends AppCompatActivity {
     RecyclerView serv_id;
@@ -119,6 +115,7 @@ public class Registration_Step_1 extends AppCompatActivity {
                     Intent intent = new Intent(Registration_Step_1.this, RegistrationActivityTwo.class);
                     intent.putExtra("com_name", ConcatService_name);
                     intent.putExtra("ConcatService", ConcatService);
+                dataregistration.setSub_bus_type(ConcatService_name);
                     startActivity(intent);
 
             }

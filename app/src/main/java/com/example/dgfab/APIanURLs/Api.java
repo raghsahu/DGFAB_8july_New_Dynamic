@@ -37,15 +37,15 @@ public interface Api {
     @FormUrlEncoded
     @POST(REtroURls.Registration)
     Call<Registration_only> REGISTRATION_ONLY_CALL(
-            @Field("user_type") String user_type,
-            @Field("name") String name,
+            @Field("country") String country,
+            @Field("state") String state,
             @Field("email") String email,
-            @Field("mobile") String mobile,
-            @Field("address") String address,
-            @Field("company_name") String company_name,
             @Field("password") String password,
-            @Field("sub_type") String sub_type,
-            @Field("sub_type") String buss_type,
+            @Field("name") String full_name,
+            @Field("lastname") String lastname,
+            @Field("company_name") String company_name,
+            @Field("pin") String pin,
+            @Field("user_type") String buss_type,
             @Field("sub_type") String sele_subser);
 
 
