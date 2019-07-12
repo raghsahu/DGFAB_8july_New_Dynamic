@@ -28,7 +28,6 @@ import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/*import com.example.ics.pollchat.BeanClass.contactdetail;*/
 
 /**
  * Created by ICS on 5/3/2016.

@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.example.dgfab.BusinessDashboard.Business_Dashboard_Main;
 import com.example.dgfab.R;
+import com.example.dgfab.SessionManage.SessionManager;
+import com.example.dgfab.SessionManage.Shared_Preference;
 
 import org.json.JSONObject;
 
@@ -34,12 +36,16 @@ public class ManuLoginActivity extends AppCompatActivity {
     TextView regagain;
     Button LogIn;
 
+    SessionManager sessionManager;
+    public String User_ID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
 
+        sessionManager=new SessionManager(ManuLoginActivity.this);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         regagain = findViewById(R.id.regagain);
@@ -154,8 +160,10 @@ public class ManuLoginActivity extends AppCompatActivity {
                         Toast.makeText(ManuLoginActivity.this, "Login failed,Contact to admin", Toast.LENGTH_SHORT).show();
                     }else {
                         Toast.makeText(ManuLoginActivity.this, "Successful", Toast.LENGTH_SHORT).show();
-//                        sessionManager.serverEmailLogin(jsonObject.getJSONObject("data").getInt("id"));
-//                        User_ID = jsonObject.getJSONObject("data").getInt("id");
+                         sessionManager.serverEmailLogin(jsonObject.getJSONObject("data").getInt("id"));
+                         User_ID = jsonObject.getJSONObject("data").getString("id");
+                        Shared_Preference.setId(ManuLoginActivity.this,User_ID);
+
                         Intent intent = new Intent(ManuLoginActivity.this , Business_Dashboard_Main.class);
                         startActivity(intent);
                         overridePendingTransition(R.anim.anim_slide_in_left,

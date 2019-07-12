@@ -175,7 +175,9 @@ public class Business_Dashboard_Main extends AppCompatActivity
             Intent intent = new Intent(Business_Dashboard_Main.this , StaffActivity.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_addproduct) {
+            Intent intent = new Intent(Business_Dashboard_Main.this , AddProduct_Activity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_tools) {
 
