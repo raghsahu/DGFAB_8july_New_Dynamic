@@ -2,21 +2,34 @@ package com.example.dgfab.BusinessDashboard;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.dgfab.AllParsings.CreatedStaff;
 import com.example.dgfab.R;
+import com.example.dgfab.Utils.Utilities;
+
+import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.entity.mime.content.StringBody;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -29,9 +42,14 @@ import static android.Manifest.permission_group.CAMERA;
 public class StaffActivity extends AppCompatActivity {
     ImageView staffimg;
     private int RESULT_LOAD_IMAGE = 101;
+    String Mainpath;
     private int RESULT_PICK_IMAGE = 141;
+    File Staffprofile;
     private static final int REQUEST_ID_MULTIPLE_PERMISSIONS =101 ;
     EditText Staffname,Staffemail,Staffuserid,Staffpassword,Designationstaff;
+    Button Createstaff;
+    private ProgressDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,21 +60,85 @@ public class StaffActivity extends AppCompatActivity {
         Staffuserid = findViewById(R.id.staffid);
         Staffpassword = findViewById(R.id.staffpassword);
         Designationstaff = findViewById(R.id.staffdes);
+        Createstaff = findViewById(R.id.add_staff);
             checkPermissions();
+        staffimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkPermissions())
+                {
+                    captureit();
+                }
+            }
+        });
+        Createstaff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                    Toast.makeText(StaffActivity.this, "ok ", Toast.LENGTH_SHORT).show();
+
+                        if (Mainpath !=null) {
+                            new CreatedStaffApi(Staffuserid.getText().toString(), Staffname.getText().toString(), Staffemail.getText().toString(), Staffpassword.getText().toString(), Designationstaff.getText().toString()).execute();
+                        }
+
+//                }
+            }
+        });
+    }
+
+    private void captureit() {
+        new AlertDialog.Builder(StaffActivity.this)
+                .setMessage("From which you want to upload?")
+                .setPositiveButton("Take Photo", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+
+                        startActivityForResult(cameraIntent, RESULT_PICK_IMAGE);
+                        Toast.makeText(StaffActivity.this, "ok", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton("Take it from gallery", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        startActivityForResult(i, RESULT_LOAD_IMAGE);
+                    }
+                }).setNeutralButton("Back", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(StaffActivity.this, "back pressed", Toast.LENGTH_SHORT).show();
+            }
+        })
+                .create()
+                .show();
+
     }
 
     private Boolean checkPermissions() {
-        int FirstPermissionResult = ContextCompat.checkSelfPermission(getApplicationContext(), CAMERA);
-        int SecondPermissionResult = ContextCompat.checkSelfPermission(getApplicationContext(), READ_EXTERNAL_STORAGE);
-        int ThirdPermissionResult = ContextCompat.checkSelfPermission(getApplicationContext(), WRITE_EXTERNAL_STORAGE);
-        //  int ForthPermissionResult = ContextCompat.checkSelfPermission(getApplicationContext(), GET_ACCOUNTS);
-        Log.e("FirstPermissionResult" , ""+FirstPermissionResult);
-        Log.e("SecondPermissionResult" , ""+SecondPermissionResult);
-        Log.e("ThirdPermissionResult" , ""+ThirdPermissionResult);
-        FirstPermissionResult =0;
-        return FirstPermissionResult == PackageManager.PERMISSION_GRANTED &&
-                SecondPermissionResult == PackageManager.PERMISSION_GRANTED &&
-                ThirdPermissionResult == PackageManager.PERMISSION_GRANTED ;
+        int permissionCamara = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+        int permissionStorage = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int permissionStorage1 = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+        int permissionPhone = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
+
+        List<String> listPermissionsNeeded = new ArrayList<>();
+        if (permissionCamara != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.CAMERA);
+        }
+        if (permissionStorage != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+        if (permissionStorage1 != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+        }
+        if (permissionPhone != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+        }
+        if (!listPermissionsNeeded.isEmpty()) {
+            ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]),REQUEST_ID_MULTIPLE_PERMISSIONS);
+            return false;
+        }
+        return true;
 //        int permissionCamara = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
 //        int permissionStorage = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 //        int permissionStorage1 = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
@@ -115,9 +197,9 @@ public class StaffActivity extends AppCompatActivity {
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
             String picturePath = cursor.getString(columnIndex);
             Log.i("We go somethihbygf", "Uri: " + resultData.getData());
-
-
-
+            Staffprofile  = new File(picturePath);
+            staffimg.setImageResource(R.drawable.docfound);
+            Mainpath = picturePath;
 //
 //           else if(trandmark_cerFile.exists() && trandmark_cerAnInt==1)
 //            {
@@ -138,5 +220,87 @@ public class StaffActivity extends AppCompatActivity {
             //imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
         }
 
+    }
+
+    private class CreatedStaffApi extends AsyncTask<Void, Void, String> {
+        File trandmark_cerFile, copyright_cerFile, others_cerFile, gate_photo_file, gate_sign_file;
+        String stafid ;
+        String staffname;
+        String email;
+        String password;
+        String destination;
+        String result = "";
+
+        public CreatedStaffApi(String stafid , String staffname, String email, String password, String destination) {
+            this.stafid =stafid;
+            this.staffname =staffname;
+            this.email =email;
+            this.password =password;
+            this.destination =destination;
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+            dialog = new ProgressDialog(StaffActivity.this);
+            dialog.setCancelable(false);
+            dialog.show();
+            super.onPreExecute();
+        }
+
+
+
+        @Override
+        protected String doInBackground(Void... Void) {
+            try {
+
+                MultipartEntity entity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
+
+
+                entity.addPart("staff_id", new StringBody("" + stafid));
+                entity.addPart("name", new StringBody("" + staffname));
+                entity.addPart("email", new StringBody("" + email));
+                entity.addPart("password", new StringBody("" +password));
+                entity.addPart("designation", new StringBody("" + destination));
+//                entity.addPart("sub_type", new StringBody(""+concatService));
+//                entity.addPart("trandmark_cer", new FileBody(trandmark_cerFile));
+//                entity.addPart("copyright_cer", new FileBody(copyright_cerFile));
+//                entity.addPart("others_cer", new FileBody(others_cerFile));
+//                entity.addPart("gst_cer", new FileBody(gst_cerFile));
+                entity.addPart("image", new FileBody(Staffprofile));
+//                    result = Utilities.postEntityAndFindJson("https://www.spellclasses.co.in/DM/Api/taxreturn", entity);
+//                 //   result = Utilities.postEntityAndFindJson("https://www.spellclasses.co.in/DM/Api/taxreturn", entity);
+                result = Utilities.postEntityAndFindJson("https://sdltechserv.in/dgfeb/api/api/Ragistration", entity);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+
+            String result1 = result;
+            if (result1 != null) {
+
+                dialog.dismiss();
+                Log.e("result1", result1);
+
+                Toast.makeText(StaffActivity.this, " Successfully Registered", Toast.LENGTH_LONG).show();
+
+                //  Intent in=new Intent(MainActivity.this,NextActivity.class);
+                //  in.putExtra("doc",doc);
+                //     startActivity(in);
+
+            } else {
+                dialog.dismiss();
+                Toast.makeText(StaffActivity.this, "Staff add Success", Toast.LENGTH_LONG).show();
+//                Intent intent = new Intent(StaffActivity.this , S.class);
+//                startActivity(intent);
+//                finish();
+
+            }
+
+        }
     }
 }

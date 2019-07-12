@@ -47,7 +47,7 @@
                 <ImageView
                     android:id="@+id/staffimg"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="120dp"
                     android:layout_marginBottom="3dp"
                     android:drawablePadding="5dp"
 
@@ -81,9 +81,6 @@
                     android:id="@+id/staffname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                  android:background="#fff"
-                    android:editable="false"
-                    android:enabled="false"
                     android:inputType="textPersonName" />
 
             </LinearLayout>
@@ -110,9 +107,7 @@
                     android:id="@+id/staffemail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#fff"
-                    android:editable="false"
-                    android:enabled="false"
+
                     android:inputType="textPersonName" />
 
             </LinearLayout>
@@ -139,9 +134,7 @@
                     android:id="@+id/staffid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#fff"
-                    android:editable="false"
-                    android:enabled="false"
+
                     android:inputType="textPersonName" />
 
             </LinearLayout>
@@ -167,9 +160,7 @@
                     android:id="@+id/staffpassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#fff"
-                    android:editable="false"
-                    android:enabled="false"
+
                     android:inputType="textPersonName" />
 
             </LinearLayout>
@@ -196,9 +187,7 @@
                     android:id="@+id/staffdes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#fff"
-                    android:editable="false"
-                    android:enabled="false"
+
                     android:inputType="textPersonName" />
 
             </LinearLayout>
