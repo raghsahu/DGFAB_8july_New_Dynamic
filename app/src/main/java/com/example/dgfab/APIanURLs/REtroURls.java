@@ -6,8 +6,7 @@ public interface REtroURls {
     public   String Add_Services = "Add_Service";
     public   String Getsubusertype = "getsubusertype";
     public   String Registration = "Ragistration";
-    public   String GetCountry= "https://restcountries.eu/";
-    public   String GetCountry_url= "rest/v2";
+    public   String GetCountry_url= "https://restcountries.eu/rest/v2";
 
 
 }

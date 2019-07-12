@@ -81,7 +81,8 @@ public class Registration_Step_1 extends AppCompatActivity {
                     public void onClick(View v) {
                         dialog.dismiss();
 
-                        Add_New_Service(add_new_service);
+                        Log.e("et_add_ser",""+et_add_service.getText().toString());
+                        Add_New_Service(et_add_service.getText().toString());
 
                     }
                 });
@@ -136,6 +137,7 @@ public class Registration_Step_1 extends AppCompatActivity {
         progressDialog.setCancelable(false);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.show();
+
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(100, TimeUnit.SECONDS)
                 .readTimeout(100,TimeUnit.SECONDS).build();
@@ -144,18 +146,26 @@ public class Registration_Step_1 extends AppCompatActivity {
                 .build();
         Api AbloutApi = RetroLogin.create(Api.class);
 
+        Log.e("et_add",""+add_new_service);
         Call<Add_Services> get_aboutCall = AbloutApi.Add_Services_Call("3",add_new_service,"pp");
+
+
         get_aboutCall.enqueue(new Callback<Add_Services>() {
             @Override
             public void onResponse(Call<Add_Services> call, Response<Add_Services> response) {
-              //  Log.e("getact" , ""+response.body().getData().size());
-               if (response!=null){
-          Log.e("Add_new_service" , ""+response.toString());
-                   get_services_data.clear();
-                   service_adapter.notifyDataSetChanged();
+                progressDialog.dismiss();
 
-                   progressDialog.dismiss();
-                   GETAllServiceS();
+                Log.e("Add_new_service" , ""+response.toString());
+                Log.e("Add_service_res_msg" , ""+response.body().getResponce());
+                Log.e("Add_service_res_msg_id" , ""+response.body().getMassage().getId());
+                Log.e("Add_service_res_suc" , ""+response.isSuccessful());
+
+               if (response.isSuccessful()){
+
+              get_services_data.clear();
+              service_adapter.notifyDataSetChanged();
+
+              GETAllServiceS();
 
                }
 
@@ -164,11 +174,12 @@ public class Registration_Step_1 extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Add_Services> call, Throwable t) {
+
+                Log.e("failer",""+t.getMessage());
                 Toast.makeText(Registration_Step_1.this, ""+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 Toast.makeText(Registration_Step_1.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
 
     }
 //***************************************************************************************************************
