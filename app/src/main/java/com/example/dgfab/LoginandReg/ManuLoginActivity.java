@@ -39,6 +39,7 @@ public class ManuLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
+
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         regagain = findViewById(R.id.regagain);
@@ -48,6 +49,8 @@ public class ManuLoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ManuLoginActivity.this , RegistrationActivityTwo.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_slide_in_left,
+                        R.anim.anim_slide_out_left);
             }
         });
         LogIn.setOnClickListener(new View.OnClickListener() {
@@ -142,7 +145,6 @@ public class ManuLoginActivity extends AppCompatActivity {
 
                 JSONObject jsonObject = null;
                 Log.e("PostRegistration", result.toString());
-                Log.e("PostRegistration", result.toString());
                 try {
 
                     jsonObject = new JSONObject(result);
@@ -151,10 +153,13 @@ public class ManuLoginActivity extends AppCompatActivity {
                     {
                         Toast.makeText(ManuLoginActivity.this, "Login failed,Contact to admin", Toast.LENGTH_SHORT).show();
                     }else {
+                        Toast.makeText(ManuLoginActivity.this, "Successful", Toast.LENGTH_SHORT).show();
 //                        sessionManager.serverEmailLogin(jsonObject.getJSONObject("data").getInt("id"));
 //                        User_ID = jsonObject.getJSONObject("data").getInt("id");
                         Intent intent = new Intent(ManuLoginActivity.this , Business_Dashboard_Main.class);
                         startActivity(intent);
+                        overridePendingTransition(R.anim.anim_slide_in_left,
+                                R.anim.anim_slide_out_left);
                     }
                 }catch (Exception e)
                 {

@@ -26,6 +26,7 @@ public class OtpActivity extends AppCompatActivity {
                 startActivity(in);
                 overridePendingTransition(R.anim.anim_slide_in_left,
                         R.anim.anim_slide_out_left);
+                finish();
             }
         });
 

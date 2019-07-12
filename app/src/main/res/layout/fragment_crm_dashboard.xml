@@ -25,6 +25,7 @@
             android:orientation="vertical">
 
             <android.support.design.widget.AppBarLayout
+                android:layout_marginTop="55dp"
                 android:id="@+id/appBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -35,44 +36,33 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:background="?attr/colorPrimary"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     app:popupTheme="@style/AppTheme.PopupOverlay">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
                         android:gravity="center"
                         android:orientation="horizontal"
                         android:weightSum="1">
 
-                        <!--<LinearLayout-->
-                        <!--android:layout_weight="0.8"-->
-                        <!--android:gravity="center"-->
-                        <!--android:orientation="horizontal"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="match_parent">-->
-
-                        <!--<TextView-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:gravity="start|center"-->
-                        <!--android:text="DGFAB"-->
-                        <!--android:textColor="#fff"-->
-                        <!--android:textSize="15dp" />-->
-                        <!--</LinearLayout>-->
 
                         <android.support.v7.widget.CardView
+                            android:layout_marginRight="15dp"
+                            android:layout_gravity="center"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             app:cardCornerRadius="4dp">
 
 
                             <LinearLayout
-                                android:padding="5dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
+                                android:layout_gravity="center"
                                 android:orientation="horizontal"
                                 android:weightSum="1">
 
@@ -80,12 +70,14 @@
                                 <EditText
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="0.1"
+                                    android:layout_weight="0.10"
                                     android:background="@null"
                                     android:hint="Search Products or suppliers"
                                     android:textColor="#000"
-                                    android:textSize="12dp"
-                                    android:textColorHint="@color/colorAccent" />
+                                    android:text=""
+                                    android:textSize="15dp"
+                                    android:textColorHint="#7A7878"
+                                     />
 
                                 <ImageView
                                     android:layout_width="match_parent"
@@ -121,13 +113,13 @@
                     android:text=""
                     android:textAlignment="center"
                     android:gravity="center"
-                    android:padding="5dp"
 
                     />
 
             </android.support.design.widget.AppBarLayout>
 
             <LinearLayout
+                android:visibility="gone"
                 android:id="@+id/admin_choose"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

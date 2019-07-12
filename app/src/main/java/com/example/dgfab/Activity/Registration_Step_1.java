@@ -201,7 +201,7 @@ public class Registration_Step_1 extends AppCompatActivity {
                 progressDialog.dismiss();
                // Toast.makeText(getActivity(), ""+response, Toast.LENGTH_SHORT).show();
              //   SubTypestrings = new String[response.body().getData().size()];
-                Log.e("getact" , ""+response.body().getData().size());
+//                Log.e("getact" , ""+response.body().getData().size());
                 for(int k=0;k<response.body().getData().size();k++)
                 {
                     Log.e("getact msain" , ""+response.body().getData().get(k).getTypeId());

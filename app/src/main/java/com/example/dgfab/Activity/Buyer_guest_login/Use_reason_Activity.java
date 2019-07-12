@@ -74,8 +74,7 @@ public class Use_reason_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(bsrad.isChecked()) {
-                 //   perrad.setChecked(false);
-                    //Intent in = new Intent(Use_reason_Activity.this, RegistrationActivityTwo.class);
+
                     Intent in = new Intent(Use_reason_Activity.this, ManuLoginActivity.class);
                     startActivity(in);
                //     finish();
