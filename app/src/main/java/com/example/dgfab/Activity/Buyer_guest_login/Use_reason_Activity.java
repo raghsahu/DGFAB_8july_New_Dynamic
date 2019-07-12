@@ -32,6 +32,7 @@ public class Use_reason_Activity extends AppCompatActivity {
         personal=findViewById(R.id.persona);
         tv_skip=findViewById(R.id.tv_skip);
 
+
         tv_skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +66,10 @@ public class Use_reason_Activity extends AppCompatActivity {
                 }
             }
         });
+        //****************card view clic radio**************************************
+
+
+//************************************************************
         allow_reason.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

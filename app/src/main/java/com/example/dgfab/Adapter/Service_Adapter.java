@@ -115,6 +115,30 @@ public class Service_Adapter  extends RecyclerView.Adapter<Service_Adapter.MyVie
             }
         });
 
+
+//        holder.namechk.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(holder.namechk.isChecked() == false) {
+//                    Servicenames.add(get_services_data.getId());
+//                    Service_names.add(get_services_data.getService());
+//                    holder.namechk.setChecked(true);
+//
+//                    Toast.makeText(mContext, "services "+Servicenames, Toast.LENGTH_SHORT).show();
+//                    Log.e("Services_add",""+Servicenames);
+//                    Log.e("Services_add_name",""+Service_names);
+//                }else {
+//                    Servicenames.remove(get_services_data.getId());
+//                    Service_names.remove(get_services_data.getService());
+//                    holder.namechk.setChecked(false);
+//
+//                    Log.e("Services_update",""+Servicenames);
+//                }
+//
+//            }
+//        });
+
+
     }
 
 
