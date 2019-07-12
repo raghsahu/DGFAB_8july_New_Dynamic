@@ -9,14 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.dgfab.APIanURLs.Api;
 import com.example.dgfab.APIanURLs.REtroURls;
 import com.example.dgfab.Activity.AllCountries;
 import com.example.dgfab.Activity.Registration_Step_1;
 import com.example.dgfab.AllParsings.Registration_only;
-import com.example.dgfab.BusinessDashboard.Business_Drawer;
+import com.example.dgfab.BusinessDashboard.Business_Dashboard_Main;
 
 import java.util.concurrent.TimeUnit;
 
@@ -72,7 +71,7 @@ public class RegistrationActivityTwo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(RegistrationActivityTwo.this, Business_Drawer.class);
+                Intent intent = new Intent(RegistrationActivityTwo.this, Business_Dashboard_Main.class);
                 startActivity(intent);
 
 
@@ -144,7 +143,7 @@ public class RegistrationActivityTwo extends AppCompatActivity {
                 progressDialog.dismiss();
 //                if (response.body().getResponce().booleanValue() == true) {
 //                    sessionManager.serverEmailLogin(Integer.valueOf(response.body().getMassage().getId()));
-                    Intent intent = new Intent(RegistrationActivityTwo.this, Business_Drawer.class);
+                    Intent intent = new Intent(RegistrationActivityTwo.this, Business_Dashboard_Main.class);
                     startActivity(intent);
 //                }
 

@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.dgfab.BusinessDashboard.Business_Drawer;
+import com.example.dgfab.BusinessDashboard.Business_Dashboard_Main;
 import com.example.dgfab.R;
 
 import org.json.JSONObject;
@@ -48,7 +48,7 @@ public class ManuLoginActivity extends AppCompatActivity {
                 if(email.getText().toString().length()>0 && password.getText().toString().length()>0) {
                     new TRYLOGIN().execute();
                 }
-//                Intent in = new Intent(ManuLoginActivity.this, Business_Drawer.class);
+//                Intent in = new Intent(ManuLoginActivity.this, Business_Dashboard_Main.class);
 //                startActivity(in);
 //
 //                overridePendingTransition(R.anim.anim_slide_in_left,
@@ -145,7 +145,7 @@ public class ManuLoginActivity extends AppCompatActivity {
                     }else {
 //                        sessionManager.serverEmailLogin(jsonObject.getJSONObject("data").getInt("id"));
 //                        User_ID = jsonObject.getJSONObject("data").getInt("id");
-                        Intent intent = new Intent(ManuLoginActivity.this , Business_Drawer.class);
+                        Intent intent = new Intent(ManuLoginActivity.this , Business_Dashboard_Main.class);
                         startActivity(intent);
                     }
                 }catch (Exception e)

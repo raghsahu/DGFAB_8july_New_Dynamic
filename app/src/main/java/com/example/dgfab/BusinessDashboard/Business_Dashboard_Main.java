@@ -2,8 +2,14 @@ package com.example.dgfab.BusinessDashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,14 +22,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.TextView;
 
+import com.example.dgfab.BusinessDashboard.Business_CRM.CRM_Fragment;
+import com.example.dgfab.BusinessDashboard.Business_HomeDashboard.Home_fragment;
 import com.example.dgfab.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class Business_Drawer extends AppCompatActivity
+public class Business_Dashboard_Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     CircleImageView nav_imageView;
+    private ActionBar toolbar1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +41,20 @@ public class Business_Drawer extends AppCompatActivity
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar1 = getSupportActionBar();
+
+        //**************************************
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_business_bottom);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        // attaching bottom sheet behaviour - hide / show on scroll
+        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigation.getLayoutParams();
+        layoutParams.setBehavior(new BottomNavigationBehavior());
+
+        toolbar.setTitle("DGFAB");
+        loadFragment(new Home_fragment());
+        //*****************************************************************************
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +79,7 @@ public class Business_Drawer extends AppCompatActivity
         nav_imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Business_Drawer.this, Business_ProfileActivty.class);
+                Intent intent = new Intent(Business_Dashboard_Main.this, Business_ProfileActivty.class);
                 startActivity(intent);
             }
         });
@@ -73,6 +96,48 @@ public class Business_Drawer extends AppCompatActivity
             super.onBackPressed();
         }
     }
+
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment fragment;
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    toolbar1.setTitle("DGFAB");
+                    fragment = new Home_fragment();
+                    loadFragment(fragment);
+                    return true;
+                case R.id.navigation_feeds:
+                    //toolbar1.setTitle("My Gifts");
+                    return true;
+                case R.id.navigation_directory:
+                   // toolbar1.setTitle("Cart");
+                    return true;
+                    case R.id.navigation_my_crm:
+                        toolbar1.setTitle("My CRM");
+                        fragment = new CRM_Fragment();
+                        loadFragment(fragment);
+                   
+                    return true;
+                case R.id.navigation_profile:
+                    //toolbar1.setTitle("Profile");
+                    return true;
+            }
+            return false;
+        }
+    };
+
+    private void loadFragment(Fragment fragment) {
+        // load fragment
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_frame_business, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
