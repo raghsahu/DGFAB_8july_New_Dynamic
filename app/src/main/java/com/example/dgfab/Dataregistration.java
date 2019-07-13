@@ -4,7 +4,7 @@ public class Dataregistration {
     String country,state, email ,firstname , lastname,password,pincode,comp_name,sub_bus_type;
     long buss_type;
 
-    public Dataregistration(String country, String state, String email, String firstname, String lastname, String password, String pincode, String comp_name, long buss_type, String sub_bus_type) {
+    public Dataregistration(String country, String state, String email, String firstname, String lastname, String password, String pincode, String comp_name, long buss_type) {
         this.country = country;
         this.state = state;
         this.email = email;

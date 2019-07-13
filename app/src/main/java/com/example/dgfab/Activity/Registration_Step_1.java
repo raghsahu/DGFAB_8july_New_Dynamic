@@ -21,8 +21,12 @@ import com.example.dgfab.Adapter.Service_Adapter;
 import com.example.dgfab.AllParsings.Add_Services;
 import com.example.dgfab.AllParsings.GET_Services;
 import com.example.dgfab.AllParsings.GET_Services_Data;
+import com.example.dgfab.AllParsings.Registration_only;
+import com.example.dgfab.BusinessDashboard.Business_Dashboard_Main;
 import com.example.dgfab.R;
 import com.example.dgfab.LoginandReg.RegistrationActivityTwo;
+import com.example.dgfab.SessionManage.SessionManager;
+import com.example.dgfab.SessionManage.Shared_Preference;
 
 
 import java.util.ArrayList;
@@ -46,15 +50,19 @@ public class Registration_Step_1 extends AppCompatActivity {
     private ProgressDialog progressDialog;
     String ConcatService;
     String ConcatService_name;
-   public String fulname, email, com_name, password, address, mobile;
+  // public String fulname, email, com_name, password, address, mobile;
     ArrayList<GET_Services_Data> get_services_data = new ArrayList<>();
     GridLayoutManager gridLayoutManager;
+
+    String country,email,password,first_name,last_name,comp_name,buss_type,state,pincode;
+     SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_);
 
+        sessionManager=new SessionManager(Registration_Step_1.this);
         serv_id = findViewById(R.id.serv_id);
         serv_id = findViewById(R.id.serv_id);
         addmore_service = findViewById(R.id.addmore_service);
@@ -87,8 +95,23 @@ public class Registration_Step_1 extends AppCompatActivity {
             }
         });
 
+        //******************************************************************
+        try {
+            country=getIntent().getStringExtra("country");
+            state=getIntent().getStringExtra("state");
+            email=getIntent().getStringExtra("email");
+            password=getIntent().getStringExtra("password");
+            first_name=getIntent().getStringExtra("first_name");
+            last_name=getIntent().getStringExtra("last_name");
+            comp_name=getIntent().getStringExtra("comp_name");
+            buss_type=getIntent().getStringExtra("buss_type");
+            pincode=getIntent().getStringExtra("pincode");
+        }catch (Exception e){
+            Log.e("No Data","Inent null data");
+        }
 
 
+//*****************************************************************************
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,15 +131,16 @@ public class Registration_Step_1 extends AppCompatActivity {
                         ConcatService_name = ConcatService_name.concat(","+Service_names.get(k));
                     }
                 }
-
-
                 Log.e("concate_service",""+ConcatService);
                 Log.e("concate_service_name",""+ConcatService);
-                    Intent intent = new Intent(Registration_Step_1.this, RegistrationActivityTwo.class);
-                    intent.putExtra("com_name", ConcatService_name);
-                    intent.putExtra("ConcatService", ConcatService);
-                dataregistration.setSub_bus_type(ConcatService_name);
-                    startActivity(intent);
+//                    Intent intent = new Intent(Registration_Step_1.this, RegistrationActivityTwo.class);
+//                    intent.putExtra("com_name", ConcatService_name);
+//                    intent.putExtra("ConcatService", ConcatService);
+//                dataregistration.setSub_bus_type(ConcatService_name);
+//                    startActivity(intent);
+
+                RegisteronlyStaff(country, state, email, password, first_name, last_name, comp_name,
+                 pincode, "3", ConcatService);
 
             }
         });
@@ -126,7 +150,62 @@ public class Registration_Step_1 extends AppCompatActivity {
         GETAllServiceS();
 
     }
+//***************************************************************************************************
+    private void RegisteronlyStaff(String country, String state, String email, String password, String first_name,
+                                   String last_name, String comp_name, String pincode, String business_type, String concatService) {
 
+        progressDialog = new ProgressDialog(Registration_Step_1.this);
+        progressDialog.setMax(1000);
+        progressDialog.setTitle("Registering Please Wait");
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.show();
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(100, TimeUnit.SECONDS)
+                .readTimeout(100, TimeUnit.SECONDS).build();
+        Retrofit RetroLogin = new Retrofit.Builder()
+                .baseUrl(REtroURls.The_Base).client(client).addConverterFactory(GsonConverterFactory.create())
+                .build();
+        Api AbloutApi = RetroLogin.create(Api.class);
+        Call<Registration_only> get_aboutCall = AbloutApi.REGISTRATION_ONLY_CALL(country,state ,email,password,first_name,
+                last_name,comp_name,pincode,business_type,concatService);
+        get_aboutCall.enqueue(new Callback<Registration_only>() {
+            @Override
+            public void onResponse(Call<Registration_only> call, Response<Registration_only> response) {
+                progressDialog.dismiss();
+                Log.e("responce is ", "" + response.body().getResponce());
+                Log.e("responce message is ", "" + response.body().getMassage());
+                Log.e("responce id is ", "" + response.body().getMassage().getId());
+
+                if (response.body().getResponce().booleanValue() == true) {
+                   sessionManager.serverEmailLogin(Integer.valueOf(response.body().getMassage().getId()));
+                Shared_Preference.setId(Registration_Step_1.this,response.body().getMassage().getId());
+
+                Intent intent = new Intent(Registration_Step_1.this, Business_Dashboard_Main.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.anim_slide_in_left,
+                        R.anim.anim_slide_out_left);
+                finish();
+                Toast.makeText(Registration_Step_1.this, "Successful", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Registration_only> call, Throwable t) {
+                Log.e("Failer",""+t.getMessage());
+//                Toast.makeText(getActivity(), "" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+
+
+
+    }
+//*******************************************************************************************
     private void Add_New_Service(String add_new_service) {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMax(1000);

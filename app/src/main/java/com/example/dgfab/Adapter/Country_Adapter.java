@@ -1,10 +1,15 @@
 package com.example.dgfab.Adapter;
 
+import android.app.Activity;
 import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.PictureDrawable;
+import android.net.Uri;
 import android.os.StrictMode;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,10 +23,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.ahmadrosid.svgloader.SvgLoader;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.load.model.StreamEncoder;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.example.dgfab.Java_Adapter_Files.Country_files;
 import com.example.dgfab.R;
 import com.example.dgfab.LoginandReg.RegistrationActivityTwo;
+import com.example.dgfab.Utils.SVG_Utils;
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou;
+import com.squareup.picasso.Picasso;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,18 +75,12 @@ public class Country_Adapter extends RecyclerView.Adapter<Country_Adapter.MyView
         public MyViewHolder(View itemView) {
             super(itemView);
             name_of_doc = (TextView) itemView.findViewById(R.id.name);
-            ser_image =  itemView.findViewById(R.id.ser_image);
+            ser_image =  itemView.findViewById(R.id.flag_image);
             namechk =  itemView.findViewById(R.id.namechk);
             ll_country =  itemView.findViewById(R.id.ll_country);
 
         }
     }
-
-//    public Rec_Reports_adapter(List<Reports> reportss) {
-//        this.Doc = reportss;
-//    }
-
-
 
     @Override
     public Country_Adapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -91,35 +102,25 @@ public class Country_Adapter extends RecyclerView.Adapter<Country_Adapter.MyView
         StrictMode.setVmPolicy(builder.build());
         holder.name_of_doc.setText(get_services_data.getName().toString());
 
+        Log.e("Flag_adapter", ""+get_services_data.getFlag());
 
-        holder.ll_country.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+       // GlideToVectorYou.justLoadImage((Activity) mContext, Uri.parse(get_services_data.getFlag()), holder.ser_image);
 
-            }
-        });
 
-        holder.name_of_doc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Mycountry = get_services_data.getName();
-                Toast.makeText(mContext, ""+Doc.get(position).getName(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(mContext , RegistrationActivityTwo.class);
-                intent.putExtra("mycountry" , get_services_data.getName());
-                v.getContext().startActivity(intent);
-                dataregistration.setCountry(Mycountry);
+        //*********************************************************************************************
 
-            }
-        });
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(mContext, ""+Doc.get(position).getNumber(), Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(mContext , RegistrationActivityTwo.class);
-//                intent.putExtra("mycont" , Doc.get(position).getNumber());
-//                v.getContext().startActivity(intent);
-//            }
-//        });
+        // SVG_Utils.fetchSvg(mContext, get_services_data.getFlag(), holder.ser_image);
+        //*******************
+//        SvgLoader.pluck()
+//                .with((Activity) mContext)
+//                .setPlaceHolder(R.mipmap.ic_launcher, R.mipmap.ic_launcher)
+//                .load(get_services_data.getFlag(), holder.ser_image);
+
+        //******************************************************
+//        Picasso.get()
+//                .load(get_services_data.getFlag())
+//                //.placeholder(R.drawable.user_placeholder)
+//                .into(holder.ser_image);
 
 //        Glide.with(mContext)
 //                .load(get_services_data.getFlag())
@@ -137,12 +138,53 @@ public class Country_Adapter extends RecyclerView.Adapter<Country_Adapter.MyView
 //                    }
 //                })
 //                .into(holder.ser_image);
+//**************************************************************************************************
 
 
+
+
+
+
+
+
+
+        //*********************************************************************************************
+
+        holder.ll_country.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Mycountry = get_services_data.getName();
+                Toast.makeText(mContext, ""+Doc.get(position).getName(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext , RegistrationActivityTwo.class);
+                intent.putExtra("mycountry" , get_services_data.getName());
+                v.getContext().startActivity(intent);
+                dataregistration.setCountry(Mycountry);
+            }
+        });
+
+        holder.name_of_doc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Mycountry = get_services_data.getName();
+                Toast.makeText(mContext, ""+Doc.get(position).getName(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext , RegistrationActivityTwo.class);
+                intent.putExtra("mycountry" , get_services_data.getName());
+                v.getContext().startActivity(intent);
+                dataregistration.setCountry(Mycountry);
+
+            }
+        });
+
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(mContext, ""+Doc.get(position).getNumber(), Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(mContext , RegistrationActivityTwo.class);
+//                intent.putExtra("mycont" , Doc.get(position).getNumber());
+//                v.getContext().startActivity(intent);
+//            }
+//        });
     }
-
-
-
 
 
     @Override

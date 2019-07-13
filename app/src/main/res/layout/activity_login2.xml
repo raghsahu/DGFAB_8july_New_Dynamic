@@ -80,6 +80,8 @@
                 <EditText
                     android:id="@+id/password"
                     android:hint="Password"
+                    android:drawableRight="@drawable/toogle"
+                    android:inputType="textPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 

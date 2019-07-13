@@ -4,7 +4,10 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
+import android.text.method.SingleLineTransformationMethod;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,8 +38,8 @@ public class RegistrationActivityTwo extends AppCompatActivity {
    public static Dataregistration dataregistration;
     Spinner buss_typeed;
     public static String Mycountry;
-    EditText countyed ,stateed ,pincodeed,emailed,passworded,firstnameed,lastnameed,companyed,sele_subusered;
-    String country,email,password,first_name,last_name,comp_name,buss_type,sele_subser,state,pincode;
+    EditText countyed ,stateed ,pincodeed,emailed,passworded,firstnameed,lastnameed,companyed,conf_password;
+    String country,email,password,confirm_password,first_name,last_name,comp_name,buss_type,sele_subser,state,pincode;
     private ProgressDialog progressDialog;
 
     @Override
@@ -51,7 +54,7 @@ public class RegistrationActivityTwo extends AppCompatActivity {
             companyed.setText(dataregistration.getComp_name());
             pincodeed.setText(dataregistration.getPincode());
             buss_typeed.setSelection(Integer.valueOf(String.valueOf(dataregistration.getBuss_type())));
-            sele_subusered.setText(dataregistration.getSub_bus_type());
+            //sele_subusered.setText(dataregistration.getSub_bus_type());
           //  Toast.makeText(this, "resumed", Toast.LENGTH_SHORT).show();
         }catch (Exception e)
         {
@@ -76,12 +79,14 @@ public class RegistrationActivityTwo extends AppCompatActivity {
         pincodeed = findViewById(R.id.pinedt);
         emailed = findViewById(R.id.emailedt);
         passworded = findViewById(R.id.passwordedt);
+        conf_password = findViewById(R.id.conf_password);
         firstnameed = findViewById(R.id.firstnameedt);
         lastnameed = findViewById(R.id.lastnameedt);
         companyed = findViewById(R.id.companyedt);
         buss_typeed = findViewById(R.id.busCate);
-        sele_subusered = findViewById(R.id.busSubCat);
+       // sele_subusered = findViewById(R.id.busSubCat);
         submmbtn = findViewById(R.id.submmbtn);
+        conf_password = findViewById(R.id.conf_password);
         try{
             if(!Mycountry.isEmpty())
             {
@@ -100,10 +105,83 @@ public class RegistrationActivityTwo extends AppCompatActivity {
             e.printStackTrace();
         }
         try {
-            sele_subusered.setText(getIntent().getStringExtra("com_name"));
+           // sele_subusered.setText(getIntent().getStringExtra("com_name"));
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+        //*********************************************************************
+        //***************************************************
+        passworded.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int DRAWABLE_LEFT = 0;
+                final int DRAWABLE_TOP = 1;
+                final int DRAWABLE_RIGHT = 2;
+                final int DRAWABLE_BOTTOM = 3;
+
+                if(event.getAction() == MotionEvent.ACTION_UP) {
+                    if(event.getRawX() >= (passworded.getRight() - passworded.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                        // your action here
+
+
+                        if (passworded.getTransformationMethod().getClass().getSimpleName() .equals("PasswordTransformationMethod")) {
+                            passworded.setTransformationMethod(new SingleLineTransformationMethod());
+                            passworded.setCompoundDrawablesWithIntrinsicBounds( 0, 0, R.drawable.toogle_off, 0);
+                        }
+                        else {
+                            passworded.setTransformationMethod(new PasswordTransformationMethod());
+                            passworded.setCompoundDrawablesWithIntrinsicBounds( 0, 0, R.drawable.toogle, 0);
+                        }
+
+                        passworded.setSelection(passworded.getText().length());
+
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+
+//***********************************************************
+        //***************************************************
+        conf_password.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int DRAWABLE_LEFT = 0;
+                final int DRAWABLE_TOP = 1;
+                final int DRAWABLE_RIGHT = 2;
+                final int DRAWABLE_BOTTOM = 3;
+
+                if(event.getAction() == MotionEvent.ACTION_UP) {
+                    if(event.getRawX() >= (conf_password.getRight() - conf_password.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                        // your action here
+
+
+                        if (conf_password.getTransformationMethod().getClass().getSimpleName() .equals("PasswordTransformationMethod")) {
+                            conf_password.setTransformationMethod(new SingleLineTransformationMethod());
+                            conf_password.setCompoundDrawablesWithIntrinsicBounds( 0, 0, R.drawable.toogle_off, 0);
+                        }
+                        else {
+                            conf_password.setTransformationMethod(new PasswordTransformationMethod());
+                            conf_password.setCompoundDrawablesWithIntrinsicBounds( 0, 0, R.drawable.toogle, 0);
+                        }
+
+                        conf_password.setSelection(conf_password.getText().length());
+
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+
+//***********************************************************
+
+
+
+        //************************************************************************************
 
 
         submmbtn.setOnClickListener(new View.OnClickListener() {
@@ -114,25 +192,52 @@ public class RegistrationActivityTwo extends AppCompatActivity {
                     state =  stateed.getText().toString();
                     email =  emailed.getText().toString();
                     password =  passworded.getText().toString();
+                    confirm_password =  conf_password.getText().toString();
                     first_name =  firstnameed.getText().toString();
                     last_name =  lastnameed.getText().toString();
                     comp_name =  companyed.getText().toString();
-                    state =  stateed.getText().toString();
                     buss_type =  buss_typeed.getSelectedItem().toString();
                     state =  stateed.getText().toString();
-                    sele_subser =  sele_subusered.getText().toString();
+                  //  sele_subser =  sele_subusered.getText().toString();
                     pincode =  pincodeed.getText().toString();
 
                     Toast.makeText(RegistrationActivityTwo.this, "type"+buss_type, Toast.LENGTH_SHORT).show();
 
-                    if (country.length() != 0 && email.length() != 0 && password.length() != 0 && first_name.length()
-                            != 0 && last_name.length() != 0 && comp_name.length() != 0 && buss_type.length() != 0 &&
-                            sele_subser.length() != 0){
-                    if(buss_type.equals("Manufacturer")) {
-                        RegisteronlyStaff(country, state, email, password, first_name, last_name, comp_name, pincode, "3", sele_subser);
+                    if (country.length() != 0 && email.length() != 0 && password.length() != 0 && confirm_password.length() != 0 && first_name.length()
+                            != 0 && last_name.length() != 0 && comp_name.length() != 0 && buss_type.length() != 0)
+                    {
+                        if (confirm_password.equals(password))
+                        {
+                        if(buss_type.equals("Manufacturer")) {
+
+                            Intent intent = new Intent(RegistrationActivityTwo.this, Registration_Step_1.class);
+                            intent.putExtra("country",country);
+                            intent.putExtra("state",state);
+                            intent.putExtra("email",email);
+                            intent.putExtra("password",password);
+                            intent.putExtra("first_name",first_name);
+                            intent.putExtra("last_name",last_name);
+                            intent.putExtra("comp_name",comp_name);
+                            intent.putExtra("buss_type",buss_type);
+                            intent.putExtra("pincode",pincode);
+
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.anim_slide_in_left,
+                                    R.anim.anim_slide_out_left);
+                            finish();
+
+                            //RegisteronlyStaff(country, state, email, password, first_name, last_name, comp_name,
+                            // pincode, "3", sele_subser);
+                        }else {
+                            Toast.makeText(RegistrationActivityTwo.this, "please register as manufacturer", Toast.LENGTH_SHORT).show();
+                        }
+
                     }else {
-                        Toast.makeText(RegistrationActivityTwo.this, "Working on other please register as manufacturer", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegistrationActivityTwo.this, "Password not match", Toast.LENGTH_SHORT).show();
                     }
+
+                    }else {
+                        Toast.makeText(RegistrationActivityTwo.this, "Please Enter All Field", Toast.LENGTH_SHORT).show();
                     }
                 }catch (Exception e)
                 {
@@ -141,54 +246,49 @@ public class RegistrationActivityTwo extends AppCompatActivity {
                 }
             }
         });
-        countyed.setOnClickListener(new View.OnClickListener() {
+
+        //*****************************************************************************
+
+        countyed.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RegistrationActivityTwo.this, AllCountries.class);
-                dataregistration = new Dataregistration(countyed.getText().toString() ,stateed.getText().toString() , emailed.getText().toString() ,firstnameed.getText().toString() ,lastnameed.getText().toString() ,passworded.getText().toString(),pincodeed.getText().toString() ,companyed.getText().toString() , buss_typeed.getSelectedItemId() , sele_subusered.getText().toString());
-                startActivity(intent);
-                overridePendingTransition(R.anim.anim_slide_in_left,
-                        R.anim.anim_slide_out_left);
-             //   onDestroy();
-               finish();
+            public boolean onTouch(View v, MotionEvent event) {
+                if(MotionEvent.ACTION_UP == event.getAction()) {
+
+                    Intent intent = new Intent(RegistrationActivityTwo.this, AllCountries.class);
+                    dataregistration = new Dataregistration(countyed.getText().toString() ,stateed.getText().toString() ,
+                            emailed.getText().toString() ,firstnameed.getText().toString() ,lastnameed.getText().toString()
+                            ,passworded.getText().toString(),pincodeed.getText().toString() ,companyed.getText().toString() ,
+                            buss_typeed.getSelectedItemId());
+                    //sele_subusered.getText().toString()
+
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.anim_slide_in_left,
+                            R.anim.anim_slide_out_left);
+                    //   onDestroy();
+                    finish();
+
+                }
+
+                return true; // return is important...
             }
         });
 
-
-
-        sele_subusered.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RegistrationActivityTwo.this, Registration_Step_1.class);
-                dataregistration = new Dataregistration(countyed.getText().toString() ,stateed.getText().toString() , emailed.getText().toString() ,firstnameed.getText().toString() ,lastnameed.getText().toString() ,passworded.getText().toString(),pincodeed.getText().toString() ,companyed.getText().toString() , buss_typeed.getSelectedItemId() , sele_subusered.getText().toString());
-                startActivity(intent);
-                overridePendingTransition(R.anim.anim_slide_in_left,
-                        R.anim.anim_slide_out_left);
-                finish();
-            }
-        });
+//*******************************************************************************************
+//        sele_subusered.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(RegistrationActivityTwo.this, Registration_Step_1.class);
+//                dataregistration = new Dataregistration(countyed.getText().toString() ,stateed.getText().toString() , emailed.getText().toString() ,firstnameed.getText().toString() ,lastnameed.getText().toString() ,passworded.getText().toString(),pincodeed.getText().toString() ,companyed.getText().toString() , buss_typeed.getSelectedItemId() , sele_subusered.getText().toString());
+//                startActivity(intent);
+//                overridePendingTransition(R.anim.anim_slide_in_left,
+//                        R.anim.anim_slide_out_left);
+//                finish();
+//            }
+//        });
 
 
     }
-//    @Override
-//    public void onSaveInstanceState(Bundle savedInstanceState) {
-//        super.onSaveInstanceState(savedInstanceState);
-//        // Save UI state changes to the savedInstanceState.
-//        // This bundle will be passed to onCreate if the process is
-//        // killed and restarted.
-//        savedInstanceState.putString("countyed", countyed.getText().toString());
-//        savedInstanceState.putString("stateed", stateed.getText().toString());
-//        savedInstanceState.putString("emailed", emailed.getText().toString());
-//        savedInstanceState.putString("passworded", passworded.getText().toString());
-//        savedInstanceState.putString("firstnameed", firstnameed.getText().toString());
-//        savedInstanceState.putString("lastnameed", lastnameed.getText().toString());
-//        savedInstanceState.putString("companyed", companyed.getText().toString());
-//        savedInstanceState.putString("pincodeed", pincodeed.getText().toString());
-//        savedInstanceState.putString("sele_subusered",sele_subusered.getText().toString());
-//        savedInstanceState.putInt("buss_typeed",buss_typeed.getSelectedItemPosition());
-//      //  savedInstanceState.putString("MyString", "Welcome back to Android");
-//        // etc.
-//    }
+
 
 
     @Override
@@ -197,26 +297,6 @@ public class RegistrationActivityTwo extends AppCompatActivity {
         super.onDestroy();
     }
 
-//    @Override
-//    public void onRestoreInstanceState(Bundle savedInstanceState) {
-//        super.onRestoreInstanceState(savedInstanceState);
-//        // Restore UI state from the savedInstanceState.
-//        // This bundle has also been passed to onCreate.
-//        Toast.makeText(RegistrationActivityTwo.this, "Restoring", Toast.LENGTH_SHORT).show();
-//      countyed.setText(savedInstanceState.getString("countyed"));
-//     stateed.setText( savedInstanceState.getString("stateed"));
-//      emailed.setText(savedInstanceState.getString("emailed"));
-//       passworded.setText(savedInstanceState.getString("passworded"));
-//      firstnameed.setText(savedInstanceState.getString("firstnameed"));
-//      lastnameed.setText(savedInstanceState.getString("lastnameed"));
-//      companyed.setText( savedInstanceState.getString("companyed"));
-//      pincodeed.setText(savedInstanceState.getString("pincodeed"));
-//        sele_subusered.setText(savedInstanceState.getString("sele_subusered"));
-//        buss_typeed.setSelection(savedInstanceState.getInt("buss_typeed"));
-////        double myDouble = savedInstanceState.getDouble("myDouble");
-////        int myInt = savedInstanceState.getInt("MyInt");
-////        String myString = savedInstanceState.getString("MyString");
-//    }
 
     @Override
     protected void onRestart() {
@@ -230,7 +310,8 @@ public class RegistrationActivityTwo extends AppCompatActivity {
         super.onStart();
     }
 
-    private void RegisteronlyStaff(String country, String state, String email, String password, String first_name, String last_name, String comp_name, String pincode, String buss_type, String sele_subser) {
+    private void RegisteronlyStaff(String country, String state, String email, String password, String first_name,
+                                   String last_name, String comp_name, String pincode, String buss_type, String sele_subser) {
         progressDialog = new ProgressDialog(RegistrationActivityTwo.this);
         progressDialog.setMax(1000);
         progressDialog.setTitle("Registering Please Wait");
