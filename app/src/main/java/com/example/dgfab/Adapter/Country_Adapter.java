@@ -104,7 +104,7 @@ public class Country_Adapter extends RecyclerView.Adapter<Country_Adapter.MyView
 
         Log.e("Flag_adapter", ""+get_services_data.getFlag());
 
-       // GlideToVectorYou.justLoadImage((Activity) mContext, Uri.parse(get_services_data.getFlag()), holder.ser_image);
+        GlideToVectorYou.justLoadImage((Activity) mContext, Uri.parse(get_services_data.getFlag()), holder.ser_image);
 
 
         //*********************************************************************************************
