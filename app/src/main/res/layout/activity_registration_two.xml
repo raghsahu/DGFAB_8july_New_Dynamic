@@ -76,7 +76,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.15"
                         android:editable="false"
-                        android:hint="United States"
+                        android:hint="Country"
                         android:textColor="#000"
                         android:textSize="15dp" />
 
@@ -104,6 +104,102 @@
                         android:hint="States"
                         android:textColor="#000"
                         android:textSize="15dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_weight="0.85"
+                        android:src="@drawable/earth" />
+
+                    <Spinner
+                        android:id="@+id/et_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:hint="City"
+                        android:entries="@array/city_name"
+                        android:textColor="#000"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_weight="0.85"
+                        android:src="@drawable/earth" />
+
+                    <EditText
+                        android:id="@+id/pinedt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:hint="Pin"
+                        android:textColor="#000"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_weight="0.85"
+                        android:src="@drawable/personn" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+
+                        <EditText
+                            android:id="@+id/firstnameedt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.50"
+                            android:hint="First Name"
+                            android:textColor="#000"
+                            android:textSize="15dp" />
+
+                        <EditText
+                            android:id="@+id/lastnameedt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.50"
+                            android:hint="Last Name"
+                            android:textColor="#000"
+                            android:textSize="15dp" />
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -188,48 +284,6 @@
                 </LinearLayout>
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:layout_weight="0.85"
-                        android:src="@drawable/personn" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.15"
-                        android:orientation="horizontal"
-                        android:weightSum="1">
-
-
-                        <EditText
-                            android:id="@+id/firstnameedt"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.50"
-                            android:hint="First Name"
-                            android:textColor="#000"
-                            android:textSize="15dp" />
-
-                        <EditText
-                            android:id="@+id/lastnameedt"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.50"
-                            android:hint="Last Name"
-                            android:textColor="#000"
-                            android:textSize="15dp" />
-                    </LinearLayout>
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -256,30 +310,7 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:layout_weight="0.85"
-                        android:src="@drawable/earth" />
-
-                    <EditText
-                        android:id="@+id/pinedt"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.15"
-                        android:hint="Pin"
-                        android:textColor="#000"
-                        android:textSize="15dp" />
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:padding="10dp"
