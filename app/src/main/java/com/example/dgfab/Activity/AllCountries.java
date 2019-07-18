@@ -262,45 +262,4 @@ public class AllCountries extends AppCompatActivity {
 
     }
 
-//    private void GetAllCountries() {
-//
-//
-//        progressDialog = new ProgressDialog(this);
-//        progressDialog.setMax(1000);
-//        progressDialog.setTitle("Getting Country");
-//        progressDialog.setCancelable(false);
-//        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-//        progressDialog.show();
-//        OkHttpClient client = new OkHttpClient.Builder()
-//                .connectTimeout(100, TimeUnit.SECONDS)
-//                .readTimeout(100,TimeUnit.SECONDS).build();
-//        Retrofit RetroLogin = new Retrofit.Builder()
-//                .baseUrl(REtroURls.GetCountry).client(client).addConverterFactory(GsonConverterFactory.create())
-//                .build();
-//        Api AbloutApi = RetroLogin.create(Api.class);
-//
-//        Call<Example> Get_all_country = AbloutApi.Get_Country_Call();
-//        Get_all_country.enqueue(new Callback<Example>() {
-//            @Override
-//            public void onResponse(Call<Example> call, Response<Example> response) {
-//                 Log.e("getcountry" , ""+response.toString());
-//                if (response!=null){
-//                    Log.e("Get_country",""+response.body().getName());
-//
-//                    Toast.makeText(AllCountries.this, "true", Toast.LENGTH_SHORT).show();
-//
-//                }
-//
-//                progressDialog.dismiss();
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Example> call, Throwable t) {
-//                progressDialog.dismiss();
-//                Log.e("error_country",t.getMessage());
-//                //Toast.makeText(AllCountries.this, ""+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-//               // Toast.makeText(AllCountries.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
 }

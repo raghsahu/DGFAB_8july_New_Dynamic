@@ -56,6 +56,7 @@ public class Registration_Step_1 extends AppCompatActivity {
 
     String country,email,password,first_name,last_name,comp_name,buss_type,state,pincode;
      SessionManager sessionManager;
+     String city;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +107,7 @@ public class Registration_Step_1 extends AppCompatActivity {
             comp_name=getIntent().getStringExtra("comp_name");
             buss_type=getIntent().getStringExtra("buss_type");
             pincode=getIntent().getStringExtra("pincode");
+            city=getIntent().getStringExtra("city");
         }catch (Exception e){
             Log.e("No Data","Inent null data");
         }
@@ -140,7 +142,7 @@ public class Registration_Step_1 extends AppCompatActivity {
 //                    startActivity(intent);
 
                 RegisteronlyStaff(country, state, email, password, first_name, last_name, comp_name,
-                 pincode, "3", ConcatService);
+                 pincode, "3", ConcatService,city);
 
             }
         });
@@ -152,7 +154,8 @@ public class Registration_Step_1 extends AppCompatActivity {
     }
 //***************************************************************************************************
     private void RegisteronlyStaff(String country, String state, String email, String password, String first_name,
-                                   String last_name, String comp_name, String pincode, String business_type, String concatService) {
+                                   String last_name, String comp_name, String pincode, String business_type,
+                                   String concatService, String city) {
 
         progressDialog = new ProgressDialog(Registration_Step_1.this);
         progressDialog.setMax(1000);
@@ -168,7 +171,7 @@ public class Registration_Step_1 extends AppCompatActivity {
                 .build();
         Api AbloutApi = RetroLogin.create(Api.class);
         Call<Registration_only> get_aboutCall = AbloutApi.REGISTRATION_ONLY_CALL(country,state ,email,password,first_name,
-                last_name,comp_name,pincode,business_type,concatService);
+                last_name,comp_name,pincode,business_type,concatService,city);
         get_aboutCall.enqueue(new Callback<Registration_only>() {
             @Override
             public void onResponse(Call<Registration_only> call, Response<Registration_only> response) {

@@ -36,7 +36,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class ManuLoginActivity extends AppCompatActivity {
     EditText email ,password;
-    TextView regagain;
+    TextView regagain,tv_forgetpw;
     Button LogIn;
 
     SessionManager sessionManager;
@@ -53,6 +53,7 @@ public class ManuLoginActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         regagain = findViewById(R.id.regagain);
         LogIn=findViewById(R.id.logmid);
+        tv_forgetpw=findViewById(R.id.tv_forgetpw);
 
 
         //***************************************************
@@ -89,10 +90,6 @@ public class ManuLoginActivity extends AppCompatActivity {
 
 //***********************************************************
 
-
-
-
-
         //**************************************************************
         regagain.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +100,17 @@ public class ManuLoginActivity extends AppCompatActivity {
                         R.anim.anim_slide_out_left);
             }
         });
+        //*********************************************************************************
+        tv_forgetpw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ManuLoginActivity.this , Forget_Password.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.anim_slide_in_left,
+                        R.anim.anim_slide_out_left);
+            }
+        });
+        //***************************************************************************
         LogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,7 +143,7 @@ public class ManuLoginActivity extends AppCompatActivity {
                 URL url = new URL("https://sdltechserv.in/dgfeb/api/api/login");
 
                 JSONObject postDataParams = new JSONObject();
-                postDataParams.put("email", email.getText().toString());
+                postDataParams.put("mobile", email.getText().toString());
                 postDataParams.put("password", password.getText().toString());
 
 

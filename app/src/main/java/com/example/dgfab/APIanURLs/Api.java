@@ -1,8 +1,8 @@
 package com.example.dgfab.APIanURLs;
 
 import com.example.dgfab.AllParsings.Add_Services;
-import com.example.dgfab.AllParsings.CreatedStaff;
-import com.example.dgfab.AllParsings.Example;
+import com.example.dgfab.AllParsings.All_Country_State;
+import com.example.dgfab.AllParsings.All_State_found_responce;
 import com.example.dgfab.AllParsings.GET_Services;
 import com.example.dgfab.AllParsings.Registration_only;
 
@@ -56,12 +56,17 @@ public interface Api {
             @Field("company_name") String company_name,
             @Field("pin") String pin,
             @Field("user_type") String buss_type,
-            @Field("sub_type") String sele_subser);
+            @Field("sub_type") String sele_subser,
+            @Field("city") String city);
 
 
-    @GET(REtroURls.GetCountry_url)
-    Call<Example> Get_Country_Call();
+    @GET(REtroURls.Country_url)
+    Call<All_Country_State> Get_Country_Call();
 
+    @FormUrlEncoded
+    @POST(REtroURls.State_url)
+    Call<All_State_found_responce> Get_State_Call(
+            @Field("country_id") String city);
 
 
 // @FormUrlEncoded

@@ -70,15 +70,16 @@
                         android:layout_weight="0.85"
                         android:src="@drawable/earth" />
 
-                    <EditText
+                    <AutoCompleteTextView
                         android:id="@+id/countryedt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.15"
-                        android:editable="false"
                         android:hint="Country"
                         android:textColor="#000"
                         android:textSize="15dp" />
+
+                    <requestFocus />
 
                 </LinearLayout>
 
@@ -96,7 +97,7 @@
                         android:layout_weight="0.85"
                         android:src="@drawable/earth" />
 
-                    <EditText
+                    <AutoCompleteTextView
                         android:id="@+id/stateedt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -121,7 +122,7 @@
                         android:layout_weight="0.85"
                         android:src="@drawable/earth" />
 
-                    <Spinner
+                    <AutoCompleteTextView
                         android:id="@+id/et_city"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

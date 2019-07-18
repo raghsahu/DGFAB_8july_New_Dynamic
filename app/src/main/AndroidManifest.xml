@@ -19,32 +19,23 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
-        <activity android:name=".BusinessDashboard.StaffActivity"></activity>
+        <activity android:name=".LoginandReg.Forget_Password"></activity>
+        <activity android:name=".BusinessDashboard.StaffActivity" />
         <activity android:name=".Activity.Buyer_guest_login.EmailOtpActivity" />
         <activity android:name=".Activity.Buyer_guest_login.Forget_Mobile" />
-        <activity android:name=".Activity.AllCountries"
-            />
+        <activity android:name=".Activity.AllCountries" />
         <activity android:name=".LoginandReg.ManuLoginActivity" />
-        <activity android:name=".BusinessDashboard.Business_Dashboard_Main"
-            />
+        <activity android:name=".BusinessDashboard.Business_Dashboard_Main" />
         <activity android:name=".BusinessDashboard.Business_ProfileActivty" />
         <activity android:name=".LoginandReg.RegistrationActivityTwo" />
-        <activity
-            android:name=".Activity.Buyer_guest_login.OtpActivity"/>
+        <activity android:name=".Activity.Buyer_guest_login.OtpActivity" />
         <activity android:name=".Activity.Registration_Step_1" />
         <activity android:name=".LoginandReg.Registration_pro_1" />
         <activity android:name=".Activity.Buyer_guest_login.Use_reason_Activity" />
-        <activity
-            android:name=".Activity.Buyer_guest_login.PermissionActivity"
-            />
+        <activity android:name=".Activity.Buyer_guest_login.PermissionActivity" />
         <activity android:name=".Buyers.Buyer_Main_Navigation" />
-        <activity
-            android:name=".Activity.Buyer_guest_login.LoginActivity"
-            />
-        <activity
-            android:name=".Activity.SplashScreens.App_Intro" />
+        <activity android:name=".Activity.Buyer_guest_login.LoginActivity" />
+        <activity android:name=".Activity.SplashScreens.App_Intro" />
         <activity
             android:name=".Activity.SplashScreens.Splash_Activity"
             android:theme="@style/AppTheme.Splash">

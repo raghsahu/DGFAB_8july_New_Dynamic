@@ -66,6 +66,7 @@
     <string name="login_mobile_number">We will send a 6 digit verification \n code to this mobile number</string>
     <string name="email_mobile_text">We will send your Mobile no \n your Email Id</string>
     <string name="forget_mobile_number">We will send a verification \n code to this Email Id</string>
+    <string name="forget_email_id">We will send a Password \n to your registered Email Id</string>
     <string name="login_code_text_details">Enter the 6 digit verification code \n send to via SMS</string>
     <string name="Email_code_text_details">Enter the 6 digit verification code \n send to via Email</string>
     <string name="primary_reason">What is your primary reason for sourcing?</string>
