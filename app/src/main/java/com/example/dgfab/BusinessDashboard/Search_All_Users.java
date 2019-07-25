@@ -3,6 +3,7 @@ package com.example.dgfab.BusinessDashboard;
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -47,9 +48,11 @@ public class Search_All_Users extends AppCompatActivity {
         searc_all = findViewById(R.id.searc_all);
         sessionManager = new SessionManager(this);
         GETALLUSERS("");
-        LinearLayoutManager llm = new LinearLayoutManager(this);
+       /* LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
-        search_all.setLayoutManager(llm);
+        search_all.setLayoutManager(llm);*/
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(Search_All_Users.this,2);
+        search_all.setLayoutManager(gridLayoutManager);
         searc_all.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {

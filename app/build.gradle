@@ -63,6 +63,7 @@ dependencies {
     implementation 'com.github.ar-android:AndroidSvgLoader:1.0.2'
     implementation 'com.pixplicity.sharp:library:1.1.0'
     implementation 'com.github.2coffees1team:GlideToVectorYou:v1.0'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 
 
 }

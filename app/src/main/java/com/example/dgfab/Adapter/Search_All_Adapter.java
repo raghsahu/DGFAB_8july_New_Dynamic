@@ -66,7 +66,7 @@ public class Search_All_Adapter  extends RecyclerView.Adapter<Search_All_Adapter
         public MyViewHolder(View itemView) {
             super(itemView);
             mname = (TextView) itemView.findViewById(R.id.mname);
-            bra_bus =  itemView.findViewById(R.id.bra_bus);
+         //   bra_bus =  itemView.findViewById(R.id.bra_bus);
             manu_img =  itemView.findViewById(R.id.manu_img);
             conbtn =  itemView.findViewById(R.id.conbtn);
 
@@ -112,7 +112,7 @@ public class Search_All_Adapter  extends RecyclerView.Adapter<Search_All_Adapter
 //            }
 //        });
         holder.mname.setText(searching_manufacturers_data.getName());
-        holder.bra_bus.setText(searching_manufacturers_data.getCity());
+//        holder.bra_bus.setText(searching_manufacturers_data.getCity());
 holder.conbtn.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {

@@ -75,7 +75,7 @@ public class MyAllSentRequestAdapter extends RecyclerView.Adapter<MyAllSentReque
     @Override
     public MyAllSentRequestAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_manufacurers, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.newdesign, parent, false);
         return new MyAllSentRequestAdapter.MyViewHolder(view);
     }
 
@@ -118,7 +118,7 @@ public class MyAllSentRequestAdapter extends RecyclerView.Adapter<MyAllSentReque
 //            }
 //        });
         holder.mname.setText(searching_manufacturers_data.getName());
-        holder.bra_bus.setText(searching_manufacturers_data.getCity());
+//        holder.bra_bus.setText(searching_manufacturers_data.getCity());
         holder.conbtn.setText("Request Sent");
         holder.conbtn.setOnClickListener(new View.OnClickListener() {
             @Override
