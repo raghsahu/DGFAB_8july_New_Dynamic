@@ -11,10 +11,10 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dgfab.BusinessDashboard.Business_Dashboard_Main;
 import com.example.dgfab.Buyers.Buyer_Main_Navigation;
-import com.example.dgfab.LoginandReg.Registration_pro_1;
+import com.example.dgfab.LoginandReg.ManuLoginActivity;
 import com.example.dgfab.R;
-import com.example.dgfab.RegistrationActivityTwo;
 
 public class Use_reason_Activity extends AppCompatActivity {
     TextView allow_reason, tv_skip;
@@ -32,6 +32,7 @@ public class Use_reason_Activity extends AppCompatActivity {
         businees=findViewById(R.id.bsneed);
         personal=findViewById(R.id.persona);
         tv_skip=findViewById(R.id.tv_skip);
+
 
         tv_skip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,12 +67,17 @@ public class Use_reason_Activity extends AppCompatActivity {
                 }
             }
         });
+        //****************card view clic radio**************************************
+
+
+//************************************************************
         allow_reason.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(bsrad.isChecked()) {
-                 //   perrad.setChecked(false);
-                    Intent in = new Intent(Use_reason_Activity.this, RegistrationActivityTwo.class);
+
+                    Intent in = new Intent(Use_reason_Activity.this, ManuLoginActivity.class);
+                 //   Intent in = new Intent(Use_reason_Activity.this, Business_Dashboard_Main.class);
                     startActivity(in);
                //     finish();
                     overridePendingTransition(R.anim.anim_slide_in_left,

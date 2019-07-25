@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".RegistrationActivityTwo">
+    tools:context=".LoginandReg.RegistrationActivityTwo">
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_toolbar"
@@ -70,12 +70,39 @@
                         android:layout_weight="0.85"
                         android:src="@drawable/earth" />
 
-                    <EditText
+                    <AutoCompleteTextView
+                        android:id="@+id/countryedt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.15"
-                        android:editable="false"
-                        android:hint="United States"
+                        android:hint="Country"
+                        android:textColor="#000"
+                        android:textSize="15dp" />
+
+                    <requestFocus />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_weight="0.85"
+                        android:src="@drawable/earth" />
+
+                    <AutoCompleteTextView
+                        android:id="@+id/stateedt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:hint="States"
                         android:textColor="#000"
                         android:textSize="15dp" />
 
@@ -93,18 +120,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
                         android:layout_weight="0.85"
-                        android:src="@drawable/email" />
+                        android:src="@drawable/earth" />
 
-                    <EditText
+                    <AutoCompleteTextView
+                        android:id="@+id/et_city"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.15"
-                        android:hint="Email"
+                        android:hint="City"
+                        android:entries="@array/city_name"
                         android:textColor="#000"
                         android:textSize="15dp" />
 
                 </LinearLayout>
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -118,17 +146,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
                         android:layout_weight="0.85"
-                        android:src="@drawable/pass" />
+                        android:src="@drawable/earth" />
 
                     <EditText
+                        android:id="@+id/pinedt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.15"
-                        android:hint="Password"
+                        android:hint="Pin"
                         android:textColor="#000"
                         android:textSize="15dp" />
 
                 </LinearLayout>
+
 
 
                 <LinearLayout
@@ -154,6 +184,7 @@
 
 
                         <EditText
+                            android:id="@+id/firstnameedt"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.50"
@@ -162,6 +193,7 @@
                             android:textSize="15dp" />
 
                         <EditText
+                            android:id="@+id/lastnameedt"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.50"
@@ -171,6 +203,87 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_weight="0.85"
+                        android:src="@drawable/email" />
+
+                    <EditText
+                        android:id="@+id/emailedt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:hint="Email"
+                        android:textColor="#000"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_weight="0.85"
+                        android:src="@drawable/pass" />
+
+                    <EditText
+                        android:id="@+id/passwordedt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:drawableRight="@drawable/toogle"
+                        android:textColor="#000"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_weight="0.85"
+                        android:src="@drawable/pass" />
+
+                    <EditText
+                        android:id="@+id/conf_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:hint="Confirm Password"
+                        android:inputType="textPassword"
+                        android:drawableRight="@drawable/toogle"
+                        android:textColor="#000"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
 
 
                 <LinearLayout
@@ -188,6 +301,7 @@
                         android:src="@drawable/compa" />
 
                     <EditText
+                        android:id="@+id/companyedt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.15"
@@ -198,7 +312,9 @@
                 </LinearLayout>
 
 
+
                 <LinearLayout
+                    android:padding="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
@@ -213,18 +329,19 @@
                         android:src="@drawable/typ" />
 
                     <Spinner
+
+                        android:entries="@array/main_cat"
                         android:id="@+id/busCate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.15"
-                        android:hint="Company Name"
                         android:textColor="#000"
                         android:textSize="15dp" />
 
                 </LinearLayout>
 
-
                 <LinearLayout
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
@@ -238,18 +355,20 @@
                         android:layout_weight="0.85"
                         android:src="@drawable/typ" />
 
-                    <Spinner
+                    <EditText
                         android:id="@+id/busSubCat"
+                        android:editable="false"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.15"
-                        android:hint="Company Name"
+                        android:hint="Select Sub Bussiness Type"
                         android:textColor="#000"
                         android:textSize="15dp" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -274,7 +393,8 @@
                     android:orientation="vertical">
 
                     <Button
-                        android:text="Submit"
+                        android:id="@+id/nextbtn"
+                        android:text="Next"
                         android:textColor="#fff"
                         android:background="@drawable/bt_background"
                         android:layout_width="match_parent"

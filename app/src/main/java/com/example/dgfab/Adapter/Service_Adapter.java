@@ -10,8 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dgfab.AllParsings.GET_Services_Data;
 import com.example.dgfab.R;
@@ -23,21 +25,15 @@ import java.util.List;
 public class Service_Adapter  extends RecyclerView.Adapter<Service_Adapter.MyViewHolder> {
     private Context mContext;
     public static ArrayList<String> Servicenames = new ArrayList<>();
+    public static ArrayList<String> Service_names = new ArrayList<>();
     int pos_try;
     String name, email, com_name, password, address, mobile;
     DownloadManager.Request request;
     StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
     String document;
-
+    int chky,chkn;
     public List<GET_Services_Data> Doc;
     private ProgressDialog progressBar;
-
-
-//    public Rec_Reports_adapter(Context gallery_act, List<Reports> Doc) {
-//        mContext = gallery_act;
-//      this.Doc = Doc;
-//    }
-
 
     public Service_Adapter(Context context, List<GET_Services_Data> doc) {
         mContext=context;
@@ -60,11 +56,6 @@ public class Service_Adapter  extends RecyclerView.Adapter<Service_Adapter.MyVie
         }
     }
 
-//    public Rec_Reports_adapter(List<Reports> reportss) {
-//        this.Doc = reportss;
-//    }
-
-
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -79,23 +70,20 @@ public class Service_Adapter  extends RecyclerView.Adapter<Service_Adapter.MyVie
     public void onBindViewHolder( final MyViewHolder holder,  final   int position) {
         final GET_Services_Data get_services_data ;
         this.pos_try = position;
-//        name = ((Activity) mContext).getIntent().getStringExtra("name");
-//        email = ((Activity) mContext).getIntent().getStringExtra("email");
-//        com_name = ((Activity) mContext).getIntent().getStringExtra("com_name");
-//        password = ((Activity) mContext).getIntent().getStringExtra("password");
-//        address = ((Activity) mContext).getIntent().getStringExtra("address");
-//        mobile = ((Activity) mContext).getIntent().getStringExtra("mobile");
-//        Log.e("name", "" + name);
-//        Log.e("email", "" + email);
-//        Log.e("com_name", "" + com_name);
-//        Log.e("password", "" + password);
-//        Log.e("address", "" + address);
-//        Log.e("mobile", "" + mobile);
+
         get_services_data = Doc.get(pos_try);
         Log.e("Position","is "+pos_try);
         document = get_services_data.getService();
         StrictMode.setVmPolicy(builder.build());
-
+//        holder.namechk.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if(isChecked)
+//                {
+//
+//                }
+//            }
+//        });
         holder.name_of_doc.setText(get_services_data.getService());
 //        Glide.with(mContext)
 //                .load("https://sdltechserv.in/dgfeb/uploads/"+get_services_data.getImage())
@@ -113,28 +101,74 @@ public class Service_Adapter  extends RecyclerView.Adapter<Service_Adapter.MyVie
 //                    }
 //                })
 //                .into(holder.ser_image);
-        holder.name_of_doc.setOnClickListener(new View.OnClickListener() {
+
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(holder.namechk.isChecked() == false) {
+//                    Servicenames.add(get_services_data.getId());
+//                    Service_names.add(get_services_data.getService());
+//                    holder.namechk.setChecked(true);
+//
+//                    Toast.makeText(mContext, "services "+Servicenames, Toast.LENGTH_SHORT).show();
+//                    Log.e("Services_add",""+Servicenames);
+//                    Log.e("Services_add_name",""+Service_names);
+//                }
+//                else {
+//                    Servicenames.remove(get_services_data.getId());
+//                    Service_names.remove(get_services_data.getService());
+//                    holder.namechk.setChecked(false);
+//
+//                    Log.e("Services_update",""+Servicenames);
+//                }
+//            }
+//        });
+//        holder.name_of_doc.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(holder.namechk.isChecked() == false) {
+//                    Servicenames.add(get_services_data.getId());
+//                    Service_names.add(get_services_data.getService());
+//                    holder.namechk.setChecked(true);
+//
+//                    Toast.makeText(mContext, "services "+Servicenames, Toast.LENGTH_SHORT).show();
+//                    Log.e("Services_add",""+Servicenames);
+//                    Log.e("Services_add_name",""+Service_names);
+//                }else {
+//                    Servicenames.remove(get_services_data.getId());
+//                    Service_names.remove(get_services_data.getService());
+//                    holder.namechk.setChecked(false);
+//
+//                    Log.e("Services_update",""+Servicenames);
+//                }
+//
+//            }
+//        });
+
+
+        holder.namechk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(holder.namechk.isChecked() == false) {
+                if(holder.namechk.isChecked() == true) {
                     Servicenames.add(get_services_data.getId());
+                    Service_names.add(get_services_data.getService());
                     holder.namechk.setChecked(true);
+
+                    Toast.makeText(mContext, "services "+Servicenames, Toast.LENGTH_SHORT).show();
+                    Log.e("Services_add",""+Servicenames);
+                    Log.e("Services_add_name",""+Service_names);
                 }else {
                     Servicenames.remove(get_services_data.getId());
+                    Service_names.remove(get_services_data.getService());
                     holder.namechk.setChecked(false);
+
+                    Log.e("Services_update",""+Servicenames);
                 }
-//                Intent intent = new Intent(v.getContext() , Registration_Step_3.class);
-//                intent.putExtra("name" , name);
-//                intent.putExtra("com_name" , com_name);
-//                intent.putExtra("email" , email);
-//                intent.putExtra("password" , password);
-//                intent.putExtra("address" , address);
-//                intent.putExtra("mobile" , mobile);
-//                v.getContext().startActivity(intent);
+
             }
         });
 
-        // notifyDataSetChanged();
+
     }
 
 

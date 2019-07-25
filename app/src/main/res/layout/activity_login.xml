@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
@@ -122,8 +121,46 @@
                 android:maxLength="13"
                 android:textColor="@color/colorTextBlack" />
 
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pincode"
+                android:textColor="#535151"
+                android:textSize="11dp" />
+
+
+            <EditText
+
+                android:id="@+id/txtpincode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textColor="@color/colorTextBlack" />
 
         </LinearLayout>
+
+
+
+
+        <TextView
+            android:id="@+id/forget_mobile"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/colorPrimary"
+            android:textAlignment="center"
+            android:text="Forget Mobile number?"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
 
 

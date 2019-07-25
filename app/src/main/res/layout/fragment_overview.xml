@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+  >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/tenpro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:weightSum="1"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="0.70"
+                    android:id="@+id/tentxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"
+                    android:gravity="left|center"
+                    android:text="Tender Running"
+                    android:textColor="#000"
+                    android:textSize="15dp"
+                    android:textStyle="normal" />
+                    <ImageView
+                        android:layout_gravity="left"
+                        android:src="@drawable/edit_icon"
+                    android:id="@+id/edtx"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp" />
+                </LinearLayout>
+                <EditText
+                    android:background="#A8A1A1"
+                    android:editable="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="left"
+                    android:text="No Tender "
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+            <LinearLayout
+                android:weightSum="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="0.70"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"
+                    android:gravity="left|center"
+                    android:text="Email Id"
+                    android:textColor="#000"
+                    android:textSize="15dp"
+                    android:textStyle="normal" />
+                <ImageView
+                    android:src="@drawable/edit_icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"
+                    android:gravity="left|center"
+                    android:text="Email Id"
+                    android:textColor="#000"
+                    android:textSize="15dp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+                <EditText
+                    android:id="@+id/memail"
+                    android:background="#a8a1a1"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="left"
+                    android:text="ramsharma@gmail.com"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:weightSum="1"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="0.40"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"
+
+                    android:gravity="left|center"
+                    android:text="Monthly Average Purchase"
+                    android:textColor="#000"
+                    android:textSize="15dp"
+                    android:textStyle="normal" />
+
+                    <ImageView
+                        android:layout_weight="0.50"
+                        android:src="@drawable/edit_icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:gravity="left|center"
+                        android:text="Email Id"
+                        android:textColor="#000"
+                        android:textSize="15dp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+                <EditText
+                    android:id="@+id/msalary"
+                    android:background="#a8a1a1"
+                    android:editable="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="left"
+                    android:text="1,00,000"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:weightSum="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView
+                    android:layout_weight="0.50"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"
+                    android:gravity="left|center"
+                    android:text="Mobile No"
+                    android:textColor="#000"
+                    android:textSize="15dp"
+                    android:textStyle="normal" />
+
+                    <ImageView
+                        android:layout_weight="0.50"
+                        android:src="@drawable/edit_icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:gravity="left|center"
+                        android:text="Email Id"
+                        android:textColor="#000"
+                        android:textSize="15dp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+                
+                <EditText
+                    android:background="#a8a1a1"
+                    android:editable="false"
+                    android:id="@+id/mmobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="left"
+                    android:text="9876543210"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:weightSum="1"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="0.50"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"
+                    android:gravity="left|center"
+                    android:text="Pin Code"
+                    android:textColor="#000"
+                    android:textSize="15dp"
+                    android:textStyle="normal" />
+                    <ImageView
+                        android:layout_weight="0.50"
+                        android:src="@drawable/edit_icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:gravity="left|center"
+                        android:text="Email Id"
+                        android:textColor="#000"
+                        android:textSize="15dp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+                <EditText
+                    android:background="#a8a1a1"
+                    android:editable="false"
+                    android:id="@+id/mpincode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="left"
+                    android:text="450331"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/copx"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:weightSum="1"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="0.50"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"
+                    android:gravity="left|center"
+                    android:text="Company Name"
+                    android:textColor="#000"
+                    android:textSize="15dp"
+                    android:textStyle="normal" />
+
+                    <ImageView
+                        android:layout_weight="0.50"
+                        android:src="@drawable/edit_icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:gravity="left|center"
+                        android:text="Email Id"
+                        android:textColor="#000"
+                        android:textSize="15dp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+                <EditText
+                    android:background="#a8a1a1"
+                    android:editable="false"
+                    android:id="@+id/mcomp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="left"
+                    android:text="Footwear Dealer"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mdname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:weightSum="1"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="0.40"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"
+                    android:gravity="left|center"
+                    android:text="MD Name"
+                    android:textColor="#000"
+                    android:textSize="15dp"
+                    android:textStyle="normal" />
+
+
+                    <ImageView
+                        android:layout_weight="0.50"
+                        android:src="@drawable/edit_icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:gravity="left|center"
+                        android:text="Email Id"
+                        android:textColor="#000"
+                        android:textSize="15dp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+                <EditText
+                    android:background="#a8a1a1"
+                    android:editable="false"
+                    android:id="@+id/mmdname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="left"
+                    android:text="Vinod"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/team"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:weightSum="1"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="0.50"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"
+                    android:gravity="left|center"
+                    android:text="Team"
+                    android:textColor="#000"
+                    android:textSize="15dp"
+                    android:textStyle="normal" />
+
+
+                    <ImageView
+                        android:layout_weight="0.50"
+                        android:src="@drawable/edit_icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:gravity="left|center"
+                        android:text="Email Id"
+                        android:textColor="#000"
+                        android:textSize="15dp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+                <EditText
+                    android:background="#a8a1a1"
+                    android:editable="false"
+                    android:id="@+id/mteam"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="left"
+                    android:text="100 members"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/comname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:weightSum="1"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="0.50"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"
+                    android:gravity="left|center"
+                    android:text="About Company"
+                    android:textColor="#000"
+                    android:textSize="15dp"
+                    android:textStyle="normal" />
+                    <ImageView
+                        android:layout_weight="0.50"
+                        android:src="@drawable/edit_icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:gravity="left|center"
+                        android:text="Email Id"
+                        android:textColor="#000"
+                        android:textSize="15dp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+                <EditText
+                    android:background="#a8a1a1"
+                    android:editable="false"
+                    android:id="@+id/maboutcomp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="left"
+                    android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. reader will be distracted by the readable content of a page when looking at its layout. and owing to the claims of duty or the obligations of business it will frequently."
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.4"
+                        android:drawablePadding="5dp"
+                        android:gravity="left|center"
+                        android:text="Primary Address"
+                        android:textColor="#000"
+                        android:textSize="15dp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:drawableLeft="@drawable/edit_icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:gravity="center"
+                        android:text="Manage Address"
+                        android:textColor="#2196F3" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/madd"
+                    android:background="#a8a1a1"
+                    android:editable="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="left"
+                    android:text="House no. 123, housing board colony, Indore"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.4"
+                        android:drawablePadding="5dp"
+                        android:gravity="left|center"
+                        android:text="Pin"
+                        android:textColor="#000"
+                        android:textSize="15dp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="0.6"
+                        android:gravity="center"
+                        android:text="Manage Address"
+                        android:textColor="#2196F3"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="left"
+                    android:text="America, India"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

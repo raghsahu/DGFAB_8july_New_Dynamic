@@ -8,7 +8,9 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dgfab.R;
 
@@ -18,6 +20,7 @@ import java.util.List;
 public class PermissionActivity extends AppCompatActivity {
 
     private static final int REQUEST_ID_MULTIPLE_PERMISSIONS =1 ;
+
     TextView Allow_deny;
 
 
@@ -32,17 +35,14 @@ public class PermissionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(checkAndRequestPermissions()) {
+
                     // carry on the normal flow, as the case of  permissions  granted.
                 }
-
-
                 Intent in = new Intent(PermissionActivity.this, Use_reason_Activity.class);
                 startActivity(in);
                 finish();
                 overridePendingTransition(R.anim.anim_slide_in_left,
                         R.anim.anim_slide_out_left);
-
-
             }
         });
 
@@ -72,6 +72,7 @@ public class PermissionActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]),REQUEST_ID_MULTIPLE_PERMISSIONS);
             return false;
         }
+
         return true;
     }
 //**********************************************************************

@@ -9,13 +9,17 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_galleic_cre_staff"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:title="Create Staff" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_improve"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Improve Connections" />
+        <item
+            android:id="@+id/nav_addproduct"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:title="@string/menu_product" />
         <item
             android:id="@+id/nav_tools"
             android:icon="@drawable/ic_menu_manage"
@@ -31,7 +35,7 @@
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
+                android:title="Logout" />
         </menu>
     </item>
 

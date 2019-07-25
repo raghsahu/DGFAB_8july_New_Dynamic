@@ -3,8 +3,8 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/chating"
-        android:title="Chat" />
+        android:icon="@drawable/homee"
+        android:title="Home" />
 
     <item
         android:id="@+id/navigation_feeds"
@@ -13,14 +13,14 @@
 
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_directory"
         android:icon="@drawable/directory"
         android:title="Directories" />
 
     <item
-        android:id="@+id/navigation_dealerlist"
-        android:icon="@drawable/ic_filter_list_black_24dp"
-        android:title="Dealer's list" />
+        android:id="@+id/navigation_my_crm"
+        android:icon="@drawable/company"
+        android:title="My CRM" />
     <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/prm"

@@ -1,0 +1,32 @@
+package com.example.dgfab.AllParsings;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
+public class CommingRequest {
+    @SerializedName("data")
+    @Expose
+    private List<CommingRequestData> data = null;
+    @SerializedName("responce")
+    @Expose
+    private Boolean responce;
+
+    public List<CommingRequestData> getData() {
+        return data;
+    }
+
+    public void setData(List<CommingRequestData> data) {
+        this.data = data;
+    }
+
+    public Boolean getResponce() {
+        return responce;
+    }
+
+    public void setResponce(Boolean responce) {
+        this.responce = responce;
+    }
+
+}

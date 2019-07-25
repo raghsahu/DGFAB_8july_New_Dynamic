@@ -14,31 +14,33 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegistrationActivityTwo"></activity>
-        <activity android:name=".LoginandReg.Main_Registration_1" />
+        <activity android:name=".BusinessDashboard.MyAllRequests"></activity>
+        <activity android:name=".BusinessDashboard.Search_All_Users" />
+        <activity android:name=".LoginandReg.Forget_Password" />
+        <activity android:name=".BusinessDashboard.StaffActivity" />
+        <activity android:name=".Activity.Buyer_guest_login.EmailOtpActivity" />
+        <activity android:name=".Activity.Buyer_guest_login.Forget_Mobile" />
+        <activity android:name=".Activity.AllCountries" />
         <activity android:name=".LoginandReg.ManuLoginActivity" />
-        <activity android:name=".Activity.Buyer_Dashboard.Buyer_Dashboard_Activity" />
-        <activity
-            android:name=".Activity.Buyer_guest_login.OtpActivity"
-            android:theme="@style/AppTheme.Splash" />
+        <activity android:name=".BusinessDashboard.Business_Dashboard_Main" />
+        <activity android:name=".BusinessDashboard.Business_ProfileActivty" />
+        <activity android:name=".LoginandReg.RegistrationActivityTwo" />
+        <activity android:name=".Activity.Buyer_guest_login.OtpActivity" />
         <activity android:name=".Activity.Registration_Step_1" />
         <activity android:name=".LoginandReg.Registration_pro_1" />
         <activity android:name=".Activity.Buyer_guest_login.Use_reason_Activity" />
-        <activity
-            android:name=".Activity.Buyer_guest_login.PermissionActivity"
-            android:theme="@style/AppTheme.Splash" />
+        <activity android:name=".Activity.Buyer_guest_login.PermissionActivity" />
         <activity android:name=".Buyers.Buyer_Main_Navigation" />
-        <activity
-            android:name=".Activity.Buyer_guest_login.LoginActivity"
-            android:theme="@style/AppTheme.Splash" />
-        <activity
-            android:name=".Activity.SplashScreens.App_Intro"
-            android:theme="@style/AppTheme.Splash" />
+        <activity android:name=".Activity.Buyer_guest_login.LoginActivity" />
+        <activity android:name=".Activity.SplashScreens.App_Intro" />
+        <activity android:name=".BusinessDashboard.ProfileActivity"></activity>
+        <activity android:name=".BusinessDashboard.AddProduct_Activity" />
+        <activity android:name=".Connections.SeenProfile"></activity>
         <activity
             android:name=".Activity.SplashScreens.Splash_Activity"
             android:theme="@style/AppTheme.Splash">
