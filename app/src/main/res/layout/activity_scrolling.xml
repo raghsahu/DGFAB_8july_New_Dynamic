@@ -9,7 +9,8 @@
     tools:context=".BusinessDashboard.Business_ProfileActivty"
     tools:showIn="@layout/activity_business__profile_activty">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -40,7 +41,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
@@ -175,7 +176,6 @@
             </LinearLayout>
 
             <RelativeLayout
-                android:visibility="gone"
                 android:id="@+id/main_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -184,7 +184,7 @@
                 <android.support.design.widget.TabLayout
                     android:id="@+id/tab_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:elevation="6dp"
                     android:minHeight="?attr/actionBarSize"
                     app:tabMode="scrollable" />
@@ -195,17 +195,17 @@
                     android:layout_height="match_parent"
                     android:layout_below="@id/tab_layout" />
 
-            </RelativeLayout>
 
+            </RelativeLayout>
+            <FrameLayout
+                android:id="@+id/tryframe"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/large_text"
-
-            />
 
     </LinearLayout>
 

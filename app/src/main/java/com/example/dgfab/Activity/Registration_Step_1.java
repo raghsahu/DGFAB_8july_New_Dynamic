@@ -178,7 +178,7 @@ public class Registration_Step_1 extends AppCompatActivity {
                 progressDialog.dismiss();
                 Log.e("responce is ", "" + response.body().getResponce());
                 Log.e("responce message is ", "" + response.body().getMassage());
-                Log.e("responce id is ", "" + response.body().getMassage().getId());
+              //  Log.e("responce id is ", "" + response.body().getMassage().getId());
 
                 if (response.body().getResponce().booleanValue() == true) {
                    sessionManager.serverEmailLogin(Integer.valueOf(response.body().getMassage().getId()));
@@ -190,6 +190,8 @@ public class Registration_Step_1 extends AppCompatActivity {
                         R.anim.anim_slide_out_left);
                 finish();
                 Toast.makeText(Registration_Step_1.this, "Successful", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(Registration_Step_1.this, "Please click on Services", Toast.LENGTH_SHORT).show();
                 }
 
             }

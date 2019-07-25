@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class All_State_found {
+
     @SerializedName("id")
     @Expose
     private String id;
@@ -15,10 +16,10 @@ public class All_State_found {
     private String countryId;
 
     public All_State_found(String state_id, String state_name) {
-        this.id=state_id;
-        this.name=state_name;
-
+        this.id = state_id;
+        this.name =state_name;
     }
+
 
     public String getId() {
         return id;
@@ -43,4 +44,5 @@ public class All_State_found {
     public void setCountryId(String countryId) {
         this.countryId = countryId;
     }
+
 }

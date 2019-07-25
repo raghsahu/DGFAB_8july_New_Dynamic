@@ -11,6 +11,8 @@ import android.os.AsyncTask;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +20,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +31,13 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
+import com.example.dgfab.Adapter.ProfileAdapter;
+import com.example.dgfab.Business_fragments.AnalyticsFrag;
+import com.example.dgfab.Business_fragments.AverageFrag;
+import com.example.dgfab.Business_fragments.ConnectionsFrag;
+import com.example.dgfab.Business_fragments.IntrestFrag;
+import com.example.dgfab.Business_fragments.OverviewFrag;
+import com.example.dgfab.Business_fragments.ProductFrag;
 import com.example.dgfab.R;
 import com.example.dgfab.SessionManage.SessionManager;
 import com.example.dgfab.Utils.Utilities;
@@ -64,6 +74,7 @@ public class Business_ProfileActivty extends AppCompatActivity {
     ImageView header_cover_image;
     CircleImageView prom;
     File Propic,Coverpic;
+    FrameLayout tryframe;
     int c,p;
     private int RESULT_PICK_IMAGE = 101;
     private int RESULT_LOAD_IMAGE =100;
@@ -80,7 +91,10 @@ public class Business_ProfileActivty extends AppCompatActivity {
         new GET_All_Profile_PICS_From_USer(sessionManager.getUS()).execute();
 
         toolbar_prff = (Toolbar)findViewById(R.id.toolbar_prff);
+        tryframe = findViewById(R.id.tryframe);
+        //toolbar_prff = (Toolbar)findViewById(R.id.toolbar);
         toolbar_prff.setNavigationIcon(R.drawable.home);
+      //  toolbar_prff.setNavigationIcon(R.drawable.home);
         header_cover_image = findViewById(R.id.header_cover_image);
         jetpro = findViewById(R.id.jetpro);
         prom = findViewById(R.id.user_profile_photo);
@@ -117,7 +131,56 @@ public class Business_ProfileActivty extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Connections"));
         tabLayout.addTab(tabLayout.newTab().setText("Interest"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        final ProfileAdapter profileAdapter = new ProfileAdapter(this,getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(profileAdapter);
 
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.tryframe , new OverviewFrag()).commit();
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+                Toast.makeText(Business_ProfileActivty.this, "tab is", Toast.LENGTH_SHORT).show();
+                if(tab.getPosition() == 0)
+                {
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.tryframe , new OverviewFrag()).commit();
+                }else if(tab.getPosition() ==1) {
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.tryframe , new ProductFrag()).commit();
+                }else if(tab.getPosition() ==2) {
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.tryframe , new AverageFrag()).commit();
+                }else if(tab.getPosition() ==3) {
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.tryframe , new AnalyticsFrag()).commit();
+                }else if(tab.getPosition() ==4) {
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.tryframe , new ConnectionsFrag()).commit();
+                }else if(tab.getPosition() ==4) {
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.tryframe , new IntrestFrag()).commit();
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 //        add_com.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {

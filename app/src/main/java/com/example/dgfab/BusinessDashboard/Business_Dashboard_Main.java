@@ -20,11 +20,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dgfab.BusinessDashboard.Business_CRM.CRM_Fragment;
 import com.example.dgfab.BusinessDashboard.Business_HomeDashboard.Home_fragment;
+import com.example.dgfab.LoginandReg.ManuLoginActivity;
 import com.example.dgfab.R;
+import com.example.dgfab.SessionManage.SessionManager;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -32,21 +35,29 @@ public class Business_Dashboard_Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     CircleImageView nav_imageView;
+    public ImageView notion;
     private ActionBar toolbar1;
-
+    SessionManager sessionManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_business__drawer);
-
+        sessionManager = new SessionManager(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        notion = findViewById(R.id.notion);
         setSupportActionBar(toolbar);
         toolbar1 = getSupportActionBar();
 
         //**************************************
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_business_bottom);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
+        notion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Business_Dashboard_Main.this , MyAllRequests.class);
+                startActivity(intent);
+            }
+        });
         // attaching bottom sheet behaviour - hide / show on scroll
         CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigation.getLayoutParams();
         layoutParams.setBehavior(new BottomNavigationBehavior());
@@ -69,20 +80,23 @@ public class Business_Dashboard_Main extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
         View hView =  navigationView.getHeaderView(0);
         TextView nav_user = (TextView)hView.findViewById(R.id.name);
        CircleImageView nav_imageView=(CircleImageView)hView.findViewById(R.id.nav_imageView);
-
+        GETTHEBASEICINFO();
         navigationView.setNavigationItemSelectedListener(this);
 
         nav_imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Business_Dashboard_Main.this, Business_ProfileActivty.class);
+            //    Intent intent = new Intent(Business_Dashboard_Main.this, ProfileActivity.class);
                 startActivity(intent);
             }
         });
+    }
+
+    private void GETTHEBASEICINFO() {
     }
 
     @Override
@@ -127,6 +141,7 @@ public class Business_Dashboard_Main extends AppCompatActivity
                 case R.id.navigation_profile:
                     //toolbar1.setTitle("Profile");
                     return true;
+
             }
             return false;
         }
@@ -181,9 +196,18 @@ public class Business_Dashboard_Main extends AppCompatActivity
 
         } else if (id == R.id.nav_tools) {
 
+        }else if (id == R.id.nav_improve) {
+                Intent TO_All_Search = new Intent(Business_Dashboard_Main.this , Search_All_Users.class);
+                startActivity(TO_All_Search);
+                //toolbar1.setTitle("Profile");
+
+
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
+            sessionManager.serverEmailLogin("null" , "200000");
+            Intent intent = new Intent(Business_Dashboard_Main.this , ManuLoginActivity.class);
+            startActivity(intent);
 
         }
 

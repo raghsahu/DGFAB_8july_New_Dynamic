@@ -29,5 +29,4 @@ public class All_Country_State {
     public void setResponce(Boolean responce) {
         this.responce = responce;
     }
-
 }

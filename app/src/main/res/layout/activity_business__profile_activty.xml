@@ -160,6 +160,7 @@
                 </LinearLayout>
 
                 <RelativeLayout
+                    android:visibility="gone"
                     android:id="@+id/main_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -167,7 +168,7 @@
                     >
 
                     <android.support.design.widget.TabLayout
-                        android:id="@+id/tab_layout"
+                        android:id="@+id/tab_layout12"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:elevation="6dp"
@@ -176,10 +177,10 @@
                         app:tabMode="scrollable" />
 
                     <android.support.v4.view.ViewPager
-                        android:id="@+id/pager"
+                        android:id="@+id/pager1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_below="@id/tab_layout" />
+                        android:layout_below="@id/tab_layout12" />
 
                 </RelativeLayout>
 

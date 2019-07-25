@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +31,7 @@ public class Service_Adapter  extends RecyclerView.Adapter<Service_Adapter.MyVie
     DownloadManager.Request request;
     StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
     String document;
-
+    int chky,chkn;
     public List<GET_Services_Data> Doc;
     private ProgressDialog progressBar;
 
@@ -74,7 +75,15 @@ public class Service_Adapter  extends RecyclerView.Adapter<Service_Adapter.MyVie
         Log.e("Position","is "+pos_try);
         document = get_services_data.getService();
         StrictMode.setVmPolicy(builder.build());
-
+//        holder.namechk.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if(isChecked)
+//                {
+//
+//                }
+//            }
+//        });
         holder.name_of_doc.setText(get_services_data.getService());
 //        Glide.with(mContext)
 //                .load("https://sdltechserv.in/dgfeb/uploads/"+get_services_data.getImage())
@@ -93,30 +102,28 @@ public class Service_Adapter  extends RecyclerView.Adapter<Service_Adapter.MyVie
 //                })
 //                .into(holder.ser_image);
 
-        holder.name_of_doc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(holder.namechk.isChecked() == false) {
-                    Servicenames.add(get_services_data.getId());
-                    Service_names.add(get_services_data.getService());
-                    holder.namechk.setChecked(true);
-
-                    Toast.makeText(mContext, "services "+Servicenames, Toast.LENGTH_SHORT).show();
-                    Log.e("Services_add",""+Servicenames);
-                    Log.e("Services_add_name",""+Service_names);
-                }else {
-                    Servicenames.remove(get_services_data.getId());
-                    Service_names.remove(get_services_data.getService());
-                    holder.namechk.setChecked(false);
-
-                    Log.e("Services_update",""+Servicenames);
-                }
-
-            }
-        });
-
-
-//        holder.namechk.setOnClickListener(new View.OnClickListener() {
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(holder.namechk.isChecked() == false) {
+//                    Servicenames.add(get_services_data.getId());
+//                    Service_names.add(get_services_data.getService());
+//                    holder.namechk.setChecked(true);
+//
+//                    Toast.makeText(mContext, "services "+Servicenames, Toast.LENGTH_SHORT).show();
+//                    Log.e("Services_add",""+Servicenames);
+//                    Log.e("Services_add_name",""+Service_names);
+//                }
+//                else {
+//                    Servicenames.remove(get_services_data.getId());
+//                    Service_names.remove(get_services_data.getService());
+//                    holder.namechk.setChecked(false);
+//
+//                    Log.e("Services_update",""+Servicenames);
+//                }
+//            }
+//        });
+//        holder.name_of_doc.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
 //                if(holder.namechk.isChecked() == false) {
@@ -137,6 +144,29 @@ public class Service_Adapter  extends RecyclerView.Adapter<Service_Adapter.MyVie
 //
 //            }
 //        });
+
+
+        holder.namechk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(holder.namechk.isChecked() == true) {
+                    Servicenames.add(get_services_data.getId());
+                    Service_names.add(get_services_data.getService());
+                    holder.namechk.setChecked(true);
+
+                    Toast.makeText(mContext, "services "+Servicenames, Toast.LENGTH_SHORT).show();
+                    Log.e("Services_add",""+Servicenames);
+                    Log.e("Services_add_name",""+Service_names);
+                }else {
+                    Servicenames.remove(get_services_data.getId());
+                    Service_names.remove(get_services_data.getService());
+                    holder.namechk.setChecked(false);
+
+                    Log.e("Services_update",""+Servicenames);
+                }
+
+            }
+        });
 
 
     }

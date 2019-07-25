@@ -11,5 +11,12 @@ public interface REtroURls {
     public   String Country_url= "getcountry";
     public   String State_url= "getstate";
     public   String City_url= "getcity";
+    public   String Searchusers= "searchusers";
+    public   String Getuserbyid= "getuserbyid";
+    public   String Getreceivedrequest= "getreceivedrequest";
+    public   String Sendrequest= "sendrequest";
+    public   String Acceptdeclinerequest= "acceptdeclinerequest";
+    public   String Getsentrequest= "getsentrequest";
+    public   String Deleterequest= "adeleterequest";
 
 }

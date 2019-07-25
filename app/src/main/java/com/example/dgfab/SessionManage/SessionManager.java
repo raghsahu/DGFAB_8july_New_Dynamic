@@ -78,6 +78,7 @@ public class SessionManager {
         editor.commit();
     }
 
+
     public void setLogin(boolean isLoggedIn) {
         editor.putBoolean(IS_LOGIN, isLoggedIn);
         editor.commit();
@@ -113,6 +114,9 @@ public class SessionManager {
     }
 
     public String getMobile() {
+        return pref.getString(KEY_NAME, null);
+    }
+    public String getU_Type() {
         return pref.getString(KEY_NAME, null);
     }
 

@@ -393,7 +393,7 @@
                     android:orientation="vertical">
 
                     <Button
-                        android:id="@+id/submmbtn"
+                        android:id="@+id/nextbtn"
                         android:text="Next"
                         android:textColor="#fff"
                         android:background="@drawable/bt_background"

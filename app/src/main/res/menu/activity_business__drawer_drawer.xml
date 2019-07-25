@@ -13,6 +13,10 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="Create Staff" />
         <item
+            android:id="@+id/nav_improve"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Improve Connections" />
+        <item
             android:id="@+id/nav_addproduct"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_product" />
@@ -31,7 +35,7 @@
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
+                android:title="Logout" />
         </menu>
     </item>
 

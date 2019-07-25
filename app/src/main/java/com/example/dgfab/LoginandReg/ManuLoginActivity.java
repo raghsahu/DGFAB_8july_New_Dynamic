@@ -47,14 +47,12 @@ public class ManuLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
-
         sessionManager=new SessionManager(ManuLoginActivity.this);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         regagain = findViewById(R.id.regagain);
         LogIn=findViewById(R.id.logmid);
         tv_forgetpw=findViewById(R.id.tv_forgetpw);
-
 
         //***************************************************
         password.setOnTouchListener(new View.OnTouchListener() {
@@ -143,7 +141,7 @@ public class ManuLoginActivity extends AppCompatActivity {
                 URL url = new URL("https://sdltechserv.in/dgfeb/api/api/login");
 
                 JSONObject postDataParams = new JSONObject();
-                postDataParams.put("mobile", email.getText().toString());
+                postDataParams.put("email", email.getText().toString());
                 postDataParams.put("password", password.getText().toString());
 
 
@@ -213,6 +211,7 @@ public class ManuLoginActivity extends AppCompatActivity {
                     }else {
                         Toast.makeText(ManuLoginActivity.this, "Successful", Toast.LENGTH_SHORT).show();
                          sessionManager.serverEmailLogin(jsonObject.getJSONObject("data").getInt("id"));
+                         sessionManager.serverEmailLogin(String.valueOf(jsonObject.getJSONObject("data").getInt("id")) , jsonObject.getJSONObject("data").getString("user_type"));
                          User_ID = jsonObject.getJSONObject("data").getString("id");
                         Shared_Preference.setId(ManuLoginActivity.this,User_ID);
 

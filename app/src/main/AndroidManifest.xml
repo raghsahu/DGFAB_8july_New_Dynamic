@@ -19,7 +19,9 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginandReg.Forget_Password"></activity>
+        <activity android:name=".BusinessDashboard.MyAllRequests"></activity>
+        <activity android:name=".BusinessDashboard.Search_All_Users" />
+        <activity android:name=".LoginandReg.Forget_Password" />
         <activity android:name=".BusinessDashboard.StaffActivity" />
         <activity android:name=".Activity.Buyer_guest_login.EmailOtpActivity" />
         <activity android:name=".Activity.Buyer_guest_login.Forget_Mobile" />
@@ -36,6 +38,9 @@
         <activity android:name=".Buyers.Buyer_Main_Navigation" />
         <activity android:name=".Activity.Buyer_guest_login.LoginActivity" />
         <activity android:name=".Activity.SplashScreens.App_Intro" />
+        <activity android:name=".BusinessDashboard.ProfileActivity"></activity>
+        <activity android:name=".BusinessDashboard.AddProduct_Activity" />
+        <activity android:name=".Connections.SeenProfile"></activity>
         <activity
             android:name=".Activity.SplashScreens.Splash_Activity"
             android:theme="@style/AppTheme.Splash">

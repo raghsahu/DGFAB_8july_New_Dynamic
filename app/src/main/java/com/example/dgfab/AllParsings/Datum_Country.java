@@ -14,11 +14,10 @@ public class Datum_Country {
     @Expose
     private String name;
 
-    public Datum_Country(String country_id, String country_name) {
-        this.id=country_id;
-        this.name=country_name;
-
-
+    public Datum_Country(String country_id, String country_name, String fullname) {
+        this.id =country_id;
+        this.sortname = country_name;
+        this.name = fullname;
     }
 
     public String getId() {
@@ -44,6 +43,5 @@ public class Datum_Country {
     public void setName(String name) {
         this.name = name;
     }
-
 
 }

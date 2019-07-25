@@ -27,8 +27,6 @@ public class Forget_Mobile extends AppCompatActivity {
                 startActivity(in);
                 overridePendingTransition(R.anim.anim_slide_in_left,
                         R.anim.anim_slide_out_left);
-
-
             }
         });
 

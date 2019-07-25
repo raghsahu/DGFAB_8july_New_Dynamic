@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dgfab.BusinessDashboard.Business_Dashboard_Main;
 import com.example.dgfab.Buyers.Buyer_Main_Navigation;
 import com.example.dgfab.LoginandReg.ManuLoginActivity;
 import com.example.dgfab.R;
@@ -76,6 +77,7 @@ public class Use_reason_Activity extends AppCompatActivity {
                 if(bsrad.isChecked()) {
 
                     Intent in = new Intent(Use_reason_Activity.this, ManuLoginActivity.class);
+                 //   Intent in = new Intent(Use_reason_Activity.this, Business_Dashboard_Main.class);
                     startActivity(in);
                //     finish();
                     overridePendingTransition(R.anim.anim_slide_in_left,

@@ -57,12 +57,13 @@
                     android:layout_weight="0.3"
                     android:background="@drawable/bt_bg">
 
-                    <SearchView
+                    <android.support.v7.widget.SearchView
+                        android:id="@+id/allsearch"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:queryHint="Search here">
 
-                    </SearchView>
+                    </android.support.v7.widget.SearchView>
                 </android.support.v7.widget.CardView>
 
             </LinearLayout>

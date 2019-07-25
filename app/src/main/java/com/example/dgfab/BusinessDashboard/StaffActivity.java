@@ -112,7 +112,6 @@ public class StaffActivity extends AppCompatActivity {
         })
                 .create()
                 .show();
-
     }
 
     private Boolean checkPermissions() {
