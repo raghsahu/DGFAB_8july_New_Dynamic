@@ -47,7 +47,8 @@ public class ConnectionsFrag extends Fragment {
         sessionManager = new SessionManager(getActivity());
 
         GETALLRecivedRequests(sessionManager.getUS());
-        return inflater.inflate(R.layout.fragment_connections, container, false);
+//        return inflater.inflate(R.layout.fragment_connections, container, false);
+        return view;
 
     }
 

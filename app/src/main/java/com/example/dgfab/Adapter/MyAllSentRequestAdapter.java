@@ -64,7 +64,7 @@ public class MyAllSentRequestAdapter extends RecyclerView.Adapter<MyAllSentReque
         public MyViewHolder(View itemView) {
             super(itemView);
             mname = (TextView) itemView.findViewById(R.id.mname);
-            bra_bus =  itemView.findViewById(R.id.bra_bus);
+         //   bra_bus =  itemView.findViewById(R.id.bra_bus);
             manu_img =  itemView.findViewById(R.id.manu_img);
             conbtn =  itemView.findViewById(R.id.conbtn);
 

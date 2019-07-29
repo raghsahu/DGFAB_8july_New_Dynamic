@@ -63,7 +63,7 @@ public class CommingConnAdapter  extends RecyclerView.Adapter<CommingConnAdapter
         public MyViewHolder(View itemView) {
             super(itemView);
             mname = (TextView) itemView.findViewById(R.id.mname);
-            bra_bus =  itemView.findViewById(R.id.bra_bus);
+          //  bra_bus =  itemView.findViewById(R.id.bra_bus);
             manu_img =  itemView.findViewById(R.id.manu_img);
             conbtn =  itemView.findViewById(R.id.conbtn);
             discon =  itemView.findViewById(R.id.disscon);
@@ -123,7 +123,7 @@ public class CommingConnAdapter  extends RecyclerView.Adapter<CommingConnAdapter
 //            }
 //        });
         holder.mname.setText(searching_manufacturers_data.getName());
-        holder.bra_bus.setText(searching_manufacturers_data.getCity());
+//        holder.bra_bus.setText(searching_manufacturers_data.getCity());
         holder.conbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
