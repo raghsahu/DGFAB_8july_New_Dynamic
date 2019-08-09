@@ -85,12 +85,14 @@ public class CommingRequestData {
     @Expose
     private String ustatus;
 
-    public CommingRequestData(String id, String brandName, String name, String image, String receiverid) {
+    public CommingRequestData(String id, String brandName, String name, String image, String receiverid ,String senderid ,String ustatus) {
         this.id = id;
         this.brandName = brandName;
         this.name =name;
         this.image=image;
         this.receiverid = receiverid;
+        this.senderid = senderid;
+        this.ustatus = ustatus;
     }
 
     public String getId() {

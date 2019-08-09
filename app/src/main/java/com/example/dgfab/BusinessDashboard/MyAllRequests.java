@@ -83,7 +83,11 @@ public class MyAllRequests extends AppCompatActivity {
                         {
                             if(response.body().getData().get(i).getName().length() !=0) {
                                 Log.d("sortname is" , response.body().getData().get(i).getName());
-                                all_sent_request_data.add(new All_Sent_Request_Data(response.body().getData().get(i).getId(), response.body().getData().get(i).getBrandName(), response.body().getData().get(i).getName(), response.body().getData().get(i).getImage()));
+                                if(response.body().getData().get(i).getStatus().equals("1")) {
+                                    all_sent_request_data.add(new All_Sent_Request_Data(response.body().getData().get(i).getId(), response.body().getData().get(i).getBrandName(), response.body().getData().get(i).getName(), response.body().getData().get(i).getImage() ,response.body().getData().get(i).getStatus() , "Pending"));
+                                }else {
+
+                                }
                             }
                         }
                         myallSentRequestAdapter = new MyAllSentRequestAdapter(MyAllRequests.this , all_sent_request_data);
@@ -135,8 +139,12 @@ public class MyAllRequests extends AppCompatActivity {
                         for(int i=0;i<response.body().getData().size(); i++)
                         {
                             if(response.body().getData().get(i).getName().length() !=0) {
-                                Log.d("sortname is" , response.body().getData().get(i).getName());
-                                commingRequestData.add(new CommingRequestData(response.body().getData().get(i).getId(), response.body().getData().get(i).getBrandName(), response.body().getData().get(i).getName(), response.body().getData().get(i).getImage() ,response.body().getData().get(i).getReceiverid()));
+                                Log.d("sortname GETALLRecivedRequests is" , response.body().getData().get(i).getId());
+                                if(response.body().getData().get(i).getUstatus().equals("1")) {
+                                    commingRequestData.add(new CommingRequestData(response.body().getData().get(i).getId(), response.body().getData().get(i).getBrandName(), response.body().getData().get(i).getName(), response.body().getData().get(i).getImage(), response.body().getData().get(i).getReceiverid(), response.body().getData().get(i).getSenderid(), response.body().getData().get(i).getUstatus()));
+                                }else {
+                                    Toast.makeText(MyAllRequests.this, "already taken care", Toast.LENGTH_SHORT).show();
+                                }
                             }
                         }
                         LinearLayoutManager llm = new LinearLayoutManager(MyAllRequests.this);

@@ -53,8 +53,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class OverviewFrag extends Fragment {
     LinearLayout tenpro ;
-    EditText edTender,memail,emsalary,mmobile,mpincode,mcomp,mmdn,mteam,mcomab,madd;
+    EditText edTender,memail,emsalary,mmobile,mpincode,mcomp,mmdn,mteam,mcomab,madd,mmdname,maboutcomp;
+    LinearLayout savetender,saveemail,savemouth,savemobile,savepin,savecompany,savemdname,saveteam,savecompdes,saveadd;
     TextView tentxt;
+    String savetenderString,saveemailString,savemouthString,savemobileString,savepinString,savecompanyString,savemdnameString,saveteamString,savecompdesString,saveaddString;
+    String user_idString,nameString,lastnameString,mobileString,emailString,countryString,stateString,cityString,pinString;
     ImageView edtx,emailedit,monthedt,mobEdt,pinedt,comedt,mdnm,termEdt,abtEdit;
     SessionManager sessionManager;
 
@@ -63,12 +66,214 @@ public class OverviewFrag extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View b = inflater.inflate(R.layout.fragment_overview , container , false);
         emsalary = b.findViewById(R.id.msalary);
-        emsalary.setFocusable(false);
+
+        //image saves
+        savetender = b.findViewById(R.id.savetender);
+
+        saveemail = b.findViewById(R.id.saveemail);
+        savemouth = b.findViewById(R.id.savemonth);
+        savemobile = b.findViewById(R.id.savemobile);
+        savepin = b.findViewById(R.id.savepin);
+        savecompany = b.findViewById(R.id.savecompany);
+        savemdname = b.findViewById(R.id.savemd);
+        saveteam = b.findViewById(R.id.saveteam);
+        savecompdes = b.findViewById(R.id.savecomdes);
+        saveadd = b.findViewById(R.id.saveadd);
+
+        //Visible falese
+        savetender.setVisibility(View.GONE);
+        savetender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            savetenderString = edTender.getText().toString();
+                saveemailString = memail.getText().toString();
+                savemouthString = emsalary.getText().toString();
+                savemobileString = mmobile.getText().toString();
+                savepinString = mpincode.getText().toString();
+                savecompanyString = mcomp.getText().toString();
+                savemdnameString = mmdname.getText().toString();
+                saveteamString = mteam.getText().toString();
+                savecompdesString = maboutcomp.getText().toString();
+                saveaddString = madd.getText().toString();
+            }
+        });
+        saveadd.setVisibility(View.GONE);
+        saveadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                savetenderString = edTender.getText().toString();
+                saveemailString = memail.getText().toString();
+                savemouthString = emsalary.getText().toString();
+                savemobileString = mmobile.getText().toString();
+                savepinString = mpincode.getText().toString();
+                savecompanyString = mcomp.getText().toString();
+                savemdnameString = mmdname.getText().toString();
+                saveteamString = mteam.getText().toString();
+                savecompdesString = maboutcomp.getText().toString();
+                saveaddString = madd.getText().toString();
+                new UpdateProfile(saveadd).execute();
+            }
+        });
+        savecompany.setVisibility(View.GONE);
+
+        savecompany.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                savetenderString = edTender.getText().toString();
+                saveemailString = memail.getText().toString();
+                savemouthString = emsalary.getText().toString();
+                savemobileString = mmobile.getText().toString();
+                savepinString = mpincode.getText().toString();
+                savecompanyString = mcomp.getText().toString();
+                savemdnameString = mmdname.getText().toString();
+                saveteamString = mteam.getText().toString();
+                savecompdesString = maboutcomp.getText().toString();
+                saveaddString = madd.getText().toString();
+                new UpdateProfile(savecompany.getRootView()).execute();
+
+            }
+        });
+        savecompdes.setVisibility(View.GONE);
+        savecompdes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                savetenderString = edTender.getText().toString();
+                saveemailString = memail.getText().toString();
+                savemouthString = emsalary.getText().toString();
+                savemobileString = mmobile.getText().toString();
+                savepinString = mpincode.getText().toString();
+                savecompanyString = mcomp.getText().toString();
+                savemdnameString = mmdname.getText().toString();
+                saveteamString = mteam.getText().toString();
+                savecompdesString = maboutcomp.getText().toString();
+                saveaddString = madd.getText().toString();
+                new UpdateProfile(savecompdes).execute();
+
+            }
+        });
+        saveemail.setVisibility(View.GONE);
+        saveemail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                savetenderString = edTender.getText().toString();
+                saveemailString = memail.getText().toString();
+                savemouthString = emsalary.getText().toString();
+                savemobileString = mmobile.getText().toString();
+                savepinString = mpincode.getText().toString();
+                savecompanyString = mcomp.getText().toString();
+                savemdnameString = mmdname.getText().toString();
+                saveteamString = mteam.getText().toString();
+                savecompdesString = maboutcomp.getText().toString();
+                saveaddString = madd.getText().toString();
+                new UpdateProfile(saveemail).execute();
+            }
+        });
+        savemdname.setVisibility(View.GONE);
+        savemdname.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                savetenderString = edTender.getText().toString();
+                saveemailString = memail.getText().toString();
+                savemouthString = emsalary.getText().toString();
+                savemobileString = mmobile.getText().toString();
+                savepinString = mpincode.getText().toString();
+                savecompanyString = mcomp.getText().toString();
+                savemdnameString = mmdname.getText().toString();
+                saveteamString = mteam.getText().toString();
+                savecompdesString = maboutcomp.getText().toString();
+                saveaddString = madd.getText().toString();
+                new UpdateProfile(savemdname).execute();
+
+            }
+        });
+        savepin.setVisibility(View.GONE);
+        savepin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                savetenderString = edTender.getText().toString();
+                saveemailString = memail.getText().toString();
+                savemouthString = emsalary.getText().toString();
+                savemobileString = mmobile.getText().toString();
+                savepinString = mpincode.getText().toString();
+                savecompanyString = mcomp.getText().toString();
+                savemdnameString = mmdname.getText().toString();
+                saveteamString = mteam.getText().toString();
+                savecompdesString = maboutcomp.getText().toString();
+                saveaddString = madd.getText().toString();
+                new UpdateProfile(savepin).execute();
+
+            }
+        });
+        saveteam.setVisibility(View.GONE);
+        saveteam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                savetenderString = edTender.getText().toString();
+                saveemailString = memail.getText().toString();
+                savemouthString = emsalary.getText().toString();
+                savemobileString = mmobile.getText().toString();
+                savepinString = mpincode.getText().toString();
+                savecompanyString = mcomp.getText().toString();
+                savemdnameString = mmdname.getText().toString();
+                saveteamString = mteam.getText().toString();
+                savecompdesString = maboutcomp.getText().toString();
+                saveaddString = madd.getText().toString();
+                new UpdateProfile(saveteam).execute();
+
+            }
+        });
+        savemouth.setVisibility(View.GONE);
+        savemouth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                savetenderString = edTender.getText().toString();
+                saveemailString = memail.getText().toString();
+                savemouthString = emsalary.getText().toString();
+                savemobileString = mmobile.getText().toString();
+                savepinString = mpincode.getText().toString();
+                savecompanyString = mcomp.getText().toString();
+                savemdnameString = mmdname.getText().toString();
+                saveteamString = mteam.getText().toString();
+                savecompdesString = maboutcomp.getText().toString();
+                saveaddString = madd.getText().toString();
+                new UpdateProfile(savemouth).execute();
+
+            }
+        });
+        savemobile.setVisibility(View.GONE);
+        savemobile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                savetenderString = edTender.getText().toString();
+                saveemailString = memail.getText().toString();
+                savemouthString = emsalary.getText().toString();
+                savemobileString = mmobile.getText().toString();
+                savepinString = mpincode.getText().toString();
+                savecompanyString = mcomp.getText().toString();
+                savemdnameString = mmdname.getText().toString();
+                saveteamString = mteam.getText().toString();
+                savecompdesString = maboutcomp.getText().toString();
+                saveaddString = madd.getText().toString();
+                new UpdateProfile(savemobile).execute();
+
+            }
+        });
+        //
+
+        //
+      //  emsalary.setFocusable(false);
         emsalary.setEnabled(false);
         mmobile = b.findViewById(R.id.mmobile);
+        maboutcomp = b.findViewById(R.id.maboutcomp);
         mpincode = b.findViewById(R.id.mpincode);
+        abtEdit = b.findViewById(R.id.abtEdit);
+        mcomab = b.findViewById(R.id.mcomp);
+        mmdname = b.findViewById(R.id.mmdname);
         madd = b.findViewById(R.id.madd);
         mcomp = b.findViewById(R.id.mcomp);
+//        mcomab = b.findViewById(R.id.mcomab);
         tenpro = b.findViewById(R.id.tenpro);
         tentxt= b.findViewById(R.id.tentxt);
         sessionManager= new SessionManager(getActivity());
@@ -78,6 +283,20 @@ public class OverviewFrag extends Fragment {
         memail.setEnabled(false);
         edTender = b.findViewById(R.id.edTender);
         edTender.setEnabled(false);
+     //   abtEdit.setEnabled(false);
+        mcomp.setEnabled(false);
+   //     mmobile.setFocusable(false);
+     //   mmdname.setFocusable(false);
+     //   mpincode.setFocusable(false);
+     //   mcomp.setFocusable(false);
+     //   mteam.setFocusable(false);
+      //  abtEdit.setFocusable(false);
+      //  maboutcomp.setFocusable(false);
+        mmobile.setEnabled(false);
+        maboutcomp.setEnabled(false);
+        mteam.setEnabled(false);
+        mmdname.setEnabled(false);
+        mpincode.setEnabled(false);
 
         edtx = b.findViewById(R.id.edtx);
         edtx.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +304,8 @@ public class OverviewFrag extends Fragment {
             public void onClick(View v) {
                 edTender.setFocusable(true);
                 edTender.setEnabled(true);
+                savetender.setVisibility(View.VISIBLE);
+
             }
         });
 
@@ -94,6 +315,7 @@ public class OverviewFrag extends Fragment {
             public void onClick(View v) {
                 memail.setFocusable(true);
                 memail.setEnabled(true);
+                saveemail.setVisibility(View.VISIBLE);
             }
         });
 
@@ -103,6 +325,7 @@ public class OverviewFrag extends Fragment {
             public void onClick(View v) {
                 emsalary.setFocusable(true);
                 emsalary.setEnabled(true);
+                savemouth.setVisibility(View.VISIBLE);
             }
         });
 
@@ -112,6 +335,7 @@ public class OverviewFrag extends Fragment {
             public void onClick(View v) {
                 mmobile.setFocusable(true);
                 mmobile.setEnabled(true);
+                savemobile.setVisibility(View.VISIBLE);
             }
         });
 
@@ -121,6 +345,7 @@ public class OverviewFrag extends Fragment {
             public void onClick(View v) {
                 mpincode.setFocusable(true);
                 mpincode.setEnabled(true);
+                savepin.setVisibility(View.VISIBLE);
             }
         });
 
@@ -130,6 +355,7 @@ public class OverviewFrag extends Fragment {
             public void onClick(View v) {
                 mcomp.setFocusable(true);
                 mcomp.setEnabled(true);
+                savecompany.setVisibility(View.VISIBLE);
             }
         });
 
@@ -137,7 +363,9 @@ public class OverviewFrag extends Fragment {
         mdnm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                mmdname.setFocusable(true);
+                mmdname.setEnabled(true);
+                savemdname.setVisibility(View.VISIBLE);
             }
         });
 
@@ -147,6 +375,7 @@ public class OverviewFrag extends Fragment {
             public void onClick(View v) {
                 mteam.setFocusable(true);
                 mteam.setEnabled(true);
+                saveteam.setVisibility(View.VISIBLE);
             }
         });
 
@@ -154,8 +383,10 @@ public class OverviewFrag extends Fragment {
         abtEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mcomab.setFocusable(true);
-                mcomab.setEnabled(true);
+
+                maboutcomp.setFocusable(true);
+                maboutcomp.setEnabled(true);
+                savecompdes.setVisibility(View.VISIBLE);
             }
         });
 
@@ -217,7 +448,21 @@ public class OverviewFrag extends Fragment {
                         madd.setText(response.body().getData().getAddress());
                         mcomp.setText(response.body().getData().getCompanyName());
                         mcomab.setText(response.body().getData().getBrandName());
-                        // countyed.showDropDown();
+
+                        user_idString = response.body().getData().getId();
+                        nameString  =response.body().getData().getName();
+                        lastnameString = response.body().getData().getLastname();
+                        mobileString = response.body().getData().getMobile();
+                        emailString = response.body().getData().getEmail();
+                        countryString = response.body().getData().getCountry();
+                        stateString = response.body().getData().getState();
+                        cityString = response.body().getData().getCity();
+                        pinString = response.body().getData().getPin();
+//                        savemouthString = response.body().getData().getEmail();
+//                        lastnameString = response.body().getData().getLastname();
+//                        lastnameString = response.body().getData().getLastname();
+//                        lastnameString = response.body().getData().getLastname();
+//                        lastnameString = response.body().getData().getLastname();
                         // Toast.makeText(RegistrationActivityTwo.this, "true", Toast.LENGTH_SHORT).show();
                     }catch (Exception e)
                     {
@@ -267,11 +512,15 @@ public class OverviewFrag extends Fragment {
 
     //-----------------------------------------
 
-    /*class SendJsonDataToServer extends AsyncTask<String, String, String> {
-
+ public  class UpdateProfile extends AsyncTask<String, String, String> {
+        View save;
         ProgressDialog dialog;
 
-        protected void onPreExecute() {
+     public UpdateProfile(View rootView) {
+         this.save = rootView;
+     }
+
+     protected void onPreExecute() {
             dialog = new ProgressDialog(getActivity());
             dialog.show();
 
@@ -281,11 +530,28 @@ public class OverviewFrag extends Fragment {
 
             try {
 
-                URL url = new URL("https://sdltechserv.in/dgfeb/api/api/updateprofile");
+                URL url = new URL("https://sdltechserv.in/dgfeb/api/api/updateuserdata");
 
 
                 JSONObject postDataParams = new JSONObject();
-                postDataParams.put("name", EtMob);
+                postDataParams.put("user_id", user_idString);
+                postDataParams.put("name", nameString);
+                postDataParams.put("lastname", lastnameString);
+                postDataParams.put("mobile", savemobileString);
+                postDataParams.put("email", saveemailString);
+                postDataParams.put("country", countryString);
+                postDataParams.put("state", stateString);
+                postDataParams.put("city", cityString);
+                postDataParams.put("pin", pinString);
+                postDataParams.put("mdname", savemdnameString);
+                postDataParams.put("team", saveteamString);
+                postDataParams.put("about", savecompdesString);
+                postDataParams.put("company", savecompanyString);
+                postDataParams.put("monthly", savemouthString);
+                postDataParams.put("average", savemouthString);
+                postDataParams.put("purchase", savemouthString);
+                postDataParams.put("primary", saveaddString);
+             /*   postDataParams.put("name", EtMob);
                 postDataParams.put("email", EtPass);
                 postDataParams.put("passout_year", EtPass);
                 postDataParams.put("collage_name", EtPass);
@@ -293,14 +559,14 @@ public class OverviewFrag extends Fragment {
                 postDataParams.put("profile_image", EtPass);
                 postDataParams.put("sign_image", EtPass);
                 postDataParams.put("degree_upload", EtPass);
-                postDataParams.put("student_id", EtPass);
+                postDataParams.put("student_id", EtPass);*/
 
 
                 Log.e("postDataParams", postDataParams.toString());
 
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setReadTimeout(15000 *//* milliseconds*//*);
-                conn.setConnectTimeout(15000  *//*milliseconds*//*);
+                conn.setReadTimeout(15000  /*milliseconds*/);
+                conn.setConnectTimeout(15000  /*milliseconds*/);
                 conn.setRequestMethod("POST");
                 conn.setDoInput(true);
                 conn.setDoOutput(true);
@@ -318,7 +584,7 @@ public class OverviewFrag extends Fragment {
 
                 if (responseCode == HttpsURLConnection.HTTP_OK) {
 
-                *//*BufferedReader in = new BufferedReader(new
+                BufferedReader in = new BufferedReader(new
                         InputStreamReader(
                         conn.getInputStream()));
 
@@ -334,16 +600,16 @@ public class OverviewFrag extends Fragment {
                 }
 
                 in.close();
-                return sb.toString(); *//*
+                return sb.toString();
 
-                    BufferedReader r = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    /*BufferedReader r = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                     StringBuilder result = new StringBuilder();
-                    String line;
-                    while ((line = r.readLine()) != null) {
+                   // String line;
+                  *//*  while ((line = r.readLine()) != null) {
                         result.append(line);
-                    }
+                    }*//*
                     r.close();
-                    return result.toString();
+                    return result.toString();*/
 
                 } else {
                     return new String("false : " + responseCode);
@@ -365,26 +631,39 @@ public class OverviewFrag extends Fragment {
 
                     JSONObject jsonObject = new JSONObject(result);
                     String responce = jsonObject.getString("responce");
-                    JSONObject object = jsonObject.getJSONObject("data");
-                    user_id = object.getString("user_id");
-                    String name = object.getString("name");
-                    String email = object.getString("email");
-                    String password = object.getString("password");
-                    String mobile = object.getString("mobile");
-                    String address = object.getString("address");
-                    String type = object.getString("type");
-                    String reffercode = object.getString("reffercode");
-                    String bankstatus = object.getString("bankstatus");
-                    String walletbal = object.getString("walletbal");
-                    String image = object.getString("image");
-                    String status = object.getString("status");
+                    JSONObject object = jsonObject.getJSONObject("massage");
+                    if(responce.equals("true")) {
+                        Toast.makeText(getActivity(), "Profile updated successfully", Toast.LENGTH_SHORT).show();
+//                        if(save.getVisibility() == View.VISIBLE)
+//                        {
+//                            Toast.makeText(getActivity(), "goning view", Toast.LENGTH_SHORT).show();
+////                                 save.setVisibility(View.GONE);
+//                        }else {
+//                            Toast.makeText(getActivity(), "done with it", Toast.LENGTH_SHORT).show();
+//                        }
+             //     save.setVisibility(View.GONE);
+                    }else {
+                        Toast.makeText(getActivity(), "Profile update failed", Toast.LENGTH_SHORT).show();
+                    }
+//                    user_id = object.getString("user_id");
+//                     name = object.getString("name");
+//                    String email = object.getString("email");
+//                    String password = object.getString("password");
+//                    String mobile = object.getString("mobile");
+//                    String address = object.getString("address");
+//                    String type = object.getString("type");
+//                    String reffercode = object.getString("reffercode");
+//                    String bankstatus = object.getString("bankstatus");
+//                    String walletbal = object.getString("walletbal");
+//                    String image = object.getString("image");
+//                    String status = object.getString("status");
 
 
                     if (responce.equalsIgnoreCase("true")) {
-                     *//*   Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                       /* Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                         intent.putExtra("Type", strType);
                         startActivity(intent);
-                        finish();*//*
+                        finish();*/
                     }
 
                 } catch (JSONException e) {
@@ -419,5 +698,5 @@ public class OverviewFrag extends Fragment {
             return result.toString();
         }
 
-    }*/
+    }
 }

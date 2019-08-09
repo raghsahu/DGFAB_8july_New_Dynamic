@@ -1,8 +1,12 @@
 package com.example.dgfab.BusinessDashboard;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -10,6 +14,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
+import android.util.Log;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -23,11 +28,33 @@ import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.example.dgfab.BusinessDashboard.Business_CRM.CRM_Fragment;
 import com.example.dgfab.BusinessDashboard.Business_HomeDashboard.Home_fragment;
 import com.example.dgfab.LoginandReg.ManuLoginActivity;
 import com.example.dgfab.R;
 import com.example.dgfab.SessionManage.SessionManager;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.Iterator;
+
+import javax.net.ssl.HttpsURLConnection;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -47,7 +74,7 @@ public class Business_Dashboard_Main extends AppCompatActivity
         notion = findViewById(R.id.notion);
         setSupportActionBar(toolbar);
         toolbar1 = getSupportActionBar();
-
+        new GETMYINFORMATION(new SessionManager(this).getUS()).execute();
         //**************************************
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_business_bottom);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -214,5 +241,187 @@ public class Business_Dashboard_Main extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private class GETMYINFORMATION extends AsyncTask<String, Void, String> {
+        ProgressDialog dialog;
+        int US;
+        public GETMYINFORMATION(int us) {
+            this.US =us;
+        }
+
+        protected void onPreExecute() {
+            dialog = new ProgressDialog(Business_Dashboard_Main.this);
+            dialog.setCancelable(true);
+            // dialog.show();
+
+        }
+
+        protected String doInBackground(String... arg0) {
+
+            try {
+
+                URL url = new URL("https://sdltechserv.in/dgfeb/api/api/getusers");
+
+                JSONObject postDataParams = new JSONObject();
+                postDataParams.put("user_id", US);
+
+
+                Log.e("postDataParams", postDataParams.toString());
+
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setReadTimeout(15000  /*milliseconds*/);
+                conn.setConnectTimeout(15000  /*milliseconds*/);
+                conn.setRequestMethod("POST");
+                conn.setDoInput(true);
+                conn.setDoOutput(true);
+
+                OutputStream os = conn.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(
+                        new OutputStreamWriter(os, "UTF-8"));
+                writer.write(getPostDataString(postDataParams));
+
+                writer.flush();
+                writer.close();
+                os.close();
+
+                int responseCode = conn.getResponseCode();
+
+                if (responseCode == HttpsURLConnection.HTTP_OK) {
+
+                    BufferedReader in = new BufferedReader(new
+                            InputStreamReader(
+                            conn.getInputStream()));
+
+                    StringBuffer sb = new StringBuffer("");
+                    String line = "";
+
+                    while ((line = in.readLine()) != null) {
+
+                        StringBuffer Ss = sb.append(line);
+                        Log.e("Ss", Ss.toString());
+                        sb.append(line);
+                        break;
+                    }
+
+                    in.close();
+                    return sb.toString();
+
+                } else {
+                    return new String("false : " + responseCode);
+                }
+            } catch (Exception e) {
+                return new String("Exception: " + e.getMessage());
+            }
+
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            dialog.dismiss();
+            if (result != null) {
+
+                try {
+                    Log.e("result at ", "get back" + result);
+                    JSONObject jsonObject = new JSONObject(result);
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
+                    for(int i=0;i<jsonArray.length();i++) {
+                        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_business);
+                        View hView = navigationView.getHeaderView(0);
+                        TextView name = (TextView) hView.findViewById(R.id.nav_name);
+                        TextView nav_email = (TextView) hView.findViewById(R.id.nav_email);
+                        name.setText(jsonArray.getJSONObject(0).get("name").toString());
+                        nav_email.setText(jsonArray.getJSONObject(0).get("email").toString());
+
+                    }
+                    try {
+//                        Glide.with(Business_Dashboard_Main.this).applyDefaultRequestOptions(new RequestOptions().placeholder(R.drawable.prof).error(R.drawable.prof))
+//                                .load("https://sdltechserv.in/dgfeb/uploads/" + jsonObject.getJSONArray("data").getJSONObject(0).getString("image"))
+//                                .listener(new RequestListener<Drawable>() {
+//                                    @Override
+//                                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+//                                        // log exception
+//                                        Log.e("TAG", "Error loading image", e);
+//                                        return false; // important to return false so the error placeholder can be placed
+//                                    }
+//
+//                                    @Override
+//                                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+//                                        return false;
+//                                    }
+//                                })
+//                                .into(prom);
+//                        prom.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//                                Intent intent = new Intent(ProfileActivty.this, ProfileActivty.class);
+//                                startActivity(intent);
+//                            }
+//                        });
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    try {
+//                        Glide.with(Business_Dashboard_Main.this).applyDefaultRequestOptions(new RequestOptions().placeholder(R.drawable.pbgg).error(R.drawable.pbgg))
+//                                .load("https://sdltechserv.in/dgfeb/uploads/" + jsonObject.getJSONArray("data").getJSONObject(0).getString("cover_image"))
+//                                .listener(new RequestListener<Drawable>() {
+//                                    @Override
+//                                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+//                                        // log exception
+//                                        Log.e("TAG", "Error loading image", e);
+//                                        return false; // important to return false so the error placeholder can be placed
+//                                    }
+//
+//                                    @Override
+//                                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+//                                        return false;
+//                                    }
+//                                })
+//                                .into(header_cover_image);
+//                        prom.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//                                Intent intent = new Intent(ProfileActivty.this, ProfileActivty.class);
+//                                startActivity(intent);
+//                            }
+//                        });
+                    } catch (Exception e) {
+                        e.printStackTrace();
+//                    }
+                    }
+
+//                nav_user.setText(user);
+
+                    Log.e("PostRegistration", result.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        public String getPostDataString(JSONObject params) throws Exception {
+
+            StringBuilder result = new StringBuilder();
+            boolean first = true;
+
+            Iterator<String> itr = params.keys();
+
+            while (itr.hasNext()) {
+
+                String key = itr.next();
+                Object value = params.get(key);
+
+                if (first)
+                    first = false;
+                else
+                    result.append("&");
+
+                result.append(URLEncoder.encode(key, "UTF-8"));
+                result.append("=");
+                result.append(URLEncoder.encode(value.toString(), "UTF-8"));
+
+            }
+            return result.toString();
+        }
     }
 }

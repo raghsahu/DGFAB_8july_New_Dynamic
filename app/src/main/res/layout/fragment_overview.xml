@@ -49,8 +49,13 @@
                         android:drawablePadding="5dp"
                         android:src="@drawable/edit_icon" />
                 </LinearLayout>
-
+                <LinearLayout
+                    android:weightSum="1"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                 <EditText
+                    android:layout_weight="0.80"
                     android:id="@+id/edTender"
                     android:padding="5dp"
                     android:layout_width="match_parent"
@@ -61,6 +66,22 @@
                     android:gravity="left"
                     android:text="No Tender "
                     android:textSize="15dp" />
+
+                <LinearLayout
+                    android:id="@+id/savetender"
+                    android:layout_weight="0.0"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:src="@drawable/save"
+                        android:foregroundGravity="left"
+                        android:layout_gravity="left"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+
+                </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
 
 
@@ -104,8 +125,15 @@
                         android:textSize="15dp"
                         android:textStyle="normal" />
                 </LinearLayout>
+                <LinearLayout
 
+                    android:weightSum="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
                 <EditText
+                    android:layout_weight="0.80"
                     android:id="@+id/memail"
                     android:padding="5dp"
                     android:layout_width="match_parent"
@@ -116,6 +144,24 @@
                     android:gravity="left"
                     android:text="ramsharma@gmail.com"
                     android:textSize="15dp" />
+
+                    <LinearLayout
+                        android:id="@+id/saveemail"
+                        android:layout_weight="0.0"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:src="@drawable/save"
+                            android:foregroundGravity="left"
+                            android:layout_gravity="left"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
             </LinearLayout>
 
             <LinearLayout
@@ -155,7 +201,14 @@
                         android:textStyle="normal" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
                 <EditText
+                    android:padding="5dp"
+                    android:layout_weight="0.80"
                     android:id="@+id/msalary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -165,6 +218,23 @@
                     android:gravity="left"
                     android:text="1,00,000"
                     android:textSize="15dp" />
+                <LinearLayout
+                    android:id="@+id/savemonth"
+                    android:layout_weight="0.0"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:src="@drawable/save"
+
+
+                        android:foregroundGravity="left"
+                        android:layout_gravity="left"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+
+                </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -203,8 +273,14 @@
                         android:textSize="15dp"
                         android:textStyle="normal" />
                 </LinearLayout>
-
+                <LinearLayout
+                    android:weightSum="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
                 <EditText
+                    android:padding="5dp"
+                    android:layout_weight="0.80"
                     android:id="@+id/mmobile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -214,6 +290,23 @@
                     android:gravity="left"
                     android:text="9876543210"
                     android:textSize="15dp" />
+
+
+                <LinearLayout
+                    android:id="@+id/savemobile"
+                    android:layout_weight="0.0"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:src="@drawable/save"
+
+                        android:foregroundGravity="left"
+                        android:layout_gravity="left"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+                </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -253,8 +346,14 @@
                         android:textSize="15dp"
                         android:textStyle="normal" />
                 </LinearLayout>
-
+                <LinearLayout
+                    android:weightSum="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
                 <EditText
+                    android:layout_weight="0.80"
+                    android:padding="5dp"
                     android:id="@+id/mpincode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -264,6 +363,25 @@
                     android:gravity="left"
                     android:text="450331"
                     android:textSize="15dp" />
+
+
+                <LinearLayout
+                    android:id="@+id/savepin"
+                    android:layout_weight="0.0"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:src="@drawable/save"
+
+
+                        android:foregroundGravity="left"
+                        android:layout_gravity="left"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+                </LinearLayout>
+                </LinearLayout>
+
 
             </LinearLayout>
 
@@ -304,8 +422,15 @@
                         android:textSize="15dp"
                         android:textStyle="normal" />
                 </LinearLayout>
+                <LinearLayout
+                    android:weightSum="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
                 <EditText
+                    android:padding="5dp"
+                    android:layout_weight="0.80"
                     android:id="@+id/mcomp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -316,6 +441,22 @@
                     android:text="Footwear Dealer"
                     android:textSize="15dp" />
 
+                <LinearLayout
+                    android:id="@+id/savecompany"
+                    android:layout_weight="0.0"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:src="@drawable/save"
+
+
+                        android:foregroundGravity="left"
+                        android:layout_gravity="left"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+                </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -356,8 +497,14 @@
                         android:textSize="15dp"
                         android:textStyle="normal" />
                 </LinearLayout>
-
+            <LinearLayout
+                android:weightSum="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
                 <EditText
+                    android:layout_weight="0.80"
+                    android:padding="5dp"
                     android:id="@+id/mmdname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -368,6 +515,23 @@
                     android:text="Vinod"
                     android:textSize="15dp" />
 
+
+                <LinearLayout
+                    android:id="@+id/savemd"
+                    android:layout_weight="0.0"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:src="@drawable/save"
+
+
+                        android:foregroundGravity="left"
+                        android:layout_gravity="left"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+                </LinearLayout>
+            </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -408,8 +572,15 @@
                         android:textSize="15dp"
                         android:textStyle="normal" />
                 </LinearLayout>
+                <LinearLayout
+                    android:weightSum="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
                 <EditText
+                    android:layout_weight="0.80"
+                    android:padding="5dp"
                     android:id="@+id/mteam"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -420,6 +591,23 @@
                     android:text="100 members"
                     android:textSize="15dp" />
 
+
+                <LinearLayout
+                    android:id="@+id/saveteam"
+                    android:layout_weight="0.0"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:src="@drawable/save"
+
+
+                        android:foregroundGravity="left"
+                        android:layout_gravity="left"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+                </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -460,7 +648,13 @@
                         android:textStyle="normal" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:weightSum="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
                 <EditText
+                    android:layout_weight="0.80"
                     android:id="@+id/maboutcomp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -470,7 +664,20 @@
                     android:gravity="left"
                     android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. reader will be distracted by the readable content of a page when looking at its layout. and owing to the claims of duty or the obligations of business it will frequently."
                     android:textSize="15dp" />
-
+                <LinearLayout
+                    android:id="@+id/savecomdes"
+                    android:layout_weight="0.0"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:src="@drawable/save"
+                        android:foregroundGravity="left"
+                        android:layout_gravity="left"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+                </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -508,7 +715,14 @@
 
                 </LinearLayout>
 
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
                 <EditText
+                    android:padding="5dp"
+                    android:layout_weight="0.80"
                     android:id="@+id/madd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -518,6 +732,23 @@
                     android:gravity="left"
                     android:text="House no. 123, housing board colony, Indore"
                     android:textSize="15dp" />
+
+
+                <LinearLayout
+                    android:id="@+id/saveadd"
+                    android:layout_weight="0.0"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:src="@drawable/save"
+
+                        android:foregroundGravity="left"
+                        android:layout_gravity="left"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+                </LinearLayout>
+        </LinearLayout>
             </LinearLayout>
 
             <LinearLayout

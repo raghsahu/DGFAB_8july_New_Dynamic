@@ -97,6 +97,7 @@ public class CommingConnAdapter  extends RecyclerView.Adapter<CommingConnAdapter
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext() , SeenProfile.class);
                 intent.putExtra("whatsname" , searching_manufacturers_data.getName());
+                Log.e("reciverec data is ", ""+Doc.get(position).getSenderid());
                 if(holder.conbtn.getText().equals("Connected")) {
                     intent.putExtra("Connected", "Connected" );
                 }else {
@@ -109,7 +110,7 @@ public class CommingConnAdapter  extends RecyclerView.Adapter<CommingConnAdapter
             @Override
             public void onClick(View v) {
                 sessionManager = new SessionManager(v.getContext());
-                TryDisconnect(holder,v.getContext() ,sessionManager.getUS() ,searching_manufacturers_data.getReceiverid() ,position ,0);
+                TryDisconnect(holder,v.getContext() ,sessionManager.getUS() ,Doc.get(position).getSenderid() ,position ,3);
             }
         });
 
@@ -129,7 +130,7 @@ public class CommingConnAdapter  extends RecyclerView.Adapter<CommingConnAdapter
             public void onClick(View v) {
                 sessionManager = new SessionManager(v.getContext());
                 if(holder.conbtn.getText().equals("Connect")) {
-                    TryDisconnect(holder,v.getContext() ,sessionManager.getUS() ,searching_manufacturers_data.getReceiverid() ,position ,1);
+                    TryDisconnect(holder,v.getContext() ,sessionManager.getUS() ,Doc.get(position).getSenderid() ,position ,2);
                 }else {
                     Toast.makeText(mContext, "Connection request already sent", Toast.LENGTH_SHORT).show();
                 }
@@ -152,8 +153,9 @@ public class CommingConnAdapter  extends RecyclerView.Adapter<CommingConnAdapter
                 .baseUrl(REtroURls.The_Base).client(client).addConverterFactory(GsonConverterFactory.create())
                 .build();
         Api AbloutApi = RetroLogin.create(Api.class);
-        Log.d("sortname is" , ""+ u_type);
-        Call<Accept_Decline> Get_All_Country_New = AbloutApi.ACCEPT_DECLINE_CALL(String.valueOf(u_type) , receiverid ,String.valueOf(1));
+        Log.d("sortname is disvc" , ""+ u_type);
+        Log.d("receiverid is conx" , ""+ receiverid);
+        Call<Accept_Decline> Get_All_Country_New = AbloutApi.ACCEPT_DECLINE_CALL( receiverid,String.valueOf(u_type),String.valueOf(i));
         Get_All_Country_New.enqueue(new Callback<Accept_Decline>() {
             @Override
             public void onResponse(Call<Accept_Decline> call, Response<Accept_Decline> response) {
@@ -163,6 +165,7 @@ public class CommingConnAdapter  extends RecyclerView.Adapter<CommingConnAdapter
                     try {
                         if(response.body().getResponce() == true)
                         {
+                        //    if(response.body().getData().)
                             Toast.makeText(context, ""+response.body().getData(), Toast.LENGTH_SHORT).show();
                             if(i==1) {
                                 holder.conbtn.setText("Connected");

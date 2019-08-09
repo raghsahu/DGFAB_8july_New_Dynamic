@@ -4,6 +4,7 @@ import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.StrictMode;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -90,6 +91,7 @@ public class Search_All_Adapter  extends RecyclerView.Adapter<Search_All_Adapter
 
         searching_manufacturers_data = Doc.get(pos_try);
         Log.e("Position","is "+pos_try);
+        Log.e("Status ","is "+searching_manufacturers_data.getStatus());
         document = searching_manufacturers_data.getBrandName();
         StrictMode.setVmPolicy(builder.build());
 
@@ -98,6 +100,7 @@ public class Search_All_Adapter  extends RecyclerView.Adapter<Search_All_Adapter
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext() , SeenProfile.class);
+                intent.putExtra("theirid" , searching_manufacturers_data.getId());
                 intent.putExtra("whatsname" , searching_manufacturers_data.getName());
                 v.getContext().startActivity(intent);
             }
@@ -112,15 +115,19 @@ public class Search_All_Adapter  extends RecyclerView.Adapter<Search_All_Adapter
 //            }
 //        });
         holder.mname.setText(searching_manufacturers_data.getName());
+        holder.conbtn.setText(searching_manufacturers_data.getReqstatus());
 //        holder.bra_bus.setText(searching_manufacturers_data.getCity());
 holder.conbtn.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         sessionManager = new SessionManager(v.getContext());
-        if(holder.conbtn.getText().equals("Connect")) {
-            Try_Sent_Reuqest(holder,v.getContext(), sessionManager.getUS(), searching_manufacturers_data.getId());
+        if(holder.conbtn.getText().equals("Pending")) {
+            Toast.makeText(mContext, "Please Wait for approval", Toast.LENGTH_SHORT).show();
+        }else if(holder.conbtn.getText().equals("Accepted")){
+            holder.conbtn.setBackgroundColor(Color.GRAY);
+            Toast.makeText(mContext, "You are already Connected", Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(mContext, "Connection request already sent", Toast.LENGTH_SHORT).show();
+            Try_Sent_Reuqest(holder,v.getContext(), sessionManager.getUS(), searching_manufacturers_data.getId());
         }
 
     }

@@ -1,18 +1,33 @@
 package com.example.dgfab.Connections;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dgfab.APIanURLs.Api;
+import com.example.dgfab.APIanURLs.REtroURls;
 import com.example.dgfab.Adapter.ProfileAdapter;
+import com.example.dgfab.AllParsings.MyInfo;
+import com.example.dgfab.Dapter_others.SeenProfileAdapter;
 import com.example.dgfab.R;
+
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class SeenProfile extends AppCompatActivity {
@@ -22,7 +37,7 @@ public class SeenProfile extends AppCompatActivity {
     TextView create_order;
     ImageView heart1,heart2;
     ImageView share;
-
+   static public String Theirid;
     String whatsname,Connected;
 
     @Override
@@ -38,24 +53,26 @@ public class SeenProfile extends AppCompatActivity {
         create_order=(TextView) findViewById(R.id.create_order);
         whatsname = getIntent().getStringExtra("whatsname");
         Connected = getIntent().getStringExtra("Connected");
-        create_order.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                try {
-//                    if(whatsname.equals("Accountant")) {
-//                        Intent intent = new Intent(SeenProfile.this, DirCateActivity.class);
-//                        startActivity(intent);
-//                        whatsname ="";
-//                    }
-//                }catch (Exception e)
-//                {
-//                    Intent intent = new Intent(SeenProfile.this, CreateOrder.class);
-//
-//                    startActivity(intent);
-//                    e.printStackTrace();
-//                }
-            }
-        });
+        Theirid = getIntent().getStringExtra("theirid");
+            GETTHEIRINFo(Theirid);
+//        create_order.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                try {
+////                    if(whatsname.equals("Accountant")) {
+////                        Intent intent = new Intent(SeenProfile.this, DirCateActivity.class);
+////                        startActivity(intent);
+////                        whatsname ="";
+////                    }
+////                }catch (Exception e)
+////                {
+////                    Intent intent = new Intent(SeenProfile.this, CreateOrder.class);
+////
+////                    startActivity(intent);
+////                    e.printStackTrace();
+////                }
+//            }
+//        });
 //
 //        heart1.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -139,8 +156,8 @@ public class SeenProfile extends AppCompatActivity {
 
             }
         });
-        final ProfileAdapter profileAdapter = new ProfileAdapter(this,getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPager.setAdapter(profileAdapter);
+        final SeenProfileAdapter seenProfileAdapter = new SeenProfileAdapter(this,getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(seenProfileAdapter);
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
@@ -160,5 +177,69 @@ public class SeenProfile extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void GETTHEIRINFo(String theirid) {
+
+        ProgressDialog progressDialog = new ProgressDialog(SeenProfile.this);
+        progressDialog.setTitle("Getting Country");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.show();
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(100, TimeUnit.SECONDS)
+                .readTimeout(100,TimeUnit.SECONDS).build();
+        Retrofit RetroLogin = new Retrofit.Builder()
+                .baseUrl(REtroURls.The_Base).client(client).addConverterFactory(GsonConverterFactory.create())
+                .build();
+        Api AbloutApi = RetroLogin.create(Api.class);
+        Log.d("sortname is" , ""+theirid);
+        Call<MyInfo> Get_All_Country_New = AbloutApi.MY_INFO_CALL(String.valueOf(theirid));
+        Get_All_Country_New.enqueue(new Callback<MyInfo>() {
+            @Override
+            public void onResponse(Call<MyInfo> call, Response<MyInfo> response) {
+                Log.e("getcity" , ""+response.toString());
+                if (response!=null){
+                    Log.e("Get_City",""+response.body().getResponce());
+                    try {
+                        dealname.setText(response.body().getData().getName());
+//                        mmobile.setText(response.body().getData().getMobile());
+//                        madd.setText(response.body().getData().getAddress());
+//                        mcomp.setText(response.body().getData().getCompanyName());
+//                        mcomab.setText(response.body().getData().getBrandName());
+//
+//                        user_idString = response.body().getData().getId();
+//                        nameString  =response.body().getData().getName();
+//                        lastnameString = response.body().getData().getLastname();
+//                        mobileString = response.body().getData().getMobile();
+//                        emailString = response.body().getData().getEmail();
+//                        countryString = response.body().getData().getCountry();
+//                        stateString = response.body().getData().getState();
+//                        cityString = response.body().getData().getCity();
+//                        pinString = response.body().getData().getPin();
+//                        savemouthString = response.body().getData().getEmail();
+//                        lastnameString = response.body().getData().getLastname();
+//                        lastnameString = response.body().getData().getLastname();
+//                        lastnameString = response.body().getData().getLastname();
+//                        lastnameString = response.body().getData().getLastname();
+                        // Toast.makeText(RegistrationActivityTwo.this, "true", Toast.LENGTH_SHORT).show();
+                    }catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+
+                progressDialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(Call<MyInfo> call, Throwable t) {
+                progressDialog.dismiss();
+                Log.e("error_country",""+t.getMessage());
+                Toast.makeText(SeenProfile.this, ""+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(SeenProfile.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 }

@@ -1,6 +1,7 @@
 package com.example.dgfab.APIanURLs;
 
 import com.example.dgfab.AllParsings.Accept_Decline;
+import com.example.dgfab.AllParsings.AddSubService;
 import com.example.dgfab.AllParsings.Add_Services;
 import com.example.dgfab.AllParsings.All_Country_State;
 import com.example.dgfab.AllParsings.All_Sent_Request;
@@ -8,14 +9,23 @@ import com.example.dgfab.AllParsings.All_State_found_responce;
 import com.example.dgfab.AllParsings.CommingRequest;
 import com.example.dgfab.AllParsings.Connection_Requests;
 import com.example.dgfab.AllParsings.DestroyingConnections;
+import com.example.dgfab.AllParsings.Friends;
 import com.example.dgfab.AllParsings.GET_Services;
+import com.example.dgfab.AllParsings.GetProducts;
 import com.example.dgfab.AllParsings.Get_Cities;
 import com.example.dgfab.AllParsings.MyInfo;
+import com.example.dgfab.AllParsings.MyServices;
+import com.example.dgfab.AllParsings.MySubservices;
+import com.example.dgfab.AllParsings.ProductReply;
 import com.example.dgfab.AllParsings.Registration_only;
 import com.example.dgfab.AllParsings.Searching_Manufacturers;
 import com.example.dgfab.BusinessDashboard.Search_All_Users;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -31,6 +41,7 @@ public interface Api {
 //            @Field("type_id") String type_of_user
 //    );
 //
+
     @FormUrlEncoded
     @POST(REtroURls.Get_Services)
     Call<GET_Services> Get_ServicesUsersCall(
@@ -52,6 +63,49 @@ public interface Api {
             @Field("type_id") String type_of_user,
             @Field("service") String service,
             @Field("image") String image
+    );
+    @FormUrlEncoded
+    @POST(REtroURls.AddProduct)
+    Call<ProductReply> PRODUCT_REPLY_CALL(
+            @Field("category") String category,
+            @Field("subcategory") String subcategory,
+            @Field("product_name") String product_name,
+            @Field("description") String description,
+            @Field("mrp") String mrp,
+            @Field("price") String price,
+            @Field("stock") String stock,
+            @Field("qty") String qty,
+            @Field("title") String title,
+            @Field("discription") String discription
+
+            );
+
+    @FormUrlEncoded
+    @POST(REtroURls.Getproduct)
+    Call<GetProducts> GET_PRODUCTS_CALL(
+            @Field("user_id") String user_id
+            );
+
+
+  @FormUrlEncoded
+    @POST(REtroURls.Getsub_Subservices)
+    Call<MySubservices> MY_SUBSERVICES_CALL(
+            @Field("subservice_id") String subservice_id
+
+    );
+  @FormUrlEncoded
+    @POST(REtroURls.Add_sub_subservices)
+    Call<AddSubService> ADD_SUB_SERVICE_CALL(
+            @Field("subservice_id") String subservice_id,
+            @Field("name") String name
+
+    );
+
+    @FormUrlEncoded
+    @POST(REtroURls.Getservicesbyuser)
+    Call<MyServices> MY_SERVICES_CALL(
+            @Field("user_id") int user_id
+
     );
 
 //
@@ -106,6 +160,17 @@ public interface Api {
     @POST(REtroURls.Getreceivedrequest)
     Call<CommingRequest> COMMING_REQUEST_CALL(
             @Field("user_id") String user_id);
+
+
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    @FormUrlEncoded
+    @POST(REtroURls.Friendsrequests)
+    Call<Friends> FRIENDS_CALL(
+            @Field("user_id") String user_id);
+
+
+
+
     @Headers("Content-Type: application/x-www-form-urlencoded")
     @FormUrlEncoded
     @POST(REtroURls.Sendrequest)
@@ -124,8 +189,6 @@ public interface Api {
             @Field("senderid") String senderid,
             @Field("receiverid") String receiverid,
             @Field("status") String status
-
-
     );
     @Headers("Content-Type: application/x-www-form-urlencoded")
     @FormUrlEncoded

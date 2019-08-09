@@ -12,6 +12,7 @@ public class Searching_Manufacturers {
     private Boolean responce;
     @SerializedName("data")
     @Expose
+
     private List<Searching_Manufacturers_Data> data;
 
     public Boolean getResponce() {

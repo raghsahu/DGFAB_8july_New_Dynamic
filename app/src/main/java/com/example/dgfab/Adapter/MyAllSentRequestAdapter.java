@@ -95,6 +95,7 @@ public class MyAllSentRequestAdapter extends RecyclerView.Adapter<MyAllSentReque
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext() , SeenProfile.class);
                 intent.putExtra("whatsname" , searching_manufacturers_data.getName());
+                intent.putExtra("theirid" , searching_manufacturers_data.getId());
                 v.getContext().startActivity(intent);
             }
         });
@@ -105,6 +106,7 @@ public class MyAllSentRequestAdapter extends RecyclerView.Adapter<MyAllSentReque
                 Intent intent = new Intent(v.getContext() , SeenProfile.class);
                 intent.putExtra("whatsname" , searching_manufacturers_data.getName());
                 intent.putExtra("Connected" , "Connect Now");
+                intent.putExtra("theirid" , ""+searching_manufacturers_data.getId());
                 v.getContext().startActivity(intent);
             }
         });
@@ -158,7 +160,7 @@ public class MyAllSentRequestAdapter extends RecyclerView.Adapter<MyAllSentReque
                 .build();
         Api AbloutApi = RetroLogin.create(Api.class);
         Log.d("sortname is" , id);
-        Call<DestroyingConnections> Get_All_Country_New = AbloutApi.DESTROYING_CONNECTIONS_CALL( id);
+        Call<DestroyingConnections> Get_All_Country_New = AbloutApi.DESTROYING_CONNECTIONS_CALL(id);
         Get_All_Country_New.enqueue(new Callback<DestroyingConnections>() {
             @Override
             public void onResponse(Call<DestroyingConnections> call, Response<DestroyingConnections> response) {

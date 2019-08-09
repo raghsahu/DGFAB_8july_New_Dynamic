@@ -23,7 +23,6 @@
             android:src="@drawable/earth" />
 
         <EditText
-
             android:id="@+id/text_dialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

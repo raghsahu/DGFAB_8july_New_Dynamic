@@ -84,11 +84,15 @@ public class All_Sent_Request_Data {
     @Expose
     private String ustatus;
 
-    public All_Sent_Request_Data(String id, String brandName, String name, String image) {
+    String pending;
+
+    public All_Sent_Request_Data(String id, String brandName, String name, String image, String status, String pending) {
         this.id = id;
         this.brandName = brandName;
         this.name = name;
         this.image = image;
+        this.status = status;
+        this.pending = pending;
     }
 
     public String getId() {

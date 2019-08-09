@@ -5,6 +5,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class Searching_Manufacturers_Data {
 
+    @SerializedName("user_type_name")
+    @Expose
+    private String userTypeName;
     @SerializedName("id")
     @Expose
     private String id;
@@ -14,6 +17,9 @@ public class Searching_Manufacturers_Data {
     @SerializedName("name")
     @Expose
     private String name;
+    @SerializedName("mdname")
+    @Expose
+    private String mdname;
     @SerializedName("lastname")
     @Expose
     private String lastname;
@@ -32,6 +38,24 @@ public class Searching_Manufacturers_Data {
     @SerializedName("brand_name")
     @Expose
     private String brandName;
+    @SerializedName("team")
+    @Expose
+    private String team;
+    @SerializedName("about")
+    @Expose
+    private String about;
+    @SerializedName("monthly")
+    @Expose
+    private String monthly;
+    @SerializedName("average")
+    @Expose
+    private String average;
+    @SerializedName("purchase")
+    @Expose
+    private String purchase;
+    @SerializedName("primary_address")
+    @Expose
+    private String primaryAddress;
     @SerializedName("address")
     @Expose
     private String address;
@@ -74,12 +98,47 @@ public class Searching_Manufacturers_Data {
     @SerializedName("status")
     @Expose
     private String status;
+    @SerializedName("reqid")
+    @Expose
+    private String reqid;
+    @SerializedName("senderid")
+    @Expose
+    private String senderid;
+    @SerializedName("receiverid")
+    @Expose
+    private String receiverid;
+    @SerializedName("reqstatus")
+    @Expose
+    private String reqstatus;
 
-    public Searching_Manufacturers_Data(String id, String brandName, String name, String image) {
-        this.id = id;
-        this.brandName = brandName;
+    public Searching_Manufacturers_Data NextaNode;
+
+    public Searching_Manufacturers_Data(String user_id, String name, String email, String mobile, String pending) {
+        this.id = user_id;
         this.name = name;
-        this.image = image;
+        this.email = email;
+        this.mobile = mobile;
+        this.reqstatus = pending;
+
+    }
+
+//    public Searching_Manufacturers_Data(String id, String brandName, String name, String image, String status ,String Cover_Image) {
+//        this.id = id;
+//        this.brandName = brandName;
+//        this.name = name;
+//        this.image = image;
+//        this.status = status;
+//        this.coverImage = Cover_Image;
+//    }
+
+
+
+    public String getUserTypeName() {
+        return userTypeName;
+    }
+
+    public void setUserTypeName(String userTypeName) {
+        this.userTypeName = userTypeName;
     }
 
     public String getId() {
@@ -104,6 +163,14 @@ public class Searching_Manufacturers_Data {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getMdname() {
+        return mdname;
+    }
+
+    public void setMdname(String mdname) {
+        this.mdname = mdname;
     }
 
     public String getLastname() {
@@ -152,6 +219,54 @@ public class Searching_Manufacturers_Data {
 
     public void setBrandName(String brandName) {
         this.brandName = brandName;
+    }
+
+    public String getTeam() {
+        return team;
+    }
+
+    public void setTeam(String team) {
+        this.team = team;
+    }
+
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
+    }
+
+    public String getMonthly() {
+        return monthly;
+    }
+
+    public void setMonthly(String monthly) {
+        this.monthly = monthly;
+    }
+
+    public String getAverage() {
+        return average;
+    }
+
+    public void setAverage(String average) {
+        this.average = average;
+    }
+
+    public String getPurchase() {
+        return purchase;
+    }
+
+    public void setPurchase(String purchase) {
+        this.purchase = purchase;
+    }
+
+    public String getPrimaryAddress() {
+        return primaryAddress;
+    }
+
+    public void setPrimaryAddress(String primaryAddress) {
+        this.primaryAddress = primaryAddress;
     }
 
     public String getAddress() {
@@ -264,6 +379,38 @@ public class Searching_Manufacturers_Data {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getReqid() {
+        return reqid;
+    }
+
+    public void setReqid(String reqid) {
+        this.reqid = reqid;
+    }
+
+    public String getSenderid() {
+        return senderid;
+    }
+
+    public void setSenderid(String senderid) {
+        this.senderid = senderid;
+    }
+
+    public String getReceiverid() {
+        return receiverid;
+    }
+
+    public void setReceiverid(String receiverid) {
+        this.receiverid = receiverid;
+    }
+
+    public String getReqstatus() {
+        return reqstatus;
+    }
+
+    public void setReqstatus(String reqstatus) {
+        this.reqstatus = reqstatus;
     }
 
 }

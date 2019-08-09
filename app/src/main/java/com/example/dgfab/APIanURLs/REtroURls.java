@@ -3,7 +3,13 @@ package com.example.dgfab.APIanURLs;
 public interface REtroURls {
     public  static String The_Base = "https://sdltechserv.in/dgfeb/api/api/";
     public   String Get_Services = "getservices";
+
     public   String Add_Services = "Add_Service";
+    public   String Getservicesbyuser = "getservicesbyuser";
+    public   String Getsub_Subservices = "getsub_Subservices";
+    public   String Add_sub_subservices = "Add_sub_subservices";
+    public   String AddProduct = "addProduct";
+    public   String Getproduct = "getproduct";
     public   String Getsubusertype = "getsubusertype";
     public   String Registration = "Ragistration";
     public   String Forgetpassword = "forgetpassword";
@@ -14,6 +20,7 @@ public interface REtroURls {
     public   String Searchusers= "searchusers";
     public   String Getuserbyid= "getuserbyid";
     public   String Getreceivedrequest= "getreceivedrequest";
+    public   String Friendsrequests= "getacceptrequest";
     public   String Sendrequest= "sendrequest";
     public   String Acceptdeclinerequest= "acceptdeclinerequest";
     public   String Getsentrequest= "getsentrequest";

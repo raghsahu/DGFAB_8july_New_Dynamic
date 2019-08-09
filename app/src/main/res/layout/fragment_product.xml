@@ -7,6 +7,7 @@
     android:background="#f4f4f4" >
 
     <android.support.v7.widget.Toolbar
+        android:visibility="gone"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/toolbar_post"
@@ -70,8 +71,8 @@
 
 
 
-    <ExpandableListView
-        android:id="@+id/ex_lv"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/seenprorec"
         android:layout_height="match_parent"
         android:layout_width="match_parent"/>
 

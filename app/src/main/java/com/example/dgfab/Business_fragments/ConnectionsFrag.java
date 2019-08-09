@@ -16,8 +16,12 @@ import android.widget.Toast;
 import com.example.dgfab.APIanURLs.Api;
 import com.example.dgfab.APIanURLs.REtroURls;
 import com.example.dgfab.Adapter.CommingConnAdapter;
+import com.example.dgfab.Adapter.ConnectionsOnlyAdapter;
+import com.example.dgfab.Adapter.FriendsAdapter;
 import com.example.dgfab.AllParsings.CommingRequest;
 import com.example.dgfab.AllParsings.CommingRequestData;
+import com.example.dgfab.AllParsings.Friends;
+import com.example.dgfab.AllParsings.Friendsdata;
 import com.example.dgfab.R;
 import com.example.dgfab.SessionManage.SessionManager;
 
@@ -36,8 +40,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ConnectionsFrag extends Fragment {
     RecyclerView myconsreq;
     SessionManager sessionManager;
-    CommingConnAdapter commingConnAdapter;
-    List<CommingRequestData> commingRequestData = new ArrayList<>();
+    FriendsAdapter friendsAdapter;
+    List<Friendsdata> commingRequestData = new ArrayList<>();
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -65,10 +69,10 @@ public class ConnectionsFrag extends Fragment {
                 .build();
         Api AbloutApi = RetroLogin.create(Api.class);
         Log.d("sortname is" , ""+us);
-        Call<CommingRequest> Get_All_Country_New = AbloutApi.COMMING_REQUEST_CALL(String.valueOf(us));
-        Get_All_Country_New.enqueue(new Callback<CommingRequest>() {
+        Call<Friends> Get_All_Country_New = AbloutApi.FRIENDS_CALL(String.valueOf(us));
+        Get_All_Country_New.enqueue(new Callback<Friends>() {
             @Override
-            public void onResponse(Call<CommingRequest> call, Response<CommingRequest> response) {
+            public void onResponse(Call<Friends> call, Response<Friends> response) {
                 Log.e("getcity" , ""+response.toString());
                 if (response!=null){
                     Log.e("Get_City",""+response.body().getResponce());
@@ -77,14 +81,16 @@ public class ConnectionsFrag extends Fragment {
                         {
                             if(response.body().getData().get(i).getName().length() !=0) {
                                 Log.d("sortname is" , response.body().getData().get(i).getName());
-                                commingRequestData.add(new CommingRequestData(response.body().getData().get(i).getId(), response.body().getData().get(i).getBrandName(), response.body().getData().get(i).getName(), response.body().getData().get(i).getImage(), response.body().getData().get(i).getReceiverid()));
+//                                if(!response.body().getData().get(i).getUstatus().equals("0")) {
+                                    commingRequestData.add(new Friendsdata(response.body().getData().get(i).getUserId(), response.body().getData().get(i).getName(), response.body().getData().get(i).getUstatus(), response.body().getData().get(i).getSenderid(), response.body().getData().get(i).getReceiverid()));
+//                                }
                             }
                         }
                         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
                         llm.setOrientation(LinearLayoutManager.VERTICAL);
-                        commingConnAdapter = new CommingConnAdapter(getActivity() , commingRequestData);
+                        friendsAdapter = new FriendsAdapter(getActivity() , commingRequestData);
                         myconsreq.setLayoutManager(llm);
-                        myconsreq.setAdapter(commingConnAdapter);
+                        myconsreq.setAdapter(friendsAdapter);
                         // countyed.showDropDown();
                         // Toast.makeText(RegistrationActivityTwo.this, "true", Toast.LENGTH_SHORT).show();
                     }catch (Exception e)
@@ -97,7 +103,7 @@ public class ConnectionsFrag extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<CommingRequest> call, Throwable t) {
+            public void onFailure(Call<Friends> call, Throwable t) {
                 progressDialog.dismiss();
                 Log.e("error_country",""+t.getMessage());
                 Toast.makeText(getActivity(), ""+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.dgfab">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -19,7 +20,21 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BusinessDashboard.MyAllRequests"></activity>
+        <activity android:name=".BusinessDashboard.Inquiry_Activity"></activity>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.dgfab.provider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"
+                tools:replace="android:resource" />
+        </provider>
+
+        <activity android:name=".BusinessDashboard.MyAllRequests" />
         <activity android:name=".BusinessDashboard.Search_All_Users" />
         <activity android:name=".LoginandReg.Forget_Password" />
         <activity android:name=".BusinessDashboard.StaffActivity" />
@@ -38,9 +53,9 @@
         <activity android:name=".Buyers.Buyer_Main_Navigation" />
         <activity android:name=".Activity.Buyer_guest_login.LoginActivity" />
         <activity android:name=".Activity.SplashScreens.App_Intro" />
-        <activity android:name=".BusinessDashboard.ProfileActivity"></activity>
+        <activity android:name=".BusinessDashboard.ProfileActivity" />
         <activity android:name=".BusinessDashboard.AddProduct_Activity" />
-        <activity android:name=".Connections.SeenProfile"></activity>
+        <activity android:name=".Connections.SeenProfile" />
         <activity
             android:name=".Activity.SplashScreens.Splash_Activity"
             android:theme="@style/AppTheme.Splash">
