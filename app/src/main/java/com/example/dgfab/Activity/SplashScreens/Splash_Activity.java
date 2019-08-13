@@ -19,15 +19,15 @@ public class Splash_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
-        sessionManager = new SessionManager(this);
+        setContentView(R.layout.new_add_product);
+      //  sessionManager = new SessionManager(this);
 
 
-        new Handler().postDelayed(new Runnable() {
-            /*
-             * Showing splash screen with a timer. This will be useful when you
-             * want to show case your app logo / company
-             */
+        /*  new Handler().postDelayed(new Runnable() {
+         *//*
+         * Showing splash screen with a timer. This will be useful when you
+         * want to show case your app logo / company
+         *//*
             @Override
             public void run() {
                 try {
@@ -58,8 +58,8 @@ public class Splash_Activity extends AppCompatActivity {
 
             }
         }, SPLASH_TIME_OUT);
+    }*/
+
+
     }
-
-
-
 }
