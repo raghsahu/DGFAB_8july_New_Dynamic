@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -19,6 +21,7 @@ import android.widget.Toast;
 import com.example.dgfab.Adapter.AddMorePayoptions;
 import com.example.dgfab.Adapter.AddMoredetailesAdapter;
 import com.example.dgfab.Adapter.AddMorekeysAdapter;
+import com.example.dgfab.Adapter.SelectandRemoveAdapter;
 import com.example.dgfab.Java_Adapter_Files.AddNews;
 import com.example.dgfab.R;
 
@@ -31,11 +34,13 @@ public class AddProductWay extends AppCompatActivity {
     List<String> AllKeywordsList;
     List<AddNews> AllMoredetailesList  = new ArrayList<>();
     List<AddNews> AllMorepayList  = new ArrayList<>();
-
+    List<AddNews> selectandRemoveList  = new ArrayList<>();
+    SelectandRemoveAdapter selectandRemoveAdapter;
     AddMorekeysAdapter addMorekeysAdapter;
     AddMoredetailesAdapter addMoredetailsAdapter;
     AddMorePayoptions addMorePayoptions;
     List<AddNews> addnewkeyList = new ArrayList<>();
+    private GridLayoutManager gridLayoutManager;
     private BroadcastReceiver onNotice= new BroadcastReceiver() {
 
         @Override
@@ -46,21 +51,30 @@ public class AddProductWay extends AppCompatActivity {
             if (intent != null) {
                 String str = intent.getStringExtra("key");
                 Toast.makeText(context, "Broadcast received !"+str, Toast.LENGTH_SHORT).show();
-                if(addnewkeyList.size() >0) {
-                    addnewkeyList.add(new AddNews(new EditText(context), new Button(context)));
-                    LinearLayoutManager llm = new LinearLayoutManager(context);
-                    llm.setOrientation(LinearLayoutManager.VERTICAL);
-                    newkey.setLayoutManager(llm);
-                    addMorekeysAdapter = new AddMorekeysAdapter(context, addnewkeyList);
-                    newkey.swapAdapter(addMorekeysAdapter, false);
-                    addMorekeysAdapter.notifyItemInserted(0);
+                if(selectandRemoveList.size() >0) {
+                    selectandRemoveList.add(new AddNews(str));
+//                    LinearLayoutManager llm = new LinearLayoutManager(context);
+//                    llm.setOrientation(LinearLayoutManager.VERTICAL);
+//                    showkeys.setLayoutManager(llm);
+                    gridLayoutManager = new GridLayoutManager(getApplicationContext(),6);
+                    showkeys.addItemDecoration(new DividerItemDecoration(AddProductWay.this, LinearLayoutManager.VERTICAL));
+                    showkeys.setLayoutManager(gridLayoutManager);
+                //    showkeys.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, true));
+                    selectandRemoveAdapter = new SelectandRemoveAdapter(context, selectandRemoveList);
+                    showkeys.swapAdapter(selectandRemoveAdapter, false);
+                    selectandRemoveAdapter.notifyItemInserted(0);
                 }else {
-                    addnewkeyList.add(new AddNews(new EditText(context), new Button(context)));
-                    LinearLayoutManager llm = new LinearLayoutManager(context);
-                    llm.setOrientation(LinearLayoutManager.VERTICAL);
-                    newkey.setLayoutManager(llm);
-                    addMorekeysAdapter = new AddMorekeysAdapter(context, addnewkeyList);
-                    newkey.setAdapter(addMorekeysAdapter);
+                    selectandRemoveList.add(new AddNews(str));
+//                    LinearLayoutManager llm = new LinearLayoutManager(context);
+//                    llm.setOrientation(LinearLayoutManager.VERTICAL);
+//                    showkeys.setLayoutManager(llm);
+                    gridLayoutManager = new GridLayoutManager(getApplicationContext(),6);
+                    showkeys.addItemDecoration(new DividerItemDecoration(AddProductWay.this, LinearLayoutManager.VERTICAL));
+                    showkeys.setLayoutManager(gridLayoutManager);
+
+                    selectandRemoveAdapter = new SelectandRemoveAdapter(context, selectandRemoveList);
+                    showkeys.setAdapter(selectandRemoveAdapter);
+                    selectandRemoveAdapter.notifyItemInserted(0);
                 }
                 // get all your data from intent and do what you want
             }
@@ -68,7 +82,9 @@ public class AddProductWay extends AppCompatActivity {
 
         }
     };
-//    protected BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+
+
+    //    protected BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
 //        @Override
 //        public void onReceive(Context context, final Intent intent) {
 //            runOnUiThread(new Runnable() {

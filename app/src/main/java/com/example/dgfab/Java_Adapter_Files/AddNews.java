@@ -3,6 +3,7 @@ package com.example.dgfab.Java_Adapter_Files;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 public class AddNews {
     EditText Tilte;
@@ -11,8 +12,22 @@ public class AddNews {
     EditText NameDetails;
     Button button;
 
+
+    String sletxt;
+
     public AddNews(RadioButton payRadioButton) {
         this.payRadioButton = payRadioButton;
+    }
+
+    public String getSletxt() {
+        return sletxt;
+    }
+
+    public void setSletxt(String sletxt) {
+        this.sletxt = sletxt;
+    }
+    public AddNews(String sletxt) {
+        this.sletxt = sletxt;
     }
 
     public RadioButton getPayRadioButton() {
