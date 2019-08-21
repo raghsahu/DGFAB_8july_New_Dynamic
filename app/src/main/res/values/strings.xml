@@ -27,7 +27,7 @@
         <item><font fgcolor='#FF8E8E93'>Tally/Recheck</font></item>
         <item><font fgcolor='#FF8E8E93'>Service/Production</font></item>
     </string-array>
-    <string name="app_name">DGFAB</string>
+    <string name="app_name">NS</string>
 
     <string name="login_welcome">Welcome to</string>
     <string name="login_app_details">India\'s first Business Networking Platform</string>

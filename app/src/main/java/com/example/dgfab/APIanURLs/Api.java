@@ -78,28 +78,28 @@ public interface Api {
             @Field("title") String title,
             @Field("discription") String discription
 
-            );
+    );
 
     @FormUrlEncoded
     @POST(REtroURls.Getproduct)
     Call<GetProducts> GET_PRODUCTS_CALL(
             @Field("user_id") String user_id
-            );
+    );
 
 
   @FormUrlEncoded
     @POST(REtroURls.Getsub_Subservices)
     Call<MySubservices> MY_SUBSERVICES_CALL(
-            @Field("subservice_id") String subservice_id
+          @Field("subservice_id") String subservice_id
 
-    );
+  );
   @FormUrlEncoded
     @POST(REtroURls.Add_sub_subservices)
     Call<AddSubService> ADD_SUB_SERVICE_CALL(
-            @Field("subservice_id") String subservice_id,
-            @Field("name") String name
+          @Field("subservice_id") String subservice_id,
+          @Field("name") String name
 
-    );
+  );
 
     @FormUrlEncoded
     @POST(REtroURls.Getservicesbyuser)
@@ -126,7 +126,7 @@ public interface Api {
 
 
     @GET(REtroURls.Country_url)
-    Call<All_Country_State> Get_Country_Call(@Query("name") String name );
+    Call<All_Country_State> Get_Country_Call(@Query("name") String name);
     @Headers("Content-Type: application/x-www-form-urlencoded")
     @FormUrlEncoded
     @POST(REtroURls.State_url)
@@ -150,9 +150,9 @@ public interface Api {
     @FormUrlEncoded
     @POST(REtroURls.Getuserbyid)
     Call<MyInfo> MY_INFO_CALL(
-            @Field("user_id") String user_id
+                    @Field("user_id") String user_id
 
-    );
+            );
 
 
     @Headers("Content-Type: application/x-www-form-urlencoded")
@@ -177,7 +177,6 @@ public interface Api {
     Call<Connection_Requests> CONNECTION_REQUESTS_CALL(
             @Field("senderid") String senderid,
             @Field("receiverid") String receiverid
-
 
 
     );

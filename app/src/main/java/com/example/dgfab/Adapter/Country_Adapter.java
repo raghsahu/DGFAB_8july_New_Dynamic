@@ -83,16 +83,16 @@ public class Country_Adapter extends RecyclerView.Adapter<Country_Adapter.MyView
     }
 
     @Override
-    public Country_Adapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.contry_list, parent, false);
-        return new Country_Adapter.MyViewHolder(view);
+        return new MyViewHolder(view);
     }
 
 
 
     @Override
-    public void onBindViewHolder(final Country_Adapter.MyViewHolder holder, final   int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final   int position) {
         final Country_files get_services_data ;
         this.pos_try = position;
 

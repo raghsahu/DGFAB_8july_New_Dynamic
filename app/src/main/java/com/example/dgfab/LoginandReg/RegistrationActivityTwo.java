@@ -813,7 +813,7 @@ public class RegistrationActivityTwo extends AppCompatActivity {
 
             try {
 
-                URL url = new URL("https://sdltechserv.in/dgfeb/api/api/getstate");
+                URL url = new URL("https://neareststore.in/api/api/getstate");
 
                 JSONObject postDataParams = new JSONObject();
                 postDataParams.put("country_id", id);

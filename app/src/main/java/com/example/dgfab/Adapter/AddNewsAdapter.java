@@ -79,16 +79,16 @@ public class AddNewsAdapter extends RecyclerView.Adapter<AddNewsAdapter.MyViewHo
 
 
     @Override
-    public AddNewsAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.add_news, parent, false);
-        return new AddNewsAdapter.MyViewHolder(view);
+        return new MyViewHolder(view);
     }
 
 
 
     @Override
-    public void onBindViewHolder(final AddNewsAdapter.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final AddNews addNews ;
         this.pos_try = position;
 

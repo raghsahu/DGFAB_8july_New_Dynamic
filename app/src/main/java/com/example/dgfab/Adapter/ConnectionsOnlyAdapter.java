@@ -82,7 +82,7 @@ public class ConnectionsOnlyAdapter extends RecyclerView.Adapter<ConnectionsOnly
 
 
     @Override
-    public void onBindViewHolder(final ConnectionsOnlyAdapter.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final CommingRequestData searching_manufacturers_data ;
         this.pos_try = position;
 
@@ -140,7 +140,7 @@ public class ConnectionsOnlyAdapter extends RecyclerView.Adapter<ConnectionsOnly
         });
     }
 
-    private void TryDisconnect(ConnectionsOnlyAdapter.MyViewHolder holder, Context context, int u_type, String receiverid, int position, int i) {
+    private void TryDisconnect(MyViewHolder holder, Context context, int u_type, String receiverid, int position, int i) {
         Log.d("us is" ,""+ u_type);
         Log.d("their is" ,""+ u_type);
         ProgressDialog progressDialog = new ProgressDialog(context);
@@ -200,7 +200,7 @@ public class ConnectionsOnlyAdapter extends RecyclerView.Adapter<ConnectionsOnly
 
     }
 
-    private void Try_Sent_Reuqest(ConnectionsOnlyAdapter.MyViewHolder holder, Context context, int us, String id) {
+    private void Try_Sent_Reuqest(MyViewHolder holder, Context context, int us, String id) {
         Log.d("us is" ,""+ us);
         Log.d("their is" ,""+ id);
         ProgressDialog progressDialog = new ProgressDialog(context);

@@ -76,16 +76,16 @@ public class Search_All_Adapter  extends RecyclerView.Adapter<Search_All_Adapter
 
 
     @Override
-    public Search_All_Adapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_manufacurers, parent, false);
-        return new Search_All_Adapter.MyViewHolder(view);
+        return new MyViewHolder(view);
     }
 
 
 
     @Override
-    public void onBindViewHolder(final Search_All_Adapter.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final Searching_Manufacturers_Data searching_manufacturers_data ;
         this.pos_try = position;
 

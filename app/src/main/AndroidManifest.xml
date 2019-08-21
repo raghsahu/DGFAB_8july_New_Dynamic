@@ -54,6 +54,7 @@
         <activity android:name=".Activity.Buyer_guest_login.LoginActivity" />
         <activity android:name=".Activity.SplashScreens.App_Intro" />
         <activity android:name=".BusinessDashboard.ProfileActivity" />
+        <activity android:name=".BusinessDashboard.AddProductWay"></activity>
         <activity android:name=".BusinessDashboard.AddProduct_Activity" />
         <activity android:name=".Connections.SeenProfile" />
         <activity

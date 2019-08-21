@@ -138,7 +138,7 @@ public class ManuLoginActivity extends AppCompatActivity {
 
             try {
 
-                URL url = new URL("https://sdltechserv.in/dgfeb/api/api/login");
+                URL url = new URL("https://neareststore.in/api/api/login");
 
                 JSONObject postDataParams = new JSONObject();
                 postDataParams.put("email", email.getText().toString());
@@ -210,8 +210,10 @@ public class ManuLoginActivity extends AppCompatActivity {
                         Toast.makeText(ManuLoginActivity.this, "Login failed,Contact to admin", Toast.LENGTH_SHORT).show();
                     }else {
                         Toast.makeText(ManuLoginActivity.this, "Successful", Toast.LENGTH_SHORT).show();
+                        int s = jsonObject.getJSONObject("data").getInt("id");
                          sessionManager.serverEmailLogin(jsonObject.getJSONObject("data").getInt("id"));
                          sessionManager.serverEmailLogin(String.valueOf(jsonObject.getJSONObject("data").getInt("id")) , jsonObject.getJSONObject("data").getString("user_type"));
+
                          User_ID = jsonObject.getJSONObject("data").getString("id");
                         Shared_Preference.setId(ManuLoginActivity.this,User_ID);
 

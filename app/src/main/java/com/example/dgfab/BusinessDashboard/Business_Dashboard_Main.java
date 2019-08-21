@@ -65,6 +65,7 @@ public class Business_Dashboard_Main extends AppCompatActivity
     public ImageView notion;
     private ActionBar toolbar1;
     SessionManager sessionManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -218,8 +219,10 @@ public class Business_Dashboard_Main extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_addproduct) {
-            Intent intent = new Intent(Business_Dashboard_Main.this , AddProduct_Activity.class);
+           // Intent intent = new Intent(Business_Dashboard_Main.this , AddProduct_Activity.class);
+            Intent intent = new Intent(Business_Dashboard_Main.this , AddProductWay.class);
             startActivity(intent);
+            finish();
 
         } else if (id == R.id.nav_tools) {
 
@@ -261,7 +264,7 @@ public class Business_Dashboard_Main extends AppCompatActivity
 
             try {
 
-                URL url = new URL("https://sdltechserv.in/dgfeb/api/api/getusers");
+                URL url = new URL("https://neareststore.in/api/api/getusers");
 
                 JSONObject postDataParams = new JSONObject();
                 postDataParams.put("user_id", US);
@@ -336,7 +339,7 @@ public class Business_Dashboard_Main extends AppCompatActivity
                     }
                     try {
 //                        Glide.with(Business_Dashboard_Main.this).applyDefaultRequestOptions(new RequestOptions().placeholder(R.drawable.prof).error(R.drawable.prof))
-//                                .load("https://sdltechserv.in/dgfeb/uploads/" + jsonObject.getJSONArray("data").getJSONObject(0).getString("image"))
+//                                .load("https://neareststore.in/uploads/" + jsonObject.getJSONArray("data").getJSONObject(0).getString("image"))
 //                                .listener(new RequestListener<Drawable>() {
 //                                    @Override
 //                                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
@@ -363,7 +366,7 @@ public class Business_Dashboard_Main extends AppCompatActivity
                     }
                     try {
 //                        Glide.with(Business_Dashboard_Main.this).applyDefaultRequestOptions(new RequestOptions().placeholder(R.drawable.pbgg).error(R.drawable.pbgg))
-//                                .load("https://sdltechserv.in/dgfeb/uploads/" + jsonObject.getJSONArray("data").getJSONObject(0).getString("cover_image"))
+//                                .load("https://neareststore.in/uploads/" + jsonObject.getJSONArray("data").getJSONObject(0).getString("cover_image"))
 //                                .listener(new RequestListener<Drawable>() {
 //                                    @Override
 //                                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {

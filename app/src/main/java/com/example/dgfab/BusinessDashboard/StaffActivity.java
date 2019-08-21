@@ -92,7 +92,7 @@ public class StaffActivity extends AppCompatActivity {
                 .setPositiveButton("Take Photo", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
                         startActivityForResult(cameraIntent, RESULT_PICK_IMAGE);
                         Toast.makeText(StaffActivity.this, "ok", Toast.LENGTH_SHORT).show();
@@ -269,7 +269,7 @@ public class StaffActivity extends AppCompatActivity {
                 entity.addPart("image", new FileBody(Staffprofile));
 //                    result = Utilities.postEntityAndFindJson("https://www.spellclasses.co.in/DM/Api/taxreturn", entity);
 //                 //   result = Utilities.postEntityAndFindJson("https://www.spellclasses.co.in/DM/Api/taxreturn", entity);
-                result = Utilities.postEntityAndFindJson("https://sdltechserv.in/dgfeb/api/api/addstaff", entity);
+                result = Utilities.postEntityAndFindJson("https://neareststore.in/api/api/addstaff", entity);
             } catch (Exception e) {
                 e.printStackTrace();
             }

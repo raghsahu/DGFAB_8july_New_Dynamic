@@ -214,7 +214,7 @@ public class SeenOverview extends Fragment {
 //
 //            try {
 //
-//                URL url = new URL("https://sdltechserv.in/dgfeb/api/api/updateuserdata");
+//                URL url = new URL("https://neareststore.in/api/api/updateuserdata");
 //
 //
 //                JSONObject postDataParams = new JSONObject();

@@ -73,16 +73,16 @@ public class CommingConnAdapter  extends RecyclerView.Adapter<CommingConnAdapter
 
 
     @Override
-    public CommingConnAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.accept_or_reject, parent, false);
-        return new CommingConnAdapter.MyViewHolder(view);
+        return new MyViewHolder(view);
     }
 
 
 
     @Override
-    public void onBindViewHolder(final CommingConnAdapter.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final CommingRequestData searching_manufacturers_data ;
         this.pos_try = position;
 
@@ -199,7 +199,7 @@ public class CommingConnAdapter  extends RecyclerView.Adapter<CommingConnAdapter
 
     }
 
-    private void Try_Sent_Reuqest(CommingConnAdapter.MyViewHolder holder, Context context, int us, String id) {
+    private void Try_Sent_Reuqest(MyViewHolder holder, Context context, int us, String id) {
         Log.d("us is" ,""+ us);
         Log.d("their is" ,""+ id);
         ProgressDialog progressDialog = new ProgressDialog(context);

@@ -2,10 +2,38 @@ package com.example.dgfab.Java_Adapter_Files;
 
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 
 public class AddNews {
-    EditText Tilte,Name;
+    EditText Tilte;
+    EditText Name;
+    RadioButton payRadioButton;
+    EditText NameDetails;
     Button button;
+
+    public AddNews(RadioButton payRadioButton) {
+        this.payRadioButton = payRadioButton;
+    }
+
+    public RadioButton getPayRadioButton() {
+        return payRadioButton;
+    }
+
+    public void setPayRadioButton(RadioButton payRadioButton) {
+        this.payRadioButton = payRadioButton;
+    }
+
+    public AddNews(EditText nameDetails) {
+        this.NameDetails = nameDetails;
+    }
+
+    public EditText getNameDetails() {
+        return NameDetails;
+    }
+
+    public void setNameDetails(EditText nameDetails) {
+       NameDetails = nameDetails;
+    }
 
     public EditText getTilte() {
         return Tilte;
@@ -32,8 +60,13 @@ public class AddNews {
     }
 
     public AddNews(EditText tilte, EditText name, Button button) {
-        Tilte = tilte;
-        Name = name;
+        this.Tilte = tilte;
+        this.Name = name;
+        this.button = button;
+    }
+
+    public AddNews(EditText name, Button button) {
+       this.Name = name;
         this.button = button;
     }
 }

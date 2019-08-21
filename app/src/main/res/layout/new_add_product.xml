@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:background="#DAD6D6"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -67,10 +69,12 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textColor="#000"
                         android:layout_weight="0.65"
                         android:text="Product Name" />
 
                     <EditText
+                        android:id="@+id/proname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.35"
@@ -82,17 +86,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:padding="5dp"
                     android:weightSum="1">
 
                     <TextView
+                        android:textColor="#000"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.65"
                         android:text="Product Keyword" />
 
-                    <EditText
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/showkeys"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.35"
@@ -108,11 +114,14 @@
                     android:weightSum="1">
 
                     <TextView
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.65" />
 
-                    <EditText
+                    <Button
+                        android:id="@+id/addmorekey"
+                        android:textColorHint="#000"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.35"
@@ -125,16 +134,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:padding="5dp"
                     android:weightSum="1">
 
-                    <TextView
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/newkey"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.65" />
 
                     <TextView
+                        android:textColor="#000"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.35"
@@ -153,6 +164,7 @@
                     android:weightSum="1">
 
                     <TextView
+                        android:textColor="#000"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.65"
@@ -185,6 +197,7 @@
                     android:weightSum="1">
 
                     <TextView
+                        android:textColor="#000"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.65"
@@ -217,6 +230,7 @@
                     android:weightSum="1">
 
                     <TextView
+                        android:textColor="#000"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.65"
@@ -248,6 +262,7 @@
                     android:weightSum="1">
 
                     <TextView
+                        android:textColor="#000"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.65"
@@ -270,6 +285,7 @@
                     android:weightSum="1">
 
                     <TextView
+                        android:textColor="#000"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.65"
@@ -293,6 +309,7 @@
                     android:weightSum="1">
 
                     <TextView
+                        android:textColor="#000"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.65"
@@ -327,6 +344,7 @@
                     android:weightSum="1">
 
                     <TextView
+                        android:textColor="#000"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.65"
@@ -348,6 +366,7 @@
                     android:weightSum="1">
 
                     <TextView
+                        android:textColor="#000"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.65"
@@ -365,21 +384,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:padding="5dp"
                     android:weightSum="1">
 
-                    <TextView
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/addmoredet"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.65" />
 
-                    <TextView
-                        android:layout_width="match_parent"
+
+                    <Button
+                        android:id="@+id/addmrdet"
+                        android:layout_gravity="right"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="50dp"
                         android:layout_weight="0.35"
-                        android:text="Please fill in both attributes"
-                        android:textSize="11dp" />
+                        android:background="@color/colorPrimary"
+                        android:text="Add More Details"
+                        android:textAllCaps="false"
+                        android:textColor="#fff" />
 
                 </LinearLayout>
                 <!---->
@@ -397,16 +423,13 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.65" />
 
-                    <Button
+                    <TextView
+                        android:textColor="#000"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="50dp"
                         android:layout_weight="0.35"
-                        android:background="@color/colorPrimary"
-                        android:text="Add more"
-                        android:textAllCaps="false"
-                        android:textColor="#fff" />
-
+                        android:text="Please fill in both attributes"
+                        android:textSize="11dp" />
                 </LinearLayout>
                 <!---->
                 <LinearLayout
@@ -418,6 +441,7 @@
                     android:weightSum="1">
 
                     <TextView
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -435,6 +459,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:textColor="#000"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.40"
@@ -455,6 +480,7 @@
                     android:weightSum="1">
 
                     <TextView
+                        android:textColor="#000"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.65"
@@ -473,6 +499,8 @@
                             android:weightSum="1">
 
                             <RadioButton
+
+                                android:textColor="#000"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.50"
@@ -480,6 +508,8 @@
                                 android:textSize="10dp" />
 
                             <RadioButton
+
+                                android:textColor="#000"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.50"
@@ -502,6 +532,7 @@
                     android:weightSum="1">
 
                     <TextView
+                        android:textColor="#000"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.65"
@@ -516,6 +547,7 @@
                         android:orientation="vertical">
 
                         <Spinner
+                            android:textColor="#000"
                             android:id="@+id/spin"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"></Spinner>
@@ -533,6 +565,7 @@
                     android:weightSum="1">
 
                     <TextView
+                        android:textColor="#000"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.65"
@@ -617,6 +650,7 @@
                         android:layout_weight="0.65" />
 
                     <TextView
+                        android:textColor="#000"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.35"
@@ -634,6 +668,7 @@
                     android:weightSum="1">
 
                     <TextView
+                        android:textColor="#000"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.65"
@@ -647,6 +682,7 @@
                         android:weightSum="1">
 
                         <CheckBox
+                            android:textColor="#000"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.25"
@@ -654,6 +690,8 @@
                             android:textSize="10dp" />
 
                         <CheckBox
+
+                            android:textColor="#000"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.25"
@@ -661,6 +699,8 @@
                             android:textSize="10dp" />
 
                         <CheckBox
+
+                            android:textColor="#000"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.25"
@@ -668,6 +708,8 @@
                             android:textSize="10dp" />
 
                         <CheckBox
+
+                            android:textColor="#000"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.25"
@@ -698,6 +740,8 @@
                         android:weightSum="1">
 
                         <CheckBox
+
+                            android:textColor="#000"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.50"
@@ -705,6 +749,7 @@
                             android:textSize="10dp" />
 
                         <CheckBox
+                            android:textColor="#000"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.50"
@@ -731,22 +776,24 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.35"
-                        android:orientation="horizontal"
+                        android:orientation="vertical"
                         android:weightSum="1">
 
-                        <EditText
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/addmorepay"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="5dp"
-                            android:layout_weight="0.35"
-                            android:background="@drawable/bt_bg" />
+                            android:layout_weight="0.35" />
 
                         <Button
+                            android:id="@+id/addmorepro"
+                            android:textColor="#fff"
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
                             android:layout_weight="0.65"
                             android:background="@color/colorPrimary"
-                            android:text="Add"
+                            android:text="Add more payment options"
                             android:textAllCaps="false" />
 
                     </LinearLayout>
@@ -770,8 +817,248 @@
                         android:textColor="#fff" />
 
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:textColor="#000"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.65"
+                        android:text="Shipping" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.35"
+                        android:background="#B3B2B2"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="5dp"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.50"
+                            android:text="Quantity"
+                            android:textColor="#000" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.50"
+                            android:text="Est.Load Time"
+                            android:textColor="#000" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <!---->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.65"
+                        android:text="" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.35"
+                        android:weightSum="1">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="0.50"
+                            android:background="@drawable/bt_bg" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.50"
+                            android:background="@drawable/bt_bg" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.65" />
+
+                    <TextView
+                        android:textColor="#000"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.35"
+                        android:text="Increase the number(range 3)"
+                        android:textSize="11dp" />
+
+                </LinearLayout>
 
 
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:textColor="#000"
+                        android:text="Shipping Origin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.65" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.35"
+                        android:background="@drawable/bt_bg" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    android:weightSum="1">
+
+
+                    <TextView
+                        android:layout_gravity="center"
+                        android:textColor="#000"
+                        android:text="Quantities &amp; Units"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="0dp"
+                    android:weightSum="1">
+
+                    <EditText
+                        android:background="@drawable/bt_bg"
+                        android:hint="Shipping Origin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.20" />
+                    <Spinner
+                        android:background="@drawable/bt_bg"
+                        android:text="Shipping Origin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25" />
+                    <TextView
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:text="Per"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.30"
+                       />
+                    <Spinner
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:background="@drawable/bt_bg" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_margin="1dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    android:weightSum="1">
+
+                    <Button
+                        android:background="@drawable/bt_bg"
+                        android:hint="Add More Units"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.70" />
+
+                    <TextView
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:text=""
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.30"
+                        />
+
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_margin="1dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    android:weightSum="1">
+
+                    <TextView
+
+                        android:hint="Packaging Description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.80" />
+
+                    <EditText
+                        android:background="@drawable/bt_bg"
+
+                        android:padding="10dp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:text=""
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.20"
+                        />
+
+
+                </LinearLayout>
             </LinearLayout>
 
         </ScrollView>
@@ -785,6 +1072,7 @@
             android:padding="10dp">
 
             <Button
+                android:id="@+id/nxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"

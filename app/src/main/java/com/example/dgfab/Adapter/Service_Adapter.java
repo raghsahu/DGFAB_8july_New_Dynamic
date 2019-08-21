@@ -86,7 +86,7 @@ public class Service_Adapter  extends RecyclerView.Adapter<Service_Adapter.MyVie
 //        });
         holder.name_of_doc.setText(get_services_data.getService());
 //        Glide.with(mContext)
-//                .load("https://sdltechserv.in/dgfeb/uploads/"+get_services_data.getImage())
+//                .load("https://neareststore.in/uploads/"+get_services_data.getImage())
 //                .listener(new RequestListener<Drawable>() {
 //                    @Override
 //                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {

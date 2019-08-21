@@ -18,10 +18,7 @@ import android.widget.Toast;
 
 import com.example.dgfab.APIanURLs.Api;
 import com.example.dgfab.APIanURLs.REtroURls;
-import com.example.dgfab.Adapter.ConnectionsOnlyAdapter;
-import com.example.dgfab.Adapter.TheirProducts;
-import com.example.dgfab.AllParsings.CommingRequest;
-import com.example.dgfab.AllParsings.CommingRequestData;
+import com.example.dgfab.Adapter.TheirProductsAdapter;
 import com.example.dgfab.AllParsings.GetProducts;
 import com.example.dgfab.AllParsings.GetProductsData;
 import com.example.dgfab.BusinessDashboard.AddProduct_Activity;
@@ -44,7 +41,7 @@ import static com.example.dgfab.Connections.SeenProfile.Theirid;
 
 public class SeenProducts   extends Fragment {
     // ExpandableListAdapter listAdapter;
-    TheirProducts theirProducts;
+    TheirProductsAdapter theirProducts;
     List<GetProductsData> getProductsData = new ArrayList<>();
     ExpandableListView expListView;
     List<String> listDataHeader;
@@ -94,7 +91,7 @@ public class SeenProducts   extends Fragment {
                                     response.body().getData().get(i).getStatus(),response.body().getData().get(i).getId(),response.body().getData().get(i).getTitle(),
                                     response.body().getData().get(i).getDiscription(),response.body().getData().get(i).getDiscount()));
                         }
-                        theirProducts = new TheirProducts(getActivity(),getProductsData);
+                        theirProducts = new TheirProductsAdapter(getActivity(),getProductsData);
                         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
                         llm.setOrientation(LinearLayoutManager.VERTICAL);
                         seenprorec.setLayoutManager(llm);

@@ -302,7 +302,7 @@ public class Business_ProfileActivty extends AppCompatActivity {
 
             try {
 
-                URL url = new URL("https://sdltechserv.in/dgfeb/api/api/getusers");
+                URL url = new URL("https://neareststore.in/api/api/getusers");
 
                 JSONObject postDataParams = new JSONObject();
                 postDataParams.put("user_id", US);
@@ -368,7 +368,7 @@ public class Business_ProfileActivty extends AppCompatActivity {
                     jetpro.setText(jsonObject.getJSONArray("data").getJSONObject(0).get("name").toString());
                     try {
                         Glide.with(Business_ProfileActivty.this).applyDefaultRequestOptions(new RequestOptions().placeholder(R.drawable.prof).error(R.drawable.prof))
-                                .load("https://sdltechserv.in/dgfeb/uploads/" + jsonObject.getJSONArray("data").getJSONObject(0).getString("image"))
+                                .load("https://neareststore.in/uploads/" + jsonObject.getJSONArray("data").getJSONObject(0).getString("image"))
                                 .listener(new RequestListener<Drawable>() {
                                     @Override
                                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
@@ -395,7 +395,7 @@ public class Business_ProfileActivty extends AppCompatActivity {
                     }
                     try {
                         Glide.with(Business_ProfileActivty.this).applyDefaultRequestOptions(new RequestOptions().placeholder(R.drawable.pbgg).error(R.drawable.pbgg))
-                                .load("https://sdltechserv.in/dgfeb/uploads/" + jsonObject.getJSONArray("data").getJSONObject(0).getString("cover_image"))
+                                .load("https://neareststore.in/uploads/" + jsonObject.getJSONArray("data").getJSONObject(0).getString("cover_image"))
                                 .listener(new RequestListener<Drawable>() {
                                     @Override
                                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
@@ -505,7 +505,7 @@ public class Business_ProfileActivty extends AppCompatActivity {
 
 //                    result = Utilities.postEntityAndFindJson("https://www.spellclasses.co.in/DM/Api/taxreturn", entity);
 //                 //   result = Utilities.postEntityAndFindJson("https://www.spellclasses.co.in/DM/Api/taxreturn", entity);
-                result = Utilities.postEntityAndFindJson("https://sdltechserv.in/dgfeb/api/api/updateprofile", entity);
+                result = Utilities.postEntityAndFindJson("https://neareststore.in/api/api/updateprofile", entity);
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -291,7 +291,7 @@ public class Search_All_Users extends AppCompatActivity {
 
             try {
 
-                URL url = new URL("https://sdltechserv.in/dgfeb/api/api/searchbyusers");
+                URL url = new URL("https://neareststore.in/api/api/searchbyusers");
 
                 JSONObject postDataParams = new JSONObject();
                 postDataParams.put("user_id", us);

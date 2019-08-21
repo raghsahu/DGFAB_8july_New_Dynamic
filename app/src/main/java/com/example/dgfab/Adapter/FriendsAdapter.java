@@ -74,16 +74,16 @@ public class FriendsAdapter   extends RecyclerView.Adapter<FriendsAdapter.MyView
 
 
     @Override
-    public FriendsAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.doneaccepting, parent, false);
-        return new FriendsAdapter.MyViewHolder(view);
+        return new MyViewHolder(view);
     }
 
 
 
     @Override
-    public void onBindViewHolder(final FriendsAdapter.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final Friendsdata friendsdata ;
         this.pos_try = position;
 
@@ -141,7 +141,7 @@ public class FriendsAdapter   extends RecyclerView.Adapter<FriendsAdapter.MyView
         });
     }
 
-    private void TryDisconnect(FriendsAdapter.MyViewHolder holder, Context context, int u_type, String receiverid, int position, int i) {
+    private void TryDisconnect(MyViewHolder holder, Context context, int u_type, String receiverid, int position, int i) {
         Log.d("us is" ,""+ u_type);
         Log.d("their is" ,""+ u_type);
         ProgressDialog progressDialog = new ProgressDialog(context);

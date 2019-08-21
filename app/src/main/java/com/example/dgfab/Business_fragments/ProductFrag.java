@@ -1,7 +1,6 @@
 package com.example.dgfab.Business_fragments;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,10 +17,9 @@ import android.widget.Toast;
 
 import com.example.dgfab.APIanURLs.Api;
 import com.example.dgfab.APIanURLs.REtroURls;
-import com.example.dgfab.Adapter.TheirProducts;
+import com.example.dgfab.Adapter.TheirProductsAdapter;
 import com.example.dgfab.AllParsings.GetProducts;
 import com.example.dgfab.AllParsings.GetProductsData;
-import com.example.dgfab.BusinessDashboard.AddProduct_Activity;
 import com.example.dgfab.R;
 import com.example.dgfab.SessionManage.SessionManager;
 
@@ -46,7 +44,7 @@ public class ProductFrag extends Fragment {
     HashMap<String, List<String>> listDataChild;
     TextView add_product;
     TextView chatnow,inquries;
-    TheirProducts theirProducts;
+    TheirProductsAdapter theirProducts;
     List<GetProductsData> getProductsData = new ArrayList<>();
     RecyclerView seenprorec;
 
@@ -95,7 +93,7 @@ public class ProductFrag extends Fragment {
                                     response.body().getData().get(i).getStatus(),response.body().getData().get(i).getId(),response.body().getData().get(i).getTitle(),
                                     response.body().getData().get(i).getDiscription(),response.body().getData().get(i).getDiscount()));
                         }
-                        theirProducts = new TheirProducts(getActivity(),getProductsData);
+                        theirProducts = new TheirProductsAdapter(getActivity(),getProductsData);
                         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
                         llm.setOrientation(LinearLayoutManager.VERTICAL);
                         seenprorec.setLayoutManager(llm);

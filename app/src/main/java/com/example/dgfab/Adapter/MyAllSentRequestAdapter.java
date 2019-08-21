@@ -73,16 +73,16 @@ public class MyAllSentRequestAdapter extends RecyclerView.Adapter<MyAllSentReque
 
 
     @Override
-    public MyAllSentRequestAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.newdesign, parent, false);
-        return new MyAllSentRequestAdapter.MyViewHolder(view);
+        return new MyViewHolder(view);
     }
 
 
 
     @Override
-    public void onBindViewHolder(final MyAllSentRequestAdapter.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final All_Sent_Request_Data searching_manufacturers_data ;
         this.pos_try = position;
 
@@ -203,7 +203,7 @@ public class MyAllSentRequestAdapter extends RecyclerView.Adapter<MyAllSentReque
       return bx;
     }
 
-    private void Try_Sent_Reuqest(MyAllSentRequestAdapter.MyViewHolder holder, Context context, int us, String id) {
+    private void Try_Sent_Reuqest(MyViewHolder holder, Context context, int us, String id) {
         Log.d("us is" ,""+ us);
         Log.d("their is" ,""+ id);
         ProgressDialog progressDialog = new ProgressDialog(context);

@@ -79,7 +79,7 @@ public class OtpActivity extends AppCompatActivity {
 
             try {
 
-                URL url = new URL("https://sdltechserv.in/dgfeb/api/api/sendotp");
+                URL url = new URL("https://neareststore.in/api/api/sendotp");
 
                 JSONObject postDataParams = new JSONObject();
                 postDataParams.put("mobile", mobs);
@@ -215,7 +215,7 @@ public class OtpActivity extends AppCompatActivity {
 
             try {
 
-                URL url = new URL("https://sdltechserv.in/dgfeb/api/api/buyerragistration");
+                URL url = new URL("https://neareststore.in/api/api/buyerragistration");
                 Log.d("string" , ""+otp);
                 JSONObject postDataParams = new JSONObject();
                 postDataParams.put("mobile", mobs);

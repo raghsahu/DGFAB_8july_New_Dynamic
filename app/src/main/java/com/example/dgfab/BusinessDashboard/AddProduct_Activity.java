@@ -153,7 +153,6 @@ public class AddProduct_Activity extends AppCompatActivity {
         someHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-
 //
                 someHandler.postDelayed(this, 1000);
             }
@@ -1127,7 +1126,7 @@ public class AddProduct_Activity extends AppCompatActivity {
 
             try {
 
-                URL url = new URL("https://sdltechserv.in/dgfeb/api/api/addProduct");
+                URL url = new URL("https://neareststore.in/api/api/addProduct");
 
                 JSONObject postDataParams = new JSONObject();
                 postDataParams.put("category",cat_id);
@@ -1311,7 +1310,7 @@ public class AddProduct_Activity extends AppCompatActivity {
                         HttpMultipartMode.BROWSER_COMPATIBLE);
                 entity.addPart("product_id", new StringBody("" + Productid));
                 entity.addPart("image", new FileBody(pdfFile));
-                        result = Utilities.postEntityAndFindJson("https://sdltechserv.in/dgfeb/api/api/updateProduct", entity);
+                        result = Utilities.postEntityAndFindJson("https://neareststore.in/api/api/updateProduct", entity);
     //            result = Utilities.postEntityAndFindJson("", entity);
 
 //                    entity.addPart("return_copy_upload", new FileBody(pic0));

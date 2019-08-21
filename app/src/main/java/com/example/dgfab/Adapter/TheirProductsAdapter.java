@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +20,6 @@ import com.example.dgfab.APIanURLs.REtroURls;
 import com.example.dgfab.AllParsings.Connection_Requests;
 import com.example.dgfab.AllParsings.GetProductsData;
 import com.example.dgfab.BusinessDashboard.Inquiry_Activity;
-import com.example.dgfab.Java_Adapter_Files.AddNews;
 import com.example.dgfab.R;
 import com.example.dgfab.SessionManage.SessionManager;
 
@@ -38,7 +36,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.example.dgfab.Connections.SeenProfile.Theirid;
 
-public class TheirProducts  extends RecyclerView.Adapter<TheirProducts.MyViewHolder> {
+public class TheirProductsAdapter extends RecyclerView.Adapter<TheirProductsAdapter.MyViewHolder> {
     private Context mContext;
     public static ArrayList<String> Myproducttiles = new ArrayList<>();
     public static ArrayList<String> Myproductsdescrip = new ArrayList<>();
@@ -52,7 +50,7 @@ public class TheirProducts  extends RecyclerView.Adapter<TheirProducts.MyViewHol
     public List<GetProductsData> Doc;
     private ProgressDialog progressBar;
 
-    public TheirProducts(Context context, List<GetProductsData> doc) {
+    public TheirProductsAdapter(Context context, List<GetProductsData> doc) {
         mContext=context;
         this.Doc = doc;
         setHasStableIds(true);
@@ -80,16 +78,16 @@ public class TheirProducts  extends RecyclerView.Adapter<TheirProducts.MyViewHol
 
 
     @Override
-    public TheirProducts.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.theirproducts, parent, false);
-        return new TheirProducts.MyViewHolder(view);
+        return new MyViewHolder(view);
     }
 
 
 
     @Override
-    public void onBindViewHolder(final TheirProducts.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         final GetProductsData addNews = Doc.get(position) ;
         this.pos_try = position;
         holder.protit.setText(addNews.getProductName());
@@ -124,7 +122,7 @@ public class TheirProducts  extends RecyclerView.Adapter<TheirProducts.MyViewHol
 
 
 
-    private void Try_Sent_Reuqest(TheirProducts.MyViewHolder holder, Context context, int us, String id) {
+    private void Try_Sent_Reuqest(MyViewHolder holder, Context context, int us, String id) {
         Log.d("us is" ,""+ us);
         Log.d("their is" ,""+ id);
         ProgressDialog progressDialog = new ProgressDialog(context);
