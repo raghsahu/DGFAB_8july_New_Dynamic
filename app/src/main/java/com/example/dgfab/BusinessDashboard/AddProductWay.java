@@ -31,6 +31,7 @@ public class AddProductWay extends AppCompatActivity {
     List<String> AllKeywordsList;
     List<AddNews> AllMoredetailesList  = new ArrayList<>();
     List<AddNews> AllMorepayList  = new ArrayList<>();
+
     AddMorekeysAdapter addMorekeysAdapter;
     AddMoredetailesAdapter addMoredetailsAdapter;
     AddMorePayoptions addMorePayoptions;
@@ -45,6 +46,22 @@ public class AddProductWay extends AppCompatActivity {
             if (intent != null) {
                 String str = intent.getStringExtra("key");
                 Toast.makeText(context, "Broadcast received !"+str, Toast.LENGTH_SHORT).show();
+                if(addnewkeyList.size() >0) {
+                    addnewkeyList.add(new AddNews(new EditText(context), new Button(context)));
+                    LinearLayoutManager llm = new LinearLayoutManager(context);
+                    llm.setOrientation(LinearLayoutManager.VERTICAL);
+                    newkey.setLayoutManager(llm);
+                    addMorekeysAdapter = new AddMorekeysAdapter(context, addnewkeyList);
+                    newkey.swapAdapter(addMorekeysAdapter, false);
+                    addMorekeysAdapter.notifyItemInserted(0);
+                }else {
+                    addnewkeyList.add(new AddNews(new EditText(context), new Button(context)));
+                    LinearLayoutManager llm = new LinearLayoutManager(context);
+                    llm.setOrientation(LinearLayoutManager.VERTICAL);
+                    newkey.setLayoutManager(llm);
+                    addMorekeysAdapter = new AddMorekeysAdapter(context, addnewkeyList);
+                    newkey.setAdapter(addMorekeysAdapter);
+                }
                 // get all your data from intent and do what you want
             }
           //  tv.setText("Broadcast received !");
