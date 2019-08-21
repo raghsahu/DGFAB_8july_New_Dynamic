@@ -1,7 +1,9 @@
 package com.example.dgfab.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.StrictMode;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -84,20 +86,42 @@ public class AddMoredetailesAdapter   extends RecyclerView.Adapter<AddMoredetail
             public void onClick(View v) {
                 holder.addnewkey.setText(holder.addnewkey.getText().toString());
                 addNews141.setNameDetails(holder.addnewkey);
+                holder.addnewkey.setText(holder.addnewkey.getText().toString());
+                addNews141.setName(holder.addnewkey);
 
-                Myproducttiles.add(holder.addnewkey.getText().toString());
-                Myproducttiles.add(holder.addnewkey.getText().toString());
+                //  Myproducttiles.add(holder.addnewkey.getText().toString());
+                //    Myproducttiles.add(holder.addnewkey.getText().toString());
+                Toast.makeText(mContext, "xyz "+holder.addnewkey.getText().toString(), Toast.LENGTH_SHORT).show();
+                Intent intent123 = new Intent("Add_More_Details");
+                //   Intent intent = new Intent(v.getContext() , AddProductWay.class);
+                intent123.putExtra("Add_More_Details_Key", holder.addnewkey.getText().toString());
+                // put your all data using put extra
+
+                LocalBroadcastManager.getInstance(v.getContext()).sendBroadcast(intent123);
 //                holder.mname.getText().toString();
 //                holder.mname.setText();
                 // Myproductsdescrip.add(holder.adddes.getText().toString());
                 try {
                     //   Toast.makeText(mContext, "" + Myproductsdescrip.get(position), Toast.LENGTH_SHORT).show();
-                    Toast.makeText(mContext, "" + Myproducttiles.get(position), Toast.LENGTH_SHORT).show();
+                    //   Toast.makeText(mContext, "" + Myproducttiles.get(position), Toast.LENGTH_SHORT).show();
                     Toast.makeText(mContext, "Working on api", Toast.LENGTH_SHORT).show();
                 }catch (Exception e)
                 {
                     e.printStackTrace();
                 }
+//                Myproducttiles.add(holder.addnewkey.getText().toString());
+//                Myproducttiles.add(holder.addnewkey.getText().toString());
+////                holder.mname.getText().toString();
+////                holder.mname.setText();
+//                // Myproductsdescrip.add(holder.adddes.getText().toString());
+//                try {
+//                    //   Toast.makeText(mContext, "" + Myproductsdescrip.get(position), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(mContext, "" + Myproducttiles.get(position), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(mContext, "Working on api", Toast.LENGTH_SHORT).show();
+//                }catch (Exception e)
+//                {
+//                    e.printStackTrace();
+//                }
             }
 
         });

@@ -298,7 +298,7 @@ public class AddProduct_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     if(addNewsList.size() >0) {
-                        addNewsList.add(addNewsList.size(),new AddNews(new EditText(AddProduct_Activity.this), new EditText(AddProduct_Activity.this), new Button(AddProduct_Activity.this)));
+                     //   addNewsList.add(addNewsList.size(),new AddNews(new EditText(AddProduct_Activity.this), new EditText(AddProduct_Activity.this), new Button(AddProduct_Activity.this)));
 
                    //     addNewsAdapter.notifyDataSetChanged();
                         addfieldrec.swapAdapter(addNewsAdapter, false);
@@ -306,7 +306,7 @@ public class AddProduct_Activity extends AppCompatActivity {
 //                        addfieldrec.setAdapter(addNewsAdapter);
                     }else {
                         Toast.makeText(AddProduct_Activity.this, "list i", Toast.LENGTH_SHORT).show();
-                        addNewsList.add(new AddNews(new EditText(AddProduct_Activity.this), new EditText(AddProduct_Activity.this), new Button(AddProduct_Activity.this)));
+                      //  addNewsList.add(new AddNews(new EditText(AddProduct_Activity.this), new EditText(AddProduct_Activity.this), new Button(AddProduct_Activity.this)));
                         addNewsAdapter = new AddNewsAdapter(AddProduct_Activity.this, addNewsList);
                         addfieldrec.setAdapter(addNewsAdapter);
                         addNewsAdapter.notifyItemRemoved(0);
@@ -317,7 +317,7 @@ public class AddProduct_Activity extends AppCompatActivity {
                 }catch (Exception e)
                 {
                     Toast.makeText(AddProduct_Activity.this, "list i", Toast.LENGTH_SHORT).show();
-                    addNewsList.add(new AddNews(new EditText(AddProduct_Activity.this), new EditText(AddProduct_Activity.this), new Button(AddProduct_Activity.this)));
+                  //  addNewsList.add(new AddNews(new EditText(AddProduct_Activity.this), new EditText(AddProduct_Activity.this), new Button(AddProduct_Activity.this)));
                     addNewsAdapter = new AddNewsAdapter(AddProduct_Activity.this, addNewsList);
                     addfieldrec.setAdapter(addNewsAdapter);
                     e.printStackTrace();

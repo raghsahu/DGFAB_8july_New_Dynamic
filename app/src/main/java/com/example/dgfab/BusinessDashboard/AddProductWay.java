@@ -30,8 +30,8 @@ import java.util.List;
 
 public class AddProductWay extends AppCompatActivity {
     Button addmorekey,nxt,addmrdet,addmorepro;
-    RecyclerView newkey,addmoredet,addmorepay,showkeys;
-    List<String> AllKeywordsList;
+    RecyclerView newkey,addmoredet,addmorepay,showkeys,showmoredeatils;
+    List<String> AllKeywordsList,AlldetailsList,AllpayList;
     List<AddNews> AllMoredetailesList  = new ArrayList<>();
     List<AddNews> AllMorepayList  = new ArrayList<>();
     List<AddNews> selectandRemoveList  = new ArrayList<>();
@@ -50,30 +50,58 @@ public class AddProductWay extends AppCompatActivity {
             Toast.makeText(context, "Broadcast received !", Toast.LENGTH_SHORT).show();
             if (intent != null) {
                 String str = intent.getStringExtra("key");
-                Toast.makeText(context, "Broadcast received !"+str, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Broadcast received KeysDetails!"+str, Toast.LENGTH_SHORT).show();
                 if(selectandRemoveList.size() >0) {
-                    selectandRemoveList.add(new AddNews(str));
-//                    LinearLayoutManager llm = new LinearLayoutManager(context);
-//                    llm.setOrientation(LinearLayoutManager.VERTICAL);
-//                    showkeys.setLayoutManager(llm);
+                    selectandRemoveList.add(new AddNews(1,str));
                     gridLayoutManager = new GridLayoutManager(getApplicationContext(),6);
                     showkeys.addItemDecoration(new DividerItemDecoration(AddProductWay.this, LinearLayoutManager.VERTICAL));
                     showkeys.setLayoutManager(gridLayoutManager);
-                //    showkeys.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, true));
                     selectandRemoveAdapter = new SelectandRemoveAdapter(context, selectandRemoveList);
                     showkeys.swapAdapter(selectandRemoveAdapter, false);
                     selectandRemoveAdapter.notifyItemInserted(0);
                 }else {
-                    selectandRemoveList.add(new AddNews(str));
-//                    LinearLayoutManager llm = new LinearLayoutManager(context);
-//                    llm.setOrientation(LinearLayoutManager.VERTICAL);
-//                    showkeys.setLayoutManager(llm);
+                    selectandRemoveList.add(new AddNews(1,str));
                     gridLayoutManager = new GridLayoutManager(getApplicationContext(),6);
                     showkeys.addItemDecoration(new DividerItemDecoration(AddProductWay.this, LinearLayoutManager.VERTICAL));
                     showkeys.setLayoutManager(gridLayoutManager);
 
                     selectandRemoveAdapter = new SelectandRemoveAdapter(context, selectandRemoveList);
                     showkeys.setAdapter(selectandRemoveAdapter);
+                    selectandRemoveAdapter.notifyItemInserted(0);
+                }
+                // get all your data from intent and do what you want
+            }
+          //  tv.setText("Broadcast received !");
+
+        }
+    };
+    //+++++++++++++++++++++++++++++For Others Details+++++++++++++++++++++++++++++++++++++
+    private BroadcastReceiver  OthersDetails = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // intent can contain anydata
+            Log.d("sohail","onReceive called");
+         //   Toast.makeText(context, "Broadcast received !", Toast.LENGTH_SHORT).show();
+            if (intent != null) {
+                String str = intent.getStringExtra("Add_More_Details");
+                Toast.makeText(context, "Broadcast received Other's Details !"+str, Toast.LENGTH_SHORT).show();
+                if(selectandRemoveList.size() >0) {
+                    selectandRemoveList.add(new AddNews(2,str));
+                    gridLayoutManager = new GridLayoutManager(getApplicationContext(),6);
+                    showmoredeatils.addItemDecoration(new DividerItemDecoration(AddProductWay.this, LinearLayoutManager.VERTICAL));
+                    showmoredeatils.setLayoutManager(gridLayoutManager);
+                    selectandRemoveAdapter = new SelectandRemoveAdapter(context, selectandRemoveList);
+                    showmoredeatils.swapAdapter(selectandRemoveAdapter, false);
+                    selectandRemoveAdapter.notifyItemInserted(0);
+                }else {
+                    selectandRemoveList.add(new AddNews(2,str));
+                    gridLayoutManager = new GridLayoutManager(getApplicationContext(),6);
+                    showmoredeatils.addItemDecoration(new DividerItemDecoration(AddProductWay.this, LinearLayoutManager.VERTICAL));
+                    showmoredeatils.setLayoutManager(gridLayoutManager);
+
+                    selectandRemoveAdapter = new SelectandRemoveAdapter(context, selectandRemoveList);
+                    showmoredeatils.setAdapter(selectandRemoveAdapter);
                     selectandRemoveAdapter.notifyItemInserted(0);
                 }
                 // get all your data from intent and do what you want
@@ -105,7 +133,9 @@ public class AddProductWay extends AppCompatActivity {
         setContentView(R.layout.new_add_product);
 
         LocalBroadcastManager lbm = LocalBroadcastManager.getInstance(this);
+        LocalBroadcastManager OthersDetailsBroadcastManager = LocalBroadcastManager.getInstance(this);
         lbm.registerReceiver(onNotice, new IntentFilter("filter_string"));
+        OthersDetailsBroadcastManager.registerReceiver(OthersDetails, new IntentFilter("Add_More_Details_Key"));
         AllViwsbyid();
       //  ++++++++++++++++++++++++++++++++all clicks+++++++++++++++++++++++++++++++++++++++++++++++++++++++
         //for moreeeeeeeeeeeeeeeeeeeeeeeeeee keywqordssssssssssssssssssssssssssssssssssss//
@@ -135,7 +165,7 @@ public class AddProductWay extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(addnewkeyList.size() >0) {
-                    addnewkeyList.add(new AddNews(new EditText(v.getContext()), new Button(v.getContext())));
+                    addnewkeyList.add(new AddNews(1,new EditText(v.getContext()), new Button(v.getContext())));
                     LinearLayoutManager llm = new LinearLayoutManager(v.getContext());
                     llm.setOrientation(LinearLayoutManager.VERTICAL);
                     newkey.setLayoutManager(llm);
@@ -143,7 +173,7 @@ public class AddProductWay extends AppCompatActivity {
                     newkey.swapAdapter(addMorekeysAdapter, false);
                     addMorekeysAdapter.notifyItemInserted(0);
                 }else {
-                    addnewkeyList.add(new AddNews(new EditText(v.getContext()), new Button(v.getContext())));
+                    addnewkeyList.add(new AddNews(1,new EditText(v.getContext()), new Button(v.getContext())));
                     LinearLayoutManager llm = new LinearLayoutManager(v.getContext());
                     llm.setOrientation(LinearLayoutManager.VERTICAL);
                     newkey.setLayoutManager(llm);
@@ -154,17 +184,14 @@ public class AddProductWay extends AppCompatActivity {
             }
 
         });
-
-
         //////////////////////////////////////////////////////
         //for add more details////////////////////////////
         addmrdet.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
             //    AllMoredetailesList.add(new AddNews(new EditText(v.getContext())));
                 if(AllMoredetailesList.size() >0) {
-                    AllMoredetailesList.add(new AddNews(new EditText(v.getContext())));
+                    AllMoredetailesList.add(new AddNews(2,new EditText(v.getContext())));
                     LinearLayoutManager llm = new LinearLayoutManager(v.getContext());
                     llm.setOrientation(LinearLayoutManager.VERTICAL);
                     addmoredet.setLayoutManager(llm);
@@ -172,7 +199,7 @@ public class AddProductWay extends AppCompatActivity {
                     addmoredet.swapAdapter(addMoredetailsAdapter, false);
                     addMoredetailsAdapter.notifyItemInserted(0);
                 }else {
-                    AllMoredetailesList.add(new AddNews(new EditText(v.getContext())));
+                    AllMoredetailesList.add(new AddNews(2,new EditText(v.getContext())));
                     LinearLayoutManager llm = new LinearLayoutManager(v.getContext());
                     llm.setOrientation(LinearLayoutManager.VERTICAL);
                     addmoredet.setLayoutManager(llm);
@@ -186,7 +213,7 @@ public class AddProductWay extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(AllMorepayList.size() >0) {
-                    AllMoredetailesList.add(new AddNews(new EditText(v.getContext())));
+                    AllMoredetailesList.add(new AddNews(3,new EditText(v.getContext())));
                     LinearLayoutManager llm = new LinearLayoutManager(v.getContext());
                     llm.setOrientation(LinearLayoutManager.VERTICAL);
                     addmoredet.setLayoutManager(llm);
@@ -194,7 +221,7 @@ public class AddProductWay extends AppCompatActivity {
                     addmoredet.swapAdapter(addMoredetailsAdapter, false);
                     addMoredetailsAdapter.notifyItemInserted(0);
                 }else {
-                    AllMoredetailesList.add(new AddNews(new EditText(v.getContext())));
+                    AllMoredetailesList.add(new AddNews(3,new EditText(v.getContext())));
                     LinearLayoutManager llm = new LinearLayoutManager(v.getContext());
                     llm.setOrientation(LinearLayoutManager.VERTICAL);
                     addmoredet.setLayoutManager(llm);
@@ -229,6 +256,7 @@ public class AddProductWay extends AppCompatActivity {
         addmorekey = findViewById(R.id.addmorekey);
         newkey = findViewById(R.id.newkey);
         addmoredet = findViewById(R.id.addmoredet);
+        showmoredeatils = findViewById(R.id.showmoredeatils);
         showkeys = findViewById(R.id.showkeys);
         nxt = findViewById(R.id.nxt);
         addmorepay = findViewById(R.id.addmorepay);
@@ -249,6 +277,7 @@ public class AddProductWay extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         LocalBroadcastManager.getInstance(this).unregisterReceiver(onNotice);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(OthersDetails);
         super.onDestroy();
     }
 

@@ -11,12 +11,13 @@ public class AddNews {
     RadioButton payRadioButton;
     EditText NameDetails;
     Button button;
-
+    int recid;
 
     String sletxt;
 
-    public AddNews(RadioButton payRadioButton) {
+    public AddNews(int recid,RadioButton payRadioButton) {
         this.payRadioButton = payRadioButton;
+        this.recid = recid;
     }
 
     public String getSletxt() {
@@ -26,8 +27,9 @@ public class AddNews {
     public void setSletxt(String sletxt) {
         this.sletxt = sletxt;
     }
-    public AddNews(String sletxt) {
+    public AddNews(int recid,String sletxt) {
         this.sletxt = sletxt;
+        this.recid = recid;
     }
 
     public RadioButton getPayRadioButton() {
@@ -38,8 +40,9 @@ public class AddNews {
         this.payRadioButton = payRadioButton;
     }
 
-    public AddNews(EditText nameDetails) {
+    public AddNews(int recid,EditText nameDetails) {
         this.NameDetails = nameDetails;
+        this.recid = recid;
     }
 
     public EditText getNameDetails() {
@@ -74,13 +77,13 @@ public class AddNews {
         this.button = button;
     }
 
-    public AddNews(EditText tilte, EditText name, Button button) {
+    public AddNews(int recid,EditText tilte, EditText name, Button button) {
         this.Tilte = tilte;
         this.Name = name;
         this.button = button;
     }
 
-    public AddNews(EditText name, Button button) {
+    public AddNews(int recid,EditText name, Button button) {
        this.Name = name;
         this.button = button;
     }

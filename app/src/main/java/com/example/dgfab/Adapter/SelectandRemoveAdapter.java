@@ -66,6 +66,8 @@ public class SelectandRemoveAdapter extends RecyclerView.Adapter<SelectandRemove
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Doc.remove(position);
+                    notifyDataSetChanged();
                     Toast.makeText(mContext, "Removing", Toast.LENGTH_SHORT).show();
                 }
             });
