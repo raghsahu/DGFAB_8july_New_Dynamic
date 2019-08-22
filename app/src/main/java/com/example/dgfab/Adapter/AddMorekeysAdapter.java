@@ -87,7 +87,7 @@ public class AddMorekeysAdapter extends RecyclerView.Adapter<AddMorekeysAdapter.
             @Override
             public void onClick(View v) {
                 holder.addnewkey.setText(holder.addnewkey.getText().toString());
-                addNews141.setName(holder.addnewkey);
+                addNews141.setNames(holder.addnewkey.getText().toString());
 
               //  Myproducttiles.add(holder.addnewkey.getText().toString());
             //    Myproducttiles.add(holder.addnewkey.getText().toString());

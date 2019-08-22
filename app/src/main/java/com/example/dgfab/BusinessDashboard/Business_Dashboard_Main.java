@@ -222,7 +222,7 @@ public class Business_Dashboard_Main extends AppCompatActivity
            // Intent intent = new Intent(Business_Dashboard_Main.this , AddProduct_Activity.class);
             Intent intent = new Intent(Business_Dashboard_Main.this , AddProductWay.class);
             startActivity(intent);
-            finish();
+
 
         } else if (id == R.id.nav_tools) {
 

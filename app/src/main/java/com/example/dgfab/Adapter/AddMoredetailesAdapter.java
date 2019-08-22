@@ -85,19 +85,20 @@ public class AddMoredetailesAdapter   extends RecyclerView.Adapter<AddMoredetail
             @Override
             public void onClick(View v) {
                 holder.addnewkey.setText(holder.addnewkey.getText().toString());
-                addNews141.setNameDetails(holder.addnewkey);
-                holder.addnewkey.setText(holder.addnewkey.getText().toString());
-                addNews141.setName(holder.addnewkey);
+                addNews141.setNamesDetails(holder.addnewkey.getText().toString());
+                //   holder.addnewkey.setText(holder.addnewkey.getText().toString());
+                //    addNews141.setName(holder.addnewkey);
 
                 //  Myproducttiles.add(holder.addnewkey.getText().toString());
                 //    Myproducttiles.add(holder.addnewkey.getText().toString());
                 Toast.makeText(mContext, "xyz "+holder.addnewkey.getText().toString(), Toast.LENGTH_SHORT).show();
-                Intent intent123 = new Intent("Add_More_Details");
+                Intent intent = new Intent("filter_string");
                 //   Intent intent = new Intent(v.getContext() , AddProductWay.class);
-                intent123.putExtra("Add_More_Details_Key", holder.addnewkey.getText().toString());
+                //   intent.putExtra("Add_More_Details_Key", holder.addnewkey.getText().toString());
+                intent.putExtra("Add_More_Details_Key", holder.addnewkey.getText().toString());
                 // put your all data using put extra
 
-                LocalBroadcastManager.getInstance(v.getContext()).sendBroadcast(intent123);
+                LocalBroadcastManager.getInstance(v.getContext()).sendBroadcast(intent);
 //                holder.mname.getText().toString();
 //                holder.mname.setText();
                 // Myproductsdescrip.add(holder.adddes.getText().toString());

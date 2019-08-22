@@ -3,6 +3,7 @@ package com.example.dgfab.Adapter;
 import android.content.Context;
 import android.os.StrictMode;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,19 +51,31 @@ public class SelectandRemoveAdapter extends RecyclerView.Adapter<SelectandRemove
 
 
     @Override
-    public SelectandRemoveAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.removeselected, parent, false);
-        return new SelectandRemoveAdapter.MyViewHolder(view);
+        return new MyViewHolder(view);
     }
 
 
 
     @Override
-    public void onBindViewHolder(final SelectandRemoveAdapter.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         addNews141 = Doc.get(position);
         this.pos_try = position;
-            holder.sletxt.setText(addNews141.getSletxt());
+        addNews141.setNames(addNews141.getNames());
+        Log.e("Name is", "" + addNews141.getNames());
+        holder.sletxt.setText(addNews141.getNames());
+//        try{
+//            if(!addNews141.getSletxt().isEmpty()){
+//
+//            }
+//        }catch (Exception e)
+//        {
+//            holder.sletxt.setText(addNews141.getSletxt());
+//            e.printStackTrace();
+//        }
+
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
