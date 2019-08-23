@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.marcohc:robotocalendarview:3.6.1@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/234f9b0aa55403e17942d9c97826db96/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/234f9b0aa55403e17942d9c97826db96/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.marcohc/robotocalendarview/3.6.1/d245bf54130238c16ece473fa003af3a9cc8e8bd/robotocalendarview-3.6.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

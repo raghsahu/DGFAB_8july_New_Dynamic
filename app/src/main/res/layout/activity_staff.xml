@@ -272,135 +272,59 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:background="#000"
-                    android:orientation="horizontal"
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/staffrec"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"></LinearLayout>
+                    android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+                <!--<LinearLayout-->
+                <!--android:background="#000"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"></LinearLayout>-->
 
-                <LinearLayout
-                    android:weightSum="4"
-                    android:gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="5dp"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                <!--<LinearLayout-->
+                <!--android:weightSum="4"-->
+                <!--android:gravity="center"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:layout_marginBottom="5dp"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        xmlns:app="http://schemas.android.com/apk/res-auto"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/prof"
-                        app:civ_border_color="#000"
-                        app:civ_border_width="1dp" />
+                <!--<de.hdodenhof.circleimageview.CircleImageView-->
+                <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+                <!--android:layout_weight="1"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:src="@drawable/prof"-->
+                <!--app:civ_border_color="#000"-->
+                <!--app:civ_border_width="1dp" />-->
 
-                    <TextView
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Yash"/>
+                <!--<TextView-->
+                <!--android:layout_weight="1"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center"-->
+                <!--android:text="Yash"/>-->
 
-                    <TextView
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Yash123"/>
+                <!--<TextView-->
+                <!--android:layout_weight="1"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center"-->
+                <!--android:text="Yash123"/>-->
 
-                    <TextView
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="1234565"/>
+                <!--<TextView-->
+                <!--android:layout_weight="1"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center"-->
+                <!--android:text="1234565"/>-->
 
-                </LinearLayout>
+                <!--</LinearLayout>-->
+                <!---->
 
-                <LinearLayout
-                    android:weightSum="4"
-                    android:gravity="center"
-                    android:layout_marginBottom="5dp"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        xmlns:app="http://schemas.android.com/apk/res-auto"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/prof"
-                        app:civ_border_color="#000"
-                        app:civ_border_width="1dp" />
-
-                    <TextView
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Anand"/>
-
-                    <TextView
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Ana1234"/>
-
-                    <TextView
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="123"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:weightSum="4"
-                    android:gravity="center"
-                    android:layout_marginBottom="5dp"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        xmlns:app="http://schemas.android.com/apk/res-auto"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/prof"
-                        app:civ_border_color="#000"
-                        app:civ_border_width="1dp" />
-
-                    <TextView
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Vivek"/>
-
-                    <TextView
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="vk12345"/>
-
-                    <TextView
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="sdfsdf"/>
-
-                </LinearLayout>
 
             </LinearLayout>
         </LinearLayout>

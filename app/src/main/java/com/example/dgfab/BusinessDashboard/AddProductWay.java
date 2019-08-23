@@ -42,6 +42,7 @@ public class AddProductWay extends AppCompatActivity {
     List<AddNews> SelectandRemoveList = new ArrayList<>();
     List<AddNews> SelectandRemovedetailsList = new ArrayList<>();
     List<AddNews> SelectandMainproList = new ArrayList<>();
+    List<AddNews> SelectandRadioproList = new ArrayList<>();
     SelectandRemoveAdapter selectandRemoveAdapter;
     SelndRemradioAdapter selndRemradioAdapter;
     AddMorekeysAdapter addMorekeysAdapter;
@@ -186,7 +187,41 @@ public class AddProductWay extends AppCompatActivity {
                     // String mainstr = intent.getStringExtra("Add_More_Details_Key");
                     Toast.makeText(context, "we got it", Toast.LENGTH_SHORT).show();
                 }
+                String radiotit = intent.getStringExtra("radiotit");
+                try {
+                    if (radiotit.isEmpty() && radiotit.isEmpty()) ;
+                } catch (Exception e) {
+                    radiotit = "null4";
+                    radiotit = "null4";
+                    e.printStackTrace();
+                }
+                if (!radiotit.equals("null4")) {
 
+                    showpays.setVisibility(View.VISIBLE);
+                    Toast.makeText(context, "Broadcast received Other's Details !" + maintits, Toast.LENGTH_SHORT).show();
+                    if (SelectandRadioproList.size() > 0) {
+                        SelectandRadioproList.add(new AddNews(5, radiotit));
+                        gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
+                        showpays.addItemDecoration(new DividerItemDecoration(AddProductWay.this, LinearLayoutManager.VERTICAL));
+                        showpays.setLayoutManager(gridLayoutManager);
+                        selndRemradioAdapter = new SelndRemradioAdapter(context, SelectandRadioproList);
+                        showpays.swapAdapter(selndRemradioAdapter, false);
+                        selndRemradioAdapter.notifyItemInserted(0);
+
+                    } else {
+                        SelectandRadioproList.add(new AddNews(5, radiotit));
+                        gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
+                        showpays.addItemDecoration(new DividerItemDecoration(AddProductWay.this, LinearLayoutManager.VERTICAL));
+                        showpays.setLayoutManager(gridLayoutManager);
+
+                        selndRemradioAdapter = new SelndRemradioAdapter(context, SelectandRadioproList);
+                        showpays.setAdapter(selndRemradioAdapter);
+                        selndRemradioAdapter.notifyDataSetChanged();
+                    }
+                } else {
+                    // String mainstr = intent.getStringExtra("Add_More_Details_Key");
+                    Toast.makeText(context, "we got it", Toast.LENGTH_SHORT).show();
+                }
             }
             //  tv.setText("Broadcast received !");
 
@@ -358,24 +393,26 @@ public class AddProductWay extends AppCompatActivity {
         addmorepro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(AddProductWay.this, "hjusdoigh", Toast.LENGTH_SHORT).show();
                 if(AllMorepayList.size() >0) {
-                    AllMorepayList.add(new AddNews(4, new RadioButton(v.getContext())));
+                    AllMorepayList.add(new AddNews(5, new RadioButton(v.getContext())));
                     LinearLayoutManager llm = new LinearLayoutManager(v.getContext());
                     llm.setOrientation(LinearLayoutManager.VERTICAL);
                     addmorepay.setLayoutManager(llm);
+
                     addMorePayoptions = new AddMorePayoptions(v.getContext(), AllMorepayList);
                     addmorepay.swapAdapter(addMorePayoptions, false);
                     addMorePayoptions.notifyItemInserted(0);
                     addmorepay.requestFocus();
                 }else {
-                    AllMorepayList.add(new AddNews(4, new RadioButton(v.getContext())));
+                    AllMorepayList.add(new AddNews(5, new RadioButton(v.getContext())));
                     LinearLayoutManager llm = new LinearLayoutManager(v.getContext());
                     llm.setOrientation(LinearLayoutManager.VERTICAL);
                     addmorepay.setLayoutManager(llm);
                     addMorePayoptions = new AddMorePayoptions(v.getContext(), AllMorepayList);
                     addmorepay.setAdapter(addMorePayoptions);
                     addmorepay.requestFocus();
-                    addmorepay.setVisibility(View.GONE);
+                    // addmorepay.setVisibility(View.GONE);
                 }
             }
         });

@@ -76,6 +76,7 @@ public class Business_Dashboard_Main extends AppCompatActivity
         setSupportActionBar(toolbar);
         toolbar1 = getSupportActionBar();
         new GETMYINFORMATION(new SessionManager(this).getUS()).execute();
+
         //**************************************
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_business_bottom);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

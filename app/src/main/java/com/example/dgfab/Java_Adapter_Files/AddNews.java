@@ -57,6 +57,9 @@ public class AddNews {
         } else if (recid == 2) {
             this.NamesDetails = sletxt;
             this.recid = recid;
+        } else if (recid == 5) {
+            this.payRadioString = sletxt;
+            this.recid = recid;
         }
     }
 

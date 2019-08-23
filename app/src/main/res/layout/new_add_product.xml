@@ -797,7 +797,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:padding="5dp"
                     android:weightSum="1">
 
@@ -1006,18 +1006,21 @@
                     android:weightSum="1">
 
                     <EditText
+                        android:visibility="gone"
                         android:background="@drawable/bt_bg"
                         android:hint="Shipping Origin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.20" />
-                    <Spinner
+
+                    <EditText
                         android:background="@drawable/bt_bg"
-                        android:text="Shipping Origin"
+                        android:inputType="number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.25" />
                     <TextView
+
                         android:gravity="center"
                         android:layout_gravity="center"
                         android:text="Per"
@@ -1025,8 +1028,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.30"
                        />
-                    <Spinner
 
+                    <EditText
+                        android:inputType="number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.25"
@@ -1044,6 +1048,7 @@
                     android:weightSum="1">
 
                     <Button
+                        android:visibility="gone"
                         android:background="@drawable/bt_bg"
                         android:hint="Add More Units"
                         android:layout_width="match_parent"
@@ -1069,7 +1074,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:padding="5dp"
                     android:weightSum="1">
 

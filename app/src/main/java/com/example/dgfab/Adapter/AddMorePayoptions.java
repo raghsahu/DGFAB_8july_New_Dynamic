@@ -87,16 +87,24 @@ public class AddMorePayoptions extends RecyclerView.Adapter<AddMorePayoptions.My
             @Override
             public void onClick(View v) {
                 holder.addnewkey.setText(holder.addnewkey.getText().toString());
-                addNews141.setName(holder.addnewkey);
+                addNews141.setPayRadioString(holder.addnewkey.getText().toString());
+                holder.addnewkey.setText(holder.addnewkey.getText().toString());
 
-                Myproducttiles.add(holder.addnewkey.getText().toString());
-                Myproducttiles.add(holder.addnewkey.getText().toString());
+                //  Myproducttiles.add(holder.addnewkey.getText().toString());
+                //    Myproducttiles.add(holder.addnewkey.getText().toString());
+                Toast.makeText(mContext, "xyz " + holder.addnewkey.getText().toString(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent("filter_string");
+                //   Intent intent = new Intent(v.getContext() , AddProductWay.class);
+                intent.putExtra("radiotit", holder.addnewkey.getText().toString());
+                // put your all data using put extra
+
+                LocalBroadcastManager.getInstance(v.getContext()).sendBroadcast(intent);
 //                holder.mname.getText().toString();
 //                holder.mname.setText();
                 // Myproductsdescrip.add(holder.adddes.getText().toString());
                 try {
                     //   Toast.makeText(mContext, "" + Myproductsdescrip.get(position), Toast.LENGTH_SHORT).show();
-                    Toast.makeText(mContext, "" + Myproducttiles.get(position), Toast.LENGTH_SHORT).show();
+                    //   Toast.makeText(mContext, "" + Myproducttiles.get(position), Toast.LENGTH_SHORT).show();
                     Toast.makeText(mContext, "Working on api", Toast.LENGTH_SHORT).show();
                 }catch (Exception e)
                 {

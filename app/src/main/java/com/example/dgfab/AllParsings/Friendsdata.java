@@ -21,14 +21,28 @@ public class Friendsdata {
     @Expose
     private String receiverid;
 
-    public Friendsdata(String userId, String name, String ustatus, String senderid, String receiverid) {
+
+    @SerializedName("mobile")
+    @Expose
+    private String mobile;
+
+    public Friendsdata(String userId, String name, String ustatus, String senderid, String receiverid, String mobile) {
         this.userId = userId;
         this.name = name;
         this.ustatus = ustatus;
         this.senderid = senderid;
         this.receiverid = receiverid;
+        this.mobile = mobile;
     }
 
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
     public String getUserId() {
         return userId;
     }

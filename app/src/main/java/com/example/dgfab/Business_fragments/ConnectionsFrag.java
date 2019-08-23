@@ -82,7 +82,7 @@ public class ConnectionsFrag extends Fragment {
                             if(response.body().getData().get(i).getName().length() !=0) {
                                 Log.d("sortname is" , response.body().getData().get(i).getName());
 //                                if(!response.body().getData().get(i).getUstatus().equals("0")) {
-                                    commingRequestData.add(new Friendsdata(response.body().getData().get(i).getUserId(), response.body().getData().get(i).getName(), response.body().getData().get(i).getUstatus(), response.body().getData().get(i).getSenderid(), response.body().getData().get(i).getReceiverid()));
+                                commingRequestData.add(new Friendsdata(response.body().getData().get(i).getUserId(), response.body().getData().get(i).getName(), response.body().getData().get(i).getUstatus(), response.body().getData().get(i).getSenderid(), response.body().getData().get(i).getReceiverid(), response.body().getData().get(i).getMobile()));
 //                                }
                             }
                         }

@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -20,7 +21,8 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BusinessDashboard.Inquiry_Activity"></activity>
+        <activity android:name=".BusinessDashboard.Business_CRM.CalenderActivity"></activity>
+        <activity android:name=".BusinessDashboard.Inquiry_Activity" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -54,7 +56,7 @@
         <activity android:name=".Activity.Buyer_guest_login.LoginActivity" />
         <activity android:name=".Activity.SplashScreens.App_Intro" />
         <activity android:name=".BusinessDashboard.ProfileActivity" />
-        <activity android:name=".BusinessDashboard.AddProductWay"></activity>
+        <activity android:name=".BusinessDashboard.AddProductWay" />
         <activity android:name=".BusinessDashboard.AddProduct_Activity" />
         <activity android:name=".Connections.SeenProfile" />
         <activity

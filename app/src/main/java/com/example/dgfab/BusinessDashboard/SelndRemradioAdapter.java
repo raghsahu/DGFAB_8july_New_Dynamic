@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +35,7 @@ class SelndRemradioAdapter extends RecyclerView.Adapter<SelndRemradioAdapter.MyV
     @Override
     public SelndRemradioAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.removeselected, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.paysops, parent, false);
         return new SelndRemradioAdapter.MyViewHolder(view);
     }
 
@@ -42,8 +43,8 @@ class SelndRemradioAdapter extends RecyclerView.Adapter<SelndRemradioAdapter.MyV
     public void onBindViewHolder(final SelndRemradioAdapter.MyViewHolder holder, final int position) {
         addNews141 = Doc.get(position);
         this.pos_try = position;
-        addNews141.setPayRadioString(addNews141.getPayRadioButton().getText().toString());
-
+        addNews141.setPayRadioString(addNews141.getPayRadioString());
+        holder.radbtn.setText(addNews141.getPayRadioString());
         //Log.e("Name is", "" + addNews141.getNames());
         //  holder.sletxt.setText(addNews141.getNames());
 //        try{
@@ -83,14 +84,13 @@ class SelndRemradioAdapter extends RecyclerView.Adapter<SelndRemradioAdapter.MyV
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView sletxt;
-
+        RadioButton radbtn;
         public MyViewHolder(View itemView) {
             super(itemView);
             //   mname = (TextView) itemView.findViewById(R.id.mname);
             //  bra_bus =  itemView.findViewById(R.id.bra_bus);
             // manu_img =  itemView.findViewById(R.id.manu_img);
-            sletxt = itemView.findViewById(R.id.sletxt);
+            radbtn = itemView.findViewById(R.id.radbtn);
 
             //     adddes =  itemView.findViewById(R.id.adddes);
 
