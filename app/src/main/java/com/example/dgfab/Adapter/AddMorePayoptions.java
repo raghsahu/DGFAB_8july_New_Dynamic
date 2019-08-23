@@ -1,7 +1,9 @@
 package com.example.dgfab.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.StrictMode;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +19,7 @@ import com.example.dgfab.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddMorePayoptions   extends RecyclerView.Adapter<AddMorePayoptions.MyViewHolder> {
+public class AddMorePayoptions extends RecyclerView.Adapter<AddMorePayoptions.MyViewHolder> {
     private Context mContext;
     public static ArrayList<String> Myproducttiles = new ArrayList<>();
     int pos_try;
@@ -68,15 +70,17 @@ public class AddMorePayoptions   extends RecyclerView.Adapter<AddMorePayoptions.
         holder.removenew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    Myproducttiles.remove(position);
-                    //         Myproductsdescrip.remove(position);
-                }catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
                 Doc.remove(position);
                 notifyDataSetChanged();
+                if (position == 0) {
+                    //  Toast.makeText(mContext, "xyz "+holder.addnewkey.getText().toString(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent("filter_string");
+                    //   Intent intent = new Intent(v.getContext() , AddProductWay.class);
+                    intent.putExtra("removekey", "4");
+                    // put your all data using put extra
+
+                    LocalBroadcastManager.getInstance(v.getContext()).sendBroadcast(intent);
+                }
             }
         });
         holder.addnewf.setOnClickListener(new View.OnClickListener() {
@@ -107,65 +111,6 @@ public class AddMorePayoptions   extends RecyclerView.Adapter<AddMorePayoptions.
         StrictMode.setVmPolicy(builder.build());
 
     }
-
-
-
-
-
-//    private void Try_Sent_Reuqest(AddNewsAdapter.MyViewHolder holder, Context context, int us, String id) {
-//        Log.d("us is" ,""+ us);
-//        Log.d("their is" ,""+ id);
-//        ProgressDialog progressDialog = new ProgressDialog(context);
-//        progressDialog.setTitle("Getting Country");
-//        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-//        progressDialog.show();
-//        OkHttpClient client = new OkHttpClient.Builder()
-//                .connectTimeout(100, TimeUnit.SECONDS)
-//                .readTimeout(100,TimeUnit.SECONDS).build();
-//        Retrofit RetroLogin = new Retrofit.Builder()
-//                .baseUrl(REtroURls.The_Base).client(client).addConverterFactory(GsonConverterFactory.create())
-//                .build();
-//        Api AbloutApi = RetroLogin.create(Api.class);
-//        Log.d("sortname is" , id);
-//        Call<Connection_Requests> Get_All_Country_New = AbloutApi.CONNECTION_REQUESTS_CALL( String.valueOf(us),id);
-//        Get_All_Country_New.enqueue(new Callback<Connection_Requests>() {
-//            @Override
-//            public void onResponse(Call<Connection_Requests> call, Response<Connection_Requests> response) {
-//                Log.e("getcity" , ""+response.toString());
-//                if (response!=null){
-//                    Log.e("Get_City",""+response.body().getResponce());
-//                    try {
-//                        if(response.body().getResponce() == true)
-//                        {
-//                            Toast.makeText(context, ""+response.body().getData(), Toast.LENGTH_SHORT).show();
-//
-//                            holder.conbtn.setText("Request Sent");
-//                        }else {
-//                            Toast.makeText(context, "Problem in sending request", Toast.LENGTH_SHORT).show();
-//                        }
-//                        // countyed.showDropDown();
-//                        // Toast.makeText(RegistrationActivityTwo.this, "true", Toast.LENGTH_SHORT).show();
-//                    }catch (Exception e)
-//                    {
-//                        e.printStackTrace();
-//                    }
-//                }
-//
-//                progressDialog.dismiss();
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Connection_Requests> call, Throwable t) {
-//                progressDialog.dismiss();
-//                Log.e("error_country",""+t.getMessage());
-//                Toast.makeText(context, ""+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-//                Toast.makeText(context, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//
-//
-//    }
 
 
     @Override

@@ -16,11 +16,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.example.dgfab.Adapter.AddMorePayoptions;
 import com.example.dgfab.Adapter.AddMoredetailesAdapter;
 import com.example.dgfab.Adapter.AddMorekeysAdapter;
+import com.example.dgfab.Adapter.AddNewsAdapter;
+import com.example.dgfab.Adapter.SelectandProsAdapter;
 import com.example.dgfab.Adapter.SelectandRemoveAdapter;
 import com.example.dgfab.Adapter.SelectndRemvDetailsAdapter;
 import com.example.dgfab.Java_Adapter_Files.AddNews;
@@ -30,24 +33,54 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddProductWay extends AppCompatActivity {
-    Button addmorekey,nxt,addmrdet,addmorepro;
-    RecyclerView newkey,addmoredet,addmorepay,showkeys,showmoredeatils;
-    List<String> AllKeywordsList,AlldetailsList,AllpayList;
+    Button addmorekey, nxt, addmrdet, addmorepro, addmantype;
+    RecyclerView newkey, addmoredet, addmorepay, showkeys, showmoredeatils, addepros, showpays;
+    //    List<String> AllKeywordsList,AlldetailsList,AllpayList;
+    List<AddNews> addNewsList = new ArrayList<AddNews>();
     List<AddNews> AllMoredetailesList  = new ArrayList<>();
     List<AddNews> AllMorepayList  = new ArrayList<>();
     List<AddNews> SelectandRemoveList = new ArrayList<>();
     List<AddNews> SelectandRemovedetailsList = new ArrayList<>();
+    List<AddNews> SelectandMainproList = new ArrayList<>();
     SelectandRemoveAdapter selectandRemoveAdapter;
+    SelndRemradioAdapter selndRemradioAdapter;
     AddMorekeysAdapter addMorekeysAdapter;
+    SelectandProsAdapter selectandProsAdapter;
     AddMoredetailesAdapter addMoredetailsAdapter;
     AddMorePayoptions addMorePayoptions;
     List<AddNews> addnewkeyList = new ArrayList<>();
     private SelectndRemvDetailsAdapter selectndRemvDetailsAdapter;
     private GridLayoutManager gridLayoutManager;
+    //+++++++++++++++++++open for more details adapter and more keywords++++++++++++++++++++++++++++++++++++++++++++
     private BroadcastReceiver onNotice= new BroadcastReceiver() {
 
         @Override
         public void onReceive(Context context, Intent intent) {
+            //+++++++++++++++++++++++++++++++++remove list intent+++++++++++++++++++++++++++++++++++++++++++
+            String removeid = intent.getStringExtra("removekey");
+            try {
+                if (removeid.isEmpty()) ;
+            } catch (Exception e) {
+                removeid = "ok";
+                e.printStackTrace();
+            }
+            if (removeid.equals("ok")) {
+                Toast.makeText(context, "Done nothing", Toast.LENGTH_SHORT).show();
+            } else {
+                if (removeid == "1") {
+                    addmantype.setVisibility(View.VISIBLE);
+                }
+                if (removeid == "2") {
+                    addmorekey.setVisibility(View.VISIBLE);
+                }
+                if (removeid == "3") {
+                    addmrdet.setVisibility(View.VISIBLE);
+                }
+                if (removeid == "4") {
+                    addmorepro.setVisibility(View.VISIBLE);
+                }
+            }
+            //+++++++++++++++++++++++++++++++++++++++++++++++++++
             // intent can contain anydata
             Log.d("sohail","onReceive called");
             Toast.makeText(context, "Broadcast received !", Toast.LENGTH_SHORT).show();
@@ -61,6 +94,7 @@ public class AddProductWay extends AppCompatActivity {
                     str = "null";
                 }
                 if (!str.equals("null")) {
+                    showkeys.setVisibility(View.VISIBLE);
                     Toast.makeText(context, "Broadcast received KeysDetails!" + str, Toast.LENGTH_SHORT).show();
                     if (SelectandRemoveList.size() > 0) {
                         SelectandRemoveList.add(new AddNews(1, str));
@@ -79,46 +113,88 @@ public class AddProductWay extends AppCompatActivity {
                         showkeys.setAdapter(selectandRemoveAdapter);
                         selectandRemoveAdapter.notifyDataSetChanged();
                     }
-                }else {
-                    String dtr = intent.getStringExtra("Add_More_Details_Key");
-                    try {
-                        if (dtr != null) ;
-                    } catch (Exception e) {
-                        dtr = "null2";
-                        e.printStackTrace();
-                    }
-                    if (!dtr.equals("null2")) {
-                        Toast.makeText(context, "Broadcast received Other's Details !" + dtr, Toast.LENGTH_SHORT).show();
-                        if (SelectandRemovedetailsList.size() > 0) {
-                            SelectandRemovedetailsList.add(new AddNews(2, dtr));
-                            gridLayoutManager = new GridLayoutManager(getApplicationContext(), 4);
-                            showmoredeatils.addItemDecoration(new DividerItemDecoration(AddProductWay.this, LinearLayoutManager.VERTICAL));
-                            showmoredeatils.setLayoutManager(gridLayoutManager);
-                            selectndRemvDetailsAdapter = new SelectndRemvDetailsAdapter(context, SelectandRemovedetailsList);
-                            showmoredeatils.swapAdapter(selectndRemvDetailsAdapter, false);
-                            selectndRemvDetailsAdapter.notifyItemInserted(0);
-                        } else {
-                            SelectandRemovedetailsList.add(new AddNews(2, dtr));
-                            gridLayoutManager = new GridLayoutManager(getApplicationContext(), 4);
-                    showmoredeatils.addItemDecoration(new DividerItemDecoration(AddProductWay.this, LinearLayoutManager.VERTICAL));
-                    showmoredeatils.setLayoutManager(gridLayoutManager);
-
-                            selectndRemvDetailsAdapter = new SelectndRemvDetailsAdapter(context, SelectandRemovedetailsList);
-                            showmoredeatils.setAdapter(selectndRemvDetailsAdapter);
-                            selectndRemvDetailsAdapter.notifyDataSetChanged();
-                        }
-                    } else {
-                        Toast.makeText(context, "we got it", Toast.LENGTH_SHORT).show();
-                    }
-                    Toast.makeText(context, "it's null", Toast.LENGTH_SHORT).show();
                 }
+                //++++++++++++++++++++++++For more details+++++++++++++++++++++
+                String dtr = intent.getStringExtra("Add_More_Details_Key");
+                try {
+                    if (dtr.isEmpty()) ;
+                } catch (Exception e) {
+                    dtr = "null2";
+                    e.printStackTrace();
+                }
+                if (!dtr.equals("null2")) {
+
+                    showmoredeatils.setVisibility(View.VISIBLE);
+                    Toast.makeText(context, "Broadcast received Other's Details !" + dtr, Toast.LENGTH_SHORT).show();
+                    if (SelectandRemovedetailsList.size() > 0) {
+                        SelectandRemovedetailsList.add(new AddNews(2, dtr));
+                        gridLayoutManager = new GridLayoutManager(getApplicationContext(), 4);
+                        showmoredeatils.addItemDecoration(new DividerItemDecoration(AddProductWay.this, LinearLayoutManager.VERTICAL));
+                        showmoredeatils.setLayoutManager(gridLayoutManager);
+                        selectndRemvDetailsAdapter = new SelectndRemvDetailsAdapter(context, SelectandRemovedetailsList);
+                        showmoredeatils.swapAdapter(selectndRemvDetailsAdapter, false);
+                        selectndRemvDetailsAdapter.notifyItemInserted(0);
+                    } else {
+                        SelectandRemovedetailsList.add(new AddNews(2, dtr));
+                        gridLayoutManager = new GridLayoutManager(getApplicationContext(), 4);
+                        showmoredeatils.addItemDecoration(new DividerItemDecoration(AddProductWay.this, LinearLayoutManager.VERTICAL));
+                        showmoredeatils.setLayoutManager(gridLayoutManager);
+
+                        selectndRemvDetailsAdapter = new SelectndRemvDetailsAdapter(context, SelectandRemovedetailsList);
+                        showmoredeatils.setAdapter(selectndRemvDetailsAdapter);
+                        selectndRemvDetailsAdapter.notifyDataSetChanged();
+                    }
+                } else {
+                    String mainstr = intent.getStringExtra("Add_More_Details_Key");
+                    Toast.makeText(context, "we got it", Toast.LENGTH_SHORT).show();
+                }
+                Toast.makeText(context, "it's null", Toast.LENGTH_SHORT).show();
+                //+++++++++++++++++++++++++++++++++++++++
                 // get all your data from intent and do what you want
+                String maintits = intent.getStringExtra("maintits");
+                String mainvalue = intent.getStringExtra("mainvalue");
+                try {
+                    if (maintits.isEmpty() && mainvalue.isEmpty()) ;
+                } catch (Exception e) {
+                    maintits = "null3";
+                    mainvalue = "null3";
+                    e.printStackTrace();
+                }
+                if (!maintits.equals("null3") && !mainvalue.equals("null3")) {
+
+                    addepros.setVisibility(View.VISIBLE);
+                    Toast.makeText(context, "Broadcast received Other's Details !" + maintits, Toast.LENGTH_SHORT).show();
+                    if (SelectandMainproList.size() > 0) {
+                        SelectandMainproList.add(new AddNews(4, maintits, mainvalue));
+                        gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
+                        addepros.addItemDecoration(new DividerItemDecoration(AddProductWay.this, LinearLayoutManager.VERTICAL));
+                        addepros.setLayoutManager(gridLayoutManager);
+                        selectandProsAdapter = new SelectandProsAdapter(context, SelectandMainproList);
+                        addepros.swapAdapter(selectandProsAdapter, false);
+                        selectandProsAdapter.notifyItemInserted(0);
+                    } else {
+                        SelectandMainproList.add(new AddNews(4, maintits, mainvalue));
+                        gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
+                        addepros.addItemDecoration(new DividerItemDecoration(AddProductWay.this, LinearLayoutManager.VERTICAL));
+                        addepros.setLayoutManager(gridLayoutManager);
+
+                        selectandProsAdapter = new SelectandProsAdapter(context, SelectandMainproList);
+                        addepros.setAdapter(selectandProsAdapter);
+                        selectandProsAdapter.notifyDataSetChanged();
+                    }
+                } else {
+                    // String mainstr = intent.getStringExtra("Add_More_Details_Key");
+                    Toast.makeText(context, "we got it", Toast.LENGTH_SHORT).show();
+                }
+
             }
-          //  tv.setText("Broadcast received !");
+            //  tv.setText("Broadcast received !");
 
         }
     };
-
+    private RecyclerView mainrec;
+    private AddNewsAdapter addNewsAdapter;
+//++++++++++++++++++++++++++end of them++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //+++++++++++++++++++++++++++++For Others Details+++++++++++++++++++++++++++++++++++++
 //    private BroadcastReceiver  OthersDetails = new BroadcastReceiver() {
 //
@@ -190,6 +266,35 @@ public class AddProductWay extends AppCompatActivity {
 //                    }
 //                })
 //        );
+
+        //+++++++++++++++++++++++++++++++++Add More Main Cats+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        addmantype.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (addNewsList.size() > 0) {
+                    addNewsList.add(new AddNews(1, new EditText(v.getContext()), new EditText(v.getContext()), new Button(v.getContext())));
+                    LinearLayoutManager llm = new LinearLayoutManager(v.getContext());
+                    llm.setOrientation(LinearLayoutManager.VERTICAL);
+                    mainrec.setLayoutManager(llm);
+                    addNewsAdapter = new AddNewsAdapter(v.getContext(), addNewsList);
+                    mainrec.swapAdapter(addMorekeysAdapter, false);
+                    addMorekeysAdapter.notifyItemInserted(0);
+                    mainrec.requestFocus();
+                } else {
+                    addNewsList.add(new AddNews(1, new EditText(v.getContext()), new EditText(v.getContext()), new Button(v.getContext())));
+                    LinearLayoutManager llm = new LinearLayoutManager(v.getContext());
+                    llm.setOrientation(LinearLayoutManager.VERTICAL);
+                    mainrec.setLayoutManager(llm);
+                    addNewsAdapter = new AddNewsAdapter(v.getContext(), addNewsList);
+                    mainrec.setAdapter(addNewsAdapter);
+                    mainrec.requestFocus();
+                    addmantype.setVisibility(View.GONE);
+                }
+            }
+        });
+        //++++++++++++++++++++++++++++++++++End of it++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
         addmorekey.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -201,6 +306,7 @@ public class AddProductWay extends AppCompatActivity {
                     addMorekeysAdapter = new AddMorekeysAdapter(v.getContext(), addnewkeyList);
                     newkey.swapAdapter(addMorekeysAdapter, false);
                     addMorekeysAdapter.notifyItemInserted(0);
+                    newkey.requestFocus();
                 }else {
                     addnewkeyList.add(new AddNews(1,new EditText(v.getContext()), new Button(v.getContext())));
                     LinearLayoutManager llm = new LinearLayoutManager(v.getContext());
@@ -208,6 +314,8 @@ public class AddProductWay extends AppCompatActivity {
                     newkey.setLayoutManager(llm);
                     addMorekeysAdapter = new AddMorekeysAdapter(v.getContext(), addnewkeyList);
                     newkey.setAdapter(addMorekeysAdapter);
+                    newkey.requestFocus();
+                    addmorekey.setVisibility(View.GONE);
                 }
 
             }
@@ -215,6 +323,7 @@ public class AddProductWay extends AppCompatActivity {
         });
         //////////////////////////////////////////////////////
         //for add more details////////////////////////////
+
         addmrdet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -228,6 +337,7 @@ public class AddProductWay extends AppCompatActivity {
                     addMoredetailsAdapter = new AddMoredetailesAdapter(v.getContext(), AllMoredetailesList);
                     addmoredet.swapAdapter(addMoredetailsAdapter, false);
                     addMoredetailsAdapter.notifyItemInserted(0);
+                    addmoredet.requestFocus();
                 }else {
                     Toast.makeText(AddProductWay.this, "working", Toast.LENGTH_SHORT).show();
                     AllMoredetailesList.add(new AddNews(2,new EditText(v.getContext())));
@@ -237,29 +347,35 @@ public class AddProductWay extends AppCompatActivity {
                     addMoredetailsAdapter = new AddMoredetailesAdapter(v.getContext(), AllMoredetailesList);
                     addmoredet.setLayoutManager(llm);
                     addmoredet.setAdapter(addMoredetailsAdapter);
-                    addMoredetailsAdapter.notifyItemChanged(AllMoredetailesList.size() + 1);
+                    //   addMoredetailsAdapter.notifyItemChanged(AllMoredetailesList.size() + 1);
+                    addmoredet.requestFocus();
+                    addmrdet.setVisibility(View.GONE);
                 }
             }
         });
 ////////////////////////////////////////add more//////////////////////////////////
+
         addmorepro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(AllMorepayList.size() >0) {
-                    AllMoredetailesList.add(new AddNews(3,new EditText(v.getContext())));
+                    AllMorepayList.add(new AddNews(4, new RadioButton(v.getContext())));
                     LinearLayoutManager llm = new LinearLayoutManager(v.getContext());
                     llm.setOrientation(LinearLayoutManager.VERTICAL);
-                    addmoredet.setLayoutManager(llm);
+                    addmorepay.setLayoutManager(llm);
                     addMorePayoptions = new AddMorePayoptions(v.getContext(), AllMorepayList);
-                    addmoredet.swapAdapter(addMoredetailsAdapter, false);
-                    addMoredetailsAdapter.notifyItemInserted(0);
+                    addmorepay.swapAdapter(addMorePayoptions, false);
+                    addMorePayoptions.notifyItemInserted(0);
+                    addmorepay.requestFocus();
                 }else {
-                    AllMoredetailesList.add(new AddNews(3,new EditText(v.getContext())));
+                    AllMorepayList.add(new AddNews(4, new RadioButton(v.getContext())));
                     LinearLayoutManager llm = new LinearLayoutManager(v.getContext());
                     llm.setOrientation(LinearLayoutManager.VERTICAL);
-                    addmoredet.setLayoutManager(llm);
+                    addmorepay.setLayoutManager(llm);
                     addMorePayoptions = new AddMorePayoptions(v.getContext(), AllMorepayList);
-                    addmoredet.setAdapter(addMoredetailsAdapter);
+                    addmorepay.setAdapter(addMorePayoptions);
+                    addmorepay.requestFocus();
+                    addmorepay.setVisibility(View.GONE);
                 }
             }
         });
@@ -267,7 +383,9 @@ public class AddProductWay extends AppCompatActivity {
         nxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AllKeywordsList = new ArrayList<>();
+                //  SelectandRemoveList
+                //SelectandRemovedetailsList
+                //SelectandMainproList
 
 //                Intent intent = new Intent("filter_string");
 //                intent.putExtra("key", "My Data");
@@ -287,12 +405,19 @@ public class AddProductWay extends AppCompatActivity {
 
     private void AllViwsbyid() {
         addmorekey = findViewById(R.id.addmorekey);
+        //Recylerviews+++++++++++++++++++++++++++++++++
+        mainrec = findViewById(R.id.mainrec);
+        addepros = findViewById(R.id.addepros);
         newkey = findViewById(R.id.newkey);
         addmoredet = findViewById(R.id.addmoredet);
+        addmantype = findViewById(R.id.addmantype);
+
+
         showmoredeatils = findViewById(R.id.showmoredeatils);
         showkeys = findViewById(R.id.showkeys);
         nxt = findViewById(R.id.nxt);
         addmorepay = findViewById(R.id.addmorepay);
+        showpays = findViewById(R.id.showpays);
         addmrdet = findViewById(R.id.addmrdet);
         addmorepro = findViewById(R.id.addmorepro);
     }

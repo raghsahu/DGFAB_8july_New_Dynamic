@@ -72,15 +72,25 @@ public class AddMorekeysAdapter extends RecyclerView.Adapter<AddMorekeysAdapter.
         holder.removenew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    //Myproducttiles.remove(position);
-           //         Myproductsdescrip.remove(position);
-                }catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
+//                try {
+//                    //Myproducttiles.remove(position);
+//           //         Myproductsdescrip.remove(position);
+//                }catch (Exception e)
+//                {
+//                    e.printStackTrace();
+//                }
                 Doc.remove(position);
                 notifyDataSetChanged();
+                if (position == 0) {
+                    //  Toast.makeText(mContext, "xyz "+holder.addnewkey.getText().toString(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent("filter_string");
+                    //   Intent intent = new Intent(v.getContext() , AddProductWay.class);
+                    intent.putExtra("removekey", "2");
+                    // put your all data using put extra
+
+                    LocalBroadcastManager.getInstance(v.getContext()).sendBroadcast(intent);
+                }
+
             }
         });
         holder.addnewf.setOnClickListener(new View.OnClickListener() {

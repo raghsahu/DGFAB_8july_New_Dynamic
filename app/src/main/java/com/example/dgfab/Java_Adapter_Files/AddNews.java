@@ -7,17 +7,47 @@ import android.widget.TextView;
 
 public class AddNews {
     EditText Tilte;
+    String Tiltes;
+    String Values;
     EditText Name;
     String Names, NamesDetails;
-
-
-
     RadioButton payRadioButton;
+
+
+    String payRadioString;
     EditText NameDetails;
     Button button;
     int recid;
 
     String sletxt;
+
+    public AddNews(int recid, RadioButton payRadioButton) {
+        this.payRadioButton = payRadioButton;
+        this.payRadioString = payRadioButton.getText().toString();
+        this.recid = recid;
+    }
+
+    public AddNews(int recid, String tits, String value) {
+        this.Tiltes = tits;
+        this.Values = value;
+        this.recid = recid;
+    }
+
+    public String getPayRadioString() {
+        return payRadioString;
+    }
+
+    public void setPayRadioString(String payRadioString) {
+        this.payRadioString = payRadioString;
+    }
+
+    public String getTiltes() {
+        return Tiltes;
+    }
+
+    public void setTiltes(String tiltes) {
+        this.Tiltes = tiltes;
+    }
 
     public AddNews(int recid, String sletxt) {
         this.sletxt = sletxt;
@@ -49,9 +79,13 @@ public class AddNews {
     public int getRecid() {
         return recid;
     }
-    public AddNews(int recid,RadioButton payRadioButton) {
-        this.payRadioButton = payRadioButton;
-        this.recid = recid;
+
+    public String getValues() {
+        return Values;
+    }
+
+    public void setValues(String values) {
+        this.Values = values;
     }
 
     public String getSletxt() {
