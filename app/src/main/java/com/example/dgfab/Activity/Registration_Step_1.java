@@ -204,11 +204,6 @@ public class Registration_Step_1 extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
     }
 //*******************************************************************************************
     private void Add_New_Service(String add_new_service) {

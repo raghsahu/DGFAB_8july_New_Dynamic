@@ -2,7 +2,9 @@ package com.example.dgfab.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.StrictMode;
+import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,9 +13,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.example.dgfab.Java_Adapter_Files.AddNews;
+import com.example.dgfab.Java_Adapter_Files.MyStaffs;
 import com.example.dgfab.R;
 
 import java.util.ArrayList;
@@ -21,13 +31,13 @@ import java.util.List;
 
 public class MyStffAdapter extends RecyclerView.Adapter<MyStffAdapter.MyViewHolder> {
     public static ArrayList<String> Myproducttiles = new ArrayList<>();
-    public List<AddNews> Doc;
+    public List<MyStaffs> Doc;
     int pos_try;
     StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
     private Context mContext;
-    private AddNews addNews141;
+    private MyStaffs addNews141;
 
-    public MyStffAdapter(Context context, List<AddNews> doc) {
+    public MyStffAdapter(Context context, List<MyStaffs> doc) {
         mContext = context;
         this.Doc = doc;
         setHasStableIds(true);
@@ -36,7 +46,7 @@ public class MyStffAdapter extends RecyclerView.Adapter<MyStffAdapter.MyViewHold
     @Override
     public MyStffAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.newkeywords, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.mystaff, parent, false);
         return new MyStffAdapter.MyViewHolder(view);
     }
 
@@ -44,6 +54,22 @@ public class MyStffAdapter extends RecyclerView.Adapter<MyStffAdapter.MyViewHold
     public void onBindViewHolder(final MyStffAdapter.MyViewHolder holder, final int position) {
         addNews141 = Doc.get(position);
         this.pos_try = position;
+        holder.namestff.setText(addNews141.getName());
+        holder.emailstff.setText(addNews141.getEmail());
+        holder.stffid.setText(addNews141.getStaffId());
+        Glide.with(mContext).load("http://neareststore.in/uploads/staff/" + addNews141.getImage()).addListener(new RequestListener<Drawable>() {
+            @Override
+            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                Toast.makeText(mContext, "Failed to load image", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+            @Override
+            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                Toast.makeText(mContext, "Image laod success", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }).into(holder.stffimg);
 
 //        searching_manufacturers_data = Doc.get(pos_try);
 //        Log.e("Position","is "+pos_try);
@@ -64,18 +90,19 @@ public class MyStffAdapter extends RecyclerView.Adapter<MyStffAdapter.MyViewHold
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        ImageView manu_img;
-        Button removenew, addnewf;
-        EditText addnewkey;
+        ImageView stffimg;
+        TextView namestff, emailstff, stffid;
+
 
         public MyViewHolder(View itemView) {
             super(itemView);
             //   mname = (TextView) itemView.findViewById(R.id.mname);
             //  bra_bus =  itemView.findViewById(R.id.bra_bus);
             // manu_img =  itemView.findViewById(R.id.manu_img);
-            removenew = itemView.findViewById(R.id.removenew);
-            addnewf = itemView.findViewById(R.id.addnewf);
-            addnewkey = itemView.findViewById(R.id.addnewkey);
+            stffimg = itemView.findViewById(R.id.stffimg);
+            namestff = itemView.findViewById(R.id.namestff);
+            emailstff = itemView.findViewById(R.id.emailstff);
+            stffid = itemView.findViewById(R.id.stffid);
             //     adddes =  itemView.findViewById(R.id.adddes);
 
 

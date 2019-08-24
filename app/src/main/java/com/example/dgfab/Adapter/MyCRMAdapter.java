@@ -90,6 +90,7 @@ public class MyCRMAdapter extends RecyclerView.Adapter<MyCRMAdapter.MyViewHolder
                     v.getContext().startActivity(callIntent);
                 } catch (ActivityNotFoundException activityException) {
                     Log.e("Calling a Phone Number", "Call failed", activityException);
+                    Toast.makeText(mContext, "Calling Failed", Toast.LENGTH_SHORT).show();
                 }
             }
         });

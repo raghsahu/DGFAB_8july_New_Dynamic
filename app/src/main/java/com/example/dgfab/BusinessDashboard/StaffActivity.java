@@ -15,6 +15,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,17 +24,22 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.dgfab.Adapter.MyStffAdapter;
 import com.example.dgfab.AllParsings.CreatedStaff;
+import com.example.dgfab.Java_Adapter_Files.MyStaffs;
 import com.example.dgfab.LoginandReg.ManuLoginActivity;
 import com.example.dgfab.R;
 import com.example.dgfab.SessionManage.SessionManager;
 import com.example.dgfab.SessionManage.Shared_Preference;
 import com.example.dgfab.Utils.Utilities;
+import com.google.gson.JsonArray;
 
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -58,19 +65,22 @@ public class StaffActivity extends AppCompatActivity {
     ImageView staffimg;
     private int RESULT_LOAD_IMAGE = 101;
     String Mainpath;
+    RecyclerView staffrec;
     private int RESULT_PICK_IMAGE = 141;
     File Staffprofile;
     private static final int REQUEST_ID_MULTIPLE_PERMISSIONS =101 ;
     EditText Staffname,Staffemail,Staffuserid,Staffpassword,Designationstaff;
     Button Createstaff;
     private ProgressDialog dialog;
-
+    MyStffAdapter myStffAdapter;
+    List<MyStaffs> myStaffsList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff);
         staffimg = findViewById(R.id.staffimg);
         Staffname = findViewById(R.id.staffname);
+        staffrec = findViewById(R.id.staffrec);
         Staffemail = findViewById(R.id.staffemail);
         Staffuserid = findViewById(R.id.staffid);
         Staffpassword = findViewById(R.id.staffpassword);
@@ -309,7 +319,7 @@ public class StaffActivity extends AppCompatActivity {
                 Log.e("result1", result1);
 
                 Toast.makeText(StaffActivity.this, " Successfully Registered", Toast.LENGTH_LONG).show();
-
+                GetAllMyStaff();
                 //  Intent in=new Intent(MainActivity.this,NextActivity.class);
                 //  in.putExtra("doc",doc);
                 //     startActivity(in);
@@ -404,8 +414,25 @@ public class StaffActivity extends AppCompatActivity {
             if (result != null) {
                 dialog.dismiss();
 
-                JSONObject jsonObject = null;
+
                 Log.e("PostRegistration", result.toString());
+                try {
+                    JSONObject jsonObject = new JSONObject(result);
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        myStaffsList.add(new MyStaffs(jsonArray.getJSONObject(i).getString("id"), jsonArray.getJSONObject(i).getString("user_id"), jsonArray.getJSONObject(i).getString("staff_id"),
+                                jsonArray.getJSONObject(i).getString("name"), jsonArray.getJSONObject(i).getString("email"), jsonArray.getJSONObject(i).getString("password"), jsonArray.getJSONObject(i).getString("designation"),
+                                jsonArray.getJSONObject(i).getString("image"), jsonArray.getJSONObject(i).getString("status")));
+                    }
+
+                    LinearLayoutManager llm = new LinearLayoutManager(StaffActivity.this);
+                    llm.setOrientation(LinearLayoutManager.VERTICAL);
+                    staffrec.setLayoutManager(llm);
+                    myStffAdapter = new MyStffAdapter(StaffActivity.this, myStaffsList);
+                    staffrec.setAdapter(myStffAdapter);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
             }
         }
