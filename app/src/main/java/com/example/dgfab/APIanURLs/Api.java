@@ -12,6 +12,7 @@ import com.example.dgfab.AllParsings.DestroyingConnections;
 import com.example.dgfab.AllParsings.Friends;
 import com.example.dgfab.AllParsings.GET_Services;
 import com.example.dgfab.AllParsings.GetProducts;
+import com.example.dgfab.AllParsings.GetRemainder;
 import com.example.dgfab.AllParsings.Get_Cities;
 import com.example.dgfab.AllParsings.MyInfo;
 import com.example.dgfab.AllParsings.MyServices;
@@ -167,6 +168,15 @@ public interface Api {
     @POST(REtroURls.Friendsrequests)
     Call<Friends> FRIENDS_CALL(
             @Field("user_id") String user_id);
+
+
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    @FormUrlEncoded
+    @POST(REtroURls.Getremainder)
+    Call<GetRemainder> GET_REMAINDER_CALL(
+            @Field("user_id") String user_id,
+            @Field("remainder_date") String remainder_date
+    );
 
 
 

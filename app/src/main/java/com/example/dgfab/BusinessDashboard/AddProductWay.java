@@ -139,7 +139,7 @@ public class AddProductWay extends AppCompatActivity {
                 e.printStackTrace();
             }
             if (removeid.equals("ok")) {
-                Toast.makeText(context, "Done nothing", Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(context, "Done nothing", Toast.LENGTH_SHORT).show();
             } else {
                 if (removeid == "1") {
                     addmantype.setVisibility(View.VISIBLE);
@@ -157,7 +157,7 @@ public class AddProductWay extends AppCompatActivity {
             //+++++++++++++++++++++++++++++++++++++++++++++++++++
             // intent can contain anydata
             Log.d("sohail","onReceive called");
-            Toast.makeText(context, "Broadcast received !", Toast.LENGTH_SHORT).show();
+            //     Toast.makeText(context, "Broadcast received !", Toast.LENGTH_SHORT).show();
             if (intent != null) {
                 String str = intent.getStringExtra("key");
                 try {
@@ -169,7 +169,7 @@ public class AddProductWay extends AppCompatActivity {
                 }
                 if (!str.equals("null")) {
                     showkeys.setVisibility(View.VISIBLE);
-                    Toast.makeText(context, "Broadcast received KeysDetails!" + str, Toast.LENGTH_SHORT).show();
+                    //  Toast.makeText(context, "Broadcast received KeysDetails!" + str, Toast.LENGTH_SHORT).show();
                     if (SelectandRemoveList.size() > 0) {
                         SelectandRemoveList.add(new AddNews(1, str));
                         gridLayoutManager = new GridLayoutManager(getApplicationContext(), 4);
@@ -199,7 +199,7 @@ public class AddProductWay extends AppCompatActivity {
                 if (!dtr.equals("null2")) {
 
                     showmoredeatils.setVisibility(View.VISIBLE);
-                    Toast.makeText(context, "Broadcast received Other's Details !" + dtr, Toast.LENGTH_SHORT).show();
+                    //  Toast.makeText(context, "Broadcast received Other's Details !" + dtr, Toast.LENGTH_SHORT).show();
                     if (SelectandRemovedetailsList.size() > 0) {
                         SelectandRemovedetailsList.add(new AddNews(2, dtr));
                         gridLayoutManager = new GridLayoutManager(getApplicationContext(), 4);
@@ -220,9 +220,9 @@ public class AddProductWay extends AppCompatActivity {
                     }
                 } else {
                     String mainstr = intent.getStringExtra("Add_More_Details_Key");
-                    Toast.makeText(context, "we got it", Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(context, "we got it", Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(context, "it's null", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(context, "it's null", Toast.LENGTH_SHORT).show();
                 //+++++++++++++++++++++++++++++++++++++++
                 // get all your data from intent and do what you want
                 String maintits = intent.getStringExtra("maintits");
@@ -237,7 +237,7 @@ public class AddProductWay extends AppCompatActivity {
                 if (!maintits.equals("null3") && !mainvalue.equals("null3")) {
 
                     addepros.setVisibility(View.VISIBLE);
-                    Toast.makeText(context, "Broadcast received Other's Details !" + maintits, Toast.LENGTH_SHORT).show();
+                    //  Toast.makeText(context, "Broadcast received Other's Details !" + maintits, Toast.LENGTH_SHORT).show();
                     if (SelectandMainproList.size() > 0) {
                         SelectandMainproList.add(new AddNews(4, maintits, mainvalue));
                         gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
@@ -258,7 +258,7 @@ public class AddProductWay extends AppCompatActivity {
                     }
                 } else {
                     // String mainstr = intent.getStringExtra("Add_More_Details_Key");
-                    Toast.makeText(context, "we got it", Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(context, "we got it", Toast.LENGTH_SHORT).show();
                 }
                 String radiotit = intent.getStringExtra("radiotit");
                 try {
@@ -271,7 +271,7 @@ public class AddProductWay extends AppCompatActivity {
                 if (!radiotit.equals("null4")) {
 
                     showpays.setVisibility(View.VISIBLE);
-                    Toast.makeText(context, "Broadcast received Other's Details !" + maintits, Toast.LENGTH_SHORT).show();
+                    //  Toast.makeText(context, "Broadcast received Other's Details !" + maintits, Toast.LENGTH_SHORT).show();
                     if (SelectandRadioproList.size() > 0) {
                         SelectandRadioproList.add(new AddNews(5, radiotit));
                         gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
@@ -293,7 +293,7 @@ public class AddProductWay extends AppCompatActivity {
                     }
                 } else {
                     // String mainstr = intent.getStringExtra("Add_More_Details_Key");
-                    Toast.makeText(context, "we got it", Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(context, "we got it", Toast.LENGTH_SHORT).show();
                 }
             }
             //  tv.setText("Broadcast received !");
@@ -453,6 +453,7 @@ public class AddProductWay extends AppCompatActivity {
         addmantype.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mainrec.setVisibility(View.VISIBLE);
                 if (addNewsList.size() > 0) {
                     addNewsList.add(new AddNews(1, new EditText(v.getContext()), new EditText(v.getContext()), new Button(v.getContext())));
                     LinearLayoutManager llm = new LinearLayoutManager(v.getContext());
@@ -508,6 +509,7 @@ public class AddProductWay extends AppCompatActivity {
         addmrdet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                addmoredet.setVisibility(View.VISIBLE);
             //    AllMoredetailesList.add(new AddNews(new EditText(v.getContext())));
                 if(AllMoredetailesList.size() >0) {
                     Toast.makeText(AddProductWay.this, "working", Toast.LENGTH_SHORT).show();

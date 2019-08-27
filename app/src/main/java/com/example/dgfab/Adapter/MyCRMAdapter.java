@@ -71,12 +71,18 @@ public class MyCRMAdapter extends RecyclerView.Adapter<MyCRMAdapter.MyViewHolder
 
         searching_manufacturers_data = Doc.get(pos_try);
         Log.e("Position", "is " + pos_try);
+        holder.callid.setText(searching_manufacturers_data.getRemainder_time());
+        holder.conscause.setText(searching_manufacturers_data.getRemainder_cause());
+        Log.e("searching_ gettimr", "is " + searching_manufacturers_data.getRemainder_time());
         document = searching_manufacturers_data.getName();
         holder.comname.setText(searching_manufacturers_data.getName());
         holder.aidimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), CalenderActivity.class);
+                intent.putExtra("Friname", searching_manufacturers_data.getName());
+                intent.putExtra("Friid", searching_manufacturers_data.getReceiverid());
+
                 v.getContext().startActivity(intent);
             }
         });
@@ -89,6 +95,7 @@ public class MyCRMAdapter extends RecyclerView.Adapter<MyCRMAdapter.MyViewHolder
                     callIntent.setData(Uri.parse("tel:" + searching_manufacturers_data.getMobile().toString()));
                     v.getContext().startActivity(callIntent);
                 } catch (ActivityNotFoundException activityException) {
+                    Toast.makeText(mContext, "Calling a Phone Number", Toast.LENGTH_SHORT).show();
                     Log.e("Calling a Phone Number", "Call failed", activityException);
                     Toast.makeText(mContext, "Calling Failed", Toast.LENGTH_SHORT).show();
                 }
@@ -110,14 +117,19 @@ public class MyCRMAdapter extends RecyclerView.Adapter<MyCRMAdapter.MyViewHolder
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView comname;
+        TextView comname, callid, conscause, meetId, chatId, messageId;
         ImageView aidimg, phoneimg;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             comname = (TextView) itemView.findViewById(R.id.comnsname);
+            messageId = (TextView) itemView.findViewById(R.id.messageId);
+            chatId = (TextView) itemView.findViewById(R.id.chatId);
+            meetId = (TextView) itemView.findViewById(R.id.meetId);
             aidimg = itemView.findViewById(R.id.aidimg);
             phoneimg = itemView.findViewById(R.id.phoneimg);
+            callid = itemView.findViewById(R.id.callid);
+            conscause = itemView.findViewById(R.id.conscause);
 
 
         }

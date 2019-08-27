@@ -21,6 +21,7 @@ public interface REtroURls {
     public   String Getuserbyid= "getuserbyid";
     public   String Getreceivedrequest= "getreceivedrequest";
     public   String Friendsrequests= "getacceptrequest";
+    public String Getremainder = "getremainder";
     public   String Sendrequest= "sendrequest";
     public   String Acceptdeclinerequest= "acceptdeclinerequest";
     public   String Getsentrequest= "getsentrequest";

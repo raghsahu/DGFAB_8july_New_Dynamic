@@ -20,21 +20,59 @@ public class Friendsdata {
     @SerializedName("receiverid")
     @Expose
     private String receiverid;
-
-
     @SerializedName("mobile")
     @Expose
     private String mobile;
 
-    public Friendsdata(String userId, String name, String ustatus, String senderid, String receiverid, String mobile) {
+    private String rem_type;
+    private String remainder_date;
+    private String remainder_time;
+    private String remainder_cause;
+
+    public Friendsdata(String userId, String name, String ustatus, String senderid, String receiverid, String mobile, String Rem_type, String Remainder_date, String Remainder_time, String remainder_cause) {
         this.userId = userId;
         this.name = name;
         this.ustatus = ustatus;
         this.senderid = senderid;
         this.receiverid = receiverid;
         this.mobile = mobile;
+        this.rem_type = Rem_type;
+        this.remainder_date = Remainder_date;
+        this.remainder_time = Remainder_time;
+        this.remainder_cause = remainder_cause;
     }
 
+    public String getRem_type() {
+        return rem_type;
+    }
+
+    public void setRem_type(String rem_type) {
+        this.rem_type = rem_type;
+    }
+
+    public String getRemainder_date() {
+        return remainder_date;
+    }
+
+    public void setRemainder_date(String remainder_date) {
+        this.remainder_date = remainder_date;
+    }
+
+    public String getRemainder_time() {
+        return remainder_time;
+    }
+
+    public void setRemainder_time(String remainder_time) {
+        this.remainder_time = remainder_time;
+    }
+
+    public String getRemainder_cause() {
+        return remainder_cause;
+    }
+
+    public void setRemainder_cause(String remainder_cause) {
+        this.remainder_cause = remainder_cause;
+    }
 
     public String getMobile() {
         return mobile;

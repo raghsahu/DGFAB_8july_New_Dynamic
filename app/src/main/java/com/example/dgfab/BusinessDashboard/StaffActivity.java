@@ -2,6 +2,7 @@ package com.example.dgfab.BusinessDashboard;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,9 +20,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.dgfab.Adapter.MyStffAdapter;
@@ -65,12 +69,16 @@ public class StaffActivity extends AppCompatActivity {
     ImageView staffimg;
     private int RESULT_LOAD_IMAGE = 101;
     String Mainpath;
+    android.app.AlertDialog.Builder builder;
+    Button addnvdes;
     RecyclerView staffrec;
     private int RESULT_PICK_IMAGE = 141;
     File Staffprofile;
     private static final int REQUEST_ID_MULTIPLE_PERMISSIONS =101 ;
-    EditText Staffname,Staffemail,Staffuserid,Staffpassword,Designationstaff;
+    EditText Staffname, Staffemail, Staffuserid, Staffpassword;
+    Spinner Designationstaff;
     Button Createstaff;
+    ArrayList<String> DesArrayList = new ArrayList<>();
     private ProgressDialog dialog;
     MyStffAdapter myStffAdapter;
     List<MyStaffs> myStaffsList = new ArrayList<>();
@@ -84,11 +92,52 @@ public class StaffActivity extends AppCompatActivity {
         Staffemail = findViewById(R.id.staffemail);
         Staffuserid = findViewById(R.id.staffid);
         Staffpassword = findViewById(R.id.staffpassword);
+        addnvdes = findViewById(R.id.addnvdes);
         Designationstaff = findViewById(R.id.staffdes);
         Createstaff = findViewById(R.id.add_staff);
         Log.e("id is", "" + new SessionManager(this).getUS());
+
+        new GETAllStaffDesignation(new SessionManager(this).getUS()).execute();
+
         new GetAllMyStaff(new SessionManager(StaffActivity.this).getUS()).execute();
-            checkPermissions();
+
+        checkPermissions();
+
+
+        addnvdes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final Dialog dialog = new Dialog(StaffActivity.this);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setCancelable(true);
+                dialog.setContentView(R.layout.addnewsubservice);
+
+                EditText et_add_service = (EditText) dialog.findViewById(R.id.text_dialog);
+
+                et_add_service.setHint("Add New Designation");
+                Button dialogButton = (Button) dialog.findViewById(R.id.btn_dialog);
+                dialogButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+
+                        if (!et_add_service.getText().toString().equals("")) {
+                            Log.e("et_add_ser", "" + et_add_service.getText().toString());
+                            //     Add_New_Service(et_add_service.getText().toString());
+                            String add_new_service = et_add_service.getText().toString();
+                            new POStAllDesignation(add_new_service).execute();
+                        } else {
+                            et_add_service.setError("This field can not be empty");
+                            et_add_service.requestFocus();
+                        }
+
+                    }
+                });
+
+                dialog.show();
+            }
+        });
         staffimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,7 +154,7 @@ public class StaffActivity extends AppCompatActivity {
                     Toast.makeText(StaffActivity.this, "ok ", Toast.LENGTH_SHORT).show();
 
                         if (Mainpath !=null) {
-                            new CreatedStaffApi(Staffuserid.getText().toString(), Staffname.getText().toString(), Staffemail.getText().toString(), Staffpassword.getText().toString(), Designationstaff.getText().toString()).execute();
+                            new CreatedStaffApi(Staffuserid.getText().toString(), Staffname.getText().toString(), Staffemail.getText().toString(), Staffpassword.getText().toString(), Designationstaff.getSelectedItemPosition() + 1).execute();
                         }
 
 //                }
@@ -113,10 +162,31 @@ public class StaffActivity extends AppCompatActivity {
         });
     }
 
-    private void GetAllMyStaff() {
+    public String getPostDataString(JSONObject params) throws Exception {
 
+        StringBuilder result = new StringBuilder();
+        boolean first = true;
 
+        Iterator<String> itr = params.keys();
+
+        while (itr.hasNext()) {
+
+            String key = itr.next();
+            Object value = params.get(key);
+
+            if (first)
+                first = false;
+            else
+                result.append("&");
+
+            result.append(URLEncoder.encode(key, "UTF-8"));
+            result.append("=");
+            result.append(URLEncoder.encode(value.toString(), "UTF-8"));
+
+        }
+        return result.toString();
     }
+
 
     private void captureit() {
         new AlertDialog.Builder(StaffActivity.this)
@@ -253,86 +323,123 @@ public class StaffActivity extends AppCompatActivity {
 
     }
 
-    private class CreatedStaffApi extends AsyncTask<Void, Void, String> {
-        File trandmark_cerFile, copyright_cerFile, others_cerFile, gate_photo_file, gate_sign_file;
-        String stafid ;
-        String staffname;
-        String email;
-        String password;
-        String destination;
-        String result = "";
+    private class GETAllStaffDesignation extends AsyncTask<String, Void, String> {
+        ProgressDialog dialog;
+        int us;
 
-        public CreatedStaffApi(String stafid , String staffname, String email, String password, String destination) {
-            this.stafid =stafid;
-            this.staffname =staffname;
-            this.email =email;
-            this.password =password;
-            this.destination =destination;
-
+        public GETAllStaffDesignation(int us) {
+            this.us = us;
         }
 
-        @Override
         protected void onPreExecute() {
             dialog = new ProgressDialog(StaffActivity.this);
-            dialog.setCancelable(false);
             dialog.show();
-            super.onPreExecute();
+
         }
 
+        protected String doInBackground(String... arg0) {
 
-
-        @Override
-        protected String doInBackground(Void... Void) {
             try {
 
-                MultipartEntity entity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
+                URL url = new URL("http://neareststore.in/api/api/getdesignation");
+
+                JSONObject postDataParams = new JSONObject();
+                postDataParams.put("user_id", String.valueOf(us));
 
 
-                entity.addPart("staff_id", new StringBody("" + stafid));
-                entity.addPart("user_id", new StringBody("" + new SessionManager(StaffActivity.this).getUS()));
-                entity.addPart("name", new StringBody("" + staffname));
-                entity.addPart("email", new StringBody("" + email));
-                entity.addPart("password", new StringBody("" +password));
-                entity.addPart("designation", new StringBody("" + destination));
-//                entity.addPart("sub_type", new StringBody(""+concatService));
-//                entity.addPart("trandmark_cer", new FileBody(trandmark_cerFile));
-//                entity.addPart("copyright_cer", new FileBody(copyright_cerFile));
-//                entity.addPart("others_cer", new FileBody(others_cerFile));
-//                entity.addPart("gst_cer", new FileBody(gst_cerFile));
-                entity.addPart("image", new FileBody(Staffprofile));
-//                    result = Utilities.postEntityAndFindJson("https://www.spellclasses.co.in/DM/Api/taxreturn", entity);
-//                 //   result = Utilities.postEntityAndFindJson("https://www.spellclasses.co.in/DM/Api/taxreturn", entity);
-                result = Utilities.postEntityAndFindJson("https://neareststore.in/api/api/addstaff", entity);
+                Log.e("postDataParams", postDataParams.toString());
+
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setReadTimeout(15000  /*milliseconds*/);
+                conn.setConnectTimeout(15000  /*milliseconds*/);
+                conn.setRequestMethod("POST");
+                conn.setDoInput(true);
+                conn.setDoOutput(true);
+
+                OutputStream os = conn.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(
+                        new OutputStreamWriter(os, "UTF-8"));
+                writer.write(getPostDataString(postDataParams));
+
+                writer.flush();
+                writer.close();
+                os.close();
+
+                int responseCode = conn.getResponseCode();
+
+                if (responseCode == HttpsURLConnection.HTTP_OK) {
+
+                    BufferedReader in = new BufferedReader(new
+                            InputStreamReader(
+                            conn.getInputStream()));
+
+                    StringBuffer sb = new StringBuffer("");
+                    String line = "";
+
+                    while ((line = in.readLine()) != null) {
+
+                        StringBuffer Ss = sb.append(line);
+                        Log.e("Ss", Ss.toString());
+                        sb.append(line);
+                        break;
+                    }
+
+                    in.close();
+                    return sb.toString();
+
+                } else {
+                    return new String("false : " + responseCode);
+                }
             } catch (Exception e) {
-                e.printStackTrace();
+                return new String("Exception: " + e.getMessage());
             }
-            return null;
+
         }
 
         @Override
         protected void onPostExecute(String result) {
-
-            String result1 = result;
-            if (result1 != null) {
-
+            if (result != null) {
                 dialog.dismiss();
-                Log.e("result1", result1);
 
-                Toast.makeText(StaffActivity.this, " Successfully Registered", Toast.LENGTH_LONG).show();
-                GetAllMyStaff();
-                //  Intent in=new Intent(MainActivity.this,NextActivity.class);
-                //  in.putExtra("doc",doc);
-                //     startActivity(in);
 
-            } else {
-                dialog.dismiss();
-                Toast.makeText(StaffActivity.this, "Staff add Success", Toast.LENGTH_LONG).show();
-//                Intent intent = new Intent(StaffActivity.this , S.class);
-//                startActivity(intent);
-//                finish();
+                Log.e("PostRegistration at get", result.toString());
+                try {
+                    JSONObject jsonObject = new JSONObject(result);
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        DesArrayList.add(jsonArray.getJSONObject(i).getString("designation").toUpperCase().toString());
+                    }
+                    Designationstaff.setAdapter(new ArrayAdapter<String>(StaffActivity.this, android.R.layout.simple_list_item_1, DesArrayList));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
             }
+        }
 
+        public String getPostDataString(JSONObject params) throws Exception {
+
+            StringBuilder result = new StringBuilder();
+            boolean first = true;
+
+            Iterator<String> itr = params.keys();
+
+            while (itr.hasNext()) {
+
+                String key = itr.next();
+                Object value = params.get(key);
+
+                if (first)
+                    first = false;
+                else
+                    result.append("&");
+
+                result.append(URLEncoder.encode(key, "UTF-8"));
+                result.append("=");
+                result.append(URLEncoder.encode(value.toString(), "UTF-8"));
+
+            }
+            return result.toString();
         }
     }
 
@@ -460,6 +567,182 @@ public class StaffActivity extends AppCompatActivity {
 
             }
             return result.toString();
+        }
+    }
+
+    private class CreatedStaffApi extends AsyncTask<Void, Void, String> {
+        File trandmark_cerFile, copyright_cerFile, others_cerFile, gate_photo_file, gate_sign_file;
+        String stafid;
+        String staffname;
+        String email;
+        String password;
+        int destination;
+        String result = "";
+
+        public CreatedStaffApi(String stafid, String staffname, String email, String password, int destination) {
+            this.stafid = stafid;
+            this.staffname = staffname;
+            this.email = email;
+            this.password = password;
+            this.destination = destination;
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+            dialog = new ProgressDialog(StaffActivity.this);
+            dialog.setCancelable(false);
+            dialog.show();
+            super.onPreExecute();
+        }
+
+
+        @Override
+        protected String doInBackground(Void... Void) {
+            try {
+
+                MultipartEntity entity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
+
+
+                entity.addPart("staff_id", new StringBody("" + stafid));
+                entity.addPart("user_id", new StringBody("" + new SessionManager(StaffActivity.this).getUS()));
+                entity.addPart("name", new StringBody("" + staffname));
+                entity.addPart("email", new StringBody("" + email));
+                entity.addPart("password", new StringBody("" + password));
+                entity.addPart("designation", new StringBody("" + destination));
+//                entity.addPart("sub_type", new StringBody(""+concatService));
+//                entity.addPart("trandmark_cer", new FileBody(trandmark_cerFile));
+//                entity.addPart("copyright_cer", new FileBody(copyright_cerFile));
+//                entity.addPart("others_cer", new FileBody(others_cerFile));
+//                entity.addPart("gst_cer", new FileBody(gst_cerFile));
+                entity.addPart("image", new FileBody(Staffprofile));
+//                    result = Utilities.postEntityAndFindJson("https://www.spellclasses.co.in/DM/Api/taxreturn", entity);
+//                 //   result = Utilities.postEntityAndFindJson("https://www.spellclasses.co.in/DM/Api/taxreturn", entity);
+                result = Utilities.postEntityAndFindJson("https://neareststore.in/api/api/addstaff", entity);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+
+            String result1 = result;
+            if (result1 != null) {
+
+                dialog.dismiss();
+                Log.e("result1", result1);
+
+                Toast.makeText(StaffActivity.this, " Successfully Registered", Toast.LENGTH_LONG).show();
+                new GetAllMyStaff(new SessionManager(StaffActivity.this).getUS()).execute();
+                //  Intent in=new Intent(MainActivity.this,NextActivity.class);
+                //  in.putExtra("doc",doc);
+                //     startActivity(in);
+
+            } else {
+                dialog.dismiss();
+                Toast.makeText(StaffActivity.this, "Staff add Success", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(StaffActivity.this, StaffActivity.class);
+                startActivity(intent);
+//                Intent intent = new Intent(StaffActivity.this , S.class);
+//                startActivity(intent);
+//                finish();
+
+            }
+
+        }
+    }
+
+    private class POStAllDesignation extends AsyncTask<String, Void, String> {
+        ProgressDialog dialog;
+        int us;
+        String add_new_service;
+
+        public POStAllDesignation(String add_new_service) {
+            this.add_new_service = add_new_service;
+        }
+
+
+        protected void onPreExecute() {
+            dialog = new ProgressDialog(StaffActivity.this);
+            dialog.show();
+
+        }
+
+        protected String doInBackground(String... arg0) {
+
+            try {
+
+                URL url = new URL("http://neareststore.in/api/api/adddesignation");
+
+                JSONObject postDataParams = new JSONObject();
+                postDataParams.put("user_id", new SessionManager(StaffActivity.this).getUS());
+                postDataParams.put("designation", add_new_service);
+
+
+                Log.e("postDataParams", postDataParams.toString());
+
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setReadTimeout(15000  /*milliseconds*/);
+                conn.setConnectTimeout(15000  /*milliseconds*/);
+                conn.setRequestMethod("POST");
+                conn.setDoInput(true);
+                conn.setDoOutput(true);
+
+                OutputStream os = conn.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(
+                        new OutputStreamWriter(os, "UTF-8"));
+                writer.write(getPostDataString(postDataParams));
+
+                writer.flush();
+                writer.close();
+                os.close();
+
+                int responseCode = conn.getResponseCode();
+
+                if (responseCode == HttpsURLConnection.HTTP_OK) {
+
+                    BufferedReader in = new BufferedReader(new
+                            InputStreamReader(
+                            conn.getInputStream()));
+
+                    StringBuffer sb = new StringBuffer("");
+                    String line = "";
+
+                    while ((line = in.readLine()) != null) {
+
+                        StringBuffer Ss = sb.append(line);
+                        Log.e("Ss", Ss.toString());
+                        sb.append(line);
+                        break;
+                    }
+
+                    in.close();
+                    return sb.toString();
+
+                } else {
+                    return new String("false : " + responseCode);
+                }
+            } catch (Exception e) {
+                return new String("Exception: " + e.getMessage());
+            }
+
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            if (result != null) {
+                dialog.dismiss();
+//                DesArrayList.clear();
+
+                Log.e("PostRegistration at get", result.toString());
+                if (result != null) {
+                    DesArrayList.clear();
+                    new GETAllStaffDesignation(new SessionManager(StaffActivity.this).getUS()).execute();
+                }
+
+            }
         }
     }
 }

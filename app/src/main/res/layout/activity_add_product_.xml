@@ -331,7 +331,7 @@
                             android:textColor="#fff"
                             android:padding="10dp"
                             android:background="@color/colorPrimary"
-                            android:id="@+id/addnv"
+                            android:id="@+id/addmkey"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Add More Keywords" />

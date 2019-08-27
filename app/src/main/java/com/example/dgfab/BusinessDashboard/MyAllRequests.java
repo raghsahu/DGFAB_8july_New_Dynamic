@@ -36,7 +36,7 @@ public class MyAllRequests extends AppCompatActivity {
   MyAllSentRequestAdapter myallSentRequestAdapter;
   SessionManager sessionManager;
   ArrayList<All_Sent_Request_Data> all_sent_request_data = new ArrayList<>();
-    RecyclerView myconsreq;
+    RecyclerView myconsreq, crmnoti;
     CommingConnAdapter commingConnAdapter;
     List<CommingRequestData> commingRequestData = new ArrayList<>();
 
@@ -45,6 +45,7 @@ public class MyAllRequests extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_all_requests);
         sentrecy = findViewById(R.id.sentrecy);
+        crmnoti = findViewById(R.id.crmnoti);
         myconsreq = findViewById(R.id.reciverec);
         sessionManager = new SessionManager(this);
         LinearLayoutManager llm = new LinearLayoutManager(this);
@@ -52,7 +53,11 @@ public class MyAllRequests extends AppCompatActivity {
         sentrecy.setLayoutManager(llm);
         GETAllSENTREQUESTS(sessionManager.getUS());
         GETALLRecivedRequests(sessionManager.getUS());
+        GETALLREMAINDER(sessionManager.getUS());
 
+    }
+
+    private void GETALLREMAINDER(int us) {
 
     }
 
@@ -139,7 +144,7 @@ public class MyAllRequests extends AppCompatActivity {
                         for(int i=0;i<response.body().getData().size(); i++)
                         {
                             if(response.body().getData().get(i).getName().length() !=0) {
-                                Log.d("sortname GETALLRecivedRequests is" , response.body().getData().get(i).getId());
+                                Log.d("sortme GETALLRequests is", response.body().getData().get(i).getId());
                                 if(response.body().getData().get(i).getUstatus().equals("1")) {
                                     commingRequestData.add(new CommingRequestData(response.body().getData().get(i).getId(), response.body().getData().get(i).getBrandName(), response.body().getData().get(i).getName(), response.body().getData().get(i).getImage(), response.body().getData().get(i).getReceiverid(), response.body().getData().get(i).getSenderid(), response.body().getData().get(i).getUstatus()));
                                 }else {

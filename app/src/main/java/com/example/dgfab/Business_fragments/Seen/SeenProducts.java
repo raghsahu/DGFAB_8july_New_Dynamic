@@ -21,6 +21,7 @@ import com.example.dgfab.APIanURLs.REtroURls;
 import com.example.dgfab.Adapter.TheirProductsAdapter;
 import com.example.dgfab.AllParsings.GetProducts;
 import com.example.dgfab.AllParsings.GetProductsData;
+import com.example.dgfab.BusinessDashboard.AddProductWay;
 import com.example.dgfab.BusinessDashboard.AddProduct_Activity;
 import com.example.dgfab.R;
 import com.example.dgfab.SessionManage.SessionManager;
@@ -146,7 +147,7 @@ public class SeenProducts   extends Fragment {
         add_product.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getContext(), AddProduct_Activity.class);
+                Intent intent = new Intent(getContext(), AddProductWay.class);
                 startActivity(intent);
             }
         });

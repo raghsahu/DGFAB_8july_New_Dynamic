@@ -11,13 +11,13 @@
         android:id="@+id/toolbar_billHistory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#2196F3">
+        android:background="@color/colorPrimary">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start|center"
-            android:text="Add Products"
+            android:text="Add Staff"
             android:textColor="#fff"
             android:textSize="18dp"
             android:typeface="serif" />
@@ -182,13 +182,22 @@
                     android:textColor="#000"
                     android:textSize="14dp" />
 
-                <EditText
+                <Spinner
                     android:padding="6dp"
                     android:id="@+id/staffdes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
                     android:inputType="textPersonName" />
+
+                <Button
+                    android:id="@+id/addnvdes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:background="@color/colorPrimary"
+                    android:text="Add New Designation"
+                    android:textColor="#fff" />
 
             </LinearLayout>
             <Button
@@ -268,7 +277,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Password"/>
+                        android:text="Designation" />
 
                 </LinearLayout>
 

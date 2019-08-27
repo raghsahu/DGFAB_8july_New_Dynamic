@@ -56,7 +56,7 @@ public class MyStffAdapter extends RecyclerView.Adapter<MyStffAdapter.MyViewHold
         this.pos_try = position;
         holder.namestff.setText(addNews141.getName());
         holder.emailstff.setText(addNews141.getEmail());
-        holder.stffid.setText(addNews141.getStaffId());
+        holder.stffid.setText(addNews141.getDesignation());
         Glide.with(mContext).load("http://neareststore.in/uploads/staff/" + addNews141.getImage()).addListener(new RequestListener<Drawable>() {
             @Override
             public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
@@ -102,7 +102,7 @@ public class MyStffAdapter extends RecyclerView.Adapter<MyStffAdapter.MyViewHold
             stffimg = itemView.findViewById(R.id.stffimg);
             namestff = itemView.findViewById(R.id.namestff);
             emailstff = itemView.findViewById(R.id.emailstff);
-            stffid = itemView.findViewById(R.id.stffid);
+            stffid = itemView.findViewById(R.id.stffdes);
             //     adddes =  itemView.findViewById(R.id.adddes);
 
 

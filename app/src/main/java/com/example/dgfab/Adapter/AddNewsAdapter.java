@@ -97,7 +97,7 @@ public class AddNewsAdapter extends RecyclerView.Adapter<AddNewsAdapter.MyViewHo
 
                 //  Myproducttiles.add(holder.addnewkey.getText().toString());
                 //    Myproducttiles.add(holder.addnewkey.getText().toString());
-                Toast.makeText(mContext, "xyz " + holder.adddes.getText().toString(), Toast.LENGTH_SHORT).show();
+                //   Toast.makeText(mContext, "xyz " + holder.adddes.getText().toString(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent("filter_string");
                 //   Intent intent = new Intent(v.getContext() , AddProductWay.class);
                 intent.putExtra("maintits", holder.addtitle.getText().toString());

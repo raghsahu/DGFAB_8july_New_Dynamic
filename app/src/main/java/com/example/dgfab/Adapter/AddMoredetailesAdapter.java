@@ -93,7 +93,7 @@ public class AddMoredetailesAdapter   extends RecyclerView.Adapter<AddMoredetail
 
                 //  Myproducttiles.add(holder.addnewkey.getText().toString());
                 //    Myproducttiles.add(holder.addnewkey.getText().toString());
-                Toast.makeText(mContext, "xyz "+holder.addnewkey.getText().toString(), Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(mContext, "xyz "+holder.addnewkey.getText().toString(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent("filter_string");
                 //   Intent intent = new Intent(v.getContext() , AddProductWay.class);
                 //   intent.putExtra("Add_More_Details_Key", holder.addnewkey.getText().toString());

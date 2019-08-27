@@ -7,11 +7,11 @@
         <item><font fgcolor='#FF8E8E93'>Affiliate Marketer</font></item>
     </string-array>
     <string-array name="mcons">
-        <item><font fgcolor='#FF8E8E93'>Select Your Country</font></item>
-        <item><font fgcolor='#FF8E8E93'>USA</font></item>
-        <item><font fgcolor='#FF8E8E93'>UK</font></item>
-        <item><font fgcolor='#FF8E8E93'>China</font></item>
-        <item><font fgcolor='#FF8E8E93'>India</font></item>
+        <item><font fgcolor='#FF8E8E93'>Select Remainder Type</font></item>
+        <item><font fgcolor='#FF8E8E93'>Meeting</font></item>
+        <item><font fgcolor='#FF8E8E93'>Call Follow Up</font></item>
+        <item><font fgcolor='#FF8E8E93'>Chatting</font></item>
+        <item><font fgcolor='#FF8E8E93'>Message/Inquiry</font></item>
     </string-array>
 
 
