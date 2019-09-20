@@ -9,8 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dgfab.Expandable.BasicInfo;
@@ -26,6 +28,7 @@ public class AddNewProductWay extends AppCompatActivity {
     ExpandableListAdapter listAdapter;
     ExpandableListView basicinfoex;
     List<String> BasicListDataHeaderList;
+    LinearLayout lifo;
     //    EditText editText;
 //    HashMap<String, List<String>> listDataChild;
     HashMap<String, List<BasicInfo>> BasicinfoHashMap;
@@ -38,6 +41,7 @@ public class AddNewProductWay extends AppCompatActivity {
         // get the listview
         basicinfoex = (ExpandableListView) findViewById(R.id.basicinfoex);
 
+        lifo = findViewById(R.id.lifo);
         // preparing list data
         prepareListData();
 
@@ -52,9 +56,11 @@ public class AddNewProductWay extends AppCompatActivity {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v,
                                         int groupPosition, long id) {
+
                 Toast.makeText(getApplicationContext(),
                         "Group Clicked " + BasicListDataHeaderList.get(groupPosition),
                         Toast.LENGTH_SHORT).show();
+
                 return false;
             }
         });
@@ -67,6 +73,20 @@ public class AddNewProductWay extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),
                         BasicListDataHeaderList.get(groupPosition) + " Expanded",
                         Toast.LENGTH_SHORT).show();
+                TextView lblListHeader = (TextView) basicinfoex.getRootView()
+                        .findViewById(R.id.lblListHeader);
+                lifo.requestFocus();
+                for (int i = 0; i < BasicListDataHeaderList.size(); i++) {
+                    if (i != groupPosition) {
+                        basicinfoex.collapseGroup(i);
+
+                    } else {
+
+
+                        //     Toast.makeText(AddNewProductWay.this, "Nothing", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
                 // listAdapter.ChangeIconUp();
                 //   listAdapter.notify();
 
@@ -117,7 +137,8 @@ public class AddNewProductWay extends AppCompatActivity {
         // Adding child data
         BasicListDataHeaderList.add("Basic Information");
         BasicListDataHeaderList.add("Trade Information");
-        BasicListDataHeaderList.add("Logistic Information");
+        BasicListDataHeaderList.add("Logistics information");
+        // BasicListDataHeaderList.add("Logistic Information");
 //        listDataHeader.add("Basic Information2");
 //        listDataHeader.add("Trade Information");
 //        listDataHeader.add("Logistic");
@@ -134,6 +155,7 @@ public class AddNewProductWay extends AppCompatActivity {
                 , new Button(this), new RecyclerView(this), new RecyclerView(this), new Spinner(this), new Spinner(this)
                 , new Spinner(this), new Spinner(this)));
 
+        TradeBasicInfos.add(new BasicInfo(new RadioButton(this), new RadioButton(this)));
         TradeBasicInfos.add(new BasicInfo(new RadioButton(this), new RadioButton(this)));
 
 //        top250.add("Pulp Fiction");
@@ -158,6 +180,7 @@ public class AddNewProductWay extends AppCompatActivity {
 
         BasicinfoHashMap.put(BasicListDataHeaderList.get(0), BasicInfos); // Header, Child data
         BasicinfoHashMap.put(BasicListDataHeaderList.get(1), TradeBasicInfos); // Header, Child data
+        BasicinfoHashMap.put(BasicListDataHeaderList.get(2), TradeBasicInfos); // Header, Child data
 //        listDataChild.put(listDataHeader.get(1), nowShowing);
 //        listDataChild.put(listDataHeader.get(2), comingSoon);
     }

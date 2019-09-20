@@ -20,6 +20,7 @@ import java.util.List;
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
     View ExpandView;
     private Context _context;
+    LayoutInflater infalInflater;
     private List<String> _listDataHeader; // header titles
     // child data in format of header title, child title
     private HashMap<String, List<BasicInfo>> _listDataChild;
@@ -38,6 +39,13 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
+    public void onGroupExpanded(int groupPosition) {
+        //      Log.e("Expanded view" , "groupPosition"+groupPosition);
+//        if(groupPosition)
+        super.onGroupExpanded(groupPosition);
+    }
+
+    @Override
     public long getChildId(int groupPosition, int childPosition) {
         return childPosition;
     }
@@ -49,14 +57,56 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 //        final String childText =  getChild(groupPosition, childPosition);
         final BasicInfo BasicInfo = (BasicInfo) getChild(groupPosition, childPosition);
         Log.e("childPosition", "is " + childPosition);
-        if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) this._context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        Log.e("groupPosition", "is groupPosition " + groupPosition);
+        int itemType = getChildType(groupPosition, childPosition);
+//        this.infalInflater = LayoutInflater.from(parent.getContext());
+        infalInflater = (LayoutInflater) this._context
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        if (("Basic Information").equals(_listDataHeader.get(groupPosition))) {
+            Toast.makeText(_context, "Basic", Toast.LENGTH_SHORT).show();
             convertView = infalInflater.inflate(R.layout.basicinfolistitem, null);
+            convertView.requestFocus();
+            //update your views here
+        } else if (("Trade Information").equals(_listDataHeader.get(groupPosition))) {
+            Toast.makeText(_context, "Trade", Toast.LENGTH_SHORT).show();
+            convertView = infalInflater.inflate(R.layout.tradeinfos, null);
+            convertView.requestFocus();
+            //update your views here
+        } else if (("Logistics information").equals(_listDataHeader.get(groupPosition))) {
+            Toast.makeText(_context, "Trade", Toast.LENGTH_SHORT).show();
+            convertView = infalInflater.inflate(R.layout.logisticinfo, null);
+            convertView.requestFocus();
+            //update your views here
         }
-        EditText Proname = convertView.findViewById(R.id.pronames);
-        //  Proname.getText().clear();
-        Proname.setHint("Product Name");
+//            switch (itemType) {
+//                case 0:
+//                    Toast.makeText(_context, "we are at"+itemType, Toast.LENGTH_SHORT).show();
+//                    convertView = infalInflater.inflate(R.layout.basicinfolistitem, null);
+//                    break;
+//                case 1:
+//                    Toast.makeText(_context, "we are at"+itemType, Toast.LENGTH_SHORT).show();
+//                    convertView = infalInflater.inflate(R.layout.tradeinfos, null);
+//                    break;
+//            }
+//            if(groupPosition==0) {
+//                Toast.makeText(_context, "at"+groupPosition, Toast.LENGTH_SHORT).show();
+//                 infalInflater = (LayoutInflater) this._context
+//                        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//                convertView = infalInflater.inflate(R.layout.basicinfolistitem, null);
+//                notifyDataSetChanged();
+//            }
+//            if(groupPosition ==1)
+//            {
+//                Toast.makeText(_context, "at"+groupPosition, Toast.LENGTH_SHORT).show();
+//                 infalInflater = (LayoutInflater) this._context
+//                        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//                convertView = infalInflater.inflate(R.layout.tradeinfos, null);
+//                notifyDataSetChanged();
+//            }
+
+//        EditText Proname = convertView.findViewById(R.id.pronames);
+//        //  Proname.getText().clear();
+//        Proname.setHint("Product Name");
 
 //        TextView txtListChild = (TextView) convertView
 //                .findViewById(R.id.lblListItem);
@@ -91,15 +141,31 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                              View convertView, ViewGroup parent) {
         String headerTitle = (String) getGroup(groupPosition);
         this.ExpandView = convertView;
-        Log.e("childPosition", "is " + groupPosition);
+        //   Log.e("groupPosition", "is " + groupPosition);
         if (convertView == null) {
+//            if(headerTitle.equals("Basic Information")) {
+            Toast.makeText(_context, "BAsic", Toast.LENGTH_SHORT).show();
             LayoutInflater infalInflater = (LayoutInflater) this._context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.basicinfogroup, null);
+
+//            }
+//            else {
+//                Toast.makeText(_context, "Trading", Toast.LENGTH_SHORT).show();
+//                LayoutInflater infalInflater = (LayoutInflater) this._context
+//                        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//                convertView = infalInflater.inflate(R.layout.tradeinfos, null);
+//                TextView lblListHeader = (TextView) convertView
+//                        .findViewById(R.id.lblListHeader);
+//
+//                lblListHeader.setTypeface(null, Typeface.BOLD);
+//                lblListHeader.setText(headerTitle);
+//            }
         }
 
         TextView lblListHeader = (TextView) convertView
                 .findViewById(R.id.lblListHeader);
+
         lblListHeader.setTypeface(null, Typeface.BOLD);
         lblListHeader.setText(headerTitle);
 
