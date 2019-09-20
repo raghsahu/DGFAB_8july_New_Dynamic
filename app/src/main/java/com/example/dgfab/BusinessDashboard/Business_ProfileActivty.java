@@ -142,7 +142,7 @@ public class Business_ProfileActivty extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
-                Toast.makeText(Business_ProfileActivty.this, "tab is", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(Business_ProfileActivty.this, "tab is", Toast.LENGTH_SHORT).show();
                 if(tab.getPosition() == 0)
                 {
                     FragmentManager fragmentManager = getSupportFragmentManager();

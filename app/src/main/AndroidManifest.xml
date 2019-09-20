@@ -15,6 +15,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
+        android:hardwareAccelerated="false"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
@@ -58,6 +59,9 @@
         <activity android:name=".BusinessDashboard.ProfileActivity" />
         <activity android:name=".BusinessDashboard.AddProductWay" />
         <activity android:name=".BusinessDashboard.AddProduct_Activity" />
+        <activity
+            android:name=".BusinessDashboard.AddNewProductWay"
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".Connections.SeenProfile" />
         <activity
             android:name=".Activity.SplashScreens.Splash_Activity"

@@ -221,7 +221,8 @@ public class Business_Dashboard_Main extends AppCompatActivity
 
         } else if (id == R.id.nav_addproduct) {
            // Intent intent = new Intent(Business_Dashboard_Main.this , AddProduct_Activity.class);
-            Intent intent = new Intent(Business_Dashboard_Main.this , AddProductWay.class);
+//            Intent intent = new Intent(Business_Dashboard_Main.this , AddProductWay.class);
+            Intent intent = new Intent(Business_Dashboard_Main.this, AddNewProductWay.class);
             startActivity(intent);
 
 
