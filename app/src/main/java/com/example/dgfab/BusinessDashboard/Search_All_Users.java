@@ -370,31 +370,31 @@ public class Search_All_Users extends AppCompatActivity {
                                 String px= object.getString("status");
                                 if(object.getString("status").equals("2")) {
                                     searching_manufacturers_data.add(new Searching_Manufacturers_Data(object.getString("user_id"), object.getString("name"),
-                                            object.getString("email"), object.getString("mobile"), "Accepted"));
+                                            object.getString("email"), object.getString("image"), object.getString("mobile"), "Accepted"));
                                 }else if(object.getString("status").equals("1"))
                                 {
                                     searching_manufacturers_data.add(new Searching_Manufacturers_Data(object.getString("user_id"), object.getString("name"),
-                                            object.getString("email"), object.getString("mobile"), "Pending"));
+                                            object.getString("email"), object.getString("image"), object.getString("mobile"), "Pending"));
                                 }else if(object.getString("status").equals("0"))
                                 {
                                     searching_manufacturers_data.add(new Searching_Manufacturers_Data(object.getString("user_id"), object.getString("name"),
-                                            object.getString("email"), object.getString("mobile"), "Send Request"));
+                                            object.getString("email"), object.getString("image"), object.getString("mobile"), "Send Request"));
                                 }else if(object.getString("status").equals(""))
                                 {
                                     searching_manufacturers_data.add(new Searching_Manufacturers_Data(object.getString("user_id"), object.getString("name"),
-                                            object.getString("email"), object.getString("mobile"), "Send Request"));
+                                            object.getString("email"), object.getString("image"), object.getString("mobile"), "Send Request"));
                                 }
                             }catch (Exception e)
                             {
                                 searching_manufacturers_data.add(new Searching_Manufacturers_Data(object.getString("user_id"), object.getString("name"),
-                                        object.getString("email"), object.getString("mobile"), "Send Request"));
+                                        object.getString("email"), object.getString("image"), object.getString("mobile"), "Send Request"));
                                 e.printStackTrace();
                             }
 
 //                           object.get()
                         }
                         search_all_adapter = new Search_All_Adapter(Search_All_Users.this , searching_manufacturers_data);
-                        gridLayoutManager = new GridLayoutManager(getApplicationContext(),2);
+                        gridLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
                         search_all.addItemDecoration(new DividerItemDecoration(Search_All_Users.this, LinearLayoutManager.VERTICAL));
                         search_all.setLayoutManager(gridLayoutManager);
                         search_all.setAdapter(search_all_adapter);

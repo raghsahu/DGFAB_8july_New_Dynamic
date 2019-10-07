@@ -70,12 +70,15 @@ public class AddNewProductWay extends AppCompatActivity {
 
             @Override
             public void onGroupExpand(int groupPosition) {
+
                 Toast.makeText(getApplicationContext(),
                         BasicListDataHeaderList.get(groupPosition) + " Expanded",
                         Toast.LENGTH_SHORT).show();
-                TextView lblListHeader = (TextView) basicinfoex.getRootView()
-                        .findViewById(R.id.lblListHeader);
-                lifo.requestFocus();
+//                basicinfoex.setSelectedGroup(groupPosition);
+//                TextView lblListHeader = (TextView) basicinfoex.getRootView()
+//                        .findViewById(R.id.lblListHeader);
+//                lifo.requestFocus();
+//                basicinfoex.requestFocus();
                 for (int i = 0; i < BasicListDataHeaderList.size(); i++) {
                     if (i != groupPosition) {
                         basicinfoex.collapseGroup(i);
@@ -156,7 +159,7 @@ public class AddNewProductWay extends AppCompatActivity {
                 , new Spinner(this), new Spinner(this)));
 
         TradeBasicInfos.add(new BasicInfo(new RadioButton(this), new RadioButton(this)));
-        TradeBasicInfos.add(new BasicInfo(new RadioButton(this), new RadioButton(this)));
+        LogisticTradeBasicInfos.add(new BasicInfo(new RadioButton(this), new RadioButton(this)));
 
 //        top250.add("Pulp Fiction");
 //        top250.add("The Good, the Bad and the Ugly");
@@ -180,7 +183,7 @@ public class AddNewProductWay extends AppCompatActivity {
 
         BasicinfoHashMap.put(BasicListDataHeaderList.get(0), BasicInfos); // Header, Child data
         BasicinfoHashMap.put(BasicListDataHeaderList.get(1), TradeBasicInfos); // Header, Child data
-        BasicinfoHashMap.put(BasicListDataHeaderList.get(2), TradeBasicInfos); // Header, Child data
+        BasicinfoHashMap.put(BasicListDataHeaderList.get(2), LogisticTradeBasicInfos); // Header, Child data
 //        listDataChild.put(listDataHeader.get(1), nowShowing);
 //        listDataChild.put(listDataHeader.get(2), comingSoon);
     }

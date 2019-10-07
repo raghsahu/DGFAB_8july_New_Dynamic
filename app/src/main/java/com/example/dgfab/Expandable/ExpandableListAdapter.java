@@ -60,7 +60,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         Log.e("groupPosition", "is groupPosition " + groupPosition);
         int itemType = getChildType(groupPosition, childPosition);
 //        this.infalInflater = LayoutInflater.from(parent.getContext());
-        infalInflater = (LayoutInflater) this._context
+//        convertView.re
+        LayoutInflater infalInflater = (LayoutInflater) this._context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (("Basic Information").equals(_listDataHeader.get(groupPosition))) {
             Toast.makeText(_context, "Basic", Toast.LENGTH_SHORT).show();

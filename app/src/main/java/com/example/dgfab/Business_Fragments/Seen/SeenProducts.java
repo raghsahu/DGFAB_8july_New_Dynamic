@@ -1,4 +1,4 @@
-package com.example.dgfab.Business_fragments.Seen;
+package com.example.dgfab.Business_Fragments.Seen;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -22,8 +22,6 @@ import com.example.dgfab.Adapter.TheirProductsAdapter;
 import com.example.dgfab.AllParsings.GetProducts;
 import com.example.dgfab.AllParsings.GetProductsData;
 import com.example.dgfab.BusinessDashboard.AddNewProductWay;
-import com.example.dgfab.BusinessDashboard.AddProductWay;
-import com.example.dgfab.BusinessDashboard.AddProduct_Activity;
 import com.example.dgfab.R;
 import com.example.dgfab.SessionManage.SessionManager;
 

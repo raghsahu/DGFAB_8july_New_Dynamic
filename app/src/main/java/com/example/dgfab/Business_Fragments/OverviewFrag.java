@@ -1,7 +1,6 @@
-package com.example.dgfab.Business_fragments;
+package com.example.dgfab.Business_Fragments;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -19,11 +18,7 @@ import android.widget.Toast;
 
 import com.example.dgfab.APIanURLs.Api;
 import com.example.dgfab.APIanURLs.REtroURls;
-import com.example.dgfab.Adapter.Search_All_Adapter;
 import com.example.dgfab.AllParsings.MyInfo;
-import com.example.dgfab.AllParsings.Searching_Manufacturers;
-import com.example.dgfab.AllParsings.Searching_Manufacturers_Data;
-import com.example.dgfab.BusinessDashboard.Search_All_Users;
 import com.example.dgfab.R;
 import com.example.dgfab.SessionManage.SessionManager;
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     >
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -400,6 +400,7 @@
                     <!---->
 
                     <LinearLayout
+                        android:visibility="gone"
                         android:id="@+id/ll_admin"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -644,6 +645,14 @@
 
     </ScrollView>
 
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/newrem"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:src="@drawable/addd">
+
+        </android.support.design.widget.FloatingActionButton>
 
 </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

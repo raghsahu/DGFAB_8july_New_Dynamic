@@ -111,15 +111,29 @@ public class Searching_Manufacturers_Data {
     @Expose
     private String reqstatus;
 
+
+    @SerializedName("image")
+    @Expose
+    private String Img_Name;
+
     public Searching_Manufacturers_Data NextaNode;
 
-    public Searching_Manufacturers_Data(String user_id, String name, String email, String mobile, String pending) {
+    public Searching_Manufacturers_Data(String user_id, String name, String email, String Img_Name, String mobile, String pending) {
         this.id = user_id;
         this.name = name;
         this.email = email;
         this.mobile = mobile;
         this.reqstatus = pending;
+        this.Img_Name = Img_Name;
 
+    }
+
+    public String getImg_Name() {
+        return Img_Name;
+    }
+
+    public void setImg_Name(String img_Name) {
+        Img_Name = img_Name;
     }
 
 //    public Searching_Manufacturers_Data(String id, String brandName, String name, String image, String status ,String Cover_Image) {

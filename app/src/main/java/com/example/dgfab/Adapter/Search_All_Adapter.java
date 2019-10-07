@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.dgfab.APIanURLs.Api;
 import com.example.dgfab.APIanURLs.REtroURls;
 import com.example.dgfab.AllParsings.Connection_Requests;
@@ -46,10 +48,12 @@ public class Search_All_Adapter  extends RecyclerView.Adapter<Search_All_Adapter
     int pos_try;
     SessionManager sessionManager;
     String name, email, com_name, password, address, mobile;
+    ImageView manu_img;
     DownloadManager.Request request;
     StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
     String document;
     int chky,chkn;
+
     public List<Searching_Manufacturers_Data> Doc;
     private ProgressDialog progressBar;
 
@@ -59,30 +63,13 @@ public class Search_All_Adapter  extends RecyclerView.Adapter<Search_All_Adapter
         setHasStableIds(true);
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-       TextView mname , bra_bus;
-       ImageView manu_img;
-       Button conbtn;
-
-        public MyViewHolder(View itemView) {
-            super(itemView);
-            mname = (TextView) itemView.findViewById(R.id.mname);
-         //   bra_bus =  itemView.findViewById(R.id.bra_bus);
-            manu_img =  itemView.findViewById(R.id.manu_img);
-            conbtn =  itemView.findViewById(R.id.conbtn);
-
-        }
-    }
-
-
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_manufacurers, parent, false);
+//        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_manufacurers, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.doneaccepting, parent, false);
         return new MyViewHolder(view);
     }
-
-
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
@@ -94,7 +81,7 @@ public class Search_All_Adapter  extends RecyclerView.Adapter<Search_All_Adapter
         Log.e("Status ","is "+searching_manufacturers_data.getStatus());
         document = searching_manufacturers_data.getBrandName();
         StrictMode.setVmPolicy(builder.build());
-
+        Glide.with(mContext).applyDefaultRequestOptions(RequestOptions.errorOf(R.drawable.personn)).load("https://neareststore.in/uploads/" + searching_manufacturers_data.getImg_Name()).into(holder.manu_img);
 
         holder.manu_img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,6 +119,22 @@ holder.conbtn.setOnClickListener(new View.OnClickListener() {
 
     }
    });
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView mname, bra_bus;
+        ImageView manu_img;
+        Button conbtn;
+
+        public MyViewHolder(View itemView) {
+            super(itemView);
+            mname = (TextView) itemView.findViewById(R.id.mname);
+            //   bra_bus =  itemView.findViewById(R.id.bra_bus);
+            manu_img = itemView.findViewById(R.id.manu_img);
+            conbtn = itemView.findViewById(R.id.conbtn);
+            manu_img = itemView.findViewById(R.id.manu_img);
+
+        }
     }
 
     private void Try_Sent_Reuqest(MyViewHolder holder, Context context, int us, String id) {

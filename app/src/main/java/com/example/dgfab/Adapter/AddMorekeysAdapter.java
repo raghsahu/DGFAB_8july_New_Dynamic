@@ -132,63 +132,6 @@ public class AddMorekeysAdapter extends RecyclerView.Adapter<AddMorekeysAdapter.
 
 
 
-
-//    private void Try_Sent_Reuqest(AddNewsAdapter.MyViewHolder holder, Context context, int us, String id) {
-//        Log.d("us is" ,""+ us);
-//        Log.d("their is" ,""+ id);
-//        ProgressDialog progressDialog = new ProgressDialog(context);
-//        progressDialog.setTitle("Getting Country");
-//        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-//        progressDialog.show();
-//        OkHttpClient client = new OkHttpClient.Builder()
-//                .connectTimeout(100, TimeUnit.SECONDS)
-//                .readTimeout(100,TimeUnit.SECONDS).build();
-//        Retrofit RetroLogin = new Retrofit.Builder()
-//                .baseUrl(REtroURls.The_Base).client(client).addConverterFactory(GsonConverterFactory.create())
-//                .build();
-//        Api AbloutApi = RetroLogin.create(Api.class);
-//        Log.d("sortname is" , id);
-//        Call<Connection_Requests> Get_All_Country_New = AbloutApi.CONNECTION_REQUESTS_CALL( String.valueOf(us),id);
-//        Get_All_Country_New.enqueue(new Callback<Connection_Requests>() {
-//            @Override
-//            public void onResponse(Call<Connection_Requests> call, Response<Connection_Requests> response) {
-//                Log.e("getcity" , ""+response.toString());
-//                if (response!=null){
-//                    Log.e("Get_City",""+response.body().getResponce());
-//                    try {
-//                        if(response.body().getResponce() == true)
-//                        {
-//                            Toast.makeText(context, ""+response.body().getData(), Toast.LENGTH_SHORT).show();
-//
-//                            holder.conbtn.setText("Request Sent");
-//                        }else {
-//                            Toast.makeText(context, "Problem in sending request", Toast.LENGTH_SHORT).show();
-//                        }
-//                        // countyed.showDropDown();
-//                        // Toast.makeText(RegistrationActivityTwo.this, "true", Toast.LENGTH_SHORT).show();
-//                    }catch (Exception e)
-//                    {
-//                        e.printStackTrace();
-//                    }
-//                }
-//
-//                progressDialog.dismiss();
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Connection_Requests> call, Throwable t) {
-//                progressDialog.dismiss();
-//                Log.e("error_country",""+t.getMessage());
-//                Toast.makeText(context, ""+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-//                Toast.makeText(context, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//
-//
-//    }
-
-
     @Override
     public int getItemCount() {
         return Doc.size();

@@ -87,18 +87,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
-                    android:layout_weight="0.50"
-                    android:background="@drawable/bt_bg" />
+                    android:layout_weight="0.50" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.50"
-                    android:background="@drawable/bt_bg" />
+                    android:layout_weight="0.50" />
 
             </LinearLayout>
 
             <TextView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.65"
@@ -115,6 +114,7 @@
             android:weightSum="1">
 
             <TextView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.65" />
@@ -139,12 +139,13 @@
             android:weightSum="1">
 
             <EditText
+                android:hint="Shipping Origin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.25"
-                android:background="@drawable/bt_bg" />
+                android:layout_weight="0.25" />
 
             <TextView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.75"
@@ -183,21 +184,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.20"
-                android:background="@drawable/bt_bg"
+
                 android:hint="Shipping Origin" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.25"
-                android:background="@drawable/bt_bg"
+
                 android:inputType="number" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.25"
-                android:background="@drawable/bt_bg"
+
                 android:inputType="number" />
 
             <TextView
@@ -224,11 +225,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.70"
-                android:background="@drawable/bt_bg"
+
                 android:hint="Add More Units"
                 android:visibility="gone" />
 
             <TextView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -255,12 +257,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="0.20"
-                android:background="@drawable/bt_bg"
-                android:gravity="center"
+                android:hint="Packaging Description"
+
                 android:padding="10dp"
                 android:text="" />
 
             <TextView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.80"

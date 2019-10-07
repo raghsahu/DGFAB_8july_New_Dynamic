@@ -1,4 +1,4 @@
-package com.example.dgfab.Business_fragments;
+package com.example.dgfab.Business_Fragments;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -15,11 +15,7 @@ import android.widget.Toast;
 
 import com.example.dgfab.APIanURLs.Api;
 import com.example.dgfab.APIanURLs.REtroURls;
-import com.example.dgfab.Adapter.CommingConnAdapter;
-import com.example.dgfab.Adapter.ConnectionsOnlyAdapter;
 import com.example.dgfab.Adapter.FriendsAdapter;
-import com.example.dgfab.AllParsings.CommingRequest;
-import com.example.dgfab.AllParsings.CommingRequestData;
 import com.example.dgfab.AllParsings.Friends;
 import com.example.dgfab.AllParsings.Friendsdata;
 import com.example.dgfab.R;

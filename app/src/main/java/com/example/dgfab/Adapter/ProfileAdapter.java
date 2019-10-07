@@ -5,12 +5,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.dgfab.Business_fragments.AnalyticsFrag;
-import com.example.dgfab.Business_fragments.AverageFrag;
-import com.example.dgfab.Business_fragments.ConnectionsFrag;
-import com.example.dgfab.Business_fragments.IntrestFrag;
-import com.example.dgfab.Business_fragments.OverviewFrag;
-import com.example.dgfab.Business_fragments.ProductFrag;
+import com.example.dgfab.Business_Fragments.AnalyticsFrag;
+import com.example.dgfab.Business_Fragments.AverageFrag;
+import com.example.dgfab.Business_Fragments.ConnectionsFrag;
+import com.example.dgfab.Business_Fragments.IntrestFrag;
+import com.example.dgfab.Business_Fragments.OverviewFrag;
+import com.example.dgfab.Business_Fragments.ProductFrag;
 
 
 public class ProfileAdapter extends FragmentPagerAdapter {

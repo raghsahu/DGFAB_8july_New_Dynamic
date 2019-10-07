@@ -1,9 +1,11 @@
 package com.example.dgfab.BusinessDashboard.Business_CRM;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -56,6 +58,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class CRM_Fragment extends Fragment {
 
     TextView tv_cal_date;
+    FloatingActionButton newrem;
     private HorizontalCalendar horizontalCalendar;
     HorizontalCalendarView horizontalCalendarView;
     SessionManager sessionManager;
@@ -84,6 +87,7 @@ public class CRM_Fragment extends Fragment {
 
 
         tv_cal_date=rootview.findViewById(R.id.tv_cal_date);
+        newrem = rootview.findViewById(R.id.newrem);
         mycrmrec = rootview.findViewById(R.id.mycrmrec);
         horizontalCalendarView=rootview.findViewById(R.id.calendarView);
 
@@ -115,7 +119,15 @@ public class CRM_Fragment extends Fragment {
                 .build();
         tv_cal_date.setText(DateFormat.format("EEE, MMM d, yyyy", defaultSelectedDate).toString());
         Log.i("Default Date", DateFormat.format("EEE, MMM d, yyyy", defaultSelectedDate).toString());
-
+        newrem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), CalenderActivity.class);
+//                intent.putExtra("Friname", searching_manufacturers_data.getName());
+//                intent.putExtra("Friid", searching_manufacturers_data.getReceiverid());=
+                v.getContext().startActivity(intent);
+            }
+        });
         horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
             @Override
             public void onDateSelected(Calendar date, int position) {
@@ -188,24 +200,9 @@ public class CRM_Fragment extends Fragment {
             @Override
             public void onFailure(Call<GetRemainder> call, Throwable t) {
                 progressDialog.dismiss();
-                for (int i = 0; i < size; i++) {
-                    FriendsDataList.add(new Friendsdata(friendsdata.getData().get(i).getUserId(), friendsdata.getData().get(i).getName(), friendsdata.getData().get(i).getUstatus(), friendsdata.getData().get(i).getSenderid(), friendsdata.getData().get(i).getReceiverid(), friendsdata.getData().get(i).getMobile(), "", "", "", ""));
-                }
-                LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-                llm.setOrientation(LinearLayoutManager.VERTICAL);
-                friendsAdapter = new MyCRMAdapter(getActivity(), FriendsDataList);
-                mycrmrec.setLayoutManager(llm);
-                mycrmrec.setAdapter(friendsAdapter);
-                friendsAdapter.notifyDataSetChanged();
-                Log.e("error_rremy", "" + t.getMessage());
-                Log.e("call ca", "" + call.isCanceled());
-                Log.e("call ca", "" + call.isExecuted());
-                Log.e("error_rremy", "" + t.getMessage());
-                Toast.makeText(getActivity(), "" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getActivity(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+
             }
         });
-
 
     }
 

@@ -32,7 +32,16 @@
                 android:gravity="center"
                 app:popupTheme="@style/AppTheme.PopupOverlay">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="Add New Remainder"
+                    android:textColor="#fff"
+                    android:textSize="20dp"></TextView>
+
                 <LinearLayout
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -88,6 +97,7 @@
             </android.support.v7.widget.Toolbar>
 
             <devs.mulham.horizontalcalendar.HorizontalCalendarView
+                android:visibility="gone"
                 android:id="@+id/calendarView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -117,11 +127,25 @@
         android:layout_margin="3dp"
         android:padding="10dp">
 
+        <AutoCompleteTextView
+            android:id="@+id/searchname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_search_user_24dp"
+
+            android:hint="Search connection" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:padding="10dp">
+
         <EditText
             android:id="@+id/frnname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bt_bg"
+
             android:hint="Name" />
     </android.support.design.widget.TextInputLayout>
 
@@ -132,10 +156,12 @@
         android:padding="10dp">
 
         <EditText
+            android:editable="false"
+            android:focusable="false"
             android:id="@+id/chdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bt_bg"
+
             android:hint="Choose Date from above" />
     </android.support.design.widget.TextInputLayout>
 
@@ -147,10 +173,11 @@
         android:padding="10dp">
 
         <EditText
+
             android:id="@+id/chtime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bt_bg"
+
             android:editable="false"
             android:focusable="false"
             android:hint="Choose Time from below" />
@@ -167,7 +194,7 @@
             android:id="@+id/abtrem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bt_bg"
+
             android:hint="About Remainder" />
     </android.support.design.widget.TextInputLayout>
 
@@ -178,11 +205,12 @@
         android:layout_margin="3dp"
         android:padding="10dp">
 
-        <Spinner
+        <EditText
+            android:drawableRight="@drawable/arrowdown_24dp"
             android:id="@+id/metcause"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bt_bg"
+
             android:entries="@array/mcons" />
     </LinearLayout>
 

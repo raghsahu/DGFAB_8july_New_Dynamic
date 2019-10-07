@@ -1,5 +1,6 @@
 package com.example.dgfab.BusinessDashboard.Business_CRM;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -18,6 +19,7 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -54,14 +56,18 @@ public class CalenderActivity extends AppCompatActivity {
     RecyclerView mycrmrec;
     TextView tv_cal_date;
     HorizontalCalendarView horizontalCalendarView;
-    private HorizontalCalendar horizontalCalendar;
-    EditText chdate, chtime, frnname, abtrem;
+    private static final int DATE_DIALOG_ID = 1;
     TimePicker timewa;
     AlertDialog.Builder builder;
     String Friname, Friid;
     Button setrem;
-    Spinner metcause;
+    //  private HorizontalCalendar horizontalCalendar;
+    EditText chdate, chtime, frnname, abtrem, metcause;
+    EditText editTextDate;
+    private int Year;
+    private int Month;
     private String format = "";
+    private int Day;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,7 +123,7 @@ public class CalenderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (abtrem.getText().toString().length() != 0) {
-                    new PostRemainder(Friid, Friname, new SessionManager(v.getContext()).getUS(), abtrem.getText().toString(), metcause.getSelectedItem().toString()).execute();
+                    new PostRemainder(Friid, Friname, new SessionManager(v.getContext()).getUS(), abtrem.getText().toString(), chdate.getText().toString()).execute();
                 } else {
                     Toast.makeText(CalenderActivity.this, "Remainder Cause Can not be empty", Toast.LENGTH_SHORT).show();
                 }
@@ -187,55 +193,51 @@ public class CalenderActivity extends AppCompatActivity {
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++
         final Calendar defaultSelectedDate = Calendar.getInstance();
 
-        horizontalCalendar = new HorizontalCalendar.Builder(getWindow().getDecorView(), R.id.calendarView)
-                .range(startDate, endDate)
-                .datesNumberOnScreen(7)
-                .configure()
-                .formatTopText("MMM")
-                .formatMiddleText("dd")
-                .formatBottomText("EEE")
-                .showTopText(true)
-                .showBottomText(false)
-                .textColor(Color.LTGRAY, Color.WHITE)
-                .colorTextMiddle(Color.LTGRAY, Color.parseColor("#ffd54f"))
-                .end()
-                .defaultSelectedDate(defaultSelectedDate)
-                .build();
-        tv_cal_date.setText(DateFormat.format("EEE, MMM d, yyyy", defaultSelectedDate).toString());
-        Log.i("Default Date", DateFormat.format("EEE, MMM d, yyyy", defaultSelectedDate).toString());
 
-        horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
+        chdate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDateSelected(Calendar date, int position) {
-                String selectedDateStr = DateFormat.format("EEE, MMM d, yyyy", date).toString();
-                String selectedDateStrmain = DateFormat.format(" d-MM-yyyy", date).toString();
-                // Toast.makeText(getActivity(), selectedDateStr + " selected!", Toast.LENGTH_SHORT).show();
-                Log.i("onDateSelected", selectedDateStr + " - Position = " + position);
-                tv_cal_date.setText(selectedDateStrmain);
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                //To show current date in the datepicker
+                Calendar mcurrentDate = Calendar.getInstance();
+                Year = mcurrentDate.get(Calendar.YEAR);
+                Month = mcurrentDate.get(Calendar.MONTH);
+                Day = mcurrentDate.get(Calendar.DAY_OF_MONTH);
 
+                DatePickerDialog mDatePicker = new DatePickerDialog(CalenderActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
+                        // TODO Auto-generated method stub
+                        /*      Your code   to get date and time    */
+                        chdate.setText(selectedyear + "/" + selectedmonth + "/" + selectedday);
+                    }
+                }, Year, Month, Day);
+                mDatePicker.setTitle("Select date");
+                mDatePicker.show();
             }
+            //        }
 
         });
-        tv_cal_date.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                chdate.setText(s.toString());
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                chdate.setText(s.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                chdate.setText(s.toString());
-
-            }
-        });
+//        tv_cal_date.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//                chdate.setText(s.toString());
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                chdate.setText(s.toString());
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                chdate.setText(s.toString());
+//
+//            }
+//        });
 
         //**************************************************************
     }
+
 
     public class PostRemainder extends AsyncTask<String, Void, String> {
         ProgressDialog dialog;

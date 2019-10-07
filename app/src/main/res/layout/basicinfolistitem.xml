@@ -4,8 +4,7 @@
     android:layout_height="wrap_content"
     android:layerType="software">
 
-    <LinearLayout
-
+    <LinearLayout android:background="@android:color/white"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,14 +52,15 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="0dp"
             android:orientation="vertical"
-            android:padding="3dp"
+            android:padding="4dp"
             android:weightSum="1">
 
             <EditText
+                android:hint="Name"
                 android:id="@+id/pronames"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="3dp"
+
                 android:layout_weight="0.23"
                 android:padding="7dp"
                 android:text="@null" />
@@ -84,6 +84,8 @@
             android:weightSum="1">
 
             <TextView
+                android:padding="13dp"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.65"
@@ -107,20 +109,23 @@
             android:padding="3dp"
             android:weightSum="1">
 
-            <Button
-                android:id="@+id/addmorekey"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.35"
-                android:background="@drawable/bt_bg"
-                android:hint="Add new keyword"
-                android:textColorHint="#000" />
-
             <TextView
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.65" />
+                android:layout_weight="0.40"
+                android:text="Product Keyword" />
+
+            <Button
+                android:layout_width="70dp"
+                android:id="@+id/addmorekey"
+                android:layout_height="30dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="0.6"
+                android:background="@drawable/ic_add_circle_outline24dp"
+
+                android:textColorHint="#000" />
+
 
         </LinearLayout>
 
@@ -159,27 +164,34 @@
             android:weightSum="1">
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
-                android:background="@drawable/bt_bg"
+
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <Spinner
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65"
+                    android:padding="4dp"
+                    android:text="Product group"
+                    android:textColor="#000"
+                    android:visibility="gone" />
+
+                <EditText
                     android:id="@+id/spinProductGroup"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"></Spinner>
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/arrowdown_24dp"
+                    android:focusable="false"
+                    android:hint="Product group"
+                    android:padding="15dp"></EditText>
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.65"
-                android:padding="4dp"
-                android:text="Product group"
-                android:textColor="#000" />
 
         </LinearLayout>
 
@@ -197,23 +209,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
-                android:background="@drawable/bt_bg"
+
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <Spinner
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.65"
+                    android:text="Type"
+                    android:textColor="#000"
+                    android:visibility="gone" />
+
+                <EditText
                     android:id="@+id/spinsubcat"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"></Spinner>
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/arrowdown_24dp"
+                    android:focusable="false"
+                    android:hint="Type"
+                    android:padding="15dp"></EditText>
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.65"
-                android:text="Type"
-                android:textColor="#000" />
 
         </LinearLayout>
 
@@ -221,28 +239,33 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
             android:gravity="center"
+
             android:orientation="vertical"
-            android:padding="1dp"
+            android:padding="4dp"
             android:weightSum="1">
-
-            <EditText
-
-                android:id="@+id/typesub"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.25"
-                android:background="@drawable/bt_bg"
-                android:hint="Sub type(your company name)" />
-
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.75"
+                android:padding="4dp"
                 android:text="Sub type"
-                android:textColor="#000" />
+                android:textColor="#000"
+                android:visibility="gone" />
+            <EditText
+
+                android:padding="15dp"
+                android:id="@+id/typesub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+
+                android:hint="Sub type(your company name)" />
+
+
 
 
         </LinearLayout>
@@ -256,6 +279,7 @@
             android:weightSum="1">
 
             <TextView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.65"
@@ -277,21 +301,25 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+
             android:gravity="center"
-            android:orientation="vertical"
-            android:padding="5dp"
+            android:orientation="horizontal"
+            android:padding="3dp"
             android:weightSum="1">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.40"
+                android:text="Products Informations" />
             <Button
 
                 android:id="@+id/addmantype"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.6"
                 android:layout_gravity="right"
-                android:layout_weight="0.65"
-                android:background="@drawable/bt_bg"
-                android:text="Add More Fields"
+                android:background="@drawable/ic_add_circle_outline24dp"
                 android:textColorHint="#000" />
 
             <!--<Button-->
@@ -319,18 +347,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
             android:orientation="vertical"
-            android:padding="2dp"
+            android:padding="4dp"
             android:weightSum="1">
 
             <EditText
+                android:layout_margin="3dp"
+                android:hint="Brand Name"
+                android:padding="13dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.35"
-                android:background="@drawable/bt_bg" />
+                android:layout_weight="0.35" />
 
             <TextView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.75"
@@ -352,18 +384,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.25"
-                android:background="@drawable/bt_bg"
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <Spinner
+                <EditText
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/arrowdown_24dp"
+                    android:hint="Place of origin"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"></Spinner>
+                    android:padding="15dp"></EditText>
 
             </LinearLayout>
 
 
             <TextView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.75"
@@ -376,18 +411,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="0dp"
             android:orientation="vertical"
-            android:padding="2dp"
+            android:padding="4dp"
             android:weightSum="1">
 
             <EditText
+                android:hint="Model Number"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
-                android:background="@drawable/bt_bg" />
+                android:padding="15dp" />
 
             <TextView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.75"
@@ -404,6 +442,7 @@
             android:weightSum="1">
 
             <TextView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.75"
@@ -428,16 +467,31 @@
             android:padding="3dp"
             android:weightSum="1">
 
-            <Button
-                android:id="@+id/addmrdet"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_weight="0.75"
-                android:background="@drawable/bt_bg"
-                android:text="Add More Details"
-                android:textColorHint="#000" />
+                android:orientation="horizontal"
+                android:padding="3dp"
+                android:weightSum="1">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.40"
+                    android:gravity="center_vertical"
+                    android:text="More Details" />
+
+                <Button
+
+                    android:id="@+id/addmrdet"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right"
+                    android:layout_weight="0.6"
+                    android:background="@drawable/ic_add_circle_outline24dp"
+                    android:textColorHint="#000" />
+            </LinearLayout>
             <!--<Button-->
             <!--android:id="@+id/addmrdet"-->
             <!--android:layout_gravity="right"-->
