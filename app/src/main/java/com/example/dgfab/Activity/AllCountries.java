@@ -1,58 +1,27 @@
 package com.example.dgfab.Activity;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
-import android.support.annotation.Nullable;
-import android.support.design.widget.NavigationView;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.RadioButton;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.dgfab.APIanURLs.Api;
-import com.example.dgfab.APIanURLs.REtroURls;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import android.util.Log;
+import android.widget.ArrayAdapter;
+
 import com.example.dgfab.Adapter.Country_Adapter;
-import com.example.dgfab.AllParsings.Add_Services;
-import com.example.dgfab.AllParsings.Example;
-import com.example.dgfab.AllParsings.Get_Country;
 import com.example.dgfab.Connectivity.HttpHandler;
 import com.example.dgfab.Java_Adapter_Files.Country_files;
 import com.example.dgfab.R;
-import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.TimeUnit;
-
-import javax.net.ssl.HttpsURLConnection;
-
-import okhttp3.OkHttpClient;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AllCountries extends AppCompatActivity {
     RecyclerView contrec;

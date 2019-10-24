@@ -6,7 +6,7 @@
     android:background="#FFFF"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_addProd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
             android:textSize="18dp"
             android:typeface="serif" />
 
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
 
     <LinearLayout
@@ -123,7 +123,7 @@
                         android:layout_weight="0.65"
                         android:text="Product Keyword" />
 
-                    <android.support.v7.widget.RecyclerView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:visibility="gone"
                         android:id="@+id/showkeys"
                         android:layout_width="match_parent"
@@ -165,7 +165,7 @@
                     android:padding="5dp"
                     android:weightSum="1">
 
-                    <android.support.v7.widget.RecyclerView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/newkey"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -305,7 +305,7 @@
                         android:layout_weight="0.65"
                         android:text="Products Informations" />
 
-                    <android.support.v7.widget.RecyclerView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/addepros"
                         android:background="@drawable/bt_bg"
                         android:layout_width="match_parent"
@@ -348,13 +348,13 @@
                     <!--android:text="Add More Fields" />-->
 
 
-                    <android.support.v7.widget.RecyclerView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:visibility="gone"
                             android:id="@+id/mainrec"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
-                        </android.support.v7.widget.RecyclerView>
+                    </androidx.recyclerview.widget.RecyclerView>
 
 
                 </LinearLayout>
@@ -453,7 +453,7 @@
                         android:layout_weight="0.75"
                         android:text="More Details" />
 
-                    <android.support.v7.widget.RecyclerView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:visibility="gone"
                         android:id="@+id/showmoredeatils"
                         android:layout_width="match_parent"
@@ -492,7 +492,7 @@
                     <!--android:textAllCaps="false"-->
                     <!--android:textColor="#fff" />-->
 
-                    <android.support.v7.widget.RecyclerView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:visibility="gone"
                         android:id="@+id/addmoredet"
                         android:layout_width="match_parent"
@@ -862,7 +862,7 @@
                     android:padding="5dp"
                     android:weightSum="1">
 
-                    <android.support.v7.widget.RecyclerView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/showpays"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -875,7 +875,7 @@
                         android:orientation="vertical"
                         android:weightSum="1">
 
-                        <android.support.v7.widget.RecyclerView
+                        <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/addmorepay"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

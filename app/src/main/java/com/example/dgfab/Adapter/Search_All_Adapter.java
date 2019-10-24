@@ -6,14 +6,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.StrictMode;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,10 +23,8 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.dgfab.APIanURLs.Api;
 import com.example.dgfab.APIanURLs.REtroURls;
 import com.example.dgfab.AllParsings.Connection_Requests;
-import com.example.dgfab.AllParsings.GET_Services_Data;
-import com.example.dgfab.AllParsings.Searching_Manufacturers;
 import com.example.dgfab.AllParsings.Searching_Manufacturers_Data;
-import com.example.dgfab.BusinessDashboard.Search_All_Users;
+import com.example.dgfab.BusinessDashboard.Business_CRM.CalenderActivity;
 import com.example.dgfab.Connections.SeenProfile;
 import com.example.dgfab.R;
 import com.example.dgfab.SessionManage.SessionManager;
@@ -34,6 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -92,6 +92,42 @@ public class Search_All_Adapter  extends RecyclerView.Adapter<Search_All_Adapter
                 v.getContext().startActivity(intent);
             }
         });
+        holder.addreqimgli.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sessionManager = new SessionManager(v.getContext());
+                Toast.makeText(mContext, "Searcher", Toast.LENGTH_SHORT).show();
+                if (searching_manufacturers_data.getReqstatus().equals("Pending")) {
+                    Toast.makeText(mContext, "Please Wait for approval", Toast.LENGTH_SHORT).show();
+                } else if (searching_manufacturers_data.getReqstatus().equals("Accepted")) {
+//                    holder.conbtn.setBackgroundColor(Color.GRAY);
+                    Toast.makeText(mContext, "You are already Connected", Toast.LENGTH_SHORT).show();
+                } else {
+                    Try_Sent_Reuqest(holder, v.getContext(), sessionManager.getUS(), searching_manufacturers_data.getId());
+                }
+            }
+        });
+//        holder.addreqimg.setOnClickListener(new View.OnClickListener() {
+//                                             @Override
+//                                             public void onClick(View v) {
+//             sessionManager = new SessionManager(v.getContext());
+//              Toast.makeText(mContext, "Searcher", Toast.LENGTH_SHORT).show();
+//               if(searching_manufacturers_data.getReqstatus().equals("Pending")) {
+//                       Toast.makeText(mContext, "Please Wait for approval", Toast.LENGTH_SHORT).show();
+//            }
+//            else
+//                 if(searching_manufacturers_data.getReqstatus().equals("Accepted"))
+//                   {
+//                         holder.conbtn.setBackgroundColor(Color.GRAY);
+//                          Toast.makeText(mContext, "You are already Connected", Toast.LENGTH_SHORT).show();
+//                  }
+//               else {
+//                 Try_Sent_Reuqest(holder,v.getContext(), sessionManager.getUS(), searching_manufacturers_data.getId());
+//              }
+//
+//                                             }
+//                                         }
+//        );
 //        holder.namechk.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 //            @Override
 //            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -102,39 +138,37 @@ public class Search_All_Adapter  extends RecyclerView.Adapter<Search_All_Adapter
 //            }
 //        });
         holder.mname.setText(searching_manufacturers_data.getName());
-        holder.conbtn.setText(searching_manufacturers_data.getReqstatus());
-//        holder.bra_bus.setText(searching_manufacturers_data.getCity());
-holder.conbtn.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        sessionManager = new SessionManager(v.getContext());
-        if(holder.conbtn.getText().equals("Pending")) {
-            Toast.makeText(mContext, "Please Wait for approval", Toast.LENGTH_SHORT).show();
-        }else if(holder.conbtn.getText().equals("Accepted")){
-            holder.conbtn.setBackgroundColor(Color.GRAY);
+//        holder.conbtn.setText(searching_manufacturers_data.getReqstatus());
+//        holder.rembtn.setVisibility(View.GONE);
+        Log.e("Activity name is", "" + mContext.getClass().getSimpleName());
+        if (mContext.getClass().getSimpleName().equals("Business_Dashboard_Main")) {
+            holder.rembtn.setVisibility(View.VISIBLE);
+        } else {
+            holder.rembtn.setVisibility(View.GONE);
+        }
+
+        if (searching_manufacturers_data.getReqstatus().equals("Accepted")) {
             Toast.makeText(mContext, "You are already Connected", Toast.LENGTH_SHORT).show();
+            holder.addreqimg.setBackgroundResource(R.drawable.linkedup);
+        } else if (searching_manufacturers_data.getReqstatus().equals("Pending")) {
+            Toast.makeText(mContext, "Some Requests are Pending", Toast.LENGTH_SHORT).show();
+            holder.addreqimg.setBackgroundResource(R.drawable.sent);
         }else {
-            Try_Sent_Reuqest(holder,v.getContext(), sessionManager.getUS(), searching_manufacturers_data.getId());
+//            Toast.makeText(mContext, "You are already Connected", Toast.LENGTH_SHORT).show();
+            holder.addreqimg.setBackgroundResource(R.drawable.addconicon);
         }
+        holder.rembtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), CalenderActivity.class);
+                intent.putExtra("Name", searching_manufacturers_data.getName());
+                intent.putExtra("Id", searching_manufacturers_data.getId());
+                v.getContext().startActivity(intent);
 
-    }
-   });
-    }
+            }
+        });
+//        holder.bra_bus.setText(searching_manufacturers_data.getCity());
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView mname, bra_bus;
-        ImageView manu_img;
-        Button conbtn;
-
-        public MyViewHolder(View itemView) {
-            super(itemView);
-            mname = (TextView) itemView.findViewById(R.id.mname);
-            //   bra_bus =  itemView.findViewById(R.id.bra_bus);
-            manu_img = itemView.findViewById(R.id.manu_img);
-            conbtn = itemView.findViewById(R.id.conbtn);
-            manu_img = itemView.findViewById(R.id.manu_img);
-
-        }
     }
 
     private void Try_Sent_Reuqest(MyViewHolder holder, Context context, int us, String id) {
@@ -163,13 +197,14 @@ holder.conbtn.setOnClickListener(new View.OnClickListener() {
                         if(response.body().getResponce() == true)
                         {
                             Toast.makeText(context, ""+response.body().getData(), Toast.LENGTH_SHORT).show();
-                            holder.conbtn.setText("Request Sent");
-                        }else {
+                            //   holder.conbtn.setText("Request Sent");
+                            holder.addreqimg.setBackgroundResource(R.drawable.pentimeleft);
+                        } else {
                             Toast.makeText(context, "Problem in sending request", Toast.LENGTH_SHORT).show();
                         }
                         // countyed.showDropDown();
                         // Toast.makeText(RegistrationActivityTwo.this, "true", Toast.LENGTH_SHORT).show();
-                    }catch (Exception e)
+                    } catch (Exception e)
                     {
                         e.printStackTrace();
                     }
@@ -189,6 +224,26 @@ holder.conbtn.setOnClickListener(new View.OnClickListener() {
 
 
 
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView mname, brx_bus;
+        ImageView manu_img;
+        LinearLayout addreqimgli;
+        CircleImageView addreqimg;
+        ImageView rembtn;
+
+        public MyViewHolder(View itemView) {
+            super(itemView);
+            mname = (TextView) itemView.findViewById(R.id.mname);
+            //  remainder = (ImageView) itemView.findViewById(R.id.remainder);
+            manu_img = itemView.findViewById(R.id.manu_img);
+            rembtn = itemView.findViewById(R.id.rembtn);
+            addreqimgli = itemView.findViewById(R.id.addreqimgli);
+            //    manu_img = itemView.findViewById(R.id.manu_img);
+            addreqimg = itemView.findViewById(R.id.addreqimg);
+
+        }
     }
 
 

@@ -11,13 +11,15 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.provider.MediaStore;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -29,14 +31,10 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.dgfab.Adapter.MyStffAdapter;
-import com.example.dgfab.AllParsings.CreatedStaff;
 import com.example.dgfab.Java_Adapter_Files.MyStaffs;
-import com.example.dgfab.LoginandReg.ManuLoginActivity;
 import com.example.dgfab.R;
 import com.example.dgfab.SessionManage.SessionManager;
-import com.example.dgfab.SessionManage.Shared_Preference;
 import com.example.dgfab.Utils.Utilities;
-import com.google.gson.JsonArray;
 
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntity;
@@ -60,10 +58,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
-
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
-import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
-import static android.Manifest.permission_group.CAMERA;
 
 public class StaffActivity extends AppCompatActivity {
     ImageView staffimg;

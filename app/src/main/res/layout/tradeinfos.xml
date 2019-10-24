@@ -69,7 +69,7 @@
                     android:weightSum="1">
 
                     <RadioButton
-
+                        android:id="@+id/uni_radio_fob"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.50"
@@ -79,7 +79,7 @@
                         android:textSize="10dp" />
 
                     <RadioButton
-
+                        android:id="@+id/one_fob_"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.50"
@@ -374,7 +374,8 @@
                     android:textAllCaps="false"
                     android:textColor="#fff" />
                 </LinearLayout>
-                <android.support.v7.widget.RecyclerView
+
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/addmorepay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -383,7 +384,7 @@
 
             </LinearLayout>
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/showpays"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -3,8 +3,9 @@ package com.example.dgfab.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.StrictMode;
-import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +14,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.dgfab.BusinessDashboard.AddProductWay;
 import com.example.dgfab.Java_Adapter_Files.AddNews;
 import com.example.dgfab.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 

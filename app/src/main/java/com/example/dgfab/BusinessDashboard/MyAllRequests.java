@@ -1,10 +1,12 @@
 package com.example.dgfab.BusinessDashboard;
 
 import android.app.ProgressDialog;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -12,7 +14,6 @@ import com.example.dgfab.APIanURLs.Api;
 import com.example.dgfab.APIanURLs.REtroURls;
 import com.example.dgfab.Adapter.CommingConnAdapter;
 import com.example.dgfab.Adapter.MyAllSentRequestAdapter;
-import com.example.dgfab.Adapter.Search_All_Adapter;
 import com.example.dgfab.AllParsings.All_Sent_Request;
 import com.example.dgfab.AllParsings.All_Sent_Request_Data;
 import com.example.dgfab.AllParsings.CommingRequest;

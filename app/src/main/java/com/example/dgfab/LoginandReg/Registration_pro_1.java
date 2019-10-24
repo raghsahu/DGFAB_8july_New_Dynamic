@@ -2,14 +2,14 @@ package com.example.dgfab.LoginandReg;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.example.dgfab.Activity.Buyer_guest_login.LoginActivity;
 import com.example.dgfab.Activity.Registration_Step_1;
 import com.example.dgfab.R;
 

@@ -2,23 +2,22 @@ package com.example.dgfab.BusinessDashboard;
 
 import android.content.Context;
 import android.os.StrictMode;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.dgfab.Adapter.SelectandRemoveAdapter;
 import com.example.dgfab.Java_Adapter_Files.AddNews;
 import com.example.dgfab.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-class SelndRemradioAdapter extends RecyclerView.Adapter<SelndRemradioAdapter.MyViewHolder> {
+public class SelndRemradioAdapter extends RecyclerView.Adapter<SelndRemradioAdapter.MyViewHolder> {
     public static ArrayList<String> Myproducttiles = new ArrayList<>();
     public List<AddNews> Doc;
     int pos_try;

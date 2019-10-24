@@ -1,8 +1,9 @@
 package com.example.dgfab.BusinessDashboard.Business_HomeDashboard;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.SearchView;
+
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,222 +7,727 @@
     android:orientation="vertical"
     tools:context=".BusinessDashboard.Business_CRM.CalenderActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
 
-        <android.support.design.widget.AppBarLayout
-            android:id="@+id/appBar"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            android:theme="@style/AppTheme.AppBarOverlay">
+            <LinearLayout
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:layout_gravity="center"
-                android:background="?attr/colorPrimary"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                app:popupTheme="@style/AppTheme.PopupOverlay">
+                android:orientation="vertical">
+
+                <ImageView
+
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/briefcase" />
 
                 <TextView
+                    android:id="@+id/nameofrem"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:paddingTop="29dp"
+                    android:text="Name"
+                    android:textAlignment="center"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/remspin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp"
+                    android:layout_marginTop="5dp"
+                    android:entries="@array/mcons"
+                    android:paddingTop="18dp"
+
+                    android:textSize="22.6dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/remark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/roundtest"
+                    android:hint="Remarks Here"
                     android:padding="10dp"
-                    android:text="Add New Remainder"
-                    android:textColor="#fff"
-                    android:textSize="20dp"></TextView>
+
+                    />
+
+                <TextView
+                    android:id="@+id/seldata"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp"
+                    android:layout_marginBottom="25dp"
+                    android:background="@drawable/roundtest"
+                    android:padding="10dp"
+                    android:text="No Date and Time Selected"
+
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:background="@drawable/roundtest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                android:orientation="vertical">
+
 
                 <LinearLayout
-                    android:visibility="gone"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:weightSum="1">
+                    android:background="@drawable/rectangle"
+                    android:orientation="vertical"
+
+                    android:paddingTop="18dp">
 
 
-                    <android.support.v7.widget.CardView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginRight="15dp"
-                        android:visibility="gone"
-                        app:cardCornerRadius="4dp">
+                        android:orientation="vertical"
+                        android:weightSum="1">
 
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Select Date"
+                            android:textSize="20dp">
+
+                        </TextView>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="center"
+                            android:layout_margin="4dp"
+                            android:background="@drawable/roundtest"
                             android:orientation="horizontal"
                             android:weightSum="1">
 
-                            <EditText
+                            <androidx.cardview.widget.CardView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left"
+                                android:layout_margin="4dp"
+                                android:layout_weight="0.00"
+                                app:cardCornerRadius="20dp"
+                                app:cardElevation="20dp"
+                                app:cardMaxElevation="20dp">
+
+                                <DatePicker
+
+                                    android:id="@+id/datePicker"
+                                    style="@style/MyDatePickerStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:theme="@style/MyDatePickerStyle" />
+
+
+                            </androidx.cardview.widget.CardView>
+
+                            <LinearLayout
+
                                 android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.50"
+                                android:orientation="vertical"
+                                android:weightSum="3">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:hint="Day"
+                                    android:maxEms="2"
+                                    app:counterMaxLength="2">
+
+                                    <EditText
+                                        android:id="@+id/day"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="numberSigned"
+                                        android:maxEms="2"
+
+                                        android:maxLength="2"
+                                        android:maxLines="1">
+
+                                    </EditText>
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:hint="Month"
+                                    android:maxEms="2"
+                                    android:maxLength="2"
+                                    android:maxLines="1"
+                                    app:counterMaxLength="2">
+
+                                    <EditText
+                                        android:id="@+id/month"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:inputType="numberSigned"
+                                        android:maxEms="2"
+                                        android:maxLength="2"
+                                        android:maxLines="1">
+
+                                    </EditText>
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:hint="Year"
+                                    android:maxEms="4"
+                                    android:maxLength="4"
+                                    android:maxLines="1"
+                                    app:counterMaxLength="4">
+
+                                    <EditText
+                                        android:id="@+id/year"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:inputType="numberSigned"
+                                        android:maxLength="4"
+                                        android:maxLines="1">
+
+                                    </EditText>
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Select Time"
+                            android:textSize="20dp">
+
+                        </TextView>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:background="@drawable/roundtest"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.10"
-                                android:background="@null"
-                                android:hint="Search Products or suppliers"
-                                android:text=""
-                                android:textColor="#000"
-                                android:textColorHint="#7A7878"
-                                android:textSize="15dp" />
+                                app:cardCornerRadius="20dp"
 
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0.45"
-                                android:src="@drawable/voice" />
+                                app:cardElevation="20dp"
+                                app:cardMaxElevation="20dp">
 
-                            <ImageView
+                                <TimePicker
+                                    android:id="@+id/timepic"
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:timePickerMode="spinner">
+
+                                </TimePicker>
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0.45"
-                                app:srcCompat="@drawable/camera" />
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.50">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.50"
+                                    android:orientation="vertical"
+                                    android:weightSum="3">
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:hint="Hour"
+                                        android:maxEms="2"
+                                        app:counterMaxLength="2">
+
+                                        <EditText
+                                            android:id="@+id/hour"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:inputType="numberSigned"
+                                            android:maxEms="2"
+                                            android:maxLength="2"
+                                            android:maxLines="1">
+
+                                        </EditText>
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:hint="Minutes"
+                                        android:maxEms="2"
+                                        android:maxLength="2"
+                                        android:maxLines="1"
+                                        app:counterMaxLength="2">
+
+                                        <EditText
+                                            android:id="@+id/min"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:inputType="numberSigned"
+                                            android:maxEms="2"
+                                            android:maxLength="2"
+                                            android:maxLines="1">
+
+                                        </EditText>
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:hint="PM/AM"
+                                        android:maxEms="4"
+                                        android:maxLength="4"
+                                        android:maxLines="1"
+                                        app:counterMaxLength="4">
+
+                                        <EditText
+                                            android:id="@+id/amorpm"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:inputType="numberSigned"
+                                            android:maxLength="4"
+                                            android:maxLines="1">
+
+                                        </EditText>
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
                         </LinearLayout>
-                    </android.support.v7.widget.CardView>
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="15dp"
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/remidme"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/circlewa"
+                                android:text="Set Remainder"
+                                android:textColor="@android:color/white">
+
+                            </Button>
+                        </LinearLayout>
+
+                        <!--                        <ImageView-->
+                        <!--                            android:layout_width="0dp"-->
+                        <!--                            android:layout_height="35dp"-->
+                        <!--                            android:layout_weight="1"-->
+                        <!--                            android:scaleType="fitStart"-->
+                        <!--                            android:src="@drawable/happytri" />-->
+
+                        <!--                        <ImageView-->
+                        <!--                            android:layout_width="0dp"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_weight="1"-->
+                        <!--                            android:scaleType="fitStart"-->
+                        <!--                            android:src="@drawable/nervous" />-->
+
+                        <!--                        <ImageView-->
+                        <!--                            android:layout_width="0dp"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_weight="1"-->
+                        <!--                            android:scaleType="fitStart"-->
+                        <!--                            android:src="@drawable/sad" />-->
+
+                        <!--                        <ImageView-->
+                        <!--                            android:layout_width="0dp"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_weight="1"-->
+                        <!--                            android:scaleType="fitStart"-->
+                        <!--                            android:src="@drawable/happysmile" />-->
+
+                        <!--                        <ImageView-->
+                        <!--                            android:layout_width="0dp"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_weight="1"-->
+                        <!--                            android:scaleType="fitStart"-->
+                        <!--                            android:src="@drawable/happy" />-->
+
+                    </LinearLayout>
                 </LinearLayout>
-            </android.support.v7.widget.Toolbar>
 
-            <devs.mulham.horizontalcalendar.HorizontalCalendarView
-                android:visibility="gone"
-                android:id="@+id/calendarView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:sizeBottomText="14sp"
-                app:sizeMiddleText="20sp"
-                app:textColorSelected="#FFFF" />
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginTop="10dp"-->
+                <!--                    android:background="@drawable/rectangle"-->
+                <!--                    android:orientation="vertical"-->
+                <!--                    android:paddingLeft="18dp"-->
+                <!--                    android:paddingRight="18dp"-->
+                <!--                    android:paddingTop="25dp">-->
 
-            <TextView
-                android:id="@+id/tv_cal_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                android:gravity="center"
-                android:text=""
-                android:textAlignment="center"
-                android:textColor="#fff"
+                <!--                    <TextView-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:text="$1422.90"-->
+                <!--                        android:theme="@style/Rupees" />-->
 
-                />
+                <!--                    <customfonts.MyTextView_Roboto_Medium-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginTop="10dp"-->
+                <!--                        android:text="Saved on your Car Insurance Policy. Your Installment-->
+                <!--towards car policy is $1499"-->
+                <!--                        android:theme="@style/Paragraph" />-->
 
-        </android.support.design.widget.AppBarLayout>
+                <!--                    <customfonts.MyTextView_Roboto_Medium-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:gravity="right"-->
+                <!--                        android:paddingBottom="25dp"-->
+                <!--                        android:text="3 days ago"-->
+                <!--                        android:theme="@style/Sub_Text" />-->
 
-    </LinearLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-        android:padding="10dp">
-
-        <AutoCompleteTextView
-            android:id="@+id/searchname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_search_user_24dp"
-
-            android:hint="Search connection" />
-    </android.support.design.widget.TextInputLayout>
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-        android:padding="10dp">
-
-        <EditText
-            android:id="@+id/frnname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:hint="Name" />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-        android:padding="10dp">
-
-        <EditText
-            android:editable="false"
-            android:focusable="false"
-            android:id="@+id/chdate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:hint="Choose Date from above" />
-    </android.support.design.widget.TextInputLayout>
+                <!--                </LinearLayout>-->
 
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-        android:padding="10dp">
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginTop="10dp"-->
+                <!--                    android:background="@drawable/rectangle"-->
+                <!--                    android:orientation="vertical"-->
+                <!--                    android:paddingLeft="18dp"-->
+                <!--                    android:paddingRight="18dp"-->
+                <!--                    android:paddingTop="25dp">-->
 
-        <EditText
+                <!--                    <TextView-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:text="$1422.90"-->
+                <!--                        android:theme="@style/Rupees" />-->
 
-            android:id="@+id/chtime"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+                <!--                    <customfonts.MyTextView_Roboto_Medium-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginTop="10dp"-->
+                <!--                        android:text="Saved on your Car Insurance Policy. Your Installment-->
+                <!--towards car policy is $1499"-->
+                <!--                        android:textColor="@color/paragraph"-->
+                <!--                        android:theme="@style/Paragraph" />-->
 
-            android:editable="false"
-            android:focusable="false"
-            android:hint="Choose Time from below" />
-    </android.support.design.widget.TextInputLayout>
+                <!--                    <customfonts.MyTextView_Roboto_Medium-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginTop="4dp"-->
+                <!--                        android:paddingBottom="25dp"-->
+                <!--                        android:gravity="right"-->
 
+                <!--                        android:text="1-Feb-2018"-->
+                <!--                        android:theme="@style/Sub_Text" />-->
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-        android:padding="10dp">
-
-        <EditText
-            android:id="@+id/abtrem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:hint="About Remainder" />
-    </android.support.design.widget.TextInputLayout>
+                <!--                </LinearLayout>-->
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-        android:padding="10dp">
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="1dp"-->
+                <!--                        android:background="#c8cbcc"-->
+                <!--                        android:paddingTop="2dp" />-->
 
-        <EditText
-            android:drawableRight="@drawable/arrowdown_24dp"
-            android:id="@+id/metcause"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+                <!--                    <TextView-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:background="@drawable/rectangle2"-->
+                <!--                        android:paddingBottom="10dp"-->
+                <!--                        android:paddingLeft="18dp"-->
+                <!--                        android:paddingTop="10dp"-->
+                <!--                        android:text="View Full Detailed Card"-->
+                <!--                        android:textSize="11.5dp" />-->
 
-            android:entries="@array/mcons" />
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-        android:padding="10dp">
+                <!--                </LinearLayout>-->
 
-        <Button
 
-            android:id="@+id/setrem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:text="Set Remainder"
-            android:textColor="#fff" />
-    </LinearLayout>
+                <!--    <?xml version="1.0" encoding="utf-8"?>-->
+                <!--    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+                <!--        xmlns:app="http://schemas.android.com/apk/res-auto"-->
+                <!--        xmlns:tools="http://schemas.android.com/tools"-->
+                <!--        android:layout_width="match_parent"-->
+                <!--        android:layout_height="match_parent">-->
+                <!--        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+                <!--            xmlns:app="http://schemas.android.com/apk/res-auto"-->
+                <!--            xmlns:tools="http://schemas.android.com/tools"-->
+                <!--            android:layout_width="match_parent"-->
+                <!--            android:layout_height="match_parent"-->
+                <!--            android:orientation="vertical"-->
+                <!--            tools:context=".BusinessDashboard.Business_CRM.CalenderActivity">-->
+
+                <!--            <LinearLayout-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content">-->
+
+                <!--                <com.google.android.material.appbar.AppBarLayout-->
+                <!--                    android:id="@+id/appBar"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+
+                <!--                    android:theme="@style/AppTheme.AppBarOverlay">-->
+
+                <!--                    <androidx.appcompat.widget.Toolbar-->
+                <!--                        android:id="@+id/toolbar"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="?attr/actionBarSize"-->
+                <!--                        android:layout_gravity="center"-->
+                <!--                        android:background="?attr/colorPrimary"-->
+                <!--                        android:gravity="center"-->
+                <!--                        app:popupTheme="@style/AppTheme.PopupOverlay">-->
+
+                <!--                        <TextView-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:padding="10dp"-->
+                <!--                            android:text="Add New Remainder"-->
+                <!--                            android:textColor="#fff"-->
+                <!--                            android:textSize="20dp"></TextView>-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:visibility="gone"-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_marginTop="10dp"-->
+                <!--                            android:layout_marginBottom="10dp"-->
+                <!--                            android:gravity="center"-->
+                <!--                            android:orientation="horizontal"-->
+                <!--                            android:weightSum="1">-->
+
+
+                <!--                            <androidx.cardview.widget.CardView-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:layout_gravity="center"-->
+                <!--                                android:layout_marginRight="15dp"-->
+                <!--                                android:visibility="gone"-->
+                <!--                                app:cardCornerRadius="4dp">-->
+
+
+                <!--                                <LinearLayout-->
+                <!--                                    android:layout_width="match_parent"-->
+                <!--                                    android:layout_height="wrap_content"-->
+                <!--                                    android:layout_gravity="center"-->
+                <!--                                    android:gravity="center"-->
+                <!--                                    android:orientation="horizontal"-->
+                <!--                                    android:weightSum="1">-->
+
+                <!--                                    <EditText-->
+                <!--                                        android:layout_width="match_parent"-->
+                <!--                                        android:layout_height="wrap_content"-->
+                <!--                                        android:layout_weight="0.10"-->
+                <!--                                        android:background="@null"-->
+                <!--                                        android:hint="Search Products or suppliers"-->
+                <!--                                        android:text=""-->
+                <!--                                        android:textColor="#000"-->
+                <!--                                        android:textColorHint="#7A7878"-->
+                <!--                                        android:textSize="15dp" />-->
+
+                <!--                                    <ImageView-->
+                <!--                                        android:layout_width="match_parent"-->
+                <!--                                        android:layout_height="wrap_content"-->
+                <!--                                        android:layout_weight="0.45"-->
+                <!--                                        android:src="@drawable/voice" />-->
+
+                <!--                                    <ImageView-->
+                <!--                                        android:layout_width="match_parent"-->
+                <!--                                        android:layout_height="wrap_content"-->
+                <!--                                        android:layout_weight="0.45"-->
+                <!--                                        app:srcCompat="@drawable/camera" />-->
+                <!--                                </LinearLayout>-->
+                <!--                            </androidx.cardview.widget.CardView>-->
+
+                <!--                        </LinearLayout>-->
+                <!--                    </androidx.appcompat.widget.Toolbar>-->
+
+                <!--                    <devs.mulham.horizontalcalendar.HorizontalCalendarView-->
+                <!--                        android:visibility="gone"-->
+                <!--                        android:id="@+id/calendarView"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        app:sizeBottomText="14sp"-->
+                <!--                        app:sizeMiddleText="20sp"-->
+                <!--                        app:textColorSelected="#FFFF" />-->
+
+                <!--                    <TextView-->
+                <!--                        android:id="@+id/tv_cal_date"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:background="@color/colorPrimary"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:text=""-->
+                <!--                        android:textAlignment="center"-->
+                <!--                        android:textColor="#fff"-->
+
+                <!--                        />-->
+
+                <!--                </com.google.android.material.appbar.AppBarLayout>-->
+
+                <!--            </LinearLayout>-->
+
+                <!--            <com.google.android.material.textfield.TextInputLayout-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_margin="3dp"-->
+                <!--                android:padding="10dp">-->
+
+                <!--                <AutoCompleteTextView-->
+                <!--                    android:id="@+id/searchname"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:drawableRight="@drawable/ic_search_user_24dp"-->
+
+                <!--                    android:hint="Search connection" />-->
+                <!--            </com.google.android.material.textfield.TextInputLayout>-->
+                <!--            <com.google.android.material.textfield.TextInputLayout-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_margin="3dp"-->
+                <!--                android:padding="10dp">-->
+
+                <!--                <EditText-->
+                <!--                    android:id="@+id/frnname"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+
+                <!--                    android:hint="Name" />-->
+                <!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+                <!--            <com.google.android.material.textfield.TextInputLayout-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_margin="3dp"-->
+                <!--                android:padding="10dp">-->
+
+                <!--                <EditText-->
+                <!--                    android:editable="false"-->
+                <!--                    android:focusable="false"-->
+                <!--                    android:id="@+id/chdate"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+
+                <!--                    android:hint="Choose Date from above" />-->
+                <!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+
+                <!--            <com.google.android.material.textfield.TextInputLayout-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_margin="3dp"-->
+                <!--                android:padding="10dp">-->
+
+                <!--                <EditText-->
+
+                <!--                    android:id="@+id/chtime"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+
+                <!--                    android:editable="false"-->
+                <!--                    android:focusable="false"-->
+                <!--                    android:hint="Choose Time from below" />-->
+                <!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+
+                <!--            <com.google.android.material.textfield.TextInputLayout-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_margin="3dp"-->
+                <!--                android:padding="10dp">-->
+
+                <!--                <EditText-->
+                <!--                    android:id="@+id/abtrem"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+
+                <!--                    android:hint="About Remainder" />-->
+                <!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+
+                <!--            <LinearLayout-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_margin="3dp"-->
+                <!--                android:padding="10dp">-->
+
+                <!--                <EditText-->
+                <!--                    android:drawableRight="@drawable/arrowdown_24dp"-->
+                <!--                    android:id="@+id/metcause"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+
+                <!--                    android:entries="@array/mcons" />-->
+                <!--            </LinearLayout>-->
+
+                <!--            <LinearLayout-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_margin="3dp"-->
+                <!--                android:padding="10dp">-->
+
+                <!--                <Button-->
+
+                <!--                    android:id="@+id/setrem"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:background="@color/colorPrimary"-->
+                <!--                    android:text="Set Remainder"-->
+                <!--                    android:textColor="#fff" />-->
+                <!--            </LinearLayout>-->
+                <!--        </LinearLayout>-->
+                <!--    </ScrollView>-->
+            </LinearLayout>
 </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</LinearLayout>
+

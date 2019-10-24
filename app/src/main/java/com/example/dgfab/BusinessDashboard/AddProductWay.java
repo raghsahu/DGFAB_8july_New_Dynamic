@@ -12,14 +12,15 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
-import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.annotation.Nullable;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -36,7 +37,6 @@ import android.widget.Toast;
 
 import com.example.dgfab.APIanURLs.Api;
 import com.example.dgfab.APIanURLs.REtroURls;
-import com.example.dgfab.Activity.Registration_Step_1;
 import com.example.dgfab.Adapter.AddMorePayoptions;
 import com.example.dgfab.Adapter.AddMoredetailesAdapter;
 import com.example.dgfab.Adapter.AddMorekeysAdapter;
@@ -44,9 +44,7 @@ import com.example.dgfab.Adapter.AddNewsAdapter;
 import com.example.dgfab.Adapter.SelectandProsAdapter;
 import com.example.dgfab.Adapter.SelectandRemoveAdapter;
 import com.example.dgfab.Adapter.SelectndRemvDetailsAdapter;
-import com.example.dgfab.Adapter.Service_Adapter;
 import com.example.dgfab.AllParsings.AddSubService;
-import com.example.dgfab.AllParsings.GET_Services;
 import com.example.dgfab.AllParsings.GET_Services_Data;
 import com.example.dgfab.AllParsings.MyServices;
 import com.example.dgfab.AllParsings.MyServicesData;
@@ -79,7 +77,6 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.AbstractCollection;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -95,9 +92,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.example.dgfab.BusinessDashboard.AddProduct_Activity.BITMAP_SAMPLE_SIZE_TRD;
-import static com.example.dgfab.BusinessDashboard.AddProduct_Activity.IMAGE_EXTENSION_TRD;
 import static com.example.dgfab.BusinessDashboard.AddProduct_Activity.KEY_IMAGE_STORAGE_PATH_TRD;
-import static com.example.dgfab.BusinessDashboard.AddProduct_Activity.MEDIA_TYPE_IMAGE_TRD;
 
 public class AddProductWay extends AppCompatActivity {
     Button addmorekey, nxt, addmrdet, addmorepro, addmantype;
@@ -360,9 +355,9 @@ public class AddProductWay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_add_product);
 
-        LocalBroadcastManager lbm = LocalBroadcastManager.getInstance(this);
-        // LocalBroadcastManager OthersDetailsBroadcastManager = LocalBroadcastManager.getInstance(this);
-        lbm.registerReceiver(onNotice, new IntentFilter("filter_string"));
+//        LocalBroadcastManager lbm = LocalBroadcastManager.getInstance(this);
+//        // LocalBroadcastManager OthersDetailsBroadcastManager = LocalBroadcastManager.getInstance(this);
+//        lbm.registerReceiver(onNotice, new IntentFilter("filter_string"));
         //    OthersDetailsBroadcastManager.registerReceiver(OthersDetails, new IntentFilter("Add_More_Details_Key"));
         AllViwsbyid();
         GETAllCAtegories();

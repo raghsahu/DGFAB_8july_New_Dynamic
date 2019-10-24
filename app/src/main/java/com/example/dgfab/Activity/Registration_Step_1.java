@@ -4,9 +4,10 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -24,7 +25,6 @@ import com.example.dgfab.AllParsings.GET_Services_Data;
 import com.example.dgfab.AllParsings.Registration_only;
 import com.example.dgfab.BusinessDashboard.Business_Dashboard_Main;
 import com.example.dgfab.R;
-import com.example.dgfab.LoginandReg.RegistrationActivityTwo;
 import com.example.dgfab.SessionManage.SessionManager;
 import com.example.dgfab.SessionManage.Shared_Preference;
 
@@ -41,7 +41,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.example.dgfab.Adapter.Service_Adapter.Servicenames;
 import static com.example.dgfab.Adapter.Service_Adapter.Service_names;
-import static com.example.dgfab.LoginandReg.RegistrationActivityTwo.dataregistration;
 
 public class Registration_Step_1 extends AppCompatActivity {
     RecyclerView serv_id;

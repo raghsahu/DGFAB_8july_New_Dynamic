@@ -26,7 +26,7 @@
         <activity android:name=".BusinessDashboard.Inquiry_Activity" />
 
         <provider
-            android:name="android.support.v4.content.FileProvider"
+            android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.dgfab.provider"
             android:exported="false"
             android:grantUriPermissions="true"

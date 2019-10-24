@@ -12,7 +12,7 @@ import android.util.Log;
 
 import java.net.URISyntaxException;
 
-import static android.support.v4.provider.DocumentFile.isDocumentUri;
+import static androidx.documentfile.provider.DocumentFile.isDocumentUri;
 
 /**
  * Created by android on 11/19/2018.

@@ -3,18 +3,16 @@ package com.example.dgfab.Activity.Buyer_guest_login;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.dgfab.BusinessDashboard.Business_Dashboard_Main;
 import com.example.dgfab.Buyers.Buyer_Main_Navigation;
-import com.example.dgfab.LoginandReg.ManuLoginActivity;
 import com.example.dgfab.R;
-import com.example.dgfab.SessionManage.Shared_Preference;
 
 import org.json.JSONObject;
 

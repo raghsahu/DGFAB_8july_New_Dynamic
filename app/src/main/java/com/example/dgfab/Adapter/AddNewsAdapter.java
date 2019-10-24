@@ -5,8 +5,9 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.StrictMode;
-import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,10 +20,7 @@ import android.widget.Toast;
 
 import com.example.dgfab.APIanURLs.Api;
 import com.example.dgfab.APIanURLs.REtroURls;
-import com.example.dgfab.AllParsings.Accept_Decline;
-import com.example.dgfab.AllParsings.CommingRequestData;
 import com.example.dgfab.AllParsings.Connection_Requests;
-import com.example.dgfab.Connections.SeenProfile;
 import com.example.dgfab.Java_Adapter_Files.AddNews;
 import com.example.dgfab.R;
 import com.example.dgfab.SessionManage.SessionManager;

@@ -2,38 +2,40 @@ package com.example.dgfab.BusinessDashboard;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.example.dgfab.BusinessDashboard.Business_Directory.Directories_Fragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.ActionBar;
 import android.util.Log;
 import android.view.View;
-import android.support.v4.view.GravityCompat;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.view.MenuItem;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
 
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import android.view.MenuItem;
+
+import com.google.android.material.navigation.NavigationView;
+
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.Target;
 import com.example.dgfab.BusinessDashboard.Business_CRM.CRM_Fragment;
 import com.example.dgfab.BusinessDashboard.Business_HomeDashboard.Home_fragment;
 import com.example.dgfab.LoginandReg.ManuLoginActivity;
@@ -156,8 +158,18 @@ public class Business_Dashboard_Main extends AppCompatActivity
                     return true;
                 case R.id.navigation_feeds:
                     //toolbar1.setTitle("My Gifts");
+//                    toolbar1.setTitle("My Directories");
+//                    fragment = new Directories_Fragment();
+//                    loadFragment(fragment);
+//                    overridePendingTransition(R.anim.anim_slide_in_left,
+//                            R.anim.anim_slide_out_left);
                     return true;
                 case R.id.navigation_directory:
+                    toolbar1.setTitle("My Directories");
+                    fragment = new Directories_Fragment();
+                    loadFragment(fragment);
+                    overridePendingTransition(R.anim.anim_slide_in_left,
+                            R.anim.anim_slide_out_left);
                    // toolbar1.setTitle("Cart");
                     return true;
                     case R.id.navigation_my_crm:
@@ -220,7 +232,7 @@ public class Business_Dashboard_Main extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_addproduct) {
-           // Intent intent = new Intent(Business_Dashboard_Main.this , AddProduct_Activity.class);
+//            Intent intent = new Intent(Business_Dashboard_Main.this , AddProduct_Activity.class);
 //            Intent intent = new Intent(Business_Dashboard_Main.this , AddProductWay.class);
             Intent intent = new Intent(Business_Dashboard_Main.this, AddNewProductWay.class);
             startActivity(intent);

@@ -2,7 +2,8 @@ package com.example.dgfab.Adapter;
 
 import android.content.Context;
 import android.os.StrictMode;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;

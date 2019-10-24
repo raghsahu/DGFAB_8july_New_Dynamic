@@ -92,13 +92,14 @@
                 android:text="Product Keyword"
                 android:textColor="#000" />
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
+
                 android:id="@+id/showkeys"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
-                android:background="@drawable/bt_bg"
-                android:visibility="gone" />
+
+                />
 
         </LinearLayout>
 
@@ -145,7 +146,7 @@
                 android:textColor="#000"
                 android:textSize="11dp" />
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/newkey"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -221,18 +222,16 @@
                     android:textColor="#000"
                     android:visibility="gone" />
 
-                <EditText
+                <Spinner
                     android:id="@+id/spinsubcat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableRight="@drawable/arrowdown_24dp"
                     android:focusable="false"
                     android:hint="Type"
-                    android:padding="15dp"></EditText>
+                    android:padding="15dp"></Spinner>
 
             </LinearLayout>
-
-
         </LinearLayout>
 
 
@@ -265,7 +264,13 @@
 
                 android:hint="Sub type(your company name)" />
 
-
+            <Button
+                android:id="@+id/addmore_sub_serpro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:background="@drawable/bt_bg"
+                android:text="Add New Sub Service"></Button>
 
 
         </LinearLayout>
@@ -286,13 +291,14 @@
                 android:text="Products Informations"
                 android:textColor="#000" />
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
+
                 android:id="@+id/addepros"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
-                android:background="@drawable/bt_bg"
-                android:visibility="gone" />
+
+                />
 
         </LinearLayout>
         <!---->
@@ -303,10 +309,14 @@
             android:layout_height="wrap_content"
 
             android:gravity="center"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:padding="3dp"
             android:weightSum="1">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -321,25 +331,27 @@
                 android:layout_gravity="right"
                 android:background="@drawable/ic_add_circle_outline24dp"
                 android:textColorHint="#000" />
-
-            <!--<Button-->
-            <!--android:id="@+id/addmantype"-->
-            <!--android:background="@drawable/bt_bg"-->
-            <!--android:layout_gravity="right"-->
-            <!--android:textColor="#000"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="0.65"-->
-            <!--android:text="Add More Fields" />-->
+            </LinearLayout>
 
 
-            <android.support.v7.widget.RecyclerView
+            <!--     <Button
+                 android:id="@+id/addmantype"
+                 android:background="@drawable/bt_bg"
+                 android:layout_gravity="right"
+                 android:textColor="#000"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_weight="0.65"
+                 android:text="Add More Fields" />-->
+
+
+            <androidx.recyclerview.widget.RecyclerView
+
                 android:id="@+id/mainrec"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone">
+                android:layout_height="wrap_content">
 
-            </android.support.v7.widget.RecyclerView>
+            </androidx.recyclerview.widget.RecyclerView>
 
 
         </LinearLayout>
@@ -449,13 +461,13 @@
                 android:text="More Details"
                 android:textColor="#000" />
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/showmoredeatils"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.25"
-                android:background="@drawable/bt_bg"
-                android:visibility="gone" />
+
+                />
 
         </LinearLayout>
         <!---->
@@ -504,12 +516,11 @@
             <!--android:textAllCaps="false"-->
             <!--android:textColor="#fff" />-->
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/addmoredet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.65"
-                android:visibility="gone" />
+                android:layout_weight="0.65" />
 
 
         </LinearLayout>

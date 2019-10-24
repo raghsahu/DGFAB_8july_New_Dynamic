@@ -258,17 +258,17 @@
                 android:layout_gravity="center"
                 android:layout_weight="0.20"
                 android:hint="Packaging Description"
-
                 android:padding="10dp"
                 android:text="" />
 
-            <TextView
-                android:visibility="gone"
+            <Button
+                android:id="@+id/btnsubmit"
+                android:background="@android:color/holo_blue_bright"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.80"
-                android:hint="Packaging Description"
-                android:textColor="#000" />
+                android:hint="Submit"
+                android:textColor="@android:color/white" />
 
 
         </LinearLayout>

@@ -1,21 +1,18 @@
 package com.example.dgfab.Expandable;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.dgfab.R;
-
 public class BasicInfo {
     //For Basic
-    EditText ProductName, SubType, BrandName, ModelNumber;
+    String ProductName, SubType, BrandName, ModelNumber;
     Button AddNewKeyword, AddNewSubservice, AddmoreProinfo, AddMoreDetails;
     RecyclerView ProductKeywords, ProductInformation;
     Spinner Product_Group, ProType, PlaceofOrigin, MoreDetails;
@@ -28,7 +25,7 @@ public class BasicInfo {
     Context context;
 
 
-    public BasicInfo(Context context, EditText productName, EditText subType, EditText brandName, EditText modelNumber, Button addNewKeyword, Button addNewSubservice, Button addmoreProinfo, Button addMoreDetails, RecyclerView productKeywords, RecyclerView productInformation, Spinner product_Group, Spinner proType, Spinner placeofOrigin, Spinner moreDetails) {
+    public BasicInfo(Context context, String productName, String subType, String brandName, String modelNumber, Button addNewKeyword, Button addNewSubservice, Button addmoreProinfo, Button addMoreDetails, RecyclerView productKeywords, RecyclerView productInformation, Spinner product_Group, Spinner proType, Spinner placeofOrigin, Spinner moreDetails) {
         this.context = context;
         ProductName = productName;
         SubType = subType;
@@ -54,35 +51,39 @@ public class BasicInfo {
         this.oneFOB = oneFOB;
     }
 
-    public EditText getProductName() {
+    public String getProductName() {
         return ProductName;
     }
 
-    public void setProductName(EditText productName) {
+    public void setProductName(String productName) {
         ProductName = productName;
     }
 
-    public EditText getSubType() {
+    public String getSubType() {
         return SubType;
     }
 
-    public void setSubType(EditText subType) {
+    public void setSubType(String subType) {
         SubType = subType;
     }
 
-    public EditText getBrandName() {
+    public String getBrandName() {
         return BrandName;
     }
 
-    public void setBrandName(EditText brandName) {
+    public void setBrandName(String brandName) {
         BrandName = brandName;
     }
 
-    public EditText getModelNumber() {
+    public String getStringPRoduct() {
+        return ProductName;
+    }
+
+    public String getModelNumber() {
         return ModelNumber;
     }
 
-    public void setModelNumber(EditText modelNumber) {
+    public void setModelNumber(String modelNumber) {
         ModelNumber = modelNumber;
     }
 
@@ -168,10 +169,10 @@ public class BasicInfo {
 
     public boolean Start(Context context) {
         if (this.ProductKeywords != null) {
-            Toast.makeText(context, "it is exist", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "it is exist", Toast.LENGTH_SHORT).show();
             return true;
         } else {
-            Toast.makeText(context, "it does not exist", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(context, "it does not exist", Toast.LENGTH_SHORT).show();
             return false;
         }
     }

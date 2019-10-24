@@ -1,32 +1,24 @@
 package com.example.dgfab.BusinessDashboard;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
+
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.SearchView;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
-import com.example.dgfab.APIanURLs.Api;
-import com.example.dgfab.APIanURLs.REtroURls;
 import com.example.dgfab.Adapter.Search_All_Adapter;
-import com.example.dgfab.AllParsings.Get_Cities;
-import com.example.dgfab.AllParsings.Get_Cities_Data;
-import com.example.dgfab.AllParsings.Searching_Manufacturers;
 import com.example.dgfab.AllParsings.Searching_Manufacturers_Data;
-import com.example.dgfab.LoginandReg.ManuLoginActivity;
-import com.example.dgfab.LoginandReg.RegistrationActivityTwo;
 import com.example.dgfab.R;
 import com.example.dgfab.SessionManage.SessionManager;
-import com.example.dgfab.SessionManage.Shared_Preference;
 import com.google.gson.JsonParser;
 
 import org.json.JSONObject;
@@ -40,20 +32,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import javax.net.ssl.HttpsURLConnection;
-
-import okhttp3.OkHttpClient;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Search_All_Users extends AppCompatActivity {
     RecyclerView search_all;
@@ -401,6 +384,7 @@ public class Search_All_Users extends AppCompatActivity {
                     }
                 }catch (Exception e)
                 {
+                    Toast.makeText(Search_All_Users.this, "Network Problem", Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
 

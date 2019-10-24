@@ -3,7 +3,8 @@ package com.example.dgfab.LoginandReg;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -33,7 +34,6 @@ import com.example.dgfab.AllParsings.Registration_only;
 import com.example.dgfab.BusinessDashboard.Business_Dashboard_Main;
 import com.example.dgfab.Dataregistration;
 import com.example.dgfab.R;
-import com.example.dgfab.SessionManage.Shared_Preference;
 
 import org.json.JSONObject;
 

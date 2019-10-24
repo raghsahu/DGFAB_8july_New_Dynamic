@@ -2,13 +2,13 @@ package com.example.dgfab.Activity.SplashScreens;
 
 import android.content.Intent;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.dgfab.Activity.Buyer_guest_login.Use_reason_Activity;
 import com.example.dgfab.BusinessDashboard.Business_Dashboard_Main;
 import com.example.dgfab.Buyers.Buyer_Main_Navigation;
-import com.example.dgfab.LoginandReg.ManuLoginActivity;
 import com.example.dgfab.R;
 import com.example.dgfab.SessionManage.SessionManager;
 
